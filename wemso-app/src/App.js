@@ -13,19 +13,12 @@ function App() {
             <p id="logo">
               <img id="imgLogo" src={require(".//images/WESMOLogo.png")} />
             </p>
-            <div className="nav-links">
-              {/* <a href="http://wesmo.co.nz:3000/d/b650f98e-4928-4a23-adf2-079c04161405/bms?orgId=1&refresh=1s">BMS</a>
-                      <a href="http://wesmo.co.nz:3000/d/c0e07de0-8a8c-4cb4-8763-9ec002a0e1bf/vcu?orgId=1&refresh=1s">VCU</a> */}
-              <a href="#">Sponsors</a>
-            </div>
           </div>
           <div className="nav-right">
             <a id="rightButtonNav" href="#">
               Engineering Team
             </a>
-
             <BurgerMenu />
-
             <div className="nav-right"></div>
           </div>
         </div>
