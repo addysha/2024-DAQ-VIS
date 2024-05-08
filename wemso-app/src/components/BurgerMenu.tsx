@@ -23,16 +23,16 @@ const HamburgerMenu: React.FC = () => {
         className={`nav-cover ${isMenuOpen ? "active" : ""}`}
         onClick={handleCoverClick}
       >
-        {/* <div className="nav-left"> */}
         <div className="nav-links">
-          <a href="#">Engineering Team</a>
-          <a href="#">Race Data</a>
-          <a href="#">Sponsors</a>
-          <a href="#">About us</a>
-          <a href="#">About FSAE</a>
-          <a href="#">Wiki</a>
+          <a href="/engineering-team">Engineering Team</a>
+          <a href="/race-data">Race Data</a>
+          <a href="/sponsors">Sponsors</a>
+          <a href="/about-wesmo">About us</a>
+          <a href="/contact-us">Contact us</a>
+          <a href="/about-fsae">About FSAE</a>
+          <a href="/wiki-login">Wiki</a>
+          <a href="/">Home</a>
         </div>
-        {/* </div> */}
       </div>
       <div
         className={`hamburger-menu ${isMenuOpen ? "toggle" : ""}`}
