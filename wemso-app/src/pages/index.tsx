@@ -39,7 +39,7 @@ const Home: React.FC = () => {
             </div>
           </a>
         </div>
-      </div>{" "}
+      </div>
     </div>
   );
 };
