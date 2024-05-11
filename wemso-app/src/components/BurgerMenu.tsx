@@ -24,12 +24,12 @@ const HamburgerMenu: React.FC = () => {
         onClick={handleCoverClick}
       >
         <div className="nav-links">
-          <a href="/engineering-team">Engineering Team</a>
-          <a href="/race-data">Race Data</a>
-          <a href="/sponsors">Sponsors</a>
           <a href="/about-wesmo">About us</a>
-          <a href="/contact-us">Contact us</a>
           <a href="/about-fsae">About FSAE</a>
+          <a href="/sponsors">Sponsors</a>
+          <a href="/race-data">Race Data</a>
+          <a href="/engineering-team">Engineering Team</a>
+          <a href="/contact-us">Contact us</a>
           <a href="/wiki-login">Wiki</a>
           <a href="/">Home</a>
         </div>
