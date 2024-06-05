@@ -30,7 +30,7 @@ const HamburgerMenu: React.FC = () => {
           <a href="/race-data">Race Data</a>
           <a href="/engineering-team">Engineering Team</a>
           <a href="/contact-us">Contact us</a>
-          <a href="/wiki-login">Wiki</a>
+          <a href="/2023">History</a>
           <a href="/">Home</a>
         </div>
       </div>

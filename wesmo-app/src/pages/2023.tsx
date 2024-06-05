@@ -1,22 +1,22 @@
-// Filename - pages/wiki-login.js
+// Filename - pages/2023.js
 
 import React from "react";
 import BurgerMenu from "../components/BurgerMenu.tsx";
 import "../App.css";
 
-const Wiki: React.FC = () => {
+const History_2023: React.FC = () => {
   return (
     <div className="App">
       <div className="background">
         <div className="navbar">
           <div className="nav-left">
             <p id="logo">
-              <a href="/"> 
+              <a href="/">
                 <img
                   id="imgLogo"
                   src={require("..//images/WESMOLogo.png")}
                   alt="Wesmo logo"
-              />
+                />
               </a>
             </p>
           </div>
@@ -36,4 +36,4 @@ const Wiki: React.FC = () => {
   );
 };
 
-export default Wiki;
+export default History_2023;

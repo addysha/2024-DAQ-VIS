@@ -55,7 +55,7 @@ class TypeWriter extends React.PureComponent {
     } else if (this.isDeleting && newText === "") {
       this.isDeleting = false;
       this.loopNum++;
-      delta = 6000;
+      delta = 4000;
     }
 
     this.setState({ text: newText });
