@@ -2,6 +2,7 @@
 
 import React from "react";
 import BurgerMenu from "../components/BurgerMenu.tsx";
+import Logo from "../components/Logo.tsx";
 import "../App.css";
 
 const About: React.FC = () => {
@@ -10,15 +11,7 @@ const About: React.FC = () => {
       <div className="background">
         <div className="navbar">
           <div className="nav-left">
-            <p id="logo">
-              <a href="/">
-                <img
-                  id="imgLogo"
-                  src={require("..//images/WESMOLogo.png")}
-                  alt="Wesmo logo"
-                />
-              </a>
-            </p>
+            <Logo />
           </div>
           <div className="nav-right">
             <BurgerMenu />

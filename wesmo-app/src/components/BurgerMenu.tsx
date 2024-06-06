@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./BurgerMenu.css";
 
 const HamburgerMenu: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);

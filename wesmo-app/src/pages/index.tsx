@@ -3,6 +3,8 @@
 import React from "react";
 import Typewriter from "../components/TypeWriter.tsx";
 import BurgerMenu from "../components/BurgerMenu.tsx";
+import Logo from "../components/Logo.tsx";
+
 import "../App.css";
 
 const typeWriter = ["University", "Engineers", "Students"];
@@ -13,13 +15,7 @@ const Home: React.FC = () => {
       <div className="background">
         <div className="navbar">
           <div className="nav-left">
-            <p id="logo">
-              <img
-                id="imgLogo"
-                src={require("..//images/WESMOLogo.png")}
-                alt="Wesmo logo"
-              />
-            </p>
+            <Logo />
           </div>
           <div className="nav-right">
             <BurgerMenu />

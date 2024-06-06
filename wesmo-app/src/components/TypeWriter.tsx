@@ -1,4 +1,5 @@
 import React from "react";
+import "./TypeWriter.css";
 
 class TypeWriter extends React.PureComponent {
   unmounted: boolean;

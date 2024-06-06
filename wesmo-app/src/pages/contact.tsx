@@ -3,12 +3,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import BurgerMenu from "../components/BurgerMenu.tsx";
+import Logo from "../components/Logo.tsx";
 import "../App.css";
 
 const Contact: React.FC = () => {
   return (
     <div className="App">
-      <link // Roboto-condensed font
+      <link
         href="https://fonts.googleapis.com/css?family=Roboto Condensed"
         rel="stylesheet"
       ></link>
@@ -19,15 +20,7 @@ const Contact: React.FC = () => {
       <div className="background-contact">
         <div className="navbar">
           <div className="nav-left">
-            <p id="logo">
-              <a href="/">
-                <img
-                  id="imgLogo"
-                  src={require("..//images/WESMOLogo.png")}
-                  alt="WESMO"
-                />
-              </a>
-            </p>
+            <Logo />
           </div>
           <div className="nav-right">
             <BurgerMenu />

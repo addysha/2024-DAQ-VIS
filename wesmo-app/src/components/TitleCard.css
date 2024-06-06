@@ -1,0 +1,15 @@
+/* TitleCard.css */
+.title-card {
+    background-color: rgba(175, 23, 19, 1);
+    width: 300px;
+    height: 40px;
+    padding: 16px;
+    color: rgb(230, 230, 230);
+    font-size: 30px;
+    font-family: 'Roboto Condensed', sans-serif;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
