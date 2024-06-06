@@ -1,6 +1,7 @@
 // Filename - pages/contact.js
 
 import React from "react";
+import { Link } from "react-router-dom";
 import BurgerMenu from "../components/BurgerMenu.tsx";
 import "../App.css";
 
@@ -23,7 +24,7 @@ const Contact: React.FC = () => {
                 <img
                   id="imgLogo"
                   src={require("..//images/WESMOLogo.png")}
-                  alt="Wesmo logo"
+                  alt="WESMO"
                 />
               </a>
             </p>
@@ -40,14 +41,14 @@ const Contact: React.FC = () => {
             <i className="fa fa-instagram socials-icon"></i>
             <div className="contact-text">
               <h6>Instagram</h6>
-              @wesmofsae
+              <Link to="https://www.instagram.com/wesmo_fsae/">@wesmofsae</Link>
             </div>
           </div>
           <div className="socials-container">
             <i className="fa fa-facebook-square socials-icon"></i>
             <div className="contact-text">
               <h6>Facebook</h6>
-              wesmofsae
+              <Link to="https://www.facebook.com/wesmofsae">wesmofsae</Link>
             </div>
           </div>
           <div className="socials-container">
