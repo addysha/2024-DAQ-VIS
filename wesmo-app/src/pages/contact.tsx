@@ -34,14 +34,18 @@ const Contact: React.FC = () => {
             <i className="fa fa-instagram socials-icon"></i>
             <div className="contact-text">
               <h6>Instagram</h6>
-              <Link to="https://www.instagram.com/wesmo_fsae/">@wesmofsae</Link>
+              <Link to="https://www.instagram.com/wesmo_fsae/" className="link">
+                @wesmofsae
+              </Link>
             </div>
           </div>
           <div className="socials-container">
             <i className="fa fa-facebook-square socials-icon"></i>
             <div className="contact-text">
               <h6>Facebook</h6>
-              <Link to="https://www.facebook.com/wesmofsae">wesmofsae</Link>
+              <Link to="https://www.facebook.com/wesmofsae" className="link">
+                wesmofsae
+              </Link>
             </div>
           </div>
           <div className="socials-container">

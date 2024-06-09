@@ -28,18 +28,7 @@ const About: React.FC = () => {
         </div>
         <br />
         <TitleCard title="Waikato Engineering School Motorsport Organisation" />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+        <div style={{ height: "250px" }}></div>
         <div className="image-text-component-about">
           <div className="text-container-about">
             WESMO was founding in 2006.

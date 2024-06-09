@@ -31,9 +31,7 @@ const History_2023: React.FC = () => {
         </div>
         <br />
         <TitleCard title="2023 Team" />
-        <br />
-        <br />
-        <br />
+        <div style={{ height: "80px" }}></div>
         <div className="image-text-component-left">
           <div className="image-container-left">
             <img src={Car_Backend} alt="" className="image-left" />
@@ -60,9 +58,7 @@ const History_2023: React.FC = () => {
             </p>
           </div>
         </div>
-        <br />
-        <br />
-        <br />
+        <div style={{ height: "80px" }}></div>
         <div className="image-text-component-right">
           <div className="text-container-right">
             <StudentDetails
@@ -105,9 +101,7 @@ const History_2023: React.FC = () => {
             <img src={Team1} alt="" className="image-right" />
           </div>
         </div>
-        <br />
-        <br />
-        <br />
+        <div style={{ height: "80px" }}></div>
         <div className="image-text-component-left">
           <div className="image-container-left">
             <img src={Team2} alt="" className="image-left" />
@@ -145,10 +139,7 @@ const History_2023: React.FC = () => {
             />
           </div>
         </div>
-        <br />
-        <br />
-        <br />
-        <br />
+        <div style={{ height: "70px" }}></div>
       </div>
     </div>
   );

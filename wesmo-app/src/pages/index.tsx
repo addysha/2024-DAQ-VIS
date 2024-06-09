@@ -1,4 +1,4 @@
-// Filename - pages/index.js
+// Filename - pages/index.tsx
 
 import React from "react";
 import Typewriter from "../components/TypeWriter.tsx";

@@ -12,11 +12,11 @@ import History_2023 from "./pages/2023.tsx";
 import Data from "./pages/data.tsx";
 import Fsae from "./pages/fsae.tsx";
 
-function App() {
+const App: React.FC = () => {
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/contact-us" element={<Contact />} />
         <Route path="/about-wesmo" element={<About />} />
         <Route path="/about-fsae" element={<Fsae />} />
@@ -27,6 +27,6 @@ function App() {
       </Routes>
     </Router>
   );
-}
+};
 
 export default App;
