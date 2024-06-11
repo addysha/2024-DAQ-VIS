@@ -379,8 +379,9 @@ h1 {
   background-color: rgba(59, 59, 59, 1);
   color: rgb(255, 255, 255);
   width: calc(50% + 100px);
-  right: 0; 
-  position: absolute;
+  /* right: 0; */
+  float: right;
+  /* position: absolute; */
   height: fit-content;
 }
 
@@ -412,4 +413,27 @@ h1 {
   height: 100%;
   object-fit: cover;
   border: none;
+}
+
+.left-display{
+  display: block;
+  margin-bottom: 2rem;
+}
+
+.right-display{
+  display: flex;
+  float: right;
+  display: block;
+  align-content: flex-end;
+  margin-bottom: 2rem;
+  margin-top: 4rem;
+}
+
+.right-display-about{
+  display: flex;
+  float: right;
+  display: block;
+  align-content: flex-end;
+  margin-bottom: 2rem;
+  margin-top: 15rem;
 }

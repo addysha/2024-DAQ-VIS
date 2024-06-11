@@ -28,18 +28,19 @@ const About: React.FC = () => {
         </div>
         <br />
         <TitleCard title="Waikato Engineering School Motorsport Organisation" />
-        <div style={{ height: "250px" }}></div>
-        <div className="image-text-component-about">
-          <div className="text-container-about">
-            WESMO was founding in 2006.
-            <br />
-            <br />
-            The Wesmo team is gearing up for the Formula SAE competition, a
-            competition in which the University of Waikato, under the name
-            WESMO, competes against 30-35 other teams from across Oceania.
-          </div>
-          <div className="image-container-right">
-            <img src={logo} alt="" className="image-right" />
+        <div className="right-display-about">
+          <div className="image-text-component-about">
+            <div className="text-container-about">
+              WESMO was founding in 2006.
+              <br />
+              <br />
+              The Wesmo team is gearing up for the Formula SAE competition, a
+              competition in which the University of Waikato, under the name
+              WESMO, competes against 30-35 other teams from across Oceania.
+            </div>
+            <div className="image-container-right">
+              <img src={logo} alt="" className="image-right" />
+            </div>
           </div>
         </div>
       </div>
