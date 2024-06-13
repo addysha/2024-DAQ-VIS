@@ -1,15 +1,16 @@
-body, html {
-  height: 100%; 
+body,
+html {
+  height: 100%;
   width: 100%;
   margin: 0;
-  font-family: "Roboto";
+  font-family: Roboto, sans-serif;
   overflow-y: auto;
 }
 
-a { 
-  color: inherit; 
+a {
+  color: inherit;
   text-decoration: none;
-} 
+}
 
 a:visited {
   color: white;
@@ -22,13 +23,26 @@ h1 {
 }
 
 .link:hover {
-   color: #AF1713
+  color: #af1713;
 }
 
 /* Background stylings */
 .background {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-              url('images/wesmoBackGround.jpg');
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("images/wesmoBackGround.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  color: white;
+}
+
+.background-engineering {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("images/car_backend_cropped.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -40,8 +54,8 @@ h1 {
 }
 
 .background-contact {
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
-              url('images/pushing_car.jpg');
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("images/pushing_car.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -54,7 +68,7 @@ h1 {
 
 .background-fsae {
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-              url('images/cars.jpg');
+    url("images/cars.jpg");
   background-color: rgba(129, 186, 216, 1);
   background-repeat: no-repeat;
   background-position: center;
@@ -68,7 +82,7 @@ h1 {
 
 .cropped-background-image {
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-              url('images/cars.jpg');
+    url("images/cars.jpg");
   background-color: rgb(139, 188, 214);
   background-repeat: no-repeat;
   background-position: center;
@@ -82,7 +96,7 @@ h1 {
 
 .background-about {
   background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-              url('images/wesmo_night.jpeg');
+    url("images/wesmo_night.jpeg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -142,7 +156,7 @@ h1 {
 .navbar a {
   color: rgb(209, 207, 207);
   text-decoration: none;
-  transition: background-color 0.3s; 
+  transition: background-color 0.3s;
   font-weight: 100;
   font-size: medium;
   letter-spacing: 1px;
@@ -179,7 +193,11 @@ h1 {
   height: 100%;
 }
 
-#scroll{
+#team {
+  margin-bottom: 3rem;
+}
+
+#scroll {
   width: 100%;
   height: 100%;
   overflow-y: scroll;
@@ -228,7 +246,7 @@ h1 {
   justify-content: center;
   align-items: center;
   color: rgb(0, 0, 0);
-  flex-direction: column; 
+  flex-direction: column;
 }
 
 .text-container-left p {
@@ -236,7 +254,7 @@ h1 {
   text-align: left;
   font-size: smaller;
   color: rgb(0, 0, 0);
-  flex-direction: column; 
+  flex-direction: column;
 }
 
 .image-container-left {
@@ -273,7 +291,7 @@ h1 {
   margin: 0;
   text-align: left;
   font-size: small;
-  flex-direction: column; 
+  flex-direction: column;
   color: rgb(255, 255, 255);
 }
 
@@ -294,10 +312,10 @@ h1 {
   display: flex;
   background-color: rgba(59, 59, 59, 1);
   width: calc(50% + 100px);
-  right: 0; 
+  right: 0;
   margin-right: 50%;
   padding-right: 10%;
-  margin: 0 auto; 
+  margin: 0 auto;
   position: absolute;
   padding: 20px;
   min-height: 150px;
@@ -315,7 +333,7 @@ h1 {
   margin: 0;
   text-align: left;
   font-size: small;
-  flex-direction: column; 
+  flex-direction: column;
   color: rgb(255, 255, 255);
 }
 
@@ -373,15 +391,22 @@ h1 {
   padding-left: 10%;
 }
 
+.parent-image-generic {
+  display: flex;
+  background-color: rgba(59, 59, 59, 1);
+  color: rgb(255, 255, 255);
+  width: calc(50% + 100px);
+  float: right;
+  height: fit-content;
+}
+
 /* Image Text Component Right FSAE*/
 .image-text-component-right-fsae {
   display: flex;
   background-color: rgba(59, 59, 59, 1);
   color: rgb(255, 255, 255);
   width: calc(50% + 100px);
-  /* right: 0; */
   float: right;
-  /* position: absolute; */
   height: fit-content;
 }
 
@@ -415,12 +440,12 @@ h1 {
   border: none;
 }
 
-.left-display{
+.left-display {
   display: block;
   margin-bottom: 2rem;
 }
 
-.right-display{
+.right-display {
   display: flex;
   float: right;
   display: block;
@@ -429,7 +454,7 @@ h1 {
   margin-top: 4rem;
 }
 
-.right-display-about{
+.right-display-about {
   display: flex;
   float: right;
   display: block;

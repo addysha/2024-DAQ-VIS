@@ -4,6 +4,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import BurgerMenu from "../components/BurgerMenu.tsx";
 import Logo from "../components/Logo.tsx";
+import TitleCard from "../components/TitleCard.tsx";
 import "../App.css";
 
 const Contact: React.FC = () => {
@@ -27,8 +28,7 @@ const Contact: React.FC = () => {
             <div className="nav-right"></div>
           </div>
         </div>
-        <div className="title-card">Contact Us</div>
-
+        <TitleCard title="Contact Us" />
         <div className="dark-grey">
           <div className="socials-container">
             <i className="fa fa-instagram socials-icon"></i>

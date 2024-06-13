@@ -13,7 +13,7 @@ const StudentDetails: React.FC<StudentDetailsProps> = ({
   component,
 }) => {
   return (
-    <div className="details-container">
+    <div className="student-details-container">
       <div className="left-container">
         <div className="info-container">
           <div className="name">{name}</div>
