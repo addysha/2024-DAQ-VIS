@@ -9,13 +9,18 @@ import TitleCard from "../components/TitleCard.tsx";
 
 import close_up from "../images/close_up.jpg";
 import fsae from "../images/fsae-logo.png";
+import rules from "../files/FSAE_Rules_2024_V1.pdf";
 
 import "../App.css";
 
 const Fsae: React.FC = () => {
   return (
     <div className="App">
-      <div className="background-fsae" id="scroll">
+      <link
+        href="https://fonts.googleapis.com/css?family=Roboto Condensed"
+        rel="stylesheet"
+      ></link>
+      <div className="background fsae" id="scroll">
         <div className="navbar">
           <div className="nav-left">
             <Logo />
@@ -71,6 +76,14 @@ const Fsae: React.FC = () => {
                   https://www.saea.com.au/
                 </Link>
               </p>
+              <Link
+                to={rules}
+                target="_blank"
+                rel="noreferrer"
+                className="link"
+              >
+                FSAE Rules 2024
+              </Link>
             </div>
           </div>
         </div>

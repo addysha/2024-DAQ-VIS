@@ -29,7 +29,7 @@ const Engineering: React.FC = () => {
         href="https://fonts.googleapis.com/css?family=Roboto Condensed"
         rel="stylesheet"
       ></link>
-      <div className="background-engineering" id="scroll">
+      <div className="background engineering" id="scroll">
         <div className="navbar">
           <div className="nav-left">
             <Logo />

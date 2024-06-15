@@ -12,7 +12,7 @@ import "../App.css";
 const About: React.FC = () => {
   return (
     <div className="App">
-      <div className="background-about">
+      <div className="background about">
         <link
           href="https://fonts.googleapis.com/css?family=Roboto Condensed"
           rel="stylesheet"
