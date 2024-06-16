@@ -21,6 +21,7 @@ import LachlanB from "../images/team/Lachlan_brown.jpeg";
 import LachlanC from "../images/team/Lachlan_coleman.jpeg";
 import Shane from "../images/team/Shane_thompson.jpeg";
 import Trent from "../images/team/Trent_tuapiki.jpeg";
+import logo from "../images/logo_header.png";
 
 const Engineering: React.FC = () => {
   return (
@@ -62,25 +63,25 @@ const Engineering: React.FC = () => {
             image2={Ellie}
           ></TeamMember>
           <TeamMember
-            name1="Shane Thompson"
+            name1="Anthony East"
             discipline1="Mechanical Engineering"
-            component1="Steering"
-            name2="Keean Cooper"
+            component1="Aerodynamics"
+            name2="Shane Thompson"
             discipline2="Mechanical Engineering"
-            component2="Aerodynamics"
-            image1={Shane}
+            component2="Steering"
+            image1={logo}
             image2={Keean}
           ></TeamMember>
-          {/* <TeamMember
+          <TeamMember
             name1="Allan Liang"
             discipline1="Mechanical Engineering"
             component1="Brakes"
-            name2="Anthony East"
+            name2="Shane Thompson"
             discipline2="Mechanical Engineering"
-            component2="Aerodynamics"
-            image1={Allan}
-            image2={Anthony}
-          ></TeamMember> */}
+            component2="Steering"
+            image1={logo}
+            image2={Shane}
+          ></TeamMember>
           <TeamMember
             name1="Blake Wilson"
             discipline1="Mechanical Engineering"
@@ -98,7 +99,7 @@ const Engineering: React.FC = () => {
             name2="Hannah Murphy"
             discipline2="Software Engineering"
             component2="Data Aquisition and Visualisation"
-            image1={Mark}
+            image1={logo}
             image2={Hannah}
           ></TeamMember>
           <TeamMember
