@@ -4,7 +4,7 @@ import React from "react";
 import BurgerMenu from "../components/BurgerMenu.tsx";
 import Logo from "../components/Logo.tsx";
 import TitleCard from "../components/TitleCard.tsx";
-
+import Button from "@mui/material/Button";
 import logo from "../images/logo_header.png";
 
 import "../App.css";
@@ -42,6 +42,16 @@ const About: React.FC = () => {
               <img src={logo} alt="" className="image right" />
             </div>
           </div>
+        </div>
+        <div className="explore">
+          <Button
+            variant="outlined"
+            color="error"
+            size="medium"
+            href="/about-wesmo/explore"
+          >
+            Explore our car
+          </Button>
         </div>
       </div>
     </div>

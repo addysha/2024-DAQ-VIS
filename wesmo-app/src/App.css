@@ -407,10 +407,11 @@ h1 {
   .info {
     margin-top: 4rem;
 
-    .image-text-component {
+    .imagetext-component {
       display: flex;
       background-color: rgba(217, 217, 217, 1);
       width: 30%;
+      min-width: 330px;
       height: fit-content;
 
       .text-container {
@@ -453,4 +454,9 @@ h1 {
       }
     }
   }
+}
+
+.explore {
+  margin-left: 18rem;
+  margin-top: 20rem;
 }

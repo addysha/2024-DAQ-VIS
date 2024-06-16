@@ -103,7 +103,7 @@ const Sponsors: React.FC = () => {
             </div>
           </div>
           <div className="info">
-            <div className="image-text-component">
+            <div className="imagetext-component">
               <div className="image-container">
                 <img src={logo} alt="" className="image" />
               </div>
