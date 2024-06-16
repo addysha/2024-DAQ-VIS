@@ -420,10 +420,47 @@ h1 {
   margin-top: 15rem;
 }
 
-.carousel {
-  padding-top: 2%;
-}
-
 .sponsors {
-  padding-bottom: 2%;
+  padding-bottom: 5rem;
+  padding-top: 2rem;
+
+  .title {
+    margin-top: 5%;
+    padding-left: 15%;
+    color: black;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    font-family: "Roboto Condensed", sans-serif;
+    vertical-align: center;
+    background-color: rgba(217, 217, 217, 1);
+    height: 4rem;
+
+    &.low {
+      height: 3rem;
+      margin-top: 5%;
+      padding-left: 15%;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      font-family: "Roboto Condensed", sans-serif;
+      vertical-align: center;
+      background-color: rgba(217, 217, 217, 1);
+    }
+  }
+
+  .top {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+  }
+
+  .bottom {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+  }
 }

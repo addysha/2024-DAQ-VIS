@@ -8,7 +8,7 @@ import Contact from "./pages/contact.tsx";
 import About from "./pages/about.tsx";
 import Sponsors from "./pages/sponsors.tsx";
 import Engineering from "./pages/engineering.tsx";
-import History_2023 from "./pages/2023.tsx";
+import History2023 from "./pages/2023.tsx";
 import Data from "./pages/data.tsx";
 import Fsae from "./pages/fsae.tsx";
 
@@ -23,7 +23,7 @@ const App: React.FC = () => {
         <Route path="/sponsors" element={<Sponsors />} />
         <Route path="/engineering-team" element={<Engineering />} />
         <Route path="/race-data" element={<Data />} />
-        <Route path="/2023" element={<History_2023 />} />
+        <Route path="/2023" element={<History2023 />} />
       </Routes>
     </Router>
   );

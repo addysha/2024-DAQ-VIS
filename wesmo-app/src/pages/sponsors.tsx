@@ -4,11 +4,44 @@ import React from "react";
 import BurgerMenu from "../components/BurgerMenu.tsx";
 import Logo from "../components/Logo.tsx";
 import TitleCard from "../components/TitleCard.tsx";
-import Carousel from "../components/Carousel.tsx";
-import Slide from "../components/Slide.tsx";
+import SwipeableTextMobileStepper from "../components/Carousel.tsx";
 
-import logo from "../images/fsae-logo.png";
+import nhp from "../images/sponsors/nhp.png";
+import hall from "../images/sponsors/hall_machinery_ltd_logo.jpeg";
+import industrial from "../images/sponsors/industrial_tube.jpeg";
+import initiom from "../images/sponsors/Initiom.png";
+import vans from "../images/sponsors/nz_vans.png";
+import jlc from "../images/sponsors/jlc_pcb.jpeg";
+import island_bay from "../images/sponsors/island_bay.jpeg";
+import rml from "../images/sponsors/rml.jpeg";
+
 import "../App.css";
+const bronze = [{ label: "JLC PCB", imgPath: jlc }];
+const silver = [{ label: "NZ Van Lines", imgPath: vans }];
+
+const gold = [
+  { label: "RML", imgPath: rml },
+  { label: "Island Bay Services Club", imgPath: island_bay },
+];
+
+const platinum = [
+  {
+    label: "NHP",
+    imgPath: nhp,
+  },
+  {
+    label: "Hall Machinery Ltd",
+    imgPath: hall,
+  },
+  {
+    label: "Industrial Tube",
+    imgPath: industrial,
+  },
+  {
+    label: "Initiom",
+    imgPath: initiom,
+  },
+];
 
 const Sponsors: React.FC = () => {
   return (
@@ -29,105 +62,41 @@ const Sponsors: React.FC = () => {
         </div>
         <TitleCard title="Sponsors"></TitleCard>
         <div className="sponsors">
-          <div className="carousel">
-            <Carousel width="400px" height="400px">
-              <Slide
-                company="Test"
-                hyperlink="this is a test"
-                image={logo}
+          <div className="top">
+            <div>
+              <div className="title">Platinum</div>
+              <SwipeableTextMobileStepper
+                images={platinum}
                 width="400px"
-                height="400px"
+                height="255px"
               />
-              <Slide
-                company="Test1"
-                hyperlink="this is a test"
-                image={logo}
-                width="400px"
-                height="400px"
+            </div>
+            <div>
+              <div className="title">Gold</div>
+              <SwipeableTextMobileStepper
+                images={gold}
+                width="350px"
+                height="205px"
               />
-              <Slide
-                company="Test2"
-                hyperlink="this is a test"
-                image={logo}
-                width="400px"
-                height="400px"
-              />
-            </Carousel>
+            </div>
           </div>
-          <div className="carousel">
-            <Carousel width="300px" height="300px">
-              <Slide
-                company="Test"
-                hyperlink="this is a test"
-                image={logo}
+          <div className="bottom">
+            <div>
+              <div className="title low">Silver</div>
+              <SwipeableTextMobileStepper
+                images={silver}
                 width="300px"
-                height="300px"
+                height="155px"
               />
-              <Slide
-                company="Test1"
-                hyperlink="this is a test"
-                image={logo}
-                width="300px"
-                height="300px"
+            </div>
+            <div>
+              <div className="title low">Bronze</div>
+              <SwipeableTextMobileStepper
+                images={bronze}
+                width="250px"
+                height="105px"
               />
-              <Slide
-                company="Test2"
-                hyperlink="this is a test"
-                image={logo}
-                width="300px"
-                height="300px"
-              />
-            </Carousel>
-          </div>
-          <div className="carousel">
-            <Carousel width="200px" height="200px">
-              <Slide
-                company="Test"
-                hyperlink="this is a test"
-                image={logo}
-                width="200px"
-                height="200px"
-              />
-              <Slide
-                company="Test1"
-                hyperlink="this is a test"
-                image={logo}
-                width="200px"
-                height="200px"
-              />
-              <Slide
-                company="Test2"
-                hyperlink="this is a test"
-                image={logo}
-                width="200px"
-                height="200px"
-              />
-            </Carousel>
-          </div>
-          <div className="carousel">
-            <Carousel width="200px" height="200px">
-              <Slide
-                company="Test"
-                hyperlink="this is a test"
-                image={logo}
-                width="200px"
-                height="200px"
-              />
-              <Slide
-                company="Test1"
-                hyperlink="this is a test"
-                image={logo}
-                width="200px"
-                height="200px"
-              />
-              <Slide
-                company="Test2"
-                hyperlink="this is a test"
-                image={logo}
-                width="200px"
-                height="200px"
-              />
-            </Carousel>
+            </div>
           </div>
         </div>
       </div>

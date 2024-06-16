@@ -1,114 +1,152 @@
 import * as React from "react";
-import styled, { css } from "styled-components";
+import { useTheme, createTheme } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import MobileStepper from "@mui/material/MobileStepper";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+import SwipeableViews from "react-swipeable-views";
+import { autoPlay } from "react-swipeable-views-utils";
 
-const SCarouselWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50%;
-  position: relative;
-  overflow: hidden;
-`;
+const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
-const LeftButton = styled.button`
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 10px;
-  background-color: rgba(255, 255, 255, 0.5);
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  overflow: hidden;
-`;
+const darkTheme = createTheme({
+  palette: {
+    primary: {
+      main: "#3b3b3b",
+    },
+    secondary: {
+      main: "#AF1713",
+    },
+    text: {
+      primary: "#ffffff",
+    },
+  },
+});
 
-const RightButton = styled.button`
-  position: absolute;
-  transform: translateY(-50%);
-  right: 10px;
-  background-color: rgba(255, 255, 255, 0.5);
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  overflow: hidden;
-`;
-
-interface ICarouselSlide {
-  active?: boolean;
-  width: string;
-  height: string;
+interface Image {
+  label: string;
+  imgPath: string;
 }
-
-const SCarouselSlide = styled.div<ICarouselSlide>`
-  flex: 0 0 100%;
-  max-height: ${(props) => props.height};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-interface ICarouselProps {
-  currentSlide: number;
-  totalSlides: number;
-}
-
-const SCarouselSlides = styled.div<ICarouselProps>`
-  display: flex;
-  transform: translateX(-${(props) => props.currentSlide * 155}%);
-  transition: transform 0.5s ease;
-  min-width: 150px;
-  max-width: 400px;
-  width: 100%;
-`;
-
 interface IProps {
-  children: JSX.Element[];
+  images: Image[];
   width: string;
   height: string;
 }
 
-const Carousel = ({ children, width, height }: IProps) => {
-  const totalSlides = React.Children.count(children);
-  const [currentSlide, setCurrentSlide] = React.useState(0);
+function SwipeableTextMobileStepper({ images, width, height }: IProps) {
+  const theme = useTheme();
 
-  // React.useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setCurrentSlide((prevSlide) => (prevSlide + 1) % totalSlides);
-  //   }, 15000);
+  const [activeStep, setActiveStep] = React.useState(0);
+  const maxSteps = images.length;
 
-  //   return () => clearInterval(interval);
-  // }, [totalSlides]);
-
-  const handlePrevSlide = () => {
-    setCurrentSlide((currentSlide - 1 + totalSlides) % totalSlides);
+  const handleNext = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
-  const handleNextSlide = () => {
-    setCurrentSlide((currentSlide + 1) % totalSlides);
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  const activeSlide = children.map((slide, index) => (
-    <SCarouselSlide
-      active={currentSlide === index}
-      key={index}
-      width={width}
-      height={height}
-    >
-      {slide}
-    </SCarouselSlide>
-  ));
+  const handleStepChange = (step: number) => {
+    setActiveStep(step);
+  };
 
   return (
-    <div>
-      <SCarouselWrapper>
-        <SCarouselSlides currentSlide={currentSlide} totalSlides={totalSlides}>
-          {activeSlide}
-        </SCarouselSlides>
-        <LeftButton onClick={handlePrevSlide}> &lt; </LeftButton>
-        <RightButton onClick={handleNextSlide}>&gt;</RightButton>
-      </SCarouselWrapper>
-    </div>
+    <Box sx={{ maxWidth: width, flexGrow: 1 }}>
+      <Paper
+        square
+        elevation={0}
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          height: 50,
+          pl: 2,
+          bgcolor: darkTheme.palette.primary.main,
+          color: "white",
+        }}
+      >
+        <Typography>{images[activeStep].label}</Typography>
+      </Paper>
+      <AutoPlaySwipeableViews
+        axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+        index={activeStep}
+        onChangeIndex={handleStepChange}
+        enableMouseEvents
+      >
+        {images.map((step, index) => (
+          <div key={step.label}>
+            {Math.abs(activeStep - index) <= 2 ? (
+              <Box
+                component="img"
+                sx={{
+                  height: height,
+                  display: "block",
+                  maxWidth: width,
+                  overflow: "hidden",
+                  width: "100%",
+                  bgcolor: darkTheme.palette.primary.main,
+                  color: "white",
+                  objectFit: "contain",
+                }}
+                src={step.imgPath}
+                alt={step.label}
+              />
+            ) : null}
+          </div>
+        ))}
+      </AutoPlaySwipeableViews>
+      <MobileStepper
+        steps={maxSteps}
+        position="static"
+        activeStep={activeStep}
+        sx={{
+          bgcolor: darkTheme.palette.primary.main,
+          color: "rgba(175, 23, 19, 1)",
+          "& .MuiMobileStepper-dotActive": {
+            backgroundColor: darkTheme.palette.secondary.main,
+          },
+        }}
+        nextButton={
+          <Button
+            sx={{
+              color: darkTheme.palette.secondary.main,
+            }}
+            size="small"
+            onClick={handleNext}
+            disabled={activeStep === maxSteps - 1}
+          >
+            Next
+            {theme.direction === "rtl" ? (
+              <KeyboardArrowLeft />
+            ) : (
+              <KeyboardArrowRight />
+            )}
+          </Button>
+        }
+        backButton={
+          <Button
+            sx={{
+              color: darkTheme.palette.secondary.main,
+            }}
+            size="small"
+            onClick={handleBack}
+            disabled={activeStep === 0}
+          >
+            {theme.direction === "rtl" ? (
+              <KeyboardArrowRight />
+            ) : (
+              <KeyboardArrowLeft />
+            )}
+            Back
+          </Button>
+        }
+      />
+    </Box>
   );
-};
+}
 
-export default Carousel;
+export default SwipeableTextMobileStepper;
