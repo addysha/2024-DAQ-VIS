@@ -1,4 +1,4 @@
-// Filename - pages/contact.js
+// Filename - pages/contact.tsx
 
 import React from "react";
 import { Link } from "react-router-dom";
@@ -30,8 +30,8 @@ const Contact: React.FC = () => {
         </div>
         <TitleCard title="Contact Us" />
         <div className="dark-grey">
-          <div className="socials-container">
-            <i className="fa fa-instagram socials-icon"></i>
+          <div className="socials container">
+            <i className="fa fa-instagram socials icon"></i>
             <div className="contact-text">
               <h6>Instagram</h6>
               <Link to="https://www.instagram.com/wesmo_fsae/" className="link">
@@ -39,8 +39,8 @@ const Contact: React.FC = () => {
               </Link>
             </div>
           </div>
-          <div className="socials-container">
-            <i className="fa fa-facebook-square socials-icon"></i>
+          <div className="socials container">
+            <i className="fa fa-facebook-square socials icon"></i>
             <div className="contact-text">
               <h6>Facebook</h6>
               <Link to="https://www.facebook.com/wesmofsae" className="link">
@@ -48,8 +48,8 @@ const Contact: React.FC = () => {
               </Link>
             </div>
           </div>
-          <div className="socials-container">
-            <i className="fa fa-envelope-square socials-icon"></i>
+          <div className="socials container">
+            <i className="fa fa-envelope-square socials icon"></i>
             <div className="contact-text">
               <h6>Email</h6>
               <Link to="mailto:wesmofsae@gmail.com" className="link">

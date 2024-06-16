@@ -1,4 +1,4 @@
-// Filename - pages/about-fsae.js
+// Filename - pages/about-fsae.tsx
 
 import React from "react";
 import { Link } from "react-router-dom";
@@ -32,8 +32,8 @@ const Fsae: React.FC = () => {
         </div>
         <TitleCard title="Formula Society of Automotive Engineers" />
         <div className="right-display">
-          <div className="image-text-component-right-fsae">
-            <div className="text-container-right-fsae">
+          <div className="image-text-component right fsae">
+            <div className="text-container fsae-right">
               <p>
                 Formula Society of Automotive Engineers, more commonly known as
                 FSAE. Each year there is a competition where 30-35 teams compete
@@ -54,36 +54,38 @@ const Fsae: React.FC = () => {
                 electric cars proving increasingly competitive.
               </p>
             </div>
-            <div className="image-container-right-fase">
-              <img src={close_up} alt="" className="image-right-fsae" />
+            <div className="image-container fsae">
+              <img src={close_up} alt="" className="image fsae right" />
             </div>
           </div>
         </div>
         <div className="left-display">
-          <div className="image-text-component-left-fsae">
-            <div className="image-container-left-fase">
-              <img src={fsae} alt="" className="image-left-fsae" />
+          <div className="image-text-component left fsae">
+            <div className="image-container fsae-left">
+              <img src={fsae} alt="" className="image fsae logo" />
             </div>
-            <div className="text-container-left-fsae">
+            <div className="text-container fsae-left">
               <p>
                 This years competition runs from the 5th to 8th December 2024 at
                 Calder Park Raceway, in Calder Park, Victoria, Australia.
                 <br />
                 <br />
                 To find out more about SAEA: <br />
-                <Link to="https://www.saea.com.au/" className="link">
+                <Link to="https://www.saea.com.au/" className="link fsae">
                   {" "}
                   https://www.saea.com.au/
                 </Link>
               </p>
-              <Link
-                to={rules}
-                target="_blank"
-                rel="noreferrer"
-                className="link"
-              >
-                FSAE Rules 2024
-              </Link>
+              <div className="pdf">
+                <Link
+                  to={rules}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="link"
+                >
+                  FSAE Rules 2024
+                </Link>
+              </div>
             </div>
           </div>
         </div>

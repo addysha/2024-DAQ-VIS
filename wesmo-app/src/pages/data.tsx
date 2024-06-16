@@ -1,4 +1,4 @@
-// Filename - pages/race-data.js
+// Filename - pages/race-data.tsx
 
 import React from "react";
 import BurgerMenu from "../components/BurgerMenu.tsx";

@@ -1,4 +1,4 @@
-// Filename - pages/2023.js
+// Filename - pages/2023.tsx
 
 import React from "react";
 import BurgerMenu from "../components/BurgerMenu.tsx";
@@ -32,11 +32,11 @@ const History_2023: React.FC = () => {
         <br />
         <TitleCard title="2023 Team" />
         <div style={{ height: "80px" }}></div>
-        <div className="image-text-component-left">
-          <div className="image-container-left">
-            <img src={Car_Backend} alt="" className="image-left" />
+        <div className="image-text-component left">
+          <div className="image-container left">
+            <img src={Car_Backend} alt="" className="image left" />
           </div>
-          <div className="text-container-left">
+          <div className="text-container left">
             <p>
               In the face of towering challenges, our small but mighty team at
               WESMO stood resilient, overcoming every obstacle with unwavering
@@ -59,8 +59,8 @@ const History_2023: React.FC = () => {
           </div>
         </div>
         <div style={{ height: "80px" }}></div>
-        <div className="image-text-component-right">
-          <div className="text-container-right">
+        <div className="image-text-component right">
+          <div className="text-container right">
             <StudentDetails
               name="Brandon Fletcher"
               discipline="Mechanical Engineering"
@@ -97,16 +97,16 @@ const History_2023: React.FC = () => {
               component="Energy storage system for EV"
             />
           </div>
-          <div className="image-container-right">
-            <img src={Team1} alt="" className="image-right" />
+          <div className="image-container right">
+            <img src={Team1} alt="" className="image right" />
           </div>
         </div>
         <div style={{ height: "80px" }}></div>
-        <div className="image-text-component-left">
-          <div className="image-container-left">
-            <img src={Team2} alt="" className="image-left" />
+        <div className="image-text-component left">
+          <div className="image-container left">
+            <img src={Team2} alt="" className="image left" />
           </div>
-          <div className="text-container-left">
+          <div className="text-container left">
             <StudentDetails
               name="Thomas Morcom"
               discipline="Software Engineering"

@@ -1,11 +1,15 @@
-// Filename - pages/sponsors.js
+// Filename - pages/sponsors.tsx
 
 import React from "react";
+import { Link } from "react-router-dom";
 import BurgerMenu from "../components/BurgerMenu.tsx";
 import Logo from "../components/Logo.tsx";
 import TitleCard from "../components/TitleCard.tsx";
 import SwipeableTextMobileStepper from "../components/Carousel.tsx";
 
+import rules from "../files/FSAE_Rules_2024_V1.pdf";
+
+import logo from "../images/logo_header.png";
 import nhp from "../images/sponsors/nhp.png";
 import hall from "../images/sponsors/hall_machinery_ltd_logo.jpeg";
 import industrial from "../images/sponsors/industrial_tube.jpeg";
@@ -96,6 +100,28 @@ const Sponsors: React.FC = () => {
                 width="250px"
                 height="105px"
               />
+            </div>
+          </div>
+          <div className="info">
+            <div className="image-text-component">
+              <div className="image-container">
+                <img src={logo} alt="" className="image" />
+              </div>
+              <div className="text-container">
+                <p>
+                  Want to sponsor us?
+                  <br />
+                  <br />
+                  <Link
+                    to={rules}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="more"
+                  >
+                    Find out more
+                  </Link>
+                </p>
+              </div>
             </div>
           </div>
         </div>

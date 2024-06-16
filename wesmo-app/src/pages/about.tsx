@@ -1,4 +1,4 @@
-// Filename - pages/about-wesmo.js
+// Filename - pages/about-wesmo.tsx
 
 import React from "react";
 import BurgerMenu from "../components/BurgerMenu.tsx";
@@ -28,9 +28,9 @@ const About: React.FC = () => {
         </div>
         <br />
         <TitleCard title="Waikato Engineering School Motorsport Organisation" />
-        <div className="right-display-about">
-          <div className="image-text-component-about">
-            <div className="text-container-about">
+        <div className="right-display about">
+          <div className="image-text-component about">
+            <div className="text-container alt about">
               WESMO was founding in 2006.
               <br />
               <br />
@@ -38,8 +38,8 @@ const About: React.FC = () => {
               competition in which the University of Waikato, under the name
               WESMO, competes against 30-35 other teams from across Oceania.
             </div>
-            <div className="image-container-right">
-              <img src={logo} alt="" className="image-right" />
+            <div className="image-container right">
+              <img src={logo} alt="" className="image right" />
             </div>
           </div>
         </div>
