@@ -459,3 +459,8 @@ h1 {
 .info-explore-container {
   position: relative;
 }
+
+.explore {
+  margin-left: 18rem;
+  margin-top: 20rem;
+}
