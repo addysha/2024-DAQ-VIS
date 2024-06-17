@@ -66,9 +66,9 @@ const Engineering: React.FC = () => {
             name1="Anthony East"
             discipline1="Mechanical Engineering"
             component1="Aerodynamics"
-            name2="Shane Thompson"
+            name2="Keean Cooper"
             discipline2="Mechanical Engineering"
-            component2="Steering"
+            component2="Aerodynamics"
             image1={logo}
             image2={Keean}
           ></TeamMember>
