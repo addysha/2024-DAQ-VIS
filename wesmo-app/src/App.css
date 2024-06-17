@@ -456,7 +456,6 @@ h1 {
   }
 }
 
-.explore {
-  margin-left: 18rem;
-  margin-top: 20rem;
+.info-explore-container {
+  position: relative;
 }

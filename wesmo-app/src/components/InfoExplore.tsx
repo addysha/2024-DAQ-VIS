@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
+import { styled } from "@mui/material/styles";
 import AddIcon from "@mui/icons-material/Add";
-import { Fab, Card, CardContent, ClickAwayListener } from "@mui/material";
+import { Fab, Card, CardContent, CardHeader, Drawer } from "@mui/material";
 import {
   ThemeProvider,
   createTheme,
@@ -33,45 +34,55 @@ const theme = createTheme({
 interface IProps {
   x: string;
   y: string;
-  content: string;
+  contentHeader: { title: string; subheader: string };
+  contentBody: React.ReactNode;
+  contentExpanded: React.ReactNode;
 }
 
-const InfoExplore: React.FC<IProps> = ({ x, y, content }) => {
-  const [showTextField, setShowTextField] = useState(false);
-  const [showFab, setShowFab] = useState(true);
+const InfoExplore: React.FC<IProps> = ({
+  x,
+  y,
+  contentHeader,
+  contentBody,
+  contentExpanded,
+}) => {
+  const [open, setOpen] = useState(false);
 
-  const handleClick = () => {
-    setShowTextField(true);
-    setShowFab(false);
-  };
-
-  const handleClickAway = () => {
-    setShowTextField(false);
-    setShowFab(true);
+  const toggleDrawer = (newOpen: boolean) => () => {
+    setOpen(newOpen);
   };
 
   return (
-    <div>
+    <div
+      className="info-explore-container"
+      style={{
+        position: "relative",
+        transform: `translateX(${x}%) translateY(${y}%)`,
+      }}
+    >
       <ThemeProvider theme={theme}>
-        <div style={{ transform: `translateX(${x}%) translateY(${y}%)` }}>
-          {showFab && (
-            <Fab
-              aria-label="add"
-              size="small"
-              color="red"
-              onClick={handleClick}
-            >
-              <AddIcon />
-            </Fab>
-          )}
-          {showTextField && (
-            <ClickAwayListener onClickAway={handleClickAway}>
-              <Card sx={{ maxWidth: 300, bgcolor: "#3B3B3B", color: "white" }}>
-                <CardContent>{content}</CardContent>
-              </Card>
-            </ClickAwayListener>
-          )}
-        </div>
+        <Fab
+          aria-label="add"
+          size="small"
+          color="red"
+          onClick={() => setOpen(true)}
+        >
+          <AddIcon />
+        </Fab>
+        <Drawer
+          anchor="bottom"
+          open={open}
+          onClose={toggleDrawer(false)}
+        >
+          <Card sx={{ bgcolor: "#3B3B3B", color: "white" }}>
+            <CardHeader
+              title={contentHeader.title}
+              subheader={contentHeader.subheader}
+            />
+            <CardContent>{contentBody}</CardContent>
+            <CardContent>{contentExpanded}</CardContent>{" "}
+          </Card>
+        </Drawer>
       </ThemeProvider>
     </div>
   );

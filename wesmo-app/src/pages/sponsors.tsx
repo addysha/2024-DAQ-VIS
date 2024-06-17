@@ -7,7 +7,7 @@ import Logo from "../components/Logo.tsx";
 import TitleCard from "../components/TitleCard.tsx";
 import SwipeableTextMobileStepper from "../components/Carousel.tsx";
 
-import rules from "../files/FSAE_Rules_2024_V1.pdf";
+import proposal from "../files/Sponsorship_Proposal_2024.pdf";
 
 import logo from "../images/logo_header.png";
 import nhp from "../images/sponsors/nhp.png";
@@ -113,7 +113,7 @@ const Sponsors: React.FC = () => {
                   <br />
                   <br />
                   <Link
-                    to={rules}
+                    to={proposal}
                     target="_blank"
                     rel="noreferrer"
                     className="more"
