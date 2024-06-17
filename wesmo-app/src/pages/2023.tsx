@@ -83,7 +83,7 @@ const History_2023: React.FC = () => {
             />
             <StudentDetails
               name="Aidan Berger"
-              discipline="Mechatronics Engineering"
+              discipline="Mechanical Engineering"
               component="Uprights and wheel hubs"
             />
             <StudentDetails
@@ -93,7 +93,7 @@ const History_2023: React.FC = () => {
             />
             <StudentDetails
               name="Sithika Fernando"
-              discipline="Mechanical Engineering"
+              discipline="Mechatronics Engineering"
               component="Energy storage system for EV"
             />
           </div>
