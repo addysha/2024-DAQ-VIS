@@ -53,7 +53,7 @@ const Contact: React.FC = () => {
             <div className="contact-text">
               <h6>Email</h6>
               <Link to="mailto:teamwesmo@gmail.com" className="link">
-                wesmofsae@gmail.com
+                teamwesmo@gmail.com
               </Link>
             </div>
           </div>
