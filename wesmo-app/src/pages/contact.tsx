@@ -52,7 +52,7 @@ const Contact: React.FC = () => {
             <i className="fa fa-envelope-square socials icon"></i>
             <div className="contact-text">
               <h6>Email</h6>
-              <Link to="mailto:wesmofsae@gmail.com" className="link">
+              <Link to="mailto:teamwesmo@gmail.com" className="link">
                 wesmofsae@gmail.com
               </Link>
             </div>
