@@ -8,7 +8,8 @@ import TitleCard from "../components/TitleCard.tsx";
 import Logo from "../components/Logo.tsx";
 import "../App.css";
 
-import auckland from "../images/auck_fsae.jpg";
+import auckland from "../images/daq/auck_fsae.jpg";
+import pi from "../images/daq/rpi.jpeg";
 
 const Daq: React.FC = () => {
   return (
@@ -60,7 +61,7 @@ const Daq: React.FC = () => {
         <div className="left-display">
           <div className="image-text-component left daq">
             <div className="image-container">
-              <img src={auckland} alt="" className="image daq" />
+              <img src={pi} alt="" className="image daq" />
             </div>
             <div className="text-container daq-left">
               <p>
