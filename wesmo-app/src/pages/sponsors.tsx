@@ -21,12 +21,12 @@ import rml from "../images/sponsors/rml.jpeg";
 
 import "../App.css";
 const bronze = [{ label: "JLC PCB", imgPath: jlc }];
-const silver = [{ label: "NZ Van Lines", imgPath: vans }];
-
-const gold = [
+const silver = [
   { label: "RML", imgPath: rml },
-  { label: "Island Bay Services Club", imgPath: island_bay },
+  { label: "NZ Van Lines", imgPath: vans },
 ];
+
+const gold = [{ label: "Island Bay Services Club", imgPath: island_bay }];
 
 const platinum = [
   {
