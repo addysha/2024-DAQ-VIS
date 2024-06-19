@@ -10,6 +10,8 @@ import "../App.css";
 
 import auckland from "../images/daq/auck_fsae.jpg";
 import pi from "../images/daq/rpi.jpeg";
+import figma from "../images/daq/figma_designing.png";
+import car from "../images/wesmo_night.jpeg";
 
 const Daq: React.FC = () => {
   return (
@@ -54,7 +56,7 @@ const Daq: React.FC = () => {
               </p>
             </div>
             <div className="image-container">
-              <img src={auckland} alt="" className="image daq" />
+              <img src={car} alt="" className="image daq" />
             </div>
           </div>
         </div>
@@ -107,13 +109,13 @@ const Daq: React.FC = () => {
               </p>
             </div>
             <div className="image-container">
-              <img src={auckland} alt="" className="image daq" />
+              <img src={figma} alt="" className="image daq" />
             </div>
           </div>
         </div>
         <div className="left-display">
           <div className="image-text-component left daq">
-            <div className="image-container">
+            <div className="image-container daq">
               <img src={auckland} alt="" className="image daq" />
             </div>
             <div className="text-container daq-left column">

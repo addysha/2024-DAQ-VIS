@@ -391,7 +391,8 @@ h1 {
       max-height: 100%;
     }
 
-    &.daq-left {
+    &.daq {
+      object-fit: cover;
       height: max-content;
     }
 
