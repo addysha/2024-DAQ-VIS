@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import BurgerMenu from "../components/BurgerMenu.tsx";
 import Logo from "../components/Logo.tsx";
 import TitleCard from "../components/TitleCard.tsx";
-import SwipeableTextMobileStepper from "../components/Carousel.tsx";
+import SponsorRow from "../components/Sponsors.tsx";
 
 import proposal from "../files/Sponsorship_Proposal_2024.pdf";
 
@@ -20,30 +20,40 @@ import island_bay from "../images/sponsors/island_bay.jpeg";
 import rml from "../images/sponsors/rml.jpeg";
 
 import "../App.css";
-const bronze = [{ label: "JLC PCB", imgPath: jlc }];
+const bronze = [{ title: "JLC PCB", img: jlc, link: "https://jlcpcb.com/" }];
 const silver = [
-  { label: "RML", imgPath: rml },
-  { label: "NZ Van Lines", imgPath: vans },
+  { title: "RML", img: rml, link: "https://www.rmlnz.com/" },
+  { title: "NZ Van Lines", img: vans, link: "https://nzvanlines.co.nz/" },
 ];
 
-const gold = [{ label: "Island Bay Services Club", imgPath: island_bay }];
+const gold = [
+  {
+    title: "Island Bay Services Club",
+    img: island_bay,
+    link: "https://www.islandbaytsc.org.nz/",
+  },
+];
 
 const platinum = [
   {
-    label: "NHP",
-    imgPath: nhp,
+    title: "NHP",
+    img: nhp,
+    link: "https://www.nhpnz.co.nz/",
   },
   {
-    label: "Hall Machinery Ltd",
-    imgPath: hall,
+    title: "Hall Machinery Ltd",
+    img: hall,
+    link: "https://www.hallmach.co.nz/",
   },
   {
-    label: "Industrial Tube",
-    imgPath: industrial,
+    title: "Industrial Tube",
+    img: industrial,
+    link: "https://www.industrialtube.co.nz/",
   },
   {
-    label: "Initiom",
-    imgPath: initiom,
+    title: "Initiom",
+    img: initiom,
+    link: "https://www.initiom.co.nz/",
   },
 ];
 
@@ -66,42 +76,16 @@ const Sponsors: React.FC = () => {
         </div>
         <TitleCard title="Sponsors"></TitleCard>
         <div className="sponsors">
-          <div className="top">
-            <div>
-              <div className="title">Platinum</div>
-              <SwipeableTextMobileStepper
-                images={platinum}
-                width="400px"
-                height="255px"
-              />
-            </div>
-            <div>
-              <div className="title">Gold</div>
-              <SwipeableTextMobileStepper
-                images={gold}
-                width="350px"
-                height="205px"
-              />
-            </div>
-          </div>
-          <div className="bottom">
-            <div>
-              <div className="title low">Silver</div>
-              <SwipeableTextMobileStepper
-                images={silver}
-                width="300px"
-                height="155px"
-              />
-            </div>
-            <div>
-              <div className="title low">Bronze</div>
-              <SwipeableTextMobileStepper
-                images={bronze}
-                width="250px"
-                height="105px"
-              />
-            </div>
-          </div>
+          <div className="title platinum">Platinum</div>
+          <SponsorRow images={platinum} />
+          <div className="title gold">Gold</div>
+          <SponsorRow images={gold} />
+          <div className="title silver">Silver</div>
+          <SponsorRow images={silver} />
+
+          <div className="title bronze">Bronze</div>
+          <SponsorRow images={bronze} />
+
           <div className="info">
             <div className="imagetext-component">
               <div className="image-container">
