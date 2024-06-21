@@ -19,6 +19,7 @@ import jlc from "../images/sponsors/jlc_pcb.jpeg";
 import island_bay from "../images/sponsors/IBC_logo_HR.jpg";
 import rml from "../images/sponsors/rml.jpeg";
 import enepaq from "../images/sponsors/ENEPAQ-logo-with-tagline-full-color-rgb_2_1_1.svg";
+import adhesive from "../images/sponsors/adhesive_tech.png";
 
 import "../App.css";
 const bronze = [{ title: "JLC PCB", img: jlc, link: "https://jlcpcb.com/" }];
@@ -31,6 +32,11 @@ const gold = [
     link: "https://www.islandbaytsc.org.nz/",
   },
   { title: "NZ Van Lines", img: vans, link: "https://nzvanlines.co.nz/" },
+  {
+    title: "Adhesive Tech",
+    img: adhesive,
+    link: "https://adhesivetechnologies.co.nz/",
+  },
 ];
 
 const platinum = [
@@ -83,12 +89,12 @@ const Sponsors: React.FC = () => {
           <div className="title platinum">Platinum</div>
           <SponsorRow images={platinum} width={250} />
           <div className="title gold">Gold</div>
-          <SponsorRow images={gold} width={200} />
+          <SponsorRow images={gold} width={250} />
           <div className="title silver">Silver</div>
           <SponsorRow images={silver} width={150} />
 
           <div className="title bronze">Bronze</div>
-          <SponsorRow images={bronze} width={100} />
+          <SponsorRow images={bronze} width={120} />
 
           <div className="info">
             <div className="imagetext-component">
