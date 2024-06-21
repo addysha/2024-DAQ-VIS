@@ -10,15 +10,15 @@ interface Image {
 
 interface IProps {
   images: Image[];
+  width: number;
 }
 
-function SponsorRow({ images }: IProps) {
+function SponsorRow({ images, width }: IProps) {
   return (
     <ImageList
-      cols={4}
-      gap={100}
+      cols={5}
       sx={{
-        marginLeft: "2rem",
+        marginLeft: "1rem",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -29,7 +29,9 @@ function SponsorRow({ images }: IProps) {
           key={item.img}
           sx={{
             objectFit: "contain",
-            maxWidth: 300,
+            marginLeft: "1vw",
+            marginRight: "1vw",
+            width,
             maxHeight: 300,
             overflowY: "hidden",
           }}
@@ -52,7 +54,7 @@ function SponsorRow({ images }: IProps) {
                 srcSet={item.img}
                 alt={item.title}
                 loading="lazy"
-                style={{ maxWidth: "300px", maxHeight: "300px" }}
+                style={{ maxWidth: width + "px", maxHeight: "300px" }}
               />
             </a>
           </div>

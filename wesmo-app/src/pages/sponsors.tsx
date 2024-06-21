@@ -16,15 +16,13 @@ import industrial from "../images/sponsors/industrial_tube.jpeg";
 import initiom from "../images/sponsors/Initiom.png";
 import vans from "../images/sponsors/nz_vans.png";
 import jlc from "../images/sponsors/jlc_pcb.jpeg";
-import island_bay from "../images/sponsors/island_bay.jpeg";
+import island_bay from "../images/sponsors/IBC_logo_HR.jpg";
 import rml from "../images/sponsors/rml.jpeg";
+import enepaq from "../images/sponsors/ENEPAQ-logo-with-tagline-full-color-rgb_2_1_1.svg";
 
 import "../App.css";
 const bronze = [{ title: "JLC PCB", img: jlc, link: "https://jlcpcb.com/" }];
-const silver = [
-  { title: "RML", img: rml, link: "https://www.rmlnz.com/" },
-  { title: "NZ Van Lines", img: vans, link: "https://nzvanlines.co.nz/" },
-];
+const silver = [{ title: "RML", img: rml, link: "https://www.rmlnz.com/" }];
 
 const gold = [
   {
@@ -32,6 +30,7 @@ const gold = [
     img: island_bay,
     link: "https://www.islandbaytsc.org.nz/",
   },
+  { title: "NZ Van Lines", img: vans, link: "https://nzvanlines.co.nz/" },
 ];
 
 const platinum = [
@@ -41,9 +40,9 @@ const platinum = [
     link: "https://www.nhpnz.co.nz/",
   },
   {
-    title: "Hall Machinery Ltd",
-    img: hall,
-    link: "https://www.hallmach.co.nz/",
+    title: "Enepaq",
+    img: enepaq,
+    link: "https://enepaq.com/",
   },
   {
     title: "Industrial Tube",
@@ -54,6 +53,11 @@ const platinum = [
     title: "Initiom",
     img: initiom,
     link: "https://www.initiom.co.nz/",
+  },
+  {
+    title: "Hall Machinery Ltd",
+    img: hall,
+    link: "https://www.hallmach.co.nz/",
   },
 ];
 
@@ -77,14 +81,14 @@ const Sponsors: React.FC = () => {
         <TitleCard title="Sponsors"></TitleCard>
         <div className="sponsors">
           <div className="title platinum">Platinum</div>
-          <SponsorRow images={platinum} />
+          <SponsorRow images={platinum} width={250} />
           <div className="title gold">Gold</div>
-          <SponsorRow images={gold} />
+          <SponsorRow images={gold} width={200} />
           <div className="title silver">Silver</div>
-          <SponsorRow images={silver} />
+          <SponsorRow images={silver} width={150} />
 
           <div className="title bronze">Bronze</div>
-          <SponsorRow images={bronze} />
+          <SponsorRow images={bronze} width={100} />
 
           <div className="info">
             <div className="imagetext-component">
