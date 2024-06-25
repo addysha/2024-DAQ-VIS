@@ -20,6 +20,7 @@ import island_bay from "../images/sponsors/IBC_logo_HR.jpg";
 import rml from "../images/sponsors/rml.jpeg";
 import enepaq from "../images/sponsors/ENEPAQ-logo-with-tagline-full-color-rgb_2_1_1.svg";
 import adhesive from "../images/sponsors/adhesive_tech.png";
+import gurit from "../images/sponsors/gurit.jpg";
 
 import "../App.css";
 const bronze = [{ title: "JLC PCB", img: jlc, link: "https://jlcpcb.com/" }];
@@ -36,6 +37,11 @@ const gold = [
     title: "Adhesive Tech",
     img: adhesive,
     link: "https://adhesivetechnologies.co.nz/",
+  },
+  {
+    title: "Gurit",
+    img: gurit,
+    link: "https://www.gurit.com/",
   },
 ];
 
