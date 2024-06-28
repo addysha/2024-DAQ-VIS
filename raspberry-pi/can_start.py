@@ -12,15 +12,11 @@ from can.exceptions import CanInitializationError
 def create_devices():
     try:
         os.system("sudo ip link set can0 type can bitrate 500000")
-        # os.system("sudo ip link set can1 type can bitrate 500000")
         os.system("sudo ifconfig can0 up")
-        # os.system("sudo ifconfig can1 up")
         global can0
-        # global can1
         can0 = can.interface.Bus(channel="can0", bustype="socketcan")
-        # can1 = can.interface.Bus(channel="can0", bustype="socketcan")
 
-        print("Setup complete for can devices: can0 and can1")
+        print("Setup complete for can devices: can0")
         return can0
 
     except CanInitializationError as e:
@@ -35,7 +31,6 @@ def create_devices():
 def shutdown():
     try:
         os.system("sudo ifconfig can0 down")
-        # os.system("sudo ifconfig can1 down")
         print("Shutdown complete for can devices: can0")
         return True
     except Exception as e:

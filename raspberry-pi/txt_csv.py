@@ -29,7 +29,7 @@ def text_to_csv(input_file, output_file):
     print(f'CSV file "{output_file}" has been created successfully.')
 
 
-input_file = "data/test-data.txt"
-output_file = "data/test-csv-data.csv"
+input_file = "data/test_data.txt"
+output_file = "data/test_csv_data.csv"
 
 text_to_csv(input_file, output_file)
