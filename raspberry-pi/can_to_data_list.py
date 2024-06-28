@@ -29,7 +29,7 @@ def flip_and_convert_payloads(csv_file):
             ]
 
             payload_decimal = []
-            for pair in bytes_pairs[:4]:  # Only take the first 4 pairs
+            for pair in bytes_pairs[:4]:
                 flipped_pair = flip_byte_pair(pair)
                 decimal_values = hex_to_decimal(flipped_pair)
                 payload_decimal.extend(decimal_values)
@@ -43,22 +43,85 @@ def flip_and_convert_payloads(csv_file):
     return payloads_with_ids
 
 
-def main():
-    payloads_with_ids = flip_and_convert_payloads(data_file)
+def convert_motor_controller_payloads(csv_file):
+    try:
+        with open(csv_file, "r", newline="") as file:
+            reader = csv.DictReader(file)
+            print("----- Motor Controller Data -----")
+            for row in reader:
 
-    sorted_payloads = sorted(payloads_with_ids.items(), key=lambda x: x[1])
-    for payload, payload_id in sorted_payloads:
-        formatted_entry = f"{payload_id} = {list(payload)}"
-        print(formatted_entry)
+                payload_id = int(row["ID"])
+                data_bytes = row["Data Payload"].split(" ")
+                if len(data_bytes) >= 8:
+
+                    if payload_id == 181:
+                        # TX PDO 1
+                        print(
+                            f"Status Word:\t\t\t{int(data_bytes[1]+ data_bytes[2], 16)}"
+                        )
+                        print(
+                            f"Position Actual Value:\t{int(data_bytes[4] + data_bytes[5] + data_bytes[2] + data_bytes[3], 16)}"
+                        )
+                        print(
+                            f"Torque Actual Value:\t{int(data_bytes[7] + data_bytes[6], 16)}"
+                        )
+
+                    elif payload_id == 281:
+                        # TX PDO 2
+                        print(f"Controller Temp:\t\t{int(data_bytes[0], 16)}")
+                        print(f"Motor Temp:\t\t\t\t{int(data_bytes[1], 16)}")
+                        print(
+                            f"DC Link Voltage:\t\t{int(data_bytes[3] + data_bytes[2], 16)}"
+                        )
+                        print(
+                            f"Supply Voltage:\t\t\t{int(data_bytes[5] + data_bytes[4], 16)}"
+                        )
+                        print(
+                            f"Current Demand:\t\t\t{int(data_bytes[7] + data_bytes[6], 16)}"
+                        )
+
+                    elif payload_id == 381:
+                        # TX PDO 3
+                        print(
+                            f"Motor Current Actual Value:\t{int(data_bytes[1] + data_bytes[0], 16)}"
+                        )
+                        print(
+                            f"Electric Angle:\t\t\t{int(data_bytes[3] + data_bytes[2], 16)}"
+                        )
+                        print(
+                            f"Phase A Current:\t\t{int(data_bytes[5] + data_bytes[4], 16)}"
+                        )
+                        print(
+                            f"Phase B Demand:\t\t{int(data_bytes[7] + data_bytes[6], 16)}"
+                        )
+                    else:
+                        continue
+                else:
+                    continue
+    except Exception as e:
+        print("Error : " + e)
+
+
+def main():
+    # Inital translation of motor controller data
+    convert_motor_controller_payloads(data_file)
+
+    # Sorting, indexing, and formatting payloads
+    # payloads_with_ids = flip_and_convert_payloads(data_file)
+
+    # sorted_payloads = sorted(payloads_with_ids.items(), key=lambda x: x[1])
+    # for payload, payload_id in sorted_payloads:
+    #     formatted_entry = f"{payload_id} = {list(payload)}"
+    #     print(formatted_entry)
 
 
 data_file = "data/test_csv_data.csv"
 
 # Casper's translations
-enableMotor = [0x23, 0x0D, 0x20, 0x01, 0x00, 0x00, 0x00, 0x00]
-disableMotor = [0x23, 0x0C, 0x20, 0x01, 0x00, 0x00, 0x00, 0x00]
-setMotorSpeed = [0x23, 0x00, 0x20, 0x01, 0x00, 0x00, 0x00, 0x00]
-zeroMessage = [0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
+# enableMotor = [0x23, 0x0D, 0x20, 0x01, 0x00, 0x00, 0x00, 0x00]
+# disableMotor = [0x23, 0x0C, 0x20, 0x01, 0x00, 0x00, 0x00, 0x00]
+# setMotorSpeed = [0x23, 0x00, 0x20, 0x01, 0x00, 0x00, 0x00, 0x00]
+# zeroMessage = [0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
 
 if __name__ == "__main__":
     main()

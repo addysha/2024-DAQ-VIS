@@ -1,0 +1,337 @@
+----- Motor Controller Data -----
+Status Word:			198
+Position Actual Value:	50688
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		507
+Supply Voltage:			10426
+Current Demand:			52
+Status Word:			199
+Position Actual Value:	50944
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		507
+Supply Voltage:			10418
+Current Demand:			54
+Status Word:			200
+Position Actual Value:	51200
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		505
+Supply Voltage:			10402
+Current Demand:			54
+Status Word:			202
+Position Actual Value:	51712
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		505
+Supply Voltage:			10402
+Current Demand:			54
+Status Word:			203
+Position Actual Value:	51968
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		507
+Supply Voltage:			10410
+Current Demand:			52
+Status Word:			204
+Position Actual Value:	52224
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		505
+Supply Voltage:			10410
+Current Demand:			54
+Status Word:			205
+Position Actual Value:	52480
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		507
+Supply Voltage:			10394
+Current Demand:			56
+Status Word:			206
+Position Actual Value:	52736
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		507
+Supply Voltage:			10410
+Current Demand:			54
+Status Word:			207
+Position Actual Value:	52992
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		505
+Supply Voltage:			10410
+Current Demand:			54
+Status Word:			208
+Position Actual Value:	53248
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		505
+Supply Voltage:			10410
+Current Demand:			54
+Status Word:			210
+Position Actual Value:	53760
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		505
+Supply Voltage:			10402
+Current Demand:			54
+Status Word:			211
+Position Actual Value:	54016
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		507
+Supply Voltage:			10410
+Current Demand:			52
+Status Word:			212
+Position Actual Value:	54272
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		507
+Supply Voltage:			10418
+Current Demand:			54
+Status Word:			213
+Position Actual Value:	54528
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		507
+Supply Voltage:			10410
+Current Demand:			54
+Status Word:			214
+Position Actual Value:	54784
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		507
+Supply Voltage:			10426
+Current Demand:			50
+Status Word:			215
+Position Actual Value:	55040
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		505
+Supply Voltage:			10402
+Current Demand:			52
+Status Word:			217
+Position Actual Value:	55552
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		507
+Supply Voltage:			10418
+Current Demand:			52
+Status Word:			218
+Position Actual Value:	55808
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		505
+Supply Voltage:			10418
+Current Demand:			54
+Status Word:			219
+Position Actual Value:	56064
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		505
+Supply Voltage:			10418
+Current Demand:			54
+Status Word:			220
+Position Actual Value:	56320
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		507
+Supply Voltage:			10410
+Current Demand:			56
+Status Word:			221
+Position Actual Value:	56576
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		507
+Supply Voltage:			10418
+Current Demand:			56
+Status Word:			223
+Position Actual Value:	57088
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		508
+Supply Voltage:			10410
+Current Demand:			54
+Status Word:			224
+Position Actual Value:	57344
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		507
+Supply Voltage:			10410
+Current Demand:			54
+Status Word:			225
+Position Actual Value:	57600
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		507
+Supply Voltage:			10410
+Current Demand:			52
+Status Word:			226
+Position Actual Value:	57856
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		505
+Supply Voltage:			10410
+Current Demand:			54
+Status Word:			227
+Position Actual Value:	58112
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		505
+Supply Voltage:			10418
+Current Demand:			52
+Status Word:			228
+Position Actual Value:	58368
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		507
+Supply Voltage:			10426
+Current Demand:			52
+Status Word:			230
+Position Actual Value:	58880
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		507
+Supply Voltage:			10410
+Current Demand:			52
+Status Word:			231
+Position Actual Value:	59136
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		507
+Supply Voltage:			10418
+Current Demand:			52
+Status Word:			232
+Position Actual Value:	59392
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		507
+Supply Voltage:			10418
+Current Demand:			56
+Status Word:			200
+Position Actual Value:	51201
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		505
+Supply Voltage:			10418
+Current Demand:			56
+Status Word:			201
+Position Actual Value:	51457
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		505
+Supply Voltage:			10410
+Current Demand:			52
+Status Word:			202
+Position Actual Value:	51713
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		507
+Supply Voltage:			10410
+Current Demand:			48
+Status Word:			204
+Position Actual Value:	52225
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		509
+Supply Voltage:			10410
+Current Demand:			54
+Status Word:			205
+Position Actual Value:	52481
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		507
+Supply Voltage:			10410
+Current Demand:			54
+Status Word:			234
+Position Actual Value:	59906
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		507
+Supply Voltage:			10402
+Current Demand:			54
+Status Word:			235
+Position Actual Value:	60162
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		507
+Supply Voltage:			10402
+Current Demand:			54
+Status Word:			236
+Position Actual Value:	60418
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		508
+Supply Voltage:			10394
+Current Demand:			54
+Status Word:			237
+Position Actual Value:	60674
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		507
+Supply Voltage:			10394
+Current Demand:			54
+Status Word:			238
+Position Actual Value:	60930
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		508
+Supply Voltage:			10402
+Current Demand:			52
+Status Word:			240
+Position Actual Value:	61442
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		507
+Supply Voltage:			10402
+Current Demand:			54
+Status Word:			31
+Position Actual Value:	7939
+Torque Actual Value:	0
+Controller Temp:		26
+Motor Temp:				0
+DC Link Voltage:		507
+Supply Voltage:			10378
+Current Demand:			56
