@@ -9,13 +9,13 @@ import time
     At the same time, we call the Python function random.randint 
     to randomly generate the MQTT client id."""
 
-broker = "broker.emqx.io"
+broker = "3.107.68.65" # IP of broker instance
 port = 1883
-topic = "/python/mqtt"
-username = "emqx"
+topic = "/wesmo-data"
+username = "wesmo"
 password = "public"
 
-client_id = f"python-mqtt-{random.randint(0, 1000)}"
+client_id = f"wesmo-{random.randint(0, 1000)}"
 
 """ Write the MQTT Connect Function
     Write the connect callback function on_connect. This function 
