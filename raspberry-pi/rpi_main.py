@@ -57,11 +57,10 @@ def connect_mqtt() -> mqtt_client:
 
 def publish(client, can0):
     while True:
-        result = client.publish(topic, msg)
+        msg = can0.recv(0.0)
+        result = client.publish(topic, str(msg))
         status = result[0]
-        if status == 0:
-            msg = can0.recv(0.0)
-        else:
+        if status != 0:
             print(f"Failed to send message to topic {topic}")
 
 
