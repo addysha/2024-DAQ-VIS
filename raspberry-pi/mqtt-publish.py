@@ -9,7 +9,7 @@ import time
     At the same time, we call the Python function random.randint 
     to randomly generate the MQTT client id."""
 
-broker = "3.107.68.65" # IP of broker instance
+broker = "3.107.68.65" # IP of broker instance on AWS
 port = 1883
 topic = "/wesmo-data"
 username = "wesmo"
@@ -22,7 +22,7 @@ client_id = f"wesmo-{random.randint(0, 1000)}"
     will be called after connecting the client, and we can 
     determine whether the client is connected successfully according
     to rc in this function. Usually, we will create an MQTT client 
-    at the same time and this client will connect to broker.emqx.io."""
+    at the same time and this client will connect to the broker in AWS."""
 
 
 def connect_mqtt() -> mqtt_client:
@@ -42,7 +42,7 @@ def connect_mqtt() -> mqtt_client:
 """ Publish Messages
     First, we define a while loop. In this loop, and we will set the 
     MQTT client publish function to send messages to the topic
-    /python/mqtt every second."""
+   /wesmo-data every second."""
 
 
 def publish(client):
