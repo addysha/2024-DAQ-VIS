@@ -115,7 +115,7 @@ def main():
     #     print(formatted_entry)
 
 
-data_file = "data/test_csv_data.csv"
+data_file = "data/test_csv_data_307.csv"
 
 # Casper's translations
 # enableMotor = [0x23, 0x0D, 0x20, 0x01, 0x00, 0x00, 0x00, 0x00]

@@ -3,7 +3,7 @@ import random
 from paho.mqtt import client as mqtt_client
 
 
-broker = "3.107.68.65" # IP of broker instance
+broker = "3.107.68.65"  # IP of broker instance
 port = 1883
 topic = "/wesmo-data"
 # generate client ID with pub prefix randomly
@@ -37,6 +37,7 @@ def connect_mqtt() -> mqtt_client:
 def subscribe(client: mqtt_client):
     def on_message(client, userdata, msg):
         print(f"Received `{msg.payload.decode()}` from `{msg.topic}` topic")
+        can_msg = msg.payload.decode()
 
     client.subscribe(topic)
     client.on_message = on_message
