@@ -1,4 +1,5 @@
 import csv
+import cantools
 
 
 def flip_byte_pair(pair):
@@ -102,6 +103,15 @@ def convert_motor_controller_payloads(csv_file):
         print("Error : " + e)
 
 
+def decode_dbc():
+    db = cantools.database.load_file("******_dbc.dbc")  # path of .dbc file
+    print(db.messages)
+    can_bus = can.interface.Bus("can0", bustype="socketcan")
+    message = can_bus.recv()
+    for msg in can_bus:
+        print(db.decode_message(msg.arbitration_id, msg.data))
+
+
 def main():
     # Inital translation of motor controller data
     convert_motor_controller_payloads(data_file)
@@ -115,7 +125,7 @@ def main():
     #     print(formatted_entry)
 
 
-data_file = "data/test_csv_data_307.csv"
+data_file = "data/test_csv_data.csv"
 
 # Casper's translations
 # enableMotor = [0x23, 0x0D, 0x20, 0x01, 0x00, 0x00, 0x00, 0x00]

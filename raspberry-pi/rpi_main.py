@@ -10,7 +10,12 @@ import random
 from paho.mqtt import client as mqtt_client
 from can.exceptions import CanInitializationError
 
-# GLOBAL VARIABLES (for MQTT)
+""" GLOBAL VARIABLES
+Set the Parameter of MQTT Broker Connection
+Set the address, port and topic of MQTT Broker connection. 
+At the same time, we call the Python function random.randint 
+to randomly generate the MQTT client id.
+"""
 broker = "3.107.68.65"
 port = 1883
 topic = "/wesmo-data"
