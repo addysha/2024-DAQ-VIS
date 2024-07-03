@@ -7,11 +7,10 @@
 import os
 import can
 import random
-import time
 from paho.mqtt import client as mqtt_client
 from can.exceptions import CanInitializationError
 
-# GLOBAL VARIABLES
+# GLOBAL VARIABLES (for MQTT)
 broker = "3.107.68.65"
 port = 1883
 topic = "/wesmo-data"
@@ -21,6 +20,12 @@ client_id = f"wesmo-{random.randint(0, 1000)}"
 
 
 def create_device():
+    """_summary_
+    Function to create a CAN device on the Raspberry Pi.
+    Retuns a CAN device object if successful or None if failed.
+    Returns:
+        bus: CAN-BUS interface or None
+    """
     try:
         os.system("sudo ip link set can0 type can bitrate 500000")
         os.system("sudo ifconfig can0 up")
@@ -30,20 +35,30 @@ def create_device():
         print(f"Failed to initialize CAN bus: {e.message}")
         if e.error_code is not None:
             print(f"Error code: {e.error_code}")
+        return None
     except Exception as e:
         print("Failure to set up can devices:", e)
-        return False
+        return None
 
 
 def shutdown_device():
+    """_summary_
+    Shuts down the CAN device on the Raspberry Pi.
+    """
     try:
         os.system("sudo ifconfig can0 down")
     except Exception as e:
         print("Failure to shutdown can devices:", e)
-        return False
 
 
 def connect_mqtt() -> mqtt_client:
+    """_summary_
+    Connects to the MQTT broker and returns the client object.
+    The MQTT broker is hosted on an AWS EC2 instance.
+        Returns:
+            mqtt_client: The publisher object connected to the AWS broker
+    """
+
     def on_connect(client, userdata, flags, reason_code, properties=None):
         if reason_code != 0:
             print("Failed to connect, return code %d\n", reason_code)
@@ -56,6 +71,12 @@ def connect_mqtt() -> mqtt_client:
 
 
 def publish(client, can0):
+    """_summary_
+    Publishes CAN messages to the MQTT broker.
+        Args:
+            client (mqtt_client): The publisher object connected to the AWS broker.
+            can0 (can.interface.Bus): The CAN-BUS interface object.
+    """
     while True:
         msg = can0.recv(0.0)
         result = client.publish(topic, str(msg))
@@ -64,8 +85,14 @@ def publish(client, can0):
             print(f"Failed to send message to topic {topic}")
 
 
-# Main loop
 def main():
+    """_summary_
+    --- Main loop ---
+    1. Shutdown the CAN device, if there are any
+    2. Create a CAN device
+    3. Connect to the MQTT broker
+    4. Publish CAN messages to the MQTT broker continuously
+    """
     shutdown_device()
     can0 = create_device()
 
