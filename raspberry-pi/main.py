@@ -96,6 +96,15 @@ def subscribe(client: mqtt_client):
 
 
 def main():
+    """Main function to run the script as a reciever device.
+
+    The script can be run with the following command line arguments:
+    -c, --convert: Convert the input file to CSV format.
+    -i, --input_file: The file containing the CAN messages.
+    -o, --output_file: The file to write the CSV formatted data.
+    -s, --subscribe: Subscribe to CAN messages using MQTT.
+    """
+
     parser = argparse.ArgumentParser(
         description="Converts CAN string messages to CSV formatted data."
     )
