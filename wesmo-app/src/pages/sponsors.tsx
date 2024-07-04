@@ -21,8 +21,10 @@ import rml from "../images/sponsors/rml.jpeg";
 import enepaq from "../images/sponsors/ENEPAQ-logo-with-tagline-full-color-rgb_2_1_1.svg";
 import adhesive from "../images/sponsors/adhesive_tech.png";
 import gurit from "../images/sponsors/gurit.jpg";
+import kilwell from "../images/sponsors/kilwell.jpeg";
 
 import "../App.css";
+
 const bronze = [{ title: "JLC PCB", img: jlc, link: "https://jlcpcb.com/" }];
 const silver = [{ title: "RML", img: rml, link: "https://www.rmlnz.com/" }];
 
@@ -42,6 +44,11 @@ const gold = [
     title: "Gurit",
     img: gurit,
     link: "https://www.gurit.com/",
+  },
+  {
+    title: "KillWell Fibrelab",
+    img: kilwell,
+    link: "https://www.kilwellfibrelab.co.nz/",
   },
 ];
 
