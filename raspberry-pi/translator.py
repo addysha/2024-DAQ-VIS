@@ -1,137 +1,114 @@
-import csv
-import cantools
+import re
+import canmatrix
+import canmatrix.formats
+import pickle
+import MotorControllerClass as mc
 
 
-def flip_byte_pair(pair):
-    """Flips the order of bytes in a hex pair."""
-    return pair[2:] + pair[:2]
-
-
-def hex_to_decimal(hex_str):
-    """Converts a hex string to a list of decimal integers."""
-    decimal_values = []
-    for i in range(0, len(hex_str), 2):
-        hex_pair = hex_str[i : i + 2]
-        decimal_value = int(hex_pair, 16)
-        decimal_values.append(decimal_value)
-    return decimal_values
-
-
-def flip_and_convert_payloads(csv_file):
-    """Reads a CSV file and flips/converts data payloads, including ID."""
-    payloads_with_ids = {}
-
-    with open(csv_file, "r", newline="") as file:
-        reader = csv.DictReader(file)
-        for row in reader:
-            data_payload_hex = row["Data Payload"]
-            bytes_pairs = [
-                data_payload_hex[i : i + 2] for i in range(0, len(data_payload_hex), 2)
-            ]
-
-            payload_decimal = []
-            for pair in bytes_pairs[:4]:
-                flipped_pair = flip_byte_pair(pair)
-                decimal_values = hex_to_decimal(flipped_pair)
-                payload_decimal.extend(decimal_values)
-
-            payload_tuple = tuple(payload_decimal)
-            payload_id = int(row["ID"], 16)
-
-            if payload_tuple not in payloads_with_ids:
-                payloads_with_ids[payload_tuple] = payload_id
-
-    return payloads_with_ids
-
-
-def convert_motor_controller_payloads(csv_file):
+def load_dbc(dbc_file_path):
     try:
-        with open(csv_file, "r", newline="") as file:
-            reader = csv.DictReader(file)
-            print("----- Motor Controller Data -----")
-            for row in reader:
-
-                payload_id = int(row["ID"])
-                data_bytes = row["Data Payload"].split(" ")
-                if len(data_bytes) >= 8:
-
-                    if payload_id == 181:
-                        # TX PDO 1
-                        print(
-                            f"Status Word:\t\t\t{int(data_bytes[1]+ data_bytes[2], 16)}"
-                        )
-                        print(
-                            f"Position Actual Value:\t{int(data_bytes[4] + data_bytes[5] + data_bytes[2] + data_bytes[3], 16)}"
-                        )
-                        print(
-                            f"Torque Actual Value:\t{int(data_bytes[7] + data_bytes[6], 16)}"
-                        )
-
-                    elif payload_id == 281:
-                        # TX PDO 2
-                        print(f"Controller Temp:\t\t{int(data_bytes[0], 16)}")
-                        print(f"Motor Temp:\t\t\t\t{int(data_bytes[1], 16)}")
-                        print(
-                            f"DC Link Voltage:\t\t{int(data_bytes[3] + data_bytes[2], 16)}"
-                        )
-                        print(
-                            f"Supply Voltage:\t\t\t{int(data_bytes[5] + data_bytes[4], 16)}"
-                        )
-                        print(
-                            f"Current Demand:\t\t\t{int(data_bytes[7] + data_bytes[6], 16)}"
-                        )
-
-                    elif payload_id == 381:
-                        # TX PDO 3
-                        print(
-                            f"Motor Current Actual Value:\t{int(data_bytes[1] + data_bytes[0], 16)}"
-                        )
-                        print(
-                            f"Electric Angle:\t\t\t{int(data_bytes[3] + data_bytes[2], 16)}"
-                        )
-                        print(
-                            f"Phase A Current:\t\t{int(data_bytes[5] + data_bytes[4], 16)}"
-                        )
-                        print(
-                            f"Phase B Demand:\t\t{int(data_bytes[7] + data_bytes[6], 16)}"
-                        )
-                    else:
-                        continue
-                else:
-                    continue
+        db_dict = canmatrix.formats.loadp(dbc_file_path)
+        if isinstance(db_dict, dict):
+            db = next(iter(db_dict.values()))
+            print("DBC file loaded successfully.")
+            return db
+        else:
+            print("Error: Could not load DBC file properly.")
+            return None
     except Exception as e:
-        print("Error : " + e)
+        print(f"Error loading DBC file: {e}")
+        return None
 
 
-def decode_dbc():
-    db = cantools.database.load_file("******_dbc.dbc")  # path of .dbc file
-    print(db.messages)
-    can_bus = can.interface.Bus("can0", bustype="socketcan")
-    message = can_bus.recv()
-    for msg in can_bus:
-        print(db.decode_message(msg.arbitration_id, msg.data))
+def get_mc_object(line):
+    id = parametername = objecttype = datatype = accesstype = PDOmapping = subnumber = (
+        defaultvalue
+    ) = lowlimit = highlimit = notes = None
+    data = line.split("\n")
+    for i in range(len(data)):
+        if data[i].startswith("["):
+            id = data[i].strip("[]")
+        elif data[i].startswith("ParameterName"):
+            parametername = data[i].split("=")[1].strip()
+        elif data[i].startswith("ObjectType"):
+            objecttype = data[i].split("=")[1].strip()
+        elif data[i].startswith("DataType"):
+            datatype = data[i].split("=")[1].strip()
+        elif data[i].startswith("AccessType"):
+            accesstype = data[i].split("=")[1].strip()
+        elif data[i].startswith("PDOMapping"):
+            PDOmapping = data[i].split("=")[1].strip()
+        elif data[i].startswith("SubNumber"):
+            subnumber = data[i].split("=")[1].strip()
+        elif data[i].startswith("DefaultValue"):
+            defaultvalue = data[i].split("=")[1].strip()
+        elif data[i].startswith("LowLimit"):
+            lowlimit = data[i].split("=")[1].strip()
+        elif data[i].startswith("HighLimit"):
+            highlimit = data[i].split("=")[1].strip()
+        elif data[i].startswith(";;"):
+            notes = data[i]
+        else:
+            print(f"Error: Invalid parameter in EDS file. {data[i]}")
+    mc_object = mc.MotorController(
+        id,
+        parametername,
+        objecttype,
+        datatype,
+        accesstype,
+        PDOmapping,
+        subnumber,
+        defaultvalue,
+        lowlimit,
+        highlimit,
+        notes,
+    )
+    return mc_object
+
+
+def add_to_db(mc_object):
+    with open("mc_objects.pkl", "ab") as outp:
+        pickle.dump(mc_object, outp, pickle.HIGHEST_PROTOCOL)
 
 
 def main():
-    # Inital translation of motor controller data
-    convert_motor_controller_payloads(data_file)
+    mc_objects = []
+    with open("eds/motor_controller.eds", "r") as eds_file:
+        eds_data = eds_file.read()
+        eds_data = eds_data.split("\n\n")
+        for line in eds_data:
+            if re.match(r"\[\d{3}\w\]", line) or re.match(r"\[\d{4}sub\d\]", line):
+                obj = get_mc_object(line)
+                mc_objects.append(obj)
+        eds_file.close()
 
-    # Sorting, indexing, and formatting payloads
-    # payloads_with_ids = flip_and_convert_payloads(data_file)
+        print(f"Objects found: {len(mc_objects)}")
 
-    # sorted_payloads = sorted(payloads_with_ids.items(), key=lambda x: x[1])
-    # for payload, payload_id in sorted_payloads:
-    #     formatted_entry = f"{payload_id} = {list(payload)}"
-    #     print(formatted_entry)
+        with open("mc_objects.pkl", "wb") as outp:
+            pickle.dump(mc_objects, outp, pickle.HIGHEST_PROTOCOL)
+
+        # UNPICKLE THE OBJECT
+        with open("mc_objects.pkl", "rb") as outp:
+            mc_objects = pickle.load(outp)
+            for obj in mc_objects:
+                print(obj)
+
+    # db = load_dbc("dbc/motor_controller.dbc")
+
+    # if db:
+
+    # can_data = read_can_file("raspberry-pi/data/can_str_test.txt")
+    # Decode CAN messages using the DBC database
+    # decoded_messages = decode_can_messages(can_data, db)
+
+    # print(decoded_messages)
+    # Print decoded messages
+    # for message in decoded_messages:
+    #     if message["name"] == "Receive_PDO_2_Mapping":
+    #         print(message)
 
 
 data_file = "data/test_csv_data.csv"
-
-# Casper's translations
-# enableMotor = [0x23, 0x0D, 0x20, 0x01, 0x00, 0x00, 0x00, 0x00]
-# disableMotor = [0x23, 0x0C, 0x20, 0x01, 0x00, 0x00, 0x00, 0x00]
-# setMotorSpeed = [0x23, 0x00, 0x20, 0x01, 0x00, 0x00, 0x00, 0x00]
-# zeroMessage = [0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
 
 if __name__ == "__main__":
     main()

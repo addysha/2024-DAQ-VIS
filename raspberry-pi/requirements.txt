@@ -1,6 +1,11 @@
+attrs==23.2.0
+canmatrix==1.0
+click==8.1.7
+future==1.0.0
 msgpack==1.0.8
 packaging==24.1
 paho-mqtt==2.1.0
 python-can==4.4.2
+six==1.16.0
 typing_extensions==4.12.2
 wrapt==1.16.0
