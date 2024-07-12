@@ -1594,7 +1594,7 @@ DataType=7
 AccessType=rw
 PDOMapping=0
 DefaultValue=0x201b0310
-
+f30e 0500 00 00 00
 [1a03sub2]
 ParameterName=PDO Mapping Entry
 ObjectType=7
