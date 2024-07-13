@@ -1,5 +1,5 @@
 import re
-import canmatrix.formats
+import canmatrix.formats  # type: ignore
 import datetime
 
 
@@ -36,13 +36,15 @@ def decode_mc_pdo_4(can_data):
     if len(can_data) != 16 and len(can_data) != 14:
         print(f"Invalid PDO 4 message length {can_data}")
 
-    torque_regulator = int(can_data[1] + can_data[0], 16)
-    flux_regulator_count = int(can_data[3] + can_data[2], 16)
+    torque_regulator = int(can_data[2:4] + can_data[0:2], 16)
+    flux_regulator_count = int(can_data[6:8] + can_data[4:6], 16)
     if len(can_data) == 14:
-        velocity_actual_value = int(can_data[6] + can_data[5] + can_data[4], 16)
+        velocity_actual_value = int(
+            can_data[12:14] + can_data[10:12] + can_data[8:10], 16
+        )
     else:
         velocity_actual_value = int(
-            can_data[7] + can_data[6] + can_data[5] + can_data[4], 16
+            can_data[16:14] + can_data[12:14] + can_data[10:12] + can_data[8:10], 16
         )
 
     return [
@@ -56,9 +58,9 @@ def decode_mc_pdo_3(can_data):
     if len(can_data) != 12 and len(can_data) != 16:
         print(f"Invalid PDO 3 message length {can_data}")
 
-    motor_current_actual = int(can_data[1] + can_data[0], 16)
-    electrical_angle = int(can_data[3] + can_data[2], 16)
-    phase_a_current = int(can_data[5] + can_data[4], 16)
+    motor_current_actual = int(can_data[2:4] + can_data[0:2], 16)
+    electrical_angle = int(can_data[6:8] + can_data[4:6], 16)
+    phase_a_current = int(can_data[10:12] + can_data[8:10], 16)
 
     data = [
         f"motor current actual: {motor_current_actual}",
@@ -67,7 +69,7 @@ def decode_mc_pdo_3(can_data):
     ]
 
     if len(can_data) == 16:
-        phase_b_current = int(can_data[7] + can_data[6], 16)
+        phase_b_current = int(can_data[16:14] + can_data[12:14], 16)
         data += [f"phase b current: {phase_b_current}"]
 
     return data
@@ -77,12 +79,11 @@ def decode_mc_pdo_2(can_data):
     if len(can_data) != 16:
         print(f"Invalid PDO 2 message length {can_data}")
 
-    controller_temp = int(can_data[0], 16)
-    motor_temp = int(can_data[1], 16)
-    DC_link_circuit_voltage = int(can_data[3] + can_data[2], 16)
-    logic_power_supply_voltage = int(can_data[5] + can_data[4], 16)
-    current_demand = int(can_data[7] + can_data[6], 16)
-
+    controller_temp = int(can_data[0:2], 16)
+    motor_temp = int(can_data[2:4], 16)
+    DC_link_circuit_voltage = int(can_data[6:8] + can_data[4:6], 16)
+    logic_power_supply_voltage = int(can_data[10:12] + can_data[8:10], 16)
+    current_demand = int(can_data[16:14] + can_data[12:14], 16)
     return [
         f"controller temp: {controller_temp}",
         f"motor temp: {motor_temp}",
@@ -96,11 +97,11 @@ def decode_mc_pdo_1(can_data):
     if len(can_data) != 16:
         print(f"Invalid PDO 1 message length {can_data}")
 
-    status_word = int(can_data[1] + can_data[0], 16)
+    status_word = int(can_data[0:2] + can_data[2:4], 16)
     position_actual_value = int(
-        can_data[5] + can_data[4] + can_data[3] + can_data[2], 16
+        can_data[10:12] + can_data[8:10] + can_data[6:8] + can_data[4:6], 16
     )
-    torque_actual_value = int(can_data[7] + can_data[6], 16)
+    torque_actual_value = int(can_data[16:14] + can_data[12:14], 16)
 
     return [
         f"status word: {status_word}",

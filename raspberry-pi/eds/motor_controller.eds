@@ -1439,7 +1439,7 @@ ObjectType=7
 DataType=7
 AccessType=rw
 PDOMapping=0
-DefaultValue=0x20260108
+DefaultValue=0x2026 01 08
 
 [1a01sub2]
 ParameterName=PDO Mapping Entry
@@ -1447,7 +1447,7 @@ ObjectType=7
 DataType=7
 AccessType=rw
 PDOMapping=0
-DefaultValue=0x20250008
+DefaultValue=0x2025 00 08
 
 [1a01sub3]
 ParameterName=PDO Mapping Entry
@@ -1455,7 +1455,7 @@ ObjectType=7
 DataType=7
 AccessType=rw
 PDOMapping=0
-DefaultValue=0x60790010
+DefaultValue=0x6079 00 10
 
 [1a01sub4]
 ParameterName=PDO Mapping Entry
@@ -1463,7 +1463,7 @@ ObjectType=7
 DataType=7
 AccessType=rw
 PDOMapping=0
-DefaultValue=0x20290010
+DefaultValue=0x2029 00 10
 
 [1a01sub5]
 ParameterName=PDO Mapping Entry
@@ -1471,7 +1471,7 @@ ObjectType=7
 DataType=7
 AccessType=rw
 PDOMapping=0
-DefaultValue=0x201a0010
+DefaultValue=0x201a 00 10
 
 [1a01sub6]
 ParameterName=PDO Mapping Entry
