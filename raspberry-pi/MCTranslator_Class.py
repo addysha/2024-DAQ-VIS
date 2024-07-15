@@ -69,11 +69,11 @@ class MCTranslator:
         logic_power_supply_voltage = int(can_data[10:12] + can_data[8:10], 16)
         current_demand = int(can_data[16:14] + can_data[12:14], 16)
         return [
-            f"controller temp: {controller_temp}",
-            f"motor temp: {motor_temp}",
-            f"DC link circuit voltage: {DC_link_circuit_voltage}",
-            f"logic power supply voltage: {logic_power_supply_voltage}",
-            f"current demand: {current_demand}",
+            f"controller temp:{controller_temp}",
+            f"motor temp:{motor_temp}",
+            f"DC link circuit voltage:{DC_link_circuit_voltage}",
+            f"logic power supply voltage:{logic_power_supply_voltage}",
+            f"current demand:{current_demand}",
         ]
 
     def decode_mc_pdo_1(self, can_data):
@@ -93,6 +93,7 @@ class MCTranslator:
         ]
 
     def decode_pdo(self, can_data, pdo=None):
+
         data = [f"time: {datetime.datetime.fromtimestamp(float(can_data[0]))}"]
 
         if can_data[1] == "0181" and pdo == 1:
@@ -105,3 +106,4 @@ class MCTranslator:
             data += self.decode_mc_pdo_4(can_data[3])
 
         print(data)
+        return data

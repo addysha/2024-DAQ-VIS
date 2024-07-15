@@ -53,8 +53,10 @@ def subscribe(client: mqtt_client):
 
         can_msg = msg.payload.decode()
 
-        can_data = mc_translator.decode_can_string(can_msg)
-        mc_translator.decode_pdo(can_data, pdo)
+        if can_msg:
+            can_data = mc_translator.decode_can_string(can_msg)
+        if can_data:
+            mc_translator.decode_pdo(can_data, pdo)
 
     client.subscribe(topic)
     client.on_message = on_message
