@@ -34,7 +34,7 @@ def create_device():
     try:
         os.system("sudo ip link set can0 type can bitrate 500000")
         os.system("sudo ifconfig can0 up")
-        return can.interface.Bus(channel="can0", bustype="socketcan")
+        return can.interface.Bus(channel="can0", interface="socketcan")
 
     except CanInitializationError as e:
         print(f"Failed to initialize CAN bus: {e.message}")
@@ -63,16 +63,24 @@ def connect_mqtt() -> mqtt_client:
         Returns:
             mqtt_client: The publisher object connected to the AWS broker
     """
+    client = None
+    try:
+        def on_connect(client, userdata, flags, reason_code, properties=None):
+            if reason_code == 0:
+                print("connected to MQTT")
+                connected = True
+            if reason_code != 0:
+                print("Failed to connect, return code %d\n", reason_code)
 
-    def on_connect(client, userdata, flags, reason_code, properties=None):
-        if reason_code != 0:
-            print("Failed to connect, return code %d\n", reason_code)
-
-    client = mqtt_client.Client(mqtt_client.CallbackAPIVersion.VERSION2, client_id)
-    client.username_pw_set(username, password)
-    client.on_connect = on_connect
-    client.connect(broker, port)
-    return client
+        client = mqtt_client.Client(mqtt_client.CallbackAPIVersion.VERSION2, client_id)
+        client.username_pw_set(username, password)
+        client.on_connect = on_connect
+        client.connect(broker, port)
+        return client
+    except Exception as e:
+        print("Issue connecting:", e)
+    finally:
+        return client
 
 
 def publish(client, can0):
@@ -84,10 +92,13 @@ def publish(client, can0):
     """
     while True:
         msg = can0.recv(0.0)
+        msg = "sent from pi"
         result = client.publish(topic, str(msg))
         status = result[0]
-        if status != 0:
-            print(f"Failed to send message to topic {topic}")
+        #if status != 0:
+        #    print(f"Failed to send message to topic {topic}")
+        #else:
+        #    print("success")
 
 
 def main():
@@ -103,8 +114,12 @@ def main():
 
     if not can0:
         shutdown_device()
-
-    client = connect_mqtt()
+    
+    connected = False
+    while not connected:
+        client = connect_mqtt()
+        print(client)
+        if client != None:
     client.loop_start()
     publish(client, can0)
 
