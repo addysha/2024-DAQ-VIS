@@ -69,9 +69,9 @@ def test_db(cursor, conn):
 
 def main():
     cursor, conn = connect_db()
-    # setup_db(cursor)
-    # create_mc_table(cursor, conn)
-    test_db(cursor, conn)
+
+    setup_db(cursor)
+    create_mc_table(cursor, conn)
     conn.close()
 
 

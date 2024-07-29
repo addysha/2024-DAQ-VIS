@@ -1,6 +1,5 @@
-import csv
 import random
-import argparse
+import psycopg2
 from paho.mqtt import client as mqtt_client
 from MCTranslator_Class import MCTranslator
 
@@ -19,7 +18,60 @@ username = "wesmo"
 password = "public"
 
 mc_translator = MCTranslator()
-pdo = 1
+
+
+def connect_db():
+    conn = psycopg2.connect(
+        database="wesmo",
+        user="hannah",
+        password="password",
+        host="127.0.0.1",
+        port="5432",
+    )
+    conn.autocommit = True
+    cursor = conn.cursor()
+
+    return cursor, conn
+
+
+def setup_db(cursor):
+    sql = """CREATE database wesmo"""
+    cursor.execute(sql)
+    print("Database created successfully........")
+
+
+def create_mc_table(cursor, conn):
+    cursor.execute("DROP TABLE IF EXISTS MOTOR_CONTROLLER")
+
+    sql = """CREATE TABLE MOTOR_CONTROLLER(
+        TIME TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,  -- Auto-filled timestamp,
+        PDO INT,
+        NAME CHAR(50),
+        VALUE INT,
+        UNIT CHAR(25)
+    )"""
+
+    cursor.execute(sql)
+    print("Motor Controller table created successfully........")
+    conn.commit()
+
+
+def save_to_db(cursor, conn, data, pdo, unit=None):
+    if len(data) < 2:
+        return
+    time = data[0].split(" ")
+    for val in data[2:]:
+        info = val.split(":")
+        query = f"""INSERT INTO MOTOR_CONTROLLER(
+        TIME, PDO, NAME, VALUE, UNIT)
+        VALUES ('{time[1]+" "+time[2]}', {pdo}, '{info[0]}', {info[1]}, '{unit}')"""
+        try:
+            cursor.execute(query)
+            conn.commit()
+
+        except Exception as e:
+            conn.rollback()
+            print(f"Error in saving to database: {e}")
 
 
 def connect_mqtt() -> mqtt_client:
@@ -52,42 +104,29 @@ def subscribe(client: mqtt_client):
     def on_message(client, userdata, msg):
 
         can_msg = msg.payload.decode()
-
-        if can_msg:
-            can_data = mc_translator.decode_can_string(can_msg)
-        if can_data:
-            mc_translator.decode_pdo(can_data, pdo)
+        if can_msg != "None":
+            data = mc_translator.decode(can_msg)
+            if data:
+                print(data)
+                save_to_db(cursor, conn, data, data[1])
 
     client.subscribe(topic)
     client.on_message = on_message
 
 
 def main():
-    """Main function to run the script as a reciever device.
+global cursor, conn
+cursor, conn = connect_db()
 
-    The script can be run with the following command line arguments:
-    -s, --subscribe: Subscribe to CAN messages using MQTT.
-    """
+# setup_db(cursor)
+# create_mc_table(cursor, conn)
 
-    parser = argparse.ArgumentParser(
-        description="Converts CAN string messages to human readable data."
-    )
-    parser.add_argument(
-        "-s",
-        "--subscribe",
-        action="store_true",
-        help="Subscribe to CAN messages using MQTT",
-    )
+client = connect_mqtt()
+subscribe(client)
+client.loop_forever()
 
-    args = parser.parse_args()
+conn.close()
 
-    if args.subscribe:
-        client = connect_mqtt()
-        subscribe(client)
-        client.loop_forever()
-    else:
-        print("Error: Please specify either  -s/--subscribe option.")
-        exit(1)
 
 
 if __name__ == "__main__":
