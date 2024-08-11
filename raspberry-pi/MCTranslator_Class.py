@@ -61,7 +61,6 @@ class MCTranslator:
     def decode_mc_pdo_3(self, can_data):
         if len(can_data) != 12 and len(can_data) != 16:
             print(f"Invalid PDO 3 message length {can_data}")
-
         motor_current_actual = self.interpret_signed_int(
             int(can_data[2:4] + can_data[0:2], 16), 16
         )

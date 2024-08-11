@@ -1,0 +1,162 @@
+VERSION "100"
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: C127
+
+
+BO_ 2636251137 Display_1: 8 C127
+ SG_ Engine_RPM : 7|16@0- (0.1,0) [0|1333] "rps"  Vector__XXX
+ SG_ Bat_Volts_ECU : 23|16@0- (0.01,0) [800|1500] "V"  Vector__XXX
+ SG_ Battery_Current : 39|16@0- (0.1,0) [0|3000] "A"  Vector__XXX
+ SG_ Drive_Speed : 55|16@0- (0.1,0) [0|3000] "km/h"  Vector__XXX
+
+BO_ 2636251138 Display_2: 8 C127
+ SG_ Ground_Speed : 7|16@0- (0.1,0) [0|3000] "km/h"  Vector__XXX
+ SG_ Brake_Pres_Front : 23|16@0- (1,0) [0|8000] "kPa"  Vector__XXX
+ SG_ Brake_Pres_Rear : 39|16@0- (1,0) [0|8000] "kPa"  Vector__XXX
+ SG_ Battery_Volts : 55|16@0- (0.01,0) [800|1500] "V"  Vector__XXX
+
+BO_ 2636251139 Display_3: 8 C127
+ SG_ Vehicle_Speed : 7|16@0- (0.1,0) [0|3000] "km/h"  Vector__XXX
+ SG_ Engine_RPM_2 : 23|16@0- (0.1,0) [0|1667] "rps"  Vector__XXX
+ SG_ Alternator_Current : 39|16@0- (0.1,0) [0|1000] "A"  Vector__XXX
+ SG_ Bat_Volts_C127 : 55|16@0- (0.01,0) [0|0] "V"  Vector__XXX
+
+BO_ 2636251140 Display_4: 2 C127
+ SG_ Engine_Trip_Time : 7|16@0- (1,0) [0|0] "s"  Vector__XXX
+
+BO_ 2636251141 Display_5: 8 C127
+ SG_ Gear : 7|16@0- (1,0) [0|0] ""  Vector__XXX
+ SG_ Brake_Pedal_Force : 23|16@0- (0.1,0) [0|0] "kg"  Vector__XXX
+ SG_ Brake_Pedal_Pos : 39|16@0- (0.0001,0) [0|0] "m"  Vector__XXX
+ SG_ Engine_Speed : 55|16@0- (0.1,0) [0|0] "rps"  Vector__XXX
+
+BO_ 2636251142 Display_6: 2 C127
+ SG_ ECU_Fault_Codes : 7|16@0- (1,0) [0|0] ""  Vector__XXX
+
+BO_ 2636251143 Display_7: 2 C127
+ SG_ Low_Bat_Error : 7|16@0- (1,0) [0|0] ""  Vector__XXX
+
+BO_ 2636251144 Display_8: 8 C127
+ SG_ _5V_Aux_Supply : 7|16@0- (0.001,0) [4000|6000] "V"  Vector__XXX
+ SG_ _8V_Aux_Supply : 23|16@0- (0.001,0) [7000|9000] "V"  Vector__XXX
+ SG_ Brake_Bias_Setting : 39|16@0- (0.001,0) [0|1000] "ratio"  Vector__XXX
+ SG_ Battery_Temp : 55|16@0- (0.1,0) [0|800] "C"  Vector__XXX
+
+BO_ 2636251145 Display_9: 8 C127
+ SG_ Engine_Temp : 7|16@0- (0.1,0) [0|1200] "C"  Vector__XXX
+ SG_ ECU_Temp : 23|16@0- (0.1,0) [0|800] "C"  Vector__XXX
+ SG_ Lap_Time : 39|16@0- (0.01,0) [0|0] "s"  Vector__XXX
+ SG_ Alarm_Brake_Warning : 55|16@0- (1,0) [0|0] ""  Vector__XXX
+
+BO_ 2636251146 Display_10: 4 C127
+ SG_ BR2_Bias : 7|16@0- (0.01,0) [0|1000] "V"  Vector__XXX
+ SG_ C127_Temp : 23|16@0- (0.1,0) [0|0] "C"  Vector__XXX
+
+BO_ 2636251147 Alarm_Message: 8 C127
+ SG_ Alarm_Message : 7|64@0+ (0,0) [0|0] ""  Vector__XXX
+
+BO_ 2636251148 Alarm_Value: 8 C127
+ SG_ Alarm_Value : 7|64@0+ (0,0) [0|0] ""  Vector__XXX
+
+BO_ 2636251149 Alarm_Status: 2 C127
+ SG_ Alarm_Active : 7|8@0+ (0,0) [0|0] ""  Vector__XXX
+ SG_ Alarm_Flash : 15|8@0+ (0,0) [0|0] ""  Vector__XXX
+
+BO_ 2636251136 CRC32: 4 C127
+ SG_ CRC32 : 7|32@0+ (1,0) [0|0] ""  Vector__XXX
+
+
+
+BA_DEF_  "MoTeC_CRC" INT 0 0;
+BA_DEF_ SG_  "MoTeC_Type" ENUM  "Number","Compound_String";
+BA_DEF_ SG_  "MoTeC_Usage" ENUM  "General","CRC32","Alarm_Message","Alarm_Value","Alarm_Active_State","Alarm_Flash_State";
+BA_DEF_ SG_  "MoTeC_Channel" STRING ;
+BA_DEF_ BO_  "GenMsgCycleTime" INT 0 0;
+BA_DEF_DEF_  "MoTeC_CRC" -1045462084;
+BA_DEF_DEF_  "MoTeC_Type" "Number";
+BA_DEF_DEF_  "MoTeC_Usage" "General";
+BA_DEF_DEF_  "MoTeC_Channel" "";
+BA_DEF_DEF_  "GenMsgCycleTime" 50;
+BA_ "GenMsgCycleTime" BO_ 2636251137 50;
+BA_ "GenMsgCycleTime" BO_ 2636251138 50;
+BA_ "GenMsgCycleTime" BO_ 2636251139 50;
+BA_ "GenMsgCycleTime" BO_ 2636251140 50;
+BA_ "GenMsgCycleTime" BO_ 2636251141 100;
+BA_ "GenMsgCycleTime" BO_ 2636251142 200;
+BA_ "GenMsgCycleTime" BO_ 2636251143 500;
+BA_ "GenMsgCycleTime" BO_ 2636251144 1000;
+BA_ "GenMsgCycleTime" BO_ 2636251145 1000;
+BA_ "GenMsgCycleTime" BO_ 2636251146 1000;
+BA_ "GenMsgCycleTime" BO_ 2636251147 50;
+BA_ "GenMsgCycleTime" BO_ 2636251148 50;
+BA_ "GenMsgCycleTime" BO_ 2636251149 50;
+BA_ "GenMsgCycleTime" BO_ 2636251136 1000;
+BA_ "MoTeC_Channel" SG_ 2636251137 Engine_RPM "Engine RPM";
+BA_ "MoTeC_Channel" SG_ 2636251137 Bat_Volts_ECU "Bat Volts ECU";
+BA_ "MoTeC_Channel" SG_ 2636251137 Battery_Current "Battery Current";
+BA_ "MoTeC_Channel" SG_ 2636251137 Drive_Speed "Drive Speed";
+BA_ "MoTeC_Channel" SG_ 2636251138 Ground_Speed "Ground Speed";
+BA_ "MoTeC_Channel" SG_ 2636251138 Brake_Pres_Front "Brake Pres Front";
+BA_ "MoTeC_Channel" SG_ 2636251138 Brake_Pres_Rear "Brake Pres Rear";
+BA_ "MoTeC_Channel" SG_ 2636251138 Battery_Volts "Battery Volts";
+BA_ "MoTeC_Channel" SG_ 2636251139 Vehicle_Speed "Vehicle Speed";
+BA_ "MoTeC_Channel" SG_ 2636251139 Engine_RPM_2 "Engine RPM 2";
+BA_ "MoTeC_Channel" SG_ 2636251139 Alternator_Current "Alternator Current";
+BA_ "MoTeC_Channel" SG_ 2636251139 Bat_Volts_C127 "Bat Volts C127";
+BA_ "MoTeC_Channel" SG_ 2636251140 Engine_Trip_Time "Engine Trip Time";
+BA_ "MoTeC_Channel" SG_ 2636251141 Gear "Gear";
+BA_ "MoTeC_Channel" SG_ 2636251141 Brake_Pedal_Force "Brake Pedal Force";
+BA_ "MoTeC_Channel" SG_ 2636251141 Brake_Pedal_Pos "Brake Pedal Pos";
+BA_ "MoTeC_Channel" SG_ 2636251141 Engine_Speed "Engine Speed";
+BA_ "MoTeC_Channel" SG_ 2636251142 ECU_Fault_Codes "ECU Fault Codes";
+BA_ "MoTeC_Channel" SG_ 2636251143 Low_Bat_Error "Low Bat Error";
+BA_ "MoTeC_Channel" SG_ 2636251144 _5V_Aux_Supply "5V Aux Supply";
+BA_ "MoTeC_Channel" SG_ 2636251144 _8V_Aux_Supply "8V Aux Supply";
+BA_ "MoTeC_Channel" SG_ 2636251144 Brake_Bias_Setting "Brake Bias Setting";
+BA_ "MoTeC_Channel" SG_ 2636251144 Battery_Temp "Battery Temp";
+BA_ "MoTeC_Channel" SG_ 2636251145 Engine_Temp "Engine Temp";
+BA_ "MoTeC_Channel" SG_ 2636251145 ECU_Temp "ECU Temp";
+BA_ "MoTeC_Channel" SG_ 2636251145 Lap_Time "Lap Time";
+BA_ "MoTeC_Channel" SG_ 2636251145 Alarm_Brake_Warning "Alarm Brake Warning";
+BA_ "MoTeC_Channel" SG_ 2636251146 BR2_Bias "BR2 Bias";
+BA_ "MoTeC_Channel" SG_ 2636251146 C127_Temp "C127 Temp";
+BA_ "MoTeC_Type" SG_ 2636251147 Alarm_Message 1;
+BA_ "MoTeC_Usage" SG_ 2636251147 Alarm_Message 2;
+BA_ "MoTeC_Type" SG_ 2636251148 Alarm_Value 1;
+BA_ "MoTeC_Usage" SG_ 2636251148 Alarm_Value 3;
+BA_ "MoTeC_Usage" SG_ 2636251149 Alarm_Active 4;
+BA_ "MoTeC_Usage" SG_ 2636251149 Alarm_Flash 5;
+BA_ "MoTeC_Usage" SG_ 2636251136 CRC32 1;

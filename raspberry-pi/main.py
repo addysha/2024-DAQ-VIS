@@ -115,18 +115,17 @@ def subscribe(client: mqtt_client):
 
 
 def main():
-global cursor, conn
-cursor, conn = connect_db()
+    global cursor, conn
+    cursor, conn = connect_db()
 
-# setup_db(cursor)
-# create_mc_table(cursor, conn)
+    # setup_db(cursor)
+    # create_mc_table(cursor, conn)
 
-client = connect_mqtt()
-subscribe(client)
-client.loop_forever()
+    client = connect_mqtt()
+    subscribe(client)
+    client.loop_forever()
 
-conn.close()
-
+    conn.close()
 
 
 if __name__ == "__main__":
