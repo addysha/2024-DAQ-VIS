@@ -1,8 +1,10 @@
 // Filename - pages/race-data.tsx
-
 import React from "react";
+
 import BurgerMenu from "../components/BurgerMenu.tsx";
 import Logo from "../components/Logo.tsx";
+import GridLayout from "../components/dashboard/GridLayout.tsx";
+import NumberContainer from "../components/dashboard/NumberContainer.tsx";
 import "../App.css";
 
 const Data: React.FC = () => {
@@ -18,11 +20,26 @@ const Data: React.FC = () => {
             <div className="nav-right"></div>
           </div>
         </div>
-        <div id="mainTitle">
-          <h1 className="text-3xl font-bold underline">
-            Website under construction
-          </h1>
-          <h3>More coming soon</h3>
+        <div className="dashboard">
+          <div className="dashboard-row">
+            <GridLayout size={2} bkg="#706B6B">
+              <NumberContainer
+                parameterOne={{ text: "Fuel", value: 50, unit: "%" }}
+                lightText={true}
+              />
+            </GridLayout>
+            <GridLayout size={2} bkg="#D9D9D9">
+              <NumberContainer
+                parameterOne={{ text: "Fuel", value: 50, unit: "%" }}
+              />
+            </GridLayout>
+            <GridLayout size={2} bkg="#3B3B3B">
+              <NumberContainer
+                parameterOne={{ text: "Fuel", value: 50, unit: "%" }}
+                lightText={true}
+              />
+            </GridLayout>
+          </div>
         </div>
       </div>
     </div>

@@ -1,0 +1,22 @@
+.number__icon {
+  font-size: 1.4rem;
+}
+.number__text-label {
+  font-size: 1rem;
+}
+.number__text-value {
+  font-size: 3rem;
+}
+.number__text-value > span {
+  font-size: 1rem;
+  margin-left: 0.3rem;
+}
+.number__container {
+  text-align: center;
+}
+.text--light {
+  color: #ffffff;
+}
+.text--dark {
+  color: #000000;
+}
