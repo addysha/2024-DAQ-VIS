@@ -22,11 +22,33 @@ import enepaq from "../images/sponsors/ENEPAQ-logo-with-tagline-full-color-rgb_2
 import adhesive from "../images/sponsors/adhesive_tech.png";
 import gurit from "../images/sponsors/gurit.jpg";
 import kilwell from "../images/sponsors/kilwell.jpeg";
+import performance from "../images/sponsors/performance_boats.png";
+import bearings from "../images/sponsors/bearings.jpeg";
+import flight from "../images/sponsors/flight_struct.jpeg";
+import lg from "../images/sponsors/lg.png";
+import ansys from "../images/sponsors/ansys.jpg";
+import profile from "../images/sponsors/marsh_profile.jpeg";
+import ndl from "../images/sponsors/ndl.jpg";
+import meg from "../images/sponsors/meg.webp";
 
 import "../App.css";
 
-const bronze = [{ title: "JLC PCB", img: jlc, link: "https://jlcpcb.com/" }];
-const silver = [{ title: "RML", img: rml, link: "https://www.rmlnz.com/" }];
+const bronze = [
+  { title: "JLC PCB", img: jlc, link: "https://jlcpcb.com/" },
+  { title: "RML", img: rml, link: "https://www.rmlnz.com/" },
+];
+const silver = [
+  {
+    title: "NDL Engineering",
+    img: ndl,
+    link: "https://www.ndlengineering.co.nz/",
+  },
+  {
+    title: "Gurit",
+    img: gurit,
+    link: "https://www.gurit.com/",
+  },
+];
 
 const gold = [
   {
@@ -41,14 +63,14 @@ const gold = [
     link: "https://adhesivetechnologies.co.nz/",
   },
   {
-    title: "Gurit",
-    img: gurit,
-    link: "https://www.gurit.com/",
-  },
-  {
     title: "KillWell Fibrelab",
     img: kilwell,
     link: "https://www.kilwellfibrelab.co.nz/",
+  },
+  {
+    title: "Marshall Profiling",
+    img: profile,
+    link: "https://marshallprofiling.co.nz/",
   },
 ];
 
@@ -79,6 +101,40 @@ const platinum = [
     link: "https://www.hallmach.co.nz/",
   },
 ];
+const platinum_second = [
+  {
+    title: "Performance Boat Building",
+    img: performance,
+    link: "https://www.facebook.com/p/Performance-Boatbuilding-100072364330870/",
+  },
+  {
+    title: "Waikato Bearings",
+    img: bearings,
+    link: "https://www.waikatobearings.co.nz/",
+  },
+  {
+    title: "Flight Structures",
+    img: flight,
+    link: "https://www.flightstructures.co.nz/",
+  },
+  {
+    title: "LG Panel and Paint",
+    img: lg,
+    link: "https://www.lgpanelandpaint.co.nz/",
+  },
+  {
+    title: "Ansys",
+    img: ansys,
+    link: "https://www.ansys.com/",
+  },
+];
+const platinum_third = [
+  {
+    title: "MEG",
+    img: meg,
+    link: "https://www.mechanical-engineering-group.org.nz/",
+  },
+];
 
 const Sponsors: React.FC = () => {
   return (
@@ -101,6 +157,8 @@ const Sponsors: React.FC = () => {
         <div className="sponsors">
           <div className="title platinum">Platinum</div>
           <SponsorRow images={platinum} width={250} />
+          <SponsorRow images={platinum_second} width={250} />
+          <SponsorRow images={platinum_third} width={250} />
           <div className="title gold">Gold</div>
           <SponsorRow images={gold} width={250} />
           <div className="title silver">Silver</div>
