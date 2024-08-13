@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import "./BurgerMenu.css";
 
-const HamburgerMenu: React.FC = () => {
+interface HamburgerMenuProps {
+  colour?: string;
+}
+
+const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ colour }) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   const closeMenu = () => {
@@ -36,7 +40,9 @@ const HamburgerMenu: React.FC = () => {
         </div>
       </div>
       <div
-        className={`hamburger-menu ${isMenuOpen ? "toggle" : ""}`}
+        className={`hamburger-menu ${isMenuOpen ? "toggle" : ""} ${
+          colour === "black" ? "black" : ""
+        }`}
         onClick={toggleMenu}
       >
         <div className="line"></div>

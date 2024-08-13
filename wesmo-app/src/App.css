@@ -40,7 +40,7 @@ h1 {
 /* Background stylings */
 .background {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("images/wesmoBackGround.jpg");
+    url("images/backgrounds/wesmoBackGround.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -57,17 +57,17 @@ h1 {
 
   &.contact {
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-      url("images/pushing_car.jpg");
+      url("images/backgrounds/pushing_car.jpg");
   }
 
   &.fsae {
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-      url("images/cars.jpg");
+      url("images/backgrounds/cars.jpg");
   }
 
   &.about {
     background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-      url("images/wesmo_night.jpeg");
+      url("images/backgrounds/wesmo_night.jpeg");
   }
 
   &.history {
@@ -77,9 +77,16 @@ h1 {
     overflow-x: hidden;
   }
 
+  &.data {
+    background-image: none;
+    background-color: rgb(255, 255, 255);
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
   &.sponsors {
     background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-      url("images/car_motion_tall.png");
+      url("images/backgrounds/car_motion_tall.png");
     background-attachment: local;
   }
 }
@@ -538,5 +545,6 @@ h1 {
 .dashboard-row {
   display: flex;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 1.5rem;
+  padding-bottom: 0.75rem;
 }

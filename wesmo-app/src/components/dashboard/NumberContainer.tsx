@@ -18,13 +18,13 @@ const NumberContainer: React.FC<Props> = ({
   bkg = "#ffffff",
   lightText = false,
 }) => {
-  const textColorClass = lightText ? "text--light" : "text--dark";
+  const textColourClass = lightText ? "text--light" : "text--dark";
   return (
     <div className="number__container">
-      <p className={`number__text-label ${textColorClass}`}>
+      <p className={`number__text-label ${textColourClass}`}>
         {parameterOne?.text}
       </p>
-      <p className={`number__text-value ${textColorClass}`}>
+      <p className={`number__text-value ${textColourClass}`}>
         {parameterOne?.value}
         <span>{parameterOne?.unit}</span>
       </p>

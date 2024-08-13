@@ -10,13 +10,13 @@ import "../App.css";
 const Data: React.FC = () => {
   return (
     <div className="App">
-      <div className="background">
+      <div className="background data">
         <div className="navbar">
           <div className="nav-left">
-            <Logo />
+            <Logo colour="dark" />
           </div>
           <div className="nav-right">
-            <BurgerMenu />
+            <BurgerMenu colour="black" />
             <div className="nav-right"></div>
           </div>
         </div>
@@ -28,12 +28,64 @@ const Data: React.FC = () => {
                 lightText={true}
               />
             </GridLayout>
+            <GridLayout size={3} bkg="#3B3B3B">
+              <NumberContainer
+                parameterOne={{ text: "Fuel", value: 50, unit: "%" }}
+                lightText={true}
+              />
+            </GridLayout>
             <GridLayout size={2} bkg="#D9D9D9">
               <NumberContainer
                 parameterOne={{ text: "Fuel", value: 50, unit: "%" }}
               />
             </GridLayout>
             <GridLayout size={2} bkg="#3B3B3B">
+              <NumberContainer
+                parameterOne={{ text: "Fuel", value: 50, unit: "%" }}
+                lightText={true}
+              />
+            </GridLayout>
+          </div>
+          <div className="dashboard-row">
+            <GridLayout size={3} bkg="#3B3B3B">
+              <NumberContainer
+                parameterOne={{ text: "Fuel", value: 50, unit: "%" }}
+                lightText={true}
+              />
+            </GridLayout>
+            <GridLayout size={2} bkg="#D9D9D9">
+              <NumberContainer
+                parameterOne={{ text: "Fuel", value: 50, unit: "%" }}
+                lightText={false}
+              />
+            </GridLayout>
+            <GridLayout size={2} bkg="#706B6B">
+              <NumberContainer
+                parameterOne={{ text: "Fuel", value: 50, unit: "%" }}
+                lightText={true}
+              />
+            </GridLayout>
+            <GridLayout size={2} bkg="#706B6B">
+              <NumberContainer
+                parameterOne={{ text: "Fuel", value: 50, unit: "%" }}
+                lightText={true}
+              />
+            </GridLayout>
+          </div>
+          <div className="dashboard-row">
+            <GridLayout size={3} bkg="#D9D9D9">
+              <NumberContainer
+                parameterOne={{ text: "Fuel", value: 50, unit: "%" }}
+                lightText={false}
+              />
+            </GridLayout>
+            <GridLayout size={2} bkg="#706B6B">
+              <NumberContainer
+                parameterOne={{ text: "Fuel", value: 50, unit: "%" }}
+                lightText={true}
+              />
+            </GridLayout>
+            <GridLayout size={3} bkg="#3B3B3B">
               <NumberContainer
                 parameterOne={{ text: "Fuel", value: 50, unit: "%" }}
                 lightText={true}

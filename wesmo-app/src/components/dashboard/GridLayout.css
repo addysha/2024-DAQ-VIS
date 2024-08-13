@@ -1,35 +1,37 @@
+/* GridComponent.css */
 .complication__container {
-    display: grid;
-    grid-template-columns: auto;
-    gap: 3.1rem;
-    align-items: center;
-    justify-items: stretch;
-    padding: 0.8rem;
-    border-radius: 1rem;
-    box-shadow: 10px 10px 25px var(--box-shadow-black);
+  display: grid;
+  grid-template-columns: auto;
+  gap: 3.1rem;
+  align-items: center;
+  justify-items: stretch;
+  padding: 0.8rem;
+  border-radius: 1rem;
+  box-shadow: 10px 10px 25px var(--box-shadow-black);
 }
 
 .medium-grid-size {
-    grid-column: auto / span 2;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-column: auto / span 2;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 }
 
 .large-grid-size {
-    grid-column: auto / span 3;
-    grid-row: auto / span 2;
+  grid-column: auto / span 4;
+  grid-row: auto / span 2;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .text--light {
-    color: #ededed;
+  color: #ededed;
 }
 
 @media screen and (max-width: 600px) {
-    .complication__container {
-        padding: 1rem;
-    }
-    .medium-grid-size {
-        grid-column: auto;
-        grid-template-columns: auto;
-        grid-row: auto / span 2;
-    }
+  .complication__container {
+    padding: 1rem;
+  }
+  .medium-grid-size {
+    grid-column: auto;
+    grid-template-columns: auto;
+    grid-row: auto / span 2;
+  }
 }

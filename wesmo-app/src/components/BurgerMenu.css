@@ -2,7 +2,12 @@
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  z-index: 2;
+  z-index: 3;
+  position: relative;
+}
+
+.hamburger-menu.black .line {
+  background-color: black;
 }
 
 .nav-cover.active + .hamburger-menu {
@@ -72,4 +77,8 @@
 .hamburger-menu.toggle .line:nth-child(3) {
   transform: rotate(45deg) translateY(-7px);
   transition: transform 0.3s ease-in-out;
+}
+
+.nav-cover.active + .hamburger-menu {
+  z-index: 4;
 }

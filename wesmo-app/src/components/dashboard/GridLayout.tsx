@@ -17,8 +17,9 @@ const GridLayout: React.FC<Props> = ({
   const containerClass = "complication__container";
 
   const setGridState = useMemo(() => {
-    if (size === 1) return "";
-    return size === 2 ? "medium-grid-size" : "large-grid-size";
+    if (size === 2) return "medium-grid-size";
+    if (size === 3) return "large-grid-size";
+    return "";
   }, [size]);
 
   return (
