@@ -26,10 +26,6 @@ const GridLayout: React.FC<Props> = ({
     <div
       className={`${containerClass} ${setGridState}`}
       style={{ backgroundColor: bkg }}
-      data-tilt
-      data-tilt-glare
-      data-tilt-max-glare="0.5"
-      data-tilt-max="20"
     >
       {children}
     </div>

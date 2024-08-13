@@ -24,50 +24,55 @@ const Data: React.FC = () => {
           <div className="dashboard-row">
             <GridLayout size={2} bkg="#706B6B">
               <NumberContainer
-                parameterOne={{ text: "Fuel", value: 50, unit: "%" }}
+                parameterOne={{ text: "SOC", value: 50, unit: "%" }}
                 lightText={true}
+                warning_colour="critical"
               />
             </GridLayout>
             <GridLayout size={3} bkg="#3B3B3B">
               <NumberContainer
-                parameterOne={{ text: "Fuel", value: 50, unit: "%" }}
+                parameterOne={{ text: "Motor Temp", value: 38, unit: "C" }}
                 lightText={true}
               />
             </GridLayout>
             <GridLayout size={2} bkg="#D9D9D9">
               <NumberContainer
-                parameterOne={{ text: "Fuel", value: 50, unit: "%" }}
+                parameterOne={{ text: "SOC", value: 50, unit: "%" }}
+                warning_colour="warning"
               />
             </GridLayout>
             <GridLayout size={2} bkg="#3B3B3B">
               <NumberContainer
-                parameterOne={{ text: "Fuel", value: 50, unit: "%" }}
+                parameterOne={{ text: "SOC", value: 50, unit: "%" }}
                 lightText={true}
+                warning_colour="critical"
               />
             </GridLayout>
           </div>
           <div className="dashboard-row">
             <GridLayout size={3} bkg="#3B3B3B">
               <NumberContainer
-                parameterOne={{ text: "Fuel", value: 50, unit: "%" }}
+                parameterOne={{ text: "SOC", value: 50, unit: "%" }}
                 lightText={true}
+                warning_colour="average"
               />
             </GridLayout>
             <GridLayout size={2} bkg="#D9D9D9">
               <NumberContainer
-                parameterOne={{ text: "Fuel", value: 50, unit: "%" }}
+                parameterOne={{ text: "SOC", value: 50, unit: "%" }}
                 lightText={false}
+                warning_colour="critical"
               />
             </GridLayout>
             <GridLayout size={2} bkg="#706B6B">
               <NumberContainer
-                parameterOne={{ text: "Fuel", value: 50, unit: "%" }}
+                parameterOne={{ text: "SOC", value: 50, unit: "%" }}
                 lightText={true}
               />
             </GridLayout>
             <GridLayout size={2} bkg="#706B6B">
               <NumberContainer
-                parameterOne={{ text: "Fuel", value: 50, unit: "%" }}
+                parameterOne={{ text: "Motor Temp", value: 25, unit: "C" }}
                 lightText={true}
               />
             </GridLayout>
@@ -75,20 +80,22 @@ const Data: React.FC = () => {
           <div className="dashboard-row">
             <GridLayout size={3} bkg="#D9D9D9">
               <NumberContainer
-                parameterOne={{ text: "Fuel", value: 50, unit: "%" }}
+                parameterOne={{ text: "Motor Temp", value: 67, unit: "C" }}
                 lightText={false}
+                warning_colour="warning"
               />
             </GridLayout>
             <GridLayout size={2} bkg="#706B6B">
               <NumberContainer
-                parameterOne={{ text: "Fuel", value: 50, unit: "%" }}
+                parameterOne={{ text: "SOC", value: 50, unit: "%" }}
                 lightText={true}
               />
             </GridLayout>
             <GridLayout size={3} bkg="#3B3B3B">
               <NumberContainer
-                parameterOne={{ text: "Fuel", value: 50, unit: "%" }}
+                parameterOne={{ text: "SOC", value: 50, unit: "%" }}
                 lightText={true}
+                warning_colour="average"
               />
             </GridLayout>
           </div>
