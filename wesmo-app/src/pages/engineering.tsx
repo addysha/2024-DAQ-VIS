@@ -5,7 +5,6 @@ import BurgerMenu from "../components/BurgerMenu.tsx";
 import Logo from "../components/Logo.tsx";
 import TeamMember from "../components/TeamMember.tsx";
 import TitleCard from "../components/TitleCard.tsx";
-import TeamMemberWithLinkedName from "../components/LinkedTeamMember.tsx";
 
 import "../App.css";
 
@@ -94,7 +93,7 @@ const Engineering: React.FC = () => {
             image1={Blake}
             image2={Jackson}
           ></TeamMember>
-          {/* <TeamMember
+          <TeamMember
             name1="Cameron Mailer"
             discipline1="Mechanical Engineering"
             component1="Accumulator"
@@ -103,8 +102,7 @@ const Engineering: React.FC = () => {
             component2="Data Aquisition and Visualisation"
             image1={logo}
             image2={Hannah}
-          ></TeamMember> */}
-          <TeamMemberWithLinkedName />
+          ></TeamMember>
           <TeamMember
             name1="Ethan Matai'a"
             discipline1="Mechatronics Engineering"

@@ -7,12 +7,11 @@
   border-radius: 1rem;
 
   &.medium-grid-size {
-    flex: 1 1 300px;
     min-width: 200px;
   }
 
   &.large-grid-size {
-    flex: 1 1 600px;
+    max-width: 430px;
     min-width: 400px;
   }
 }

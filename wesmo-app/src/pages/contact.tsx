@@ -29,7 +29,7 @@ const Contact: React.FC = () => {
           </div>
         </div>
         <TitleCard title="Contact Us" />
-        <div className="dark-grey">
+        <div className="contact-info">
           <div className="socials container">
             <i className="fa fa-instagram socials icon"></i>
             <div className="contact-text">

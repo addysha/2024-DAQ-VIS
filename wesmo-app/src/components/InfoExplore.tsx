@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { styled } from "@mui/material/styles";
 import AddIcon from "@mui/icons-material/Add";
 import { Fab, Card, CardContent, CardHeader, Drawer } from "@mui/material";
 import {
@@ -69,11 +68,7 @@ const InfoExplore: React.FC<IProps> = ({
         >
           <AddIcon />
         </Fab>
-        <Drawer
-          anchor="bottom"
-          open={open}
-          onClose={toggleDrawer(false)}
-        >
+        <Drawer anchor="bottom" open={open} onClose={toggleDrawer(false)}>
           <Card sx={{ bgcolor: "#3B3B3B", color: "white" }}>
             <CardHeader
               title={contentHeader.title}

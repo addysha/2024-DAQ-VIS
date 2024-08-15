@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Typography } from "@mui/material";
 import BurgerMenu from "../components/BurgerMenu.tsx";
 import Logo from "../components/Logo.tsx";

@@ -104,6 +104,18 @@ h1 {
   }
 }
 
+.contact-info {
+  background-color: rgba(59, 59, 59, 1);
+  width: 400px;
+  height: fit-content;
+  padding: 50px;
+  margin: 40px;
+  left: 70px;
+  font-size: 20px;
+  justify-content: center;
+  vertical-align: middle;
+}
+
 .contact-text {
   color: white;
   font-family: "Roboto";
@@ -121,7 +133,7 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 4rem;
+  padding: 0.25rem 4rem;
   color: white;
 
   .nav-left {
@@ -303,6 +315,7 @@ h1 {
 
       .pdf {
         background-color: rgba(59, 59, 59, 1);
+        color: white;
         text-align: center;
         font-family: Roboto, sans-serif;
       }
