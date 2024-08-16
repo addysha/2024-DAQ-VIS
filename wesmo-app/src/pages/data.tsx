@@ -35,9 +35,10 @@ const Data: React.FC = () => {
                 textValue="Actual State of Charge (SOC)"
                 currentValue={0.5}
                 maxValue={1}
+                unit="%"
               />
             </GridLayout>
-            <GridLayout size={3} bkg="#3B3B3B">
+            <GridLayout size={3} bkg="#706B6B">
               <NumberContainer
                 parameterOne={{
                   text: "Motor Temp",
@@ -52,13 +53,13 @@ const Data: React.FC = () => {
               <NumberContainer
                 parameterOne={{
                   text: "SOC",
-                  value: 50,
+                  value: 89,
                   unit: "%",
                   maxValue: 100,
                 }}
               />
             </GridLayout>
-            <GridLayout size={2} bkg="#3B3B3B">
+            <GridLayout size={2} bkg="#706B6B">
               <NumberContainer
                 parameterOne={{
                   text: "SOC",
@@ -71,7 +72,7 @@ const Data: React.FC = () => {
             </GridLayout>
           </div>
           <div className="dashboard-row">
-            <GridLayout size={3} bkg="#3B3B3B">
+            <GridLayout size={3} bkg="#706B6B">
               <NumberContainer
                 parameterOne={{
                   text: "SOC",
@@ -133,6 +134,7 @@ const Data: React.FC = () => {
                 textValue="Actual State of Charge (SOC)"
                 currentValue={0.15}
                 maxValue={1}
+                unit="%"
               />
             </GridLayout>
             <GridLayout size={2} bkg="#D9D9D9">
@@ -146,11 +148,12 @@ const Data: React.FC = () => {
                 lightText={false}
               />
             </GridLayout>
-            <GridLayout size={3} bkg="#3B3B3B">
+            <GridLayout size={3} bkg="#706B6B">
               <BarContainer
                 textValue="Actual State of Charge (SOC)"
                 currentValue={0.75}
                 maxValue={1}
+                unit="%"
               />
             </GridLayout>
           </div>

@@ -5,12 +5,14 @@ interface Props {
   textValue: string;
   currentValue: number;
   maxValue: number;
+  unit?: string;
 }
 
 const BarContainer: React.FC<Props> = ({
   textValue,
   currentValue,
   maxValue,
+  unit,
 }) => {
   const setProgress = useMemo(() => {
     return Math.round((currentValue / maxValue) * 100);
@@ -37,14 +39,17 @@ const BarContainer: React.FC<Props> = ({
   }, [setProgress, setColour]);
 
   return (
-    <div>
+    <div className="bar_parent">
       <div>
         <p className="bar_text-label">{textValue}</p>
-        <p className="bar_text-value">{setProgress}%</p>
       </div>
       <div className="bar_container">
         <span style={setBarStyle}></span>
       </div>
+      <p className="bar_text-value">
+        {setProgress}
+        <span>{unit}</span>
+      </p>
     </div>
   );
 };

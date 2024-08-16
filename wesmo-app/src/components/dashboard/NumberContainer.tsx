@@ -11,7 +11,6 @@ interface Parameter {
 interface Props {
   parameterOne: Parameter;
   lightText?: boolean;
-  warning_colour?: "good" | "average" | "warning" | "critical";
 }
 
 const NumberContainer: React.FC<Props> = ({
@@ -20,7 +19,7 @@ const NumberContainer: React.FC<Props> = ({
 }) => {
   const setColour = useMemo(() => {
     let colour: string = "";
-    console.log(parameterOne?.value, parameterOne?.maxValue);
+
     if (parameterOne?.value >= parameterOne?.maxValue * (2 / 3)) {
       colour = "#4da14b";
     } else if (parameterOne?.value >= parameterOne?.maxValue * (1 / 3)) {
@@ -38,15 +37,20 @@ const NumberContainer: React.FC<Props> = ({
     return barStyle;
   }, [setColour]);
 
-  const textColourClass = lightText ? "text--light" : "text--dark";
+  const computedTextColourClass =
+    setColour === "#eac054"
+      ? "text--dark"
+      : lightText
+      ? "text--light"
+      : "text--dark";
 
   return (
     <div className="number__container">
-      <p className={`number__text-label ${textColourClass}`}>
+      <p className={`number__text-label ${computedTextColourClass}`}>
         {parameterOne?.text}
       </p>
       <div className="number_value_colour" style={setBarStyle}>
-        <p className={`number__text-value ${textColourClass}`}>
+        <p className={`number__text-value ${computedTextColourClass}`}>
           {parameterOne?.value}
           <span>{parameterOne?.unit}</span>
         </p>
