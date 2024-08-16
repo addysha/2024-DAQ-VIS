@@ -25,17 +25,4 @@
   border-radius: 1rem;
   padding-left: 2.5rem;
   padding-right: 2.5rem;
-
-  &.good {
-    background-color: #4da14b;
-  }
-  &.average {
-    background-color: #3274b1;
-  }
-  &.warning {
-    background-color: #eac054;
-  }
-  &.critical {
-    background-color: #af1317;
-  }
 }

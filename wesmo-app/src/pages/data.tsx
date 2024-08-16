@@ -5,6 +5,7 @@ import BurgerMenu from "../components/BurgerMenu.tsx";
 import Logo from "../components/Logo.tsx";
 import GridLayout from "../components/dashboard/GridLayout.tsx";
 import NumberContainer from "../components/dashboard/NumberContainer.tsx";
+import BarContainer from "../components/dashboard/BarContainer.tsx";
 import StatusBar from "../components/dashboard/StatusBar.tsx";
 
 import "../App.css";
@@ -30,56 +31,87 @@ const Data: React.FC = () => {
           <StatusBar />
           <div className="dashboard-row">
             <GridLayout size={2} bkg="#706B6B">
-              <NumberContainer
-                parameterOne={{ text: "SOC", value: 50, unit: "%" }}
-                lightText={true}
-                warning_colour="critical"
+              <BarContainer
+                textValue="Actual State of Charge (SOC)"
+                currentValue={0.5}
+                maxValue={1}
               />
             </GridLayout>
             <GridLayout size={3} bkg="#3B3B3B">
               <NumberContainer
-                parameterOne={{ text: "Motor Temp", value: 38, unit: "C" }}
+                parameterOne={{
+                  text: "Motor Temp",
+                  value: 38,
+                  unit: "C",
+                  maxValue: 80,
+                }}
                 lightText={true}
               />
             </GridLayout>
             <GridLayout size={2} bkg="#D9D9D9">
               <NumberContainer
-                parameterOne={{ text: "SOC", value: 50, unit: "%" }}
-                warning_colour="warning"
+                parameterOne={{
+                  text: "SOC",
+                  value: 50,
+                  unit: "%",
+                  maxValue: 100,
+                }}
               />
             </GridLayout>
             <GridLayout size={2} bkg="#3B3B3B">
               <NumberContainer
-                parameterOne={{ text: "SOC", value: 50, unit: "%" }}
+                parameterOne={{
+                  text: "SOC",
+                  value: 86,
+                  unit: "%",
+                  maxValue: 100,
+                }}
                 lightText={true}
-                warning_colour="critical"
               />
             </GridLayout>
           </div>
           <div className="dashboard-row">
             <GridLayout size={3} bkg="#3B3B3B">
               <NumberContainer
-                parameterOne={{ text: "SOC", value: 50, unit: "%" }}
+                parameterOne={{
+                  text: "SOC",
+                  value: 50,
+                  unit: "%",
+                  maxValue: 100,
+                }}
                 lightText={true}
-                warning_colour="average"
               />
             </GridLayout>
             <GridLayout size={2} bkg="#D9D9D9">
               <NumberContainer
-                parameterOne={{ text: "SOC", value: 50, unit: "%" }}
+                parameterOne={{
+                  text: "SOC",
+                  value: 97,
+                  unit: "%",
+                  maxValue: 100,
+                }}
                 lightText={false}
-                warning_colour="critical"
               />
             </GridLayout>
             <GridLayout size={2} bkg="#706B6B">
               <NumberContainer
-                parameterOne={{ text: "SOC", value: 50, unit: "%" }}
+                parameterOne={{
+                  text: "SOC",
+                  value: 50,
+                  unit: "%",
+                  maxValue: 100,
+                }}
                 lightText={true}
               />
             </GridLayout>
             <GridLayout size={2} bkg="#706B6B">
               <NumberContainer
-                parameterOne={{ text: "Motor Temp", value: 25, unit: "C" }}
+                parameterOne={{
+                  text: "Motor Temp",
+                  value: 25,
+                  unit: "C",
+                  maxValue: 80,
+                }}
                 lightText={true}
               />
             </GridLayout>
@@ -87,29 +119,38 @@ const Data: React.FC = () => {
           <div className="dashboard-row">
             <GridLayout size={2} bkg="#706B6B">
               <NumberContainer
-                parameterOne={{ text: "SOC", value: 50, unit: "%" }}
+                parameterOne={{
+                  text: "SOC",
+                  value: 50,
+                  unit: "%",
+                  maxValue: 100,
+                }}
                 lightText={true}
-                warning_colour="average"
               />
             </GridLayout>
             <GridLayout size={2} bkg="#706B6B">
-              <NumberContainer
-                parameterOne={{ text: "SOC", value: 50, unit: "%" }}
-                lightText={true}
+              <BarContainer
+                textValue="Actual State of Charge (SOC)"
+                currentValue={0.15}
+                maxValue={1}
               />
             </GridLayout>
             <GridLayout size={2} bkg="#D9D9D9">
               <NumberContainer
-                parameterOne={{ text: "SOC", value: 50, unit: "%" }}
+                parameterOne={{
+                  text: "SOC",
+                  value: 15,
+                  unit: "%",
+                  maxValue: 100,
+                }}
                 lightText={false}
-                warning_colour="warning"
               />
             </GridLayout>
             <GridLayout size={3} bkg="#3B3B3B">
-              <NumberContainer
-                parameterOne={{ text: "SOC", value: 50, unit: "%" }}
-                lightText={true}
-                warning_colour="average"
+              <BarContainer
+                textValue="Actual State of Charge (SOC)"
+                currentValue={0.75}
+                maxValue={1}
               />
             </GridLayout>
           </div>
