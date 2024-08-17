@@ -16,7 +16,7 @@ const ProgressDial: React.FC<Props> = ({
   unit,
   lightText = false,
 }) => {
-  const size = 170;
+  const size = 150;
   const radius = (size - 18) / 2;
   const circumference = 2 * Math.PI * radius;
 

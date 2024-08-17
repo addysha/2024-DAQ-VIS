@@ -5,7 +5,7 @@ interface Props {
   text: string;
   value: number;
   unit?: string;
-  maxValue: number;
+  maxValue?: number;
   lightText?: boolean;
 }
 
@@ -18,13 +18,16 @@ const NumberContainer: React.FC<Props> = ({
 }) => {
   const setColour = useMemo(() => {
     let colour: string = "";
-
-    if (value >= maxValue * (2 / 3)) {
-      colour = "#4da14b";
-    } else if (value >= maxValue * (1 / 3)) {
-      colour = "#eac054";
+    if (maxValue) {
+      if (value >= maxValue * (2 / 3)) {
+        colour = "#4da14b";
+      } else if (value >= maxValue * (1 / 3)) {
+        colour = "#eac054";
+      } else {
+        colour = "#af1317";
+      }
     } else {
-      colour = "#af1317";
+      colour = "#3274B1";
     }
     return colour;
   }, [maxValue, value]);

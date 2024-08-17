@@ -8,6 +8,7 @@ import NumberContainer from "../components/dashboard/NumberContainer.tsx";
 import BarContainer from "../components/dashboard/BarContainer.tsx";
 import StatusBar from "../components/dashboard/StatusBar.tsx";
 import DialContainer from "../components/dashboard/FullDialContainer.tsx";
+import StatusContainer from "../components/dashboard/StatusContainer.tsx";
 
 import "../App.css";
 
@@ -40,13 +41,11 @@ const Data: React.FC = () => {
                 lightText={true}
               />
             </GridLayout>
-            <GridLayout size={3} bkg="#706B6B">
-              <NumberContainer
-                text="Motor Temp"
-                value={38}
-                unit="C"
-                maxValue={80}
-                lightText={true}
+            <GridLayout size={3} bkg="#D9D9D9">
+              <StatusContainer
+                textValue="All Systems Operational"
+                statusValue="Operational"
+                stateValue={4}
               />
             </GridLayout>
             <GridLayout size={2} bkg="#D9D9D9">
@@ -69,13 +68,7 @@ const Data: React.FC = () => {
           </div>
           <div className="dashboard-row">
             <GridLayout size={3} bkg="#D9D9D9">
-              <NumberContainer
-                text="SOC"
-                value={50}
-                unit="%"
-                maxValue={100}
-                lightText={true}
-              />
+              <NumberContainer text="SOC" value={50} unit="%" />
             </GridLayout>
             <GridLayout size={2} bkg="#D9D9D9">
               <NumberContainer
@@ -87,11 +80,10 @@ const Data: React.FC = () => {
               />
             </GridLayout>
             <GridLayout size={2} bkg="#706B6B">
-              <NumberContainer
-                text="SOC"
-                value={50}
-                unit="%"
-                maxValue={100}
+              <StatusContainer
+                textValue="Safety Systems"
+                statusValue="Warning"
+                stateValue={2}
                 lightText={true}
               />
             </GridLayout>
@@ -101,7 +93,7 @@ const Data: React.FC = () => {
                 value={25}
                 unit="C"
                 maxValue={80}
-                lightText={true}
+                lightText={false}
               />
             </GridLayout>
           </div>
