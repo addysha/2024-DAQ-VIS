@@ -1,34 +1,33 @@
 import React, { CSSProperties, useMemo } from "react";
 import "./NumberContainer.css";
 
-interface Parameter {
+interface Props {
   text: string;
   value: number;
   unit?: string;
   maxValue: number;
-}
-
-interface Props {
-  parameterOne: Parameter;
   lightText?: boolean;
 }
 
 const NumberContainer: React.FC<Props> = ({
-  parameterOne,
+  text,
+  value,
+  unit,
+  maxValue,
   lightText = false,
 }) => {
   const setColour = useMemo(() => {
     let colour: string = "";
 
-    if (parameterOne?.value >= parameterOne?.maxValue * (2 / 3)) {
+    if (value >= maxValue * (2 / 3)) {
       colour = "#4da14b";
-    } else if (parameterOne?.value >= parameterOne?.maxValue * (1 / 3)) {
+    } else if (value >= maxValue * (1 / 3)) {
       colour = "#eac054";
     } else {
       colour = "#af1317";
     }
     return colour;
-  }, [parameterOne?.maxValue, parameterOne?.value]);
+  }, [maxValue, value]);
 
   const setBarStyle = useMemo(() => {
     const barStyle: CSSProperties = {
@@ -46,13 +45,11 @@ const NumberContainer: React.FC<Props> = ({
 
   return (
     <div className="number__container">
-      <p className={`number__text-label ${computedTextColourClass}`}>
-        {parameterOne?.text}
-      </p>
+      <p className={`number__text-label ${computedTextColourClass}`}>{text}</p>
       <div className="number_value_colour" style={setBarStyle}>
         <p className={`number__text-value ${computedTextColourClass}`}>
-          {parameterOne?.value}
-          <span>{parameterOne?.unit}</span>
+          {value}
+          <span>{unit}</span>
         </p>
       </div>
     </div>

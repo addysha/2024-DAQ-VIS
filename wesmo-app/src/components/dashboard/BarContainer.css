@@ -1,10 +1,24 @@
 .bar_text-label {
   font-size: 1rem;
+
+  &.text--light {
+    color: #ffffff;
+  }
+  &.text--dark {
+    color: #000000;
+  }
 }
 .bar_text-value {
   font-size: 2rem;
-  margin-top: 1rem;
+  margin-top: 2rem;
   margin-bottom: 1rem;
+
+  &.text--light {
+    color: white;
+  }
+  &.text--dark {
+    color: black;
+  }
 }
 .bar_parent {
   text-align: center;
@@ -18,7 +32,7 @@
   overflow: hidden;
   height: 1.75rem;
   border-radius: 1rem;
-  background-color: #fff;
+  background-color: white;
   width: 100%;
   margin-top: 3rem;
   margin-bottom: 2rem;

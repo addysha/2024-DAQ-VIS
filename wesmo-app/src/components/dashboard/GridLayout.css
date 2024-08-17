@@ -16,10 +16,6 @@
   }
 }
 
-.text--light {
-  color: #ededed;
-}
-
 @media screen and (max-width: 600px) {
   .complication__container {
     padding: 1rem;

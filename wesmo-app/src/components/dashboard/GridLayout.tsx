@@ -4,14 +4,12 @@ import "./GridLayout.css";
 interface Props {
   size?: number;
   bkg?: string;
-  lightText?: boolean;
   children?: ReactNode;
 }
 
 const GridLayout: React.FC<Props> = ({
   size = 1,
   bkg = "#ffffff",
-  lightText = false,
   children,
 }) => {
   const containerClass = "complication__container";

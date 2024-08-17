@@ -7,6 +7,7 @@ import GridLayout from "../components/dashboard/GridLayout.tsx";
 import NumberContainer from "../components/dashboard/NumberContainer.tsx";
 import BarContainer from "../components/dashboard/BarContainer.tsx";
 import StatusBar from "../components/dashboard/StatusBar.tsx";
+import DialContainer from "../components/dashboard/FullDialContainer.tsx";
 
 import "../App.css";
 
@@ -36,96 +37,81 @@ const Data: React.FC = () => {
                 currentValue={0.5}
                 maxValue={1}
                 unit="%"
+                lightText={true}
               />
             </GridLayout>
             <GridLayout size={3} bkg="#706B6B">
               <NumberContainer
-                parameterOne={{
-                  text: "Motor Temp",
-                  value: 38,
-                  unit: "C",
-                  maxValue: 80,
-                }}
+                text="Motor Temp"
+                value={38}
+                unit="C"
+                maxValue={80}
                 lightText={true}
               />
             </GridLayout>
             <GridLayout size={2} bkg="#D9D9D9">
-              <NumberContainer
-                parameterOne={{
-                  text: "SOC",
-                  value: 89,
-                  unit: "%",
-                  maxValue: 100,
-                }}
+              <DialContainer
+                textValue="Actual State of Charge (SOC)"
+                currentValue={43}
+                maxValue={100}
+                unit="%"
               />
             </GridLayout>
             <GridLayout size={2} bkg="#706B6B">
               <NumberContainer
-                parameterOne={{
-                  text: "SOC",
-                  value: 86,
-                  unit: "%",
-                  maxValue: 100,
-                }}
+                text="SOC"
+                value={86}
+                unit="%"
+                maxValue={100}
                 lightText={true}
               />
             </GridLayout>
           </div>
           <div className="dashboard-row">
-            <GridLayout size={3} bkg="#706B6B">
+            <GridLayout size={3} bkg="#D9D9D9">
               <NumberContainer
-                parameterOne={{
-                  text: "SOC",
-                  value: 50,
-                  unit: "%",
-                  maxValue: 100,
-                }}
+                text="SOC"
+                value={50}
+                unit="%"
+                maxValue={100}
                 lightText={true}
               />
             </GridLayout>
             <GridLayout size={2} bkg="#D9D9D9">
               <NumberContainer
-                parameterOne={{
-                  text: "SOC",
-                  value: 97,
-                  unit: "%",
-                  maxValue: 100,
-                }}
+                text="SOC"
+                value={97}
+                unit="%"
+                maxValue={100}
                 lightText={false}
               />
             </GridLayout>
             <GridLayout size={2} bkg="#706B6B">
               <NumberContainer
-                parameterOne={{
-                  text: "SOC",
-                  value: 50,
-                  unit: "%",
-                  maxValue: 100,
-                }}
+                text="SOC"
+                value={50}
+                unit="%"
+                maxValue={100}
                 lightText={true}
               />
             </GridLayout>
-            <GridLayout size={2} bkg="#706B6B">
+            <GridLayout size={2} bkg="#D9D9D9">
               <NumberContainer
-                parameterOne={{
-                  text: "Motor Temp",
-                  value: 25,
-                  unit: "C",
-                  maxValue: 80,
-                }}
+                text="Motor Temp"
+                value={25}
+                unit="C"
+                maxValue={80}
                 lightText={true}
               />
             </GridLayout>
           </div>
           <div className="dashboard-row">
             <GridLayout size={2} bkg="#706B6B">
-              <NumberContainer
-                parameterOne={{
-                  text: "SOC",
-                  value: 50,
-                  unit: "%",
-                  maxValue: 100,
-                }}
+              <DialContainer
+                textValue="Actual State of Charge (SOC)"
+                currentValue={78}
+                maxValue={100}
+                unit="%"
                 lightText={true}
               />
             </GridLayout>
@@ -135,17 +121,15 @@ const Data: React.FC = () => {
                 currentValue={0.15}
                 maxValue={1}
                 unit="%"
+                lightText={true}
               />
             </GridLayout>
             <GridLayout size={2} bkg="#D9D9D9">
-              <NumberContainer
-                parameterOne={{
-                  text: "SOC",
-                  value: 15,
-                  unit: "%",
-                  maxValue: 100,
-                }}
-                lightText={false}
+              <DialContainer
+                textValue="Actual State of Charge (SOC)"
+                currentValue={15}
+                maxValue={100}
+                unit="%"
               />
             </GridLayout>
             <GridLayout size={3} bkg="#706B6B">
@@ -154,6 +138,7 @@ const Data: React.FC = () => {
                 currentValue={0.75}
                 maxValue={1}
                 unit="%"
+                lightText={true}
               />
             </GridLayout>
           </div>
