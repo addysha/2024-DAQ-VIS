@@ -1,5 +1,5 @@
 import React, { ReactNode, useMemo } from "react";
-import "./GridLayout.css";
+import "./GridContainer.css";
 
 interface Props {
   size?: number;
@@ -7,7 +7,7 @@ interface Props {
   children?: ReactNode;
 }
 
-const GridLayout: React.FC<Props> = ({
+const GridContainer: React.FC<Props> = ({
   size = 1,
   bkg = "#ffffff",
   children,
@@ -30,4 +30,4 @@ const GridLayout: React.FC<Props> = ({
   );
 };
 
-export default GridLayout;
+export default GridContainer;

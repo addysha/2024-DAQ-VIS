@@ -1,8 +1,8 @@
 // Filename - App.js
 
-import React from "react";
-import "./App.css";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.css";
 import Home from "./pages/index.tsx";
 import Contact from "./pages/contact.tsx";
 import About from "./pages/about.tsx";
