@@ -7,6 +7,7 @@ interface Props {
   maxValue: number;
   unit?: string;
   lightText?: boolean;
+  highGood?: boolean;
 }
 
 const ProgressDial: React.FC<Props> = ({
@@ -15,6 +16,7 @@ const ProgressDial: React.FC<Props> = ({
   maxValue = 100,
   unit,
   lightText = false,
+  highGood = false,
 }) => {
   const size = 150;
   const radius = (size - 18) / 2;
@@ -22,16 +24,27 @@ const ProgressDial: React.FC<Props> = ({
 
   const setColour = useMemo(() => {
     let colour: string = "";
-    const progressPercent = (currentValue / maxValue) * 100;
 
-    if (progressPercent >= 66) {
-      colour = "#4da14b";
-    } else if (progressPercent >= 33) {
-      colour = "#eac054";
+    if (highGood) {
+      if (currentValue >= (maxValue * 2) / 3) {
+        colour = "#4da14b";
+      } else if (currentValue >= (maxValue * 1) / 3) {
+        colour = "#eac054";
+      } else {
+        colour = "#af1317";
+      }
+      return colour;
     } else {
-      colour = "#af1317";
+      if (currentValue <= (maxValue * 1) / 3) {
+        colour = "#4da14b";
+      } else if (currentValue <= (maxValue * 2) / 3) {
+        colour = "#eac054";
+      } else {
+        console.log(textValue, currentValue);
+        colour = "#af1317";
+      }
+      return colour;
     }
-    return colour;
   }, [currentValue, maxValue]);
 
   const offset = useMemo(() => {

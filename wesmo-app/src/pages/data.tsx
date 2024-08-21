@@ -1,46 +1,60 @@
 // Filename - pages/race-data.tsx
 import React, { useEffect, useState } from "react";
 import "../App.css";
-import { io } from "socket.io-client";
+import { io, Socket } from "socket.io-client";
 
 import BurgerMenu from "../components/BurgerMenu.tsx";
 import Logo from "../components/Logo.tsx";
 import DefaultGrid from "../components/dashboard/DefaultGrid.tsx";
 import Spinner from "../components/dashboard/Spinner.tsx";
 
+export interface DataItem {
+  name: string;
+  value: number | string;
+  min: number | string;
+  max: number | string;
+  unit: string;
+}
+
 const Data: React.FC = () => {
-  const [data, setData] = useState({});
+  const [data, setData] = useState<DataItem[] | undefined>(undefined);
   const [loaded, setLoaded] = useState(false);
+  const [socketInstance, setSocketInstance] = useState<Socket | undefined>(
+    undefined
+  );
 
   useEffect(() => {
-    // const URL = process.env.NODE_ENV === 'production' ? undefined : 'http://localhost:4000';
+    if (!socketInstance) {
+      // const URL = process.env.NODE_ENV === 'production' ? undefined : 'http://127.0.0.1:5000';
 
-    const socket = io("http://127.0.0.1:5000/", {
-      transports: ["websocket"],
-    });
+      const socket = io("http://127.0.0.1:5000/", {
+        transports: ["websocket"],
+      });
+      setSocketInstance(socket);
 
-    socket.on("connect", () => {
-      console.log(`Connected with id: ${socket.id}`);
-    });
+      socket.on("connect", () => {
+        console.log(`Connected with id: ${socket.id}`);
+      });
 
-    socket.on("disconnect", () => {
-      console.log(`Disconnected with id: ${socket.id}`);
-    });
+      socket.on("disconnect", () => {
+        console.log(`Disconnected with id: ${socket.id}`);
+      });
 
-    socket.on("test_data", (receivedData) => {
-      setData(receivedData);
-    });
+      socket.on("data", (receivedData) => {
+        if (data !== receivedData) {
+          setData(receivedData);
+        }
+      });
 
-    setLoaded(true);
+      setLoaded(true);
 
-    socket.emit("register_for_data");
-    const element = document.getElementById("test_id");
-    if (element) {
-      element.innerHTML = data.SOC;
+      // Take out when set up dummy data
+      socket.emit("testing");
     }
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [socketInstance]);
 
-  if (!loaded) {
+  if (!data || !loaded) {
     return (
       <div className="App">
         <link
@@ -81,18 +95,7 @@ const Data: React.FC = () => {
               <div className="nav-right"></div>
             </div>
           </div>
-          <p>
-            <strong id="test_id" style={{ color: "black" }}>
-              SOC: {`${data.SOC}`}
-            </strong>
-          </p>
-          <p>
-            <strong style={{ color: "black" }}>Temp: {`${data.Temp}`}</strong>
-          </p>
-          <p>
-            <strong style={{ color: "black" }}>RPM: {`${data.RPM}`}</strong>
-          </p>
-          <DefaultGrid />
+          <DefaultGrid data={data} />
         </div>
       </div>
     );

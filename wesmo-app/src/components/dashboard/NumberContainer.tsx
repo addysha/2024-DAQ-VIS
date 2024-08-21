@@ -14,7 +14,7 @@ const NumberContainer: React.FC<Props> = ({
   value,
   unit,
   maxValue,
-  lightText = false,
+  lightText,
 }) => {
   const setColour = useMemo(() => {
     let colour: string = "";

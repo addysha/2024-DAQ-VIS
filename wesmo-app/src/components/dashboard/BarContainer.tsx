@@ -5,6 +5,7 @@ interface Props {
   textValue: string;
   currentValue: number;
   maxValue: number;
+  minValue?: number;
   unit?: string;
   lightText?: boolean;
 }
@@ -13,35 +14,42 @@ const BarContainer: React.FC<Props> = ({
   textValue,
   currentValue,
   maxValue,
+  minValue,
   unit,
   lightText,
 }) => {
-  const setProgress = useMemo(() => {
+  if (minValue) {
+    maxValue = maxValue - minValue;
+    currentValue = currentValue - minValue;
+  }
+  const setPercent = useMemo(() => {
     return Math.round((currentValue / maxValue) * 100);
   }, [currentValue, maxValue]);
 
   const setColour = useMemo(() => {
     let colour: string = "";
-    if (setProgress >= maxValue * 100 * (2 / 3)) {
+    if (currentValue >= maxValue * (2 / 3)) {
       colour = "#4da14b";
-    } else if (setProgress >= maxValue * 100 * (1 / 3)) {
+    } else if (currentValue >= maxValue * (1 / 3)) {
       colour = "#eac054";
     } else {
       colour = "#af1317";
     }
     return colour;
-  }, [maxValue, setProgress]);
+  }, [maxValue, currentValue]);
 
   const setBarStyle = useMemo(() => {
     const barStyle: CSSProperties = {
-      width: `${setProgress}%`,
+      width: `${setPercent}%`,
       backgroundColor: setColour,
     };
     return barStyle;
-  }, [setProgress, setColour]);
+  }, [setPercent, setColour]);
 
   const computedTextColourClass = lightText ? "text--light" : "text--dark";
-
+  if (minValue) {
+    currentValue = currentValue + minValue;
+  }
   return (
     <div className="bar_parent">
       <div>
@@ -53,7 +61,7 @@ const BarContainer: React.FC<Props> = ({
         <span style={setBarStyle}></span>
       </div>
       <p className={`bar_text-value ${computedTextColourClass}`}>
-        {setProgress}
+        {currentValue}
         <span>{unit}</span>
       </p>
     </div>
