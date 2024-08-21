@@ -39,6 +39,11 @@ def generate_data():
         },
         {"name": "Battery Voltage", "value": 286, "min": 216, "max": 300, "unit": "V"},
         {"name": "Battery Current", "value": 263, "min": 0, "max": 300, "unit": "A"},
+        {"name": "Suspension Travel", "value": 45, "min": 0, "max": 78, "unit": "mm"},
+        {"name": "Pedal Angle 1", "value": 49, "min": 0, "max": 100, "unit": "%"},
+        {"name": "Pedal Angle 2", "value": 21, "min": 0, "max": 100, "unit": "%"},
+        {"name": "Track Time", "value": 234, "min": 0, "max": 0, "unit": "s"},
+        {"name": "Wheel Speed", "value": 2897, "min": 0, "max": 10000, "unit": "RPM"},
     ]
 
     return data
@@ -62,13 +67,13 @@ def handle_request():
 @socketio.on("connect")
 def handle_connect():
     pass
-    # print(f"User connected!")
+    print(f"User connected!")
 
 
 @socketio.on("disconnect")
 def handle_disconnect():
     pass
-    # print(f"User disconnected!")
+    print(f"User disconnected!")
 
 
 if __name__ == "__main__":

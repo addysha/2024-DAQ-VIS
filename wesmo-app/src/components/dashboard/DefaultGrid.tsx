@@ -5,9 +5,10 @@ import GridContainer from "../../components/dashboard/GridContainer.tsx";
 import NumberContainer from "../../components/dashboard/NumberContainer.tsx";
 import BarContainer from "../../components/dashboard/BarContainer.tsx";
 import StatusBar from "../../components/dashboard/StatusBar.tsx";
-import DialContainer from "../../components/dashboard/FullDialContainer.tsx";
+import DialContainer from "./DialContainer.tsx";
 import StatusContainer from "../../components/dashboard/StatusContainer.tsx";
 import { DataItem } from "../../pages/data.tsx";
+import DoubleNumberContainer from "./DoubleNumberContainer.tsx";
 
 interface Props {
   data: DataItem[];
@@ -22,6 +23,13 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
   const batteryVoltage = data.find((item) => item.name === "Battery Voltage");
   const batteryCurrent = data.find((item) => item.name === "Battery Current");
   const batteryTemp = data.find((item) => item.name === "Battery Temperature");
+  const suspensionTravel = data.find(
+    (item) => item.name === "Suspension Travel"
+  );
+  const pedalAngle1 = data.find((item) => item.name === "Pedal Angle 1");
+  const pedalAngle2 = data.find((item) => item.name === "Pedal Angle 2");
+  const wheelSpeed = data.find((item) => item.name === "Wheel Speed");
+  const trackTime = data.find((item) => item.name === "Track Time");
 
   return (
     <div className="dashboard">
@@ -84,13 +92,45 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
             unit={batteryCurrent?.unit ?? "V"}
           />
         </GridContainer>
-        <GridContainer size={2} bkg="#706B6B"></GridContainer>
-        <GridContainer size={3} bkg="#D9D9D9"></GridContainer>
+        <GridContainer size={2} bkg="#706B6B">
+          {/* Suspension Travel */}
+          <BarContainer
+            textValue={suspensionTravel?.name ?? "Suspension Travel"}
+            currentValue={+(suspensionTravel?.value ?? 0)}
+            maxValue={+(suspensionTravel?.max ?? 0)}
+            unit={suspensionTravel?.unit ?? "mm"}
+            lightText={true}
+          />
+        </GridContainer>
+        <GridContainer size={3} bkg="#D9D9D9">
+          {/* Pedal Angles */}
+          <DoubleNumberContainer
+            parameter1={pedalAngle1 ?? null}
+            parameter2={pedalAngle2 ?? null}
+          />
+        </GridContainer>
       </div>
       <div className="dashboard-row">
-        <GridContainer size={2} bkg="#706B6B"></GridContainer>
+        <GridContainer size={2} bkg="#706B6B">
+          {/* Wheel Speed */}
+          <NumberContainer
+            text={wheelSpeed?.name ?? "Wheel Speed"}
+            value={+(wheelSpeed?.value ?? 0)}
+            maxValue={+(wheelSpeed?.max ?? 0)}
+            unit={wheelSpeed?.unit ?? "RPM"}
+            lightText={true}
+          />
+        </GridContainer>
         <GridContainer size={3} bkg="#706B6B"></GridContainer>
-        <GridContainer size={2} bkg="#D9D9D9"></GridContainer>
+        <GridContainer size={2} bkg="#D9D9D9">
+          {/* Track Time */}
+          <NumberContainer
+            text={trackTime?.name ?? "Track Time"}
+            value={+(trackTime?.value ?? 0)}
+            maxValue={+(trackTime?.max ?? 0)}
+            unit={trackTime?.unit ?? "s"}
+          />
+        </GridContainer>
         <GridContainer size={2} bkg="#706B6B"></GridContainer>
       </div>
     </div>

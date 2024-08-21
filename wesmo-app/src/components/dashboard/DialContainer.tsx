@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import "./FullDialContainer.css";
+import "./DialContainer.css";
 
 interface Props {
   textValue: string;
