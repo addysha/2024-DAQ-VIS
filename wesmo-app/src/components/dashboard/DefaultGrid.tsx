@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "../../App.css";
 
 import GridContainer from "../../components/dashboard/GridContainer.tsx";
@@ -6,7 +6,7 @@ import NumberContainer from "../../components/dashboard/NumberContainer.tsx";
 import BarContainer from "../../components/dashboard/BarContainer.tsx";
 import StatusBar from "../../components/dashboard/StatusBar.tsx";
 import DialContainer from "./DialContainer.tsx";
-import StatusContainer from "../../components/dashboard/StatusContainer.tsx";
+// import StatusContainer from "../../components/dashboard/StatusContainer.tsx";
 import { DataItem } from "../../pages/data.tsx";
 import DoubleNumberContainer from "./DoubleNumberContainer.tsx";
 
@@ -127,7 +127,6 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
           <NumberContainer
             text={trackTime?.name ?? "Track Time"}
             value={+(trackTime?.value ?? 0)}
-            maxValue={+(trackTime?.max ?? 0)}
             unit={trackTime?.unit ?? "s"}
           />
         </GridContainer>

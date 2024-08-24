@@ -1,7 +1,7 @@
 from flask import Flask, request
-from flask_socketio import SocketIO, send, emit, disconnect
-import random
+from flask_socketio import SocketIO
 import time
+from dummy_data import DummySensorData
 
 
 app = Flask(__name__)
@@ -13,50 +13,55 @@ def index():
     return "Flask server is running."
 
 
-def generate_data():
-    data = [
-        {
-            "name": "Motor Temperature",
-            "value": 82,
-            "min": 0,
-            "max": 100,
-            "unit": "C",
-        },
-        {"name": "Motor Speed", "value": 3654, "min": 1500, "max": 4700, "unit": "RPM"},
-        {
-            "name": "Battery Temperature",
-            "value": 37,
-            "min": 0,
-            "max": 60,
-            "unit": "C",
-        },
-        {
-            "name": "Battery State of Charge",
-            "value": 80,
-            "min": 0,
-            "max": 100,
-            "unit": "%",
-        },
-        {"name": "Battery Voltage", "value": 286, "min": 216, "max": 300, "unit": "V"},
-        {"name": "Battery Current", "value": 263, "min": 0, "max": 300, "unit": "A"},
-        {"name": "Suspension Travel", "value": 45, "min": 0, "max": 78, "unit": "mm"},
-        {"name": "Pedal Angle 1", "value": 49, "min": 0, "max": 100, "unit": "%"},
-        {"name": "Pedal Angle 2", "value": 21, "min": 0, "max": 100, "unit": "%"},
-        {"name": "Track Time", "value": 234, "min": 0, "max": 0, "unit": "s"},
-        {"name": "Wheel Speed", "value": 2897, "min": 0, "max": 10000, "unit": "RPM"},
+def create_data():
+    motor_temp = DummySensorData("Motor Temperature", 60, 0, 100, "C")
+    battery_temp = DummySensorData("Battery Temperature", 47, 0, 60, "C")
+    motor_speed = DummySensorData("Motor Speed", 3654, 1500, 4700, "RPM")
+    battery_soc = DummySensorData("Battery State of Charge", 90, 0, 100, "%")
+    battery_voltage = DummySensorData("Battery Voltage", 286, 216, 300, "V")
+    battery_current = DummySensorData("Battery Current", 269, 0, 300, "A")
+    suspension_travel = DummySensorData("Suspension Travel", 48, 0, 78, "mm")
+    pedal_angle_1 = DummySensorData("Pedal Angle 1", 50, 0, 100, "%")
+    pedal_angle_2 = DummySensorData("Pedal Angle 2", 47, 0, 100, "%")
+    track_time = DummySensorData("Track Time", 0, 0, 1000, "s")
+    wheel_speed = DummySensorData("Wheel Speed", 2245, 0, 10000, "RPM")
+
+    return [
+        motor_temp,
+        battery_temp,
+        motor_speed,
+        battery_soc,
+        battery_voltage,
+        battery_current,
+        suspension_travel,
+        pedal_angle_1,
+        pedal_angle_2,
+        track_time,
+        wheel_speed,
     ]
 
-    return data
 
-
-registered_clients = []
+def generate_data(sensors):
+    sensors[0].update_value_step(step=1)  # motor_temp
+    sensors[1].update_value_step(step=3)  # battery_temp
+    sensors[2].update_value_step(step=20)  # motor_speed
+    sensors[3].update_value_decreasing(step=5)  # battery_soc
+    sensors[4].update_value_step(step=5)  # battery_voltage
+    sensors[5].update_value_step(step=5)  # battery_current
+    sensors[6].update_value_step(step=3)  # suspension_travel
+    sensors[7].update_value_step(step=7)  # pedal_angle_1
+    sensors[8].update_value_step(step=7)  # pedal_angle_2
+    sensors[9].update_value_increasing(step=1)  # track_time
+    sensors[10].update_value_step(step=150)  # wheel_speed
 
 
 @socketio.on("testing")
 def handle_register():
+    sensors = create_data()
     while True:
-        socketio.emit("data", generate_data(), to=request.sid)
-        time.sleep(5)
+        generate_data(sensors)
+        socketio.emit("data", [sensor.to_dict() for sensor in sensors], to=request.sid)
+        time.sleep(1)
 
 
 @socketio.on("update_clients")
@@ -77,5 +82,4 @@ def handle_disconnect():
 
 
 if __name__ == "__main__":
-
     socketio.run(app, debug=True, port=5000)
