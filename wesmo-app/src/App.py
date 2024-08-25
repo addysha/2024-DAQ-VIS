@@ -25,7 +25,7 @@ def create_data():
     pedal_angle_2 = DummySensorData("Pedal Angle 2", 47, 0, 100, "%")
     track_time = DummySensorData("Track Time", 0, 0, 1000, "s")
     wheel_speed = DummySensorData("Wheel Speed", 2245, 0, 10000, "RPM")
-    warnings = DummySensorData("Warning", 0, 0, 1, "")
+    warnings = DummySensorData("Warnings", 0, 0, 4, "System Faults")
     gear = DummySensorData("Gear", 1, 0, 1, "")
 
     return [
@@ -57,7 +57,7 @@ def generate_data(sensors):
     sensors[8].update_value_step(step=7)  # pedal_angle_2
     sensors[9].update_value_increasing(step=1)  # track_time
     sensors[10].update_value_step(step=150)  # wheel_speed
-    sensors[11].update_value_boolean()  # warnings
+    sensors[11].update_fault_data()  # warnings
     sensors[12].update_value_boolean()  # gear
 
 

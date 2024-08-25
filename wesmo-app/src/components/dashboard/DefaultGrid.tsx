@@ -6,7 +6,7 @@ import NumberContainer from "../../components/dashboard/NumberContainer.tsx";
 import BarContainer from "../../components/dashboard/BarContainer.tsx";
 import StatusBar from "../../components/dashboard/StatusBar.tsx";
 import DialContainer from "./DialContainer.tsx";
-// import StatusContainer from "../../components/dashboard/StatusContainer.tsx";
+import StatusContainer from "../../components/dashboard/StatusContainer.tsx";
 import { DataItem } from "../../pages/data.tsx";
 import DoubleNumberContainer from "./DoubleNumberContainer.tsx";
 
@@ -30,6 +30,7 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
   const pedalAngle2 = data.find((item) => item.name === "Pedal Angle 2");
   const wheelSpeed = data.find((item) => item.name === "Wheel Speed");
   const trackTime = data.find((item) => item.name === "Track Time");
+  const warnings = data.find((item) => item.name === "Warnings");
 
   return (
     <div className="dashboard">
@@ -130,7 +131,13 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
             unit={trackTime?.unit ?? "s"}
           />
         </GridContainer>
-        <GridContainer size={2} bkg="#706B6B"></GridContainer>
+        <GridContainer size={2} bkg="#D9D9D9">
+          {/* Warnings */}
+          <StatusContainer
+            textValue={warnings?.name ?? "Warnings"}
+            stateValue={+(warnings?.value ?? 0)}
+          />
+        </GridContainer>
       </div>
     </div>
   );

@@ -4,6 +4,8 @@ import "./StatusContainer.css";
 const iconClasses = {
   1: "fa-solid fa-circle-check status__icon",
   2: "fa-solid fa-triangle-exclamation status__icon",
+  3: "fa-solid fa-triangle-exclamation status__icon",
+  4: "fa-solid fa-triangle-exclamation status__icon",
 };
 
 const colors = {
@@ -13,27 +15,34 @@ const colors = {
   4: "#3274B1",
 };
 
+const types = {
+  1: "No Issue",
+  2: "Mechanical Fault",
+  3: "Electrical Fault",
+  4: "Unknown Issue",
+};
+
 interface Props {
   textValue: string;
-  statusValue: string;
   stateValue: number;
   lightText?: boolean;
 }
 
 const StatusContainer: React.FC<Props> = ({
   textValue = "",
-  statusValue = "",
   stateValue = 0,
   lightText = false,
 }) => {
   const iconClass = iconClasses[stateValue] || iconClasses[1];
   const iconColor = colors[stateValue] || "#4da14b";
+  const statusValue = types[stateValue] || types[1];
 
   const iconStyle = {
     color: iconColor,
     fontSize: "65px",
   };
 
+  console.log(stateValue);
   const computedTextColourClass = lightText ? "text--light" : "text--dark";
 
   return (

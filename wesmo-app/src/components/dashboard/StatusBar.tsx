@@ -10,7 +10,7 @@ const StatusBar: React.FC<Props> = ({ data }) => {
   const batteryCharge = data.find(
     (item) => item.name === "Battery State of Charge"
   );
-  const warnings = data.find((item) => item.name === "Warning");
+  const warnings = data.find((item) => item.name === "Warnings");
   const gear = data.find((item) => item.name === "Gear");
 
   const setWarning = useMemo(() => {
@@ -18,11 +18,14 @@ const StatusBar: React.FC<Props> = ({ data }) => {
     let mech_fault: string = "";
     if (warnings) {
       if (warnings?.value === 1) {
-        mech_fault = "warning";
-        RTD = "critical";
-      } else {
-        mech_fault = "off";
         RTD = "good";
+        mech_fault = "off";
+      } else if (warnings?.value === 2) {
+        mech_fault = "warning";
+        RTD = "off";
+      } else {
+        RTD = "critical";
+        mech_fault = "warning";
       }
     }
     return [RTD, mech_fault];

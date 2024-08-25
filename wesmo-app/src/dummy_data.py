@@ -26,6 +26,9 @@ class DummySensorData:
     def update_value_boolean(self):
         self.value = generate_boolean_data(self.value)
 
+    def update_fault_data(self):
+        self.value = generate_fault_data(self.value, self.max_value)
+
     def to_dict(self):
         return {
             "name": self.name,
@@ -58,3 +61,11 @@ def generate_boolean_data(prev):
         return 1
     else:
         return 0
+
+
+def generate_fault_data(prev, max_value):
+    probability = random.randint(0, 9)
+    if probability is 0:
+        return random.randint(0, max_value)
+    else:
+        return prev
