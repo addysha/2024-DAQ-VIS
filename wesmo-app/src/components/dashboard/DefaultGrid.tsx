@@ -33,7 +33,7 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
 
   return (
     <div className="dashboard">
-      <StatusBar />
+      <StatusBar data={data} />
       <div className="dashboard-row">
         <GridContainer size={3} bkg="#706B6B">
           {/* Battery State of Charge */}

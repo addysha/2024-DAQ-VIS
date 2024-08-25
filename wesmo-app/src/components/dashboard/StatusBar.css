@@ -40,28 +40,17 @@
     font-size: 30px !important;
     margin-right: 10px;
 
-    &.range {
-      &.good {
-        color: #4da14b;
-      }
-      &.warning {
-        color: #eac054;
-      }
-      &.critical {
-        color: #af1317;
-      }
+    &.good {
+      color: #4da14b;
     }
-
-    &.binary {
-      &.good {
-        color: #d9d9d9;
-      }
-      &.warning {
-        color: #eac054;
-      }
-      &.critical {
-        color: #af1317;
-      }
+    &.warning {
+      color: #eac054;
+    }
+    &.critical {
+      color: #af1317;
+    }
+    &.none {
+      color: #d9d9d9;
     }
   }
 }

@@ -40,7 +40,6 @@ const ProgressDial: React.FC<Props> = ({
       } else if (currentValue <= (maxValue * 2) / 3) {
         colour = "#eac054";
       } else {
-        console.log(textValue, currentValue);
         colour = "#af1317";
       }
       return colour;

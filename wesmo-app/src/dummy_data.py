@@ -23,6 +23,9 @@ class DummySensorData:
     def update_value_increasing(self, step):
         self.value = generate_increasing_data(self.value, self.max_value, step)
 
+    def update_value_boolean(self):
+        self.value = generate_boolean_data(self.value)
+
     def to_dict(self):
         return {
             "name": self.name,
@@ -47,3 +50,11 @@ def generate_decreasing_data(prev, min_value, step):
 
 def generate_increasing_data(prev, max_value, step):
     return min(max_value, prev + random.randint(0, step))
+
+
+def generate_boolean_data(prev):
+    probability = random.randint(0, 9)
+    if probability is 5:
+        return 1
+    else:
+        return 0
