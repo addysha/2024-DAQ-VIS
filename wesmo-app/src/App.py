@@ -27,6 +27,12 @@ def create_data():
     wheel_speed = DummySensorData("Wheel Speed", 2245, 0, 10000, "RPM")
     warnings = DummySensorData("Warnings", 0, 0, 4, "System Faults")
     gear = DummySensorData("Gear", 1, 0, 1, "")
+    break_pressure_front = DummySensorData(
+        "Break Pressure Front", 6000, -100, 8000, "kPa"
+    )
+    break_pressure_rear = DummySensorData(
+        "Break Pressure Rear", 5189, -100, 8000, "kPa"
+    )
 
     return [
         motor_temp,
@@ -42,6 +48,8 @@ def create_data():
         wheel_speed,
         warnings,
         gear,
+        break_pressure_front,
+        break_pressure_rear,
     ]
 
 
@@ -59,6 +67,8 @@ def generate_data(sensors):
     sensors[10].update_value_step(step=150)  # wheel_speed
     sensors[11].update_fault_data()  # warnings
     sensors[12].update_value_boolean()  # gear
+    sensors[13].update_value_step(step=100)  # break_pressure_front
+    sensors[14].update_value_step(step=100)  # break_pressure_rear
 
 
 @socketio.on("testing")

@@ -32,6 +32,9 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
   const trackTime = data.find((item) => item.name === "Track Time");
   const warnings = data.find((item) => item.name === "Warnings");
 
+  const front_bp = data.find((item) => item.name === "Break Pressure Front");
+  const rear_pb = data.find((item) => item.name === "Break Pressure Rear");
+
   return (
     <div className="dashboard">
       <StatusBar data={data} />
@@ -122,7 +125,14 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
             lightText={true}
           />
         </GridContainer>
-        <GridContainer size={3} bkg="#706B6B"></GridContainer>
+        <GridContainer size={3} bkg="#706B6B">
+          {/* Break Pressures */}
+          <DoubleNumberContainer
+            parameter1={front_bp ?? null}
+            parameter2={rear_pb ?? null}
+            lightText={true}
+          />
+        </GridContainer>
         <GridContainer size={2} bkg="#D9D9D9">
           {/* Track Time */}
           <NumberContainer
