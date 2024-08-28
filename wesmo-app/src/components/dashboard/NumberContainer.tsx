@@ -6,16 +6,9 @@ interface Props {
   value: number;
   unit?: string;
   maxValue?: number;
-  lightText?: boolean;
 }
 
-const NumberContainer: React.FC<Props> = ({
-  text,
-  value,
-  unit,
-  maxValue,
-  lightText,
-}) => {
+const NumberContainer: React.FC<Props> = ({ text, value, unit, maxValue }) => {
   const setColour = useMemo(() => {
     let colour: string = "";
     if (maxValue) {
@@ -39,18 +32,11 @@ const NumberContainer: React.FC<Props> = ({
     return barStyle;
   }, [setColour]);
 
-  const computedTextColourClass =
-    setColour === "#eac054"
-      ? "text--dark"
-      : lightText
-      ? "text--light"
-      : "text--dark";
-
   return (
     <div className="number__container">
-      <p className={`number__text-label ${computedTextColourClass}`}>{text}</p>
+      <p className="number__text-label">{text}</p>
       <div className="number_value_colour" style={setBarStyle}>
-        <p className={`number__text-value ${computedTextColourClass}`}>
+        <p className="number__text-value">
           {value}
           <span>{unit}</span>
         </p>

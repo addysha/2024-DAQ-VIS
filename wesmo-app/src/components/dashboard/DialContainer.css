@@ -26,22 +26,10 @@
 
 .progress-dial-text {
   font-size: 2rem;
-
-  &.text--light {
-    fill: white;
-  }
-  &.text--dark {
-    fill: black;
-  }
+  fill: white;
 }
 
 .dial_text-label {
   font-size: 1rem;
-
-  &.text--light {
-    color: white;
-  }
-  &.text--dark {
-    color: black;
-  }
+  color: white;
 }

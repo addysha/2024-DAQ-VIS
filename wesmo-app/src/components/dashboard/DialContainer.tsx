@@ -6,7 +6,6 @@ interface Props {
   currentValue: number;
   maxValue: number;
   unit?: string;
-  lightText?: boolean;
   highGood?: boolean;
 }
 
@@ -15,7 +14,6 @@ const ProgressDial: React.FC<Props> = ({
   currentValue = 0,
   maxValue = 100,
   unit,
-  lightText = false,
   highGood = false,
 }) => {
   const size = 150;
@@ -50,13 +48,9 @@ const ProgressDial: React.FC<Props> = ({
     return circumference - (currentValue / maxValue) * circumference;
   }, [currentValue, maxValue, circumference]);
 
-  const computedTextColourClass = lightText ? "text--light" : "text--dark";
-
   return (
     <div className="progress-dial-wrapper">
-      <p className={`dial_text-label ${computedTextColourClass}`}>
-        {textValue}
-      </p>
+      <p className="dial_text-label">{textValue}</p>
       <div className="progress-dial-container">
         <div>
           <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
@@ -83,7 +77,7 @@ const ProgressDial: React.FC<Props> = ({
               y="50%"
               dominantBaseline="middle"
               textAnchor="middle"
-              className={`progress-dial-text ${computedTextColourClass}`}
+              className="progress-dial-text"
             >
               {currentValue}
               {`${unit}`}

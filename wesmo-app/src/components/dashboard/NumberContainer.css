@@ -15,12 +15,7 @@
   text-align: center;
   width: 100%;
   height: 100%;
-}
-.text--light {
   color: #ffffff;
-}
-.text--dark {
-  color: #000000;
 }
 .number_value_colour {
   background-color: #4da14b;

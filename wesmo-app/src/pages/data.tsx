@@ -72,7 +72,7 @@ const Data: React.FC = () => {
             </div>
           </div>
           <div className="loading">
-            <p>Waiting for WebSocket connection...</p>
+            <p>Waiting for connection...</p>
           </div>
           <Spinner />
         </div>

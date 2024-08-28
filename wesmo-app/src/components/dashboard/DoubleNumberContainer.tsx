@@ -5,7 +5,6 @@ import { DataItem } from "../../pages/data.tsx";
 interface Props {
   parameter1: DataItem | null;
   parameter2: DataItem | null;
-  lightText?: boolean;
 }
 
 function getColour(maxValue, value): string {
@@ -25,11 +24,7 @@ function getColour(maxValue, value): string {
   return colour;
 }
 
-const DoubleNumberContainer: React.FC<Props> = ({
-  parameter1,
-  parameter2,
-  lightText,
-}) => {
+const DoubleNumberContainer: React.FC<Props> = ({ parameter1, parameter2 }) => {
   const setColour1 = getColour(parameter1.max, parameter1.value);
   const setColour2 = getColour(parameter2.max, parameter2.value);
 
@@ -47,40 +42,22 @@ const DoubleNumberContainer: React.FC<Props> = ({
     return barStyle;
   }, [setColour2]);
 
-  const computedTextColourClass1 =
-    setColour1 === "#eac054"
-      ? "text--dark"
-      : lightText
-      ? "text--light"
-      : "text--dark";
-
-  const computedTextColourClass2 =
-    setColour2 === "#eac054"
-      ? "text--dark"
-      : lightText
-      ? "text--light"
-      : "text--dark";
-
   return (
     <div className="number__container">
       <div className="parameter">
         <div>
-          <p className={`number__text-label ${computedTextColourClass1}`}>
-            {parameter1.name}
-          </p>
+          <p className="number__text-label">{parameter1.name}</p>
           <div className="number_value_colour" style={setBarStyle1}>
-            <p className={`number__text-value ${computedTextColourClass1}`}>
+            <p className="number__text-value">
               {parameter1.value}
               <span>{parameter1.unit}</span>
             </p>
           </div>
         </div>
         <div>
-          <p className={`number__text-label ${computedTextColourClass2}`}>
-            {parameter2.name}
-          </p>
+          <p className="number__text-label">{parameter2.name}</p>
           <div className="number_value_colour" style={setBarStyle2}>
-            <p className={`number__text-value ${computedTextColourClass2}`}>
+            <p className="number__text-value">
               {parameter2.value}
               <span>{parameter2.unit}</span>
             </p>

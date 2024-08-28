@@ -7,7 +7,6 @@ interface Props {
   maxValue: number;
   minValue?: number;
   unit?: string;
-  lightText?: boolean;
 }
 
 const BarContainer: React.FC<Props> = ({
@@ -16,7 +15,6 @@ const BarContainer: React.FC<Props> = ({
   maxValue,
   minValue,
   unit,
-  lightText,
 }) => {
   if (minValue) {
     maxValue = maxValue - minValue;
@@ -46,21 +44,18 @@ const BarContainer: React.FC<Props> = ({
     return barStyle;
   }, [setPercent, setColour]);
 
-  const computedTextColourClass = lightText ? "text--light" : "text--dark";
   if (minValue) {
     currentValue = currentValue + minValue;
   }
   return (
     <div className="bar_parent">
       <div>
-        <p className={`bar_text-label ${computedTextColourClass}`}>
-          {textValue}
-        </p>
+        <p className="bar_text-label">{textValue}</p>
       </div>
       <div className="bar_container">
         <span style={setBarStyle}></span>
       </div>
-      <p className={`bar_text-value ${computedTextColourClass}`}>
+      <p className="bar_text-value">
         {currentValue}
         <span>{unit}</span>
       </p>

@@ -7,13 +7,7 @@ interface Props {
   children?: ReactNode;
 }
 
-const GridContainer: React.FC<Props> = ({
-  size = 1,
-  bkg = "#ffffff",
-  children,
-}) => {
-  const containerClass = "complication__container";
-
+const GridContainer: React.FC<Props> = ({ size = 1, children }) => {
   const setGridState = useMemo(() => {
     if (size === 2) return "medium-grid-size";
     if (size === 3) return "large-grid-size";
@@ -21,12 +15,7 @@ const GridContainer: React.FC<Props> = ({
   }, [size]);
 
   return (
-    <div
-      className={`${containerClass} ${setGridState}`}
-      style={{ backgroundColor: bkg }}
-    >
-      {children}
-    </div>
+    <div className={`complication__container ${setGridState}`}>{children}</div>
   );
 };
 
