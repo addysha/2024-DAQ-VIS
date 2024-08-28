@@ -16,7 +16,7 @@ const ProgressDial: React.FC<Props> = ({
   unit,
   highGood = false,
 }) => {
-  const size = 150;
+  const size = 120;
   const radius = (size - 18) / 2;
   const circumference = 2 * Math.PI * radius;
 
@@ -42,7 +42,7 @@ const ProgressDial: React.FC<Props> = ({
       }
       return colour;
     }
-  }, [currentValue, maxValue]);
+  }, [currentValue, highGood, maxValue]);
 
   const offset = useMemo(() => {
     return circumference - (currentValue / maxValue) * circumference;
@@ -59,7 +59,7 @@ const ProgressDial: React.FC<Props> = ({
               cx={size / 2}
               cy={size / 2}
               r={radius}
-              strokeWidth={18}
+              strokeWidth={14}
             />
             <circle
               className="progress-dial-foreground"
@@ -67,7 +67,7 @@ const ProgressDial: React.FC<Props> = ({
               cy={size / 2}
               r={radius}
               stroke={setColour}
-              strokeWidth={18}
+              strokeWidth={14}
               strokeDasharray={circumference}
               strokeDashoffset={offset}
               transform={`rotate(-90 ${size / 2} ${size / 2})`}

@@ -8,12 +8,15 @@
   background-color: #706b6b;
 
   &.medium-grid-size {
-    min-width: 200px;
+    min-width: 170px;
+    min-height: 170px;
+    max-height: 170px;
   }
 
   &.large-grid-size {
-    max-width: 430px;
-    min-width: 400px;
+    max-width: 400px;
+    min-width: 370px;
+    max-height: 170px;
   }
 }
 

@@ -39,7 +39,7 @@ const StatusContainer: React.FC<Props> = ({
 
   const iconStyle = {
     color: iconColor,
-    fontSize: "65px",
+    fontSize: "50px",
   };
 
   console.log(stateValue);
