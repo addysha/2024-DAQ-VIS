@@ -7,6 +7,8 @@ import BurgerMenu from "../components/BurgerMenu.tsx";
 import Logo from "../components/Logo.tsx";
 import DefaultGrid from "../components/dashboard/DefaultGrid.tsx";
 import Spinner from "../components/dashboard/Spinner.tsx";
+import InfoIcon from "../components/dashboard/InfoIcon.tsx";
+import ErrorIcon from "../components/dashboard/ErrorIcon.tsx";
 
 export interface DataItem {
   name: string;
@@ -90,6 +92,8 @@ const Data: React.FC = () => {
             <div className="nav-left">
               <Logo colour="dark" />
             </div>
+            <ErrorIcon />
+            <InfoIcon />
             <div className="nav-right">
               <BurgerMenu colour="black" />
               <div className="nav-right"></div>
