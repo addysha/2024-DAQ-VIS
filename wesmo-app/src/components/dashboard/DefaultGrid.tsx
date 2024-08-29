@@ -10,6 +10,7 @@ import StatusContainer from "../../components/dashboard/StatusContainer.tsx";
 import { DataItem } from "../../pages/data.tsx";
 import DoubleNumberContainer from "./DoubleNumberContainer.tsx";
 import QuadNumberContainer from "./QuadNumberContainer.tsx";
+import ErrorLog from "./ErrorContainer.tsx";
 
 interface Props {
   data: DataItem[];
@@ -36,6 +37,7 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
     <div className="dashboard">
       <div>
         <StatusBar data={data} />
+        <ErrorLog data={data} />
       </div>
       <div>
         <div className="dashboard-row">

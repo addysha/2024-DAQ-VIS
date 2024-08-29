@@ -29,6 +29,9 @@ class DummySensorData:
     def update_fault_data(self):
         self.value = generate_fault_data(self.value, self.max_value)
 
+    def update_string(self):
+        self.value = "new error"
+
     def to_dict(self):
         return {
             "name": self.name,
