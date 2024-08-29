@@ -9,6 +9,7 @@ import DialContainer from "./DialContainer.tsx";
 import StatusContainer from "../../components/dashboard/StatusContainer.tsx";
 import { DataItem } from "../../pages/data.tsx";
 import DoubleNumberContainer from "./DoubleNumberContainer.tsx";
+import QuadNumberContainer from "./QuadNumberContainer.tsx";
 
 interface Props {
   data: DataItem[];
@@ -23,15 +24,11 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
   const batteryVoltage = data.find((item) => item.name === "Battery Voltage");
   const batteryCurrent = data.find((item) => item.name === "Battery Current");
   const batteryTemp = data.find((item) => item.name === "Battery Temperature");
-  const suspensionTravel = data.find(
-    (item) => item.name === "Suspension Travel"
-  );
   const pedalAngle1 = data.find((item) => item.name === "Pedal Angle 1");
   const pedalAngle2 = data.find((item) => item.name === "Pedal Angle 2");
   const wheelSpeed = data.find((item) => item.name === "Wheel Speed");
   const trackTime = data.find((item) => item.name === "Track Time");
   const warnings = data.find((item) => item.name === "Warnings");
-
   const front_bp = data.find((item) => item.name === "Break Pressure Front");
   const rear_pb = data.find((item) => item.name === "Break Pressure Rear");
 
@@ -97,15 +94,7 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
               unit={batteryCurrent?.unit ?? "V"}
             />
           </GridContainer>
-          <GridContainer size={2}>
-            {/* Suspension Travel */}
-            <BarContainer
-              textValue={suspensionTravel?.name ?? "Suspension Travel"}
-              currentValue={+(suspensionTravel?.value ?? 0)}
-              maxValue={+(suspensionTravel?.max ?? 0)}
-              unit={suspensionTravel?.unit ?? "mm"}
-            />
-          </GridContainer>
+          <GridContainer size={2}></GridContainer>
           <GridContainer size={3}>
             {/* Pedal Angles */}
             <DoubleNumberContainer
@@ -126,9 +115,15 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
           </GridContainer>
           <GridContainer size={3}>
             {/* Break Pressures */}
-            <DoubleNumberContainer
+            {/* <DoubleNumberContainer
               parameter1={front_bp ?? null}
               parameter2={rear_pb ?? null}
+            /> */}
+            <QuadNumberContainer
+              parameter1={front_bp ?? null}
+              parameter2={rear_pb ?? null}
+              parameter3={front_bp ?? null}
+              parameter4={rear_pb ?? null}
             />
           </GridContainer>
           <GridContainer size={2}>
