@@ -9,6 +9,7 @@ import DefaultGrid from "../components/dashboard/DefaultGrid.tsx";
 import Spinner from "../components/dashboard/Spinner.tsx";
 import InfoIcon from "../components/dashboard/InfoIcon.tsx";
 import ErrorIcon from "../components/dashboard/ErrorIcon.tsx";
+import PopUp from "../components/dashboard/PopUpContainer.tsx";
 
 export interface DataItem {
   name: string;
@@ -56,6 +57,14 @@ const Data: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [socketInstance]);
 
+  const [isPopUpVisible, setPopUpVisible] = useState<boolean>(false);
+  const [popUpContent, setPopUpContent] = useState<React.ReactNode>(null);
+
+  const togglePopUp = (content?: React.ReactNode) => {
+    setPopUpContent(content ?? null);
+    setPopUpVisible((prev) => !prev);
+  };
+
   if (!data || !loaded) {
     return (
       <div className="App">
@@ -92,8 +101,36 @@ const Data: React.FC = () => {
             <div className="nav-left">
               <Logo colour="dark" />
             </div>
-            <ErrorIcon />
-            <InfoIcon />
+            <div
+              onClick={() =>
+                togglePopUp(
+                  <>
+                    <h2>Rectangle Content 2</h2>
+                    <p>This is the content inside the rectangle 2.</p>
+                  </>
+                )
+              }
+            >
+              <ErrorIcon />
+            </div>
+            <div
+              onClick={() =>
+                togglePopUp(
+                  <>
+                    <h2>Rectangle Content 1</h2>
+                    <p>This is the content inside the rectangle 1.</p>
+                  </>
+                )
+              }
+            >
+              <InfoIcon />
+            </div>
+            <PopUp
+              isVisible={isPopUpVisible}
+              onClose={() => setPopUpVisible(false)}
+            >
+              {popUpContent}
+            </PopUp>
             <div className="nav-right">
               <BurgerMenu colour="black" />
               <div className="nav-right"></div>

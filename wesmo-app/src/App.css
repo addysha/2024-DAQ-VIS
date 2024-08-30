@@ -569,3 +569,48 @@ h1 {
   font-size: 2rem;
   color: black;
 }
+
+ul {
+  padding-left: 1.5rem;
+  list-style-type: none;
+}
+
+.pop_up {
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+  z-index: 1;
+}
+
+.pop_up_container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 450px;
+  height: 275px;
+  background-color: #706b6b;
+  border-radius: 1rem;
+  padding: 16px;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  border: none;
+  background: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
+}
+
+.close-button:hover {
+  color: black;
+}

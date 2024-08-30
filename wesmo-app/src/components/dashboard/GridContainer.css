@@ -6,6 +6,7 @@
   padding: 0.8rem;
   border-radius: 1rem;
   background-color: #706b6b;
+  cursor: pointer;
 
   &.medium-grid-size {
     min-width: 170px;

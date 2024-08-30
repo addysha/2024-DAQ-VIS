@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../App.css";
 
 import GridContainer from "../../components/dashboard/GridContainer.tsx";
@@ -7,10 +7,12 @@ import BarContainer from "../../components/dashboard/BarContainer.tsx";
 import StatusBar from "../../components/dashboard/StatusBar.tsx";
 import DialContainer from "./DialContainer.tsx";
 import StatusContainer from "../../components/dashboard/StatusContainer.tsx";
-import { DataItem } from "../../pages/data.tsx";
 import DoubleNumberContainer from "./DoubleNumberContainer.tsx";
 import QuadNumberContainer from "./QuadNumberContainer.tsx";
 import ErrorLog from "./ErrorContainer.tsx";
+import PopUp from "./PopUpContainer.tsx";
+
+import { DataItem } from "../../pages/data.tsx";
 
 interface Props {
   data: DataItem[];
@@ -33,15 +35,35 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
   const front_bp = data.find((item) => item.name === "Break Pressure Front");
   const rear_pb = data.find((item) => item.name === "Break Pressure Rear");
 
+  const [isPopUpVisible, setPopUpVisible] = useState<boolean>(false);
+  const [popUpContent, setPopUpContent] = useState<React.ReactNode>(null);
+
+  const togglePopUp = (content?: React.ReactNode) => {
+    setPopUpContent(content ?? null);
+    setPopUpVisible((prev) => !prev);
+  };
   return (
     <div className="dashboard">
+      <PopUp isVisible={isPopUpVisible} onClose={() => setPopUpVisible(false)}>
+        {popUpContent}
+      </PopUp>
       <div>
         <StatusBar data={data} />
         <ErrorLog data={data} />
       </div>
       <div>
         <div className="dashboard-row">
-          <GridContainer size={3}>
+          <GridContainer
+            size={3}
+            onClick={() =>
+              togglePopUp(
+                <>
+                  <h2>Rectangle Content 1</h2>
+                  <p>This is the content inside the rectangle 1.</p>
+                </>
+              )
+            }
+          >
             {/* Battery State of Charge */}
             <BarContainer
               textValue={batteryCharge?.name ?? "Battery State of Charge"}
