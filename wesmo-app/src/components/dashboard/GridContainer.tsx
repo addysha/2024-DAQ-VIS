@@ -5,7 +5,7 @@ interface Props {
   size?: number;
   bkg?: string;
   children?: ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const GridContainer: React.FC<Props> = ({ size = 1, children, onClick }) => {

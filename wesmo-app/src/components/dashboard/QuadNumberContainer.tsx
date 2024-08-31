@@ -1,4 +1,4 @@
-import React, { CSSProperties, useMemo } from "react";
+import React, { useMemo } from "react";
 import "./QuadNumberContainer.css";
 import { DataItem } from "../../pages/data.tsx";
 
@@ -9,9 +9,9 @@ interface Props {
   parameter4: DataItem | null;
 }
 
-function getColour(maxValue, value): string {
+function getColour(maxValue, value, name): string {
   if (!maxValue) return "#3274B1";
-
+  if (name.includes("Pedal Angle")) return "#3274B1";
   if (value >= maxValue * (2 / 3)) return "#4da14b";
   if (value >= maxValue * (1 / 3)) return "#eac054";
   return "#af1317";
@@ -27,7 +27,9 @@ const QuadNumberContainer: React.FC<Props> = ({
 
   const barStyles = useMemo(() => {
     return parameters.map((param) => {
-      const colour = param ? getColour(param.max, param.value) : "#3274B1";
+      const colour = param
+        ? getColour(param.max, param.value, param.name)
+        : "#3274B1";
       return { backgroundColor: colour };
     });
   }, [parameters]);

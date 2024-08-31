@@ -1,4 +1,4 @@
-import React, { CSSProperties, useMemo } from "react";
+import React, { useMemo } from "react";
 import "./NumberContainer.css";
 import { DataItem } from "../../pages/data.tsx";
 

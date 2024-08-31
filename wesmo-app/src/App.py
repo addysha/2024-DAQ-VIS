@@ -33,7 +33,8 @@ def create_data():
         "Break Pressure Rear", 5189, -100, 8000, "kPa"
     )
     high_voltage = DummySensorData("High Voltage", 0, 0, 1, "")
-    # error = DummySensorData("Error", "Error", 0, 0, "")
+    error = DummySensorData("Error", "Error", 0, 0, "")
+    predict_charge = DummySensorData("Predictive State of Charge", 45, 0, 100, "%")
 
     return [
         motor_temp,
@@ -52,6 +53,7 @@ def create_data():
         break_pressure_rear,
         high_voltage,
         # error,
+        predict_charge,
     ]
 
 
@@ -71,7 +73,8 @@ def generate_data(sensors):
     sensors[12].update_value_step(step=100)  # break_pressure_front
     sensors[13].update_value_step(step=100)  # break_pressure_rear
     sensors[14].update_value_boolean()  # high_voltage
-    # sensors[15].update_string()  # error
+    sensors[15].update_string()  # error
+    sensors[16].update_value_step(step=3)  # predict_charge
 
 
 @socketio.on("testing")

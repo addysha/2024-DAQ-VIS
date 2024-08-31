@@ -22,6 +22,9 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
   const batteryCharge = data.find(
     (item) => item.name === "Battery State of Charge"
   );
+  const predictiveCharge = data.find(
+    (item) => item.name === "Predictive State of Charge"
+  );
   const motorTemp = data.find((item) => item.name === "Motor Temperature");
   const motorSpeed = data.find((item) => item.name === "Motor Speed");
   const batteryVoltage = data.find((item) => item.name === "Battery Voltage");
@@ -53,6 +56,14 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
       </div>
       <div>
         <div className="dashboard-row">
+          <GridContainer size={2}>
+            {/* Track Time */}
+            <NumberContainer
+              text={trackTime?.name ?? "Track Time"}
+              value={+(trackTime?.value ?? 0)}
+              unit={trackTime?.unit ?? "s"}
+            />
+          </GridContainer>
           <GridContainer
             size={3}
             onClick={() =>
@@ -73,22 +84,11 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
             />
           </GridContainer>
           <GridContainer size={2}>
-            {/* Motor Temperature */}
-            <DialContainer
-              textValue={motorTemp?.name ?? "Motor Temperature"}
-              currentValue={+(motorTemp?.value ?? 0)}
-              maxValue={+(motorTemp?.max ?? 0)}
-              unit={motorTemp?.unit ?? "C"}
-            />
-          </GridContainer>
-          <GridContainer size={2}>
-            {/* Motor Speed */}
-            <BarContainer
-              textValue={motorSpeed?.name ?? "Motor Speed"}
-              currentValue={+(motorSpeed?.value ?? 0)}
-              maxValue={+(motorSpeed?.max ?? 0)}
-              minValue={+(motorSpeed?.min ?? 0)}
-              unit={motorSpeed?.unit ?? "RPM"}
+            {/* Battery Current */}
+            <NumberContainer
+              text={batteryCurrent?.name ?? "Battery Current"}
+              value={+(batteryCurrent?.value ?? 0)}
+              unit={batteryCurrent?.unit ?? "V"}
             />
           </GridContainer>
           <GridContainer size={2}>
@@ -102,6 +102,15 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
         </div>
         <div className="dashboard-row">
           <GridContainer size={2}>
+            {/* Motor Temperature */}
+            <DialContainer
+              textValue={motorTemp?.name ?? "Motor Temperature"}
+              currentValue={+(motorTemp?.value ?? 0)}
+              maxValue={+(motorTemp?.max ?? 0)}
+              unit={motorTemp?.unit ?? "C"}
+            />
+          </GridContainer>
+          <GridContainer size={2}>
             {/* Battery Temperature */}
             <DialContainer
               textValue={batteryTemp?.name ?? "Battery Temperature"}
@@ -111,58 +120,49 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
             />
           </GridContainer>
           <GridContainer size={2}>
-            {/* Battery Current */}
-            <NumberContainer
-              text={batteryCurrent?.name ?? "Battery Current"}
-              value={+(batteryCurrent?.value ?? 0)}
-              unit={batteryCurrent?.unit ?? "V"}
-            />
-          </GridContainer>
-          <GridContainer size={2}></GridContainer>
-          <GridContainer size={3}>
-            {/* Pedal Angles */}
-            <DoubleNumberContainer
-              parameter1={pedalAngle1 ?? null}
-              parameter2={pedalAngle2 ?? null}
-            />
-          </GridContainer>
-        </div>
-        <div className="dashboard-row">
-          <GridContainer size={2}>
-            {/* Wheel Speed */}
-            <NumberContainer
-              text={wheelSpeed?.name ?? "Wheel Speed"}
-              value={+(wheelSpeed?.value ?? 0)}
-              maxValue={+(wheelSpeed?.max ?? 0)}
-              unit={wheelSpeed?.unit ?? "RPM"}
-            />
-          </GridContainer>
-          <GridContainer size={3}>
-            {/* Break Pressures */}
-            {/* <DoubleNumberContainer
-              parameter1={front_bp ?? null}
-              parameter2={rear_pb ?? null}
-            /> */}
-            <QuadNumberContainer
-              parameter1={front_bp ?? null}
-              parameter2={rear_pb ?? null}
-              parameter3={front_bp ?? null}
-              parameter4={rear_pb ?? null}
-            />
-          </GridContainer>
-          <GridContainer size={2}>
-            {/* Track Time */}
-            <NumberContainer
-              text={trackTime?.name ?? "Track Time"}
-              value={+(trackTime?.value ?? 0)}
-              unit={trackTime?.unit ?? "s"}
-            />
-          </GridContainer>
-          <GridContainer size={2}>
             {/* Warnings */}
             <StatusContainer
               textValue={warnings?.name ?? "Warnings"}
               stateValue={+(warnings?.value ?? 0)}
+            />
+          </GridContainer>
+          <GridContainer size={3}>
+            {/* Predictive Battery State of Charge */}
+            <BarContainer
+              textValue={predictiveCharge?.name ?? "Predictive State of Charge"}
+              currentValue={+(predictiveCharge?.value ?? 0)}
+              maxValue={+(predictiveCharge?.max ?? 0)}
+              unit={predictiveCharge?.unit ?? "%"}
+            />
+          </GridContainer>
+        </div>
+        <div className="dashboard-row">
+          <GridContainer size={3}>
+            {/* Wheel Speed */}
+            <QuadNumberContainer
+              parameter1={wheelSpeed ?? null}
+              parameter2={wheelSpeed ?? null}
+              parameter3={wheelSpeed ?? null}
+              parameter4={wheelSpeed ?? null}
+            />
+          </GridContainer>
+          <GridContainer size={2}>
+            {/* Motor Speed */}
+            <BarContainer
+              textValue={motorSpeed?.name ?? "Motor Speed"}
+              currentValue={+(motorSpeed?.value ?? 0)}
+              maxValue={+(motorSpeed?.max ?? 0)}
+              minValue={+(motorSpeed?.min ?? 0)}
+              unit={motorSpeed?.unit ?? "RPM"}
+            />
+          </GridContainer>
+          <GridContainer size={3}>
+            {/* Pedal Angles & Break Pressures */}
+            <QuadNumberContainer
+              parameter1={pedalAngle1 ?? null}
+              parameter2={pedalAngle2 ?? null}
+              parameter3={front_bp ?? null}
+              parameter4={rear_pb ?? null}
             />
           </GridContainer>
         </div>
