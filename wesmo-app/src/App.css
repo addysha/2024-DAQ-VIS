@@ -70,9 +70,16 @@ h1 {
       url("images/wesmo_night.jpeg");
   }
 
-  &.history {
+  &.history-2023 {
     background-image: none;
     background-color: rgba(59, 59, 59, 1);
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
+  &.history {
+    background-image: none;
+    background-color: rgb(167, 165, 165);
     overflow-y: scroll;
     overflow-x: hidden;
   }
@@ -520,6 +527,7 @@ h1 {
   }
 }
 
+/* Explore Car Page */
 .info-explore-container {
   position: relative;
 }
@@ -527,4 +535,62 @@ h1 {
 .explore {
   margin-left: 15%;
   margin-top: 23%;
+}
+
+/* History Main Page */
+.year-title {
+  background-color: rgba(175, 23, 19, 1);
+  width: fit-content;
+  height: fit-content;
+  padding: 16px;
+  padding-left: 5%;
+  padding-right: 5%;
+  color: white;
+  font-size: 25px;
+  font-family: "Roboto Condensed";
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5rem;
+}
+
+.subtitle {
+  background-color: #3b3b3b;
+  width: max-content;
+  height: fit-content;
+  padding: 16px;
+  color: white;
+  font-family: "Roboto Condensed";
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5rem;
+
+  .year {
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 15px;
+  }
+
+  .more {
+    color: white;
+    cursor: pointer;
+    font-size: 13px;
+    padding: 13px;
+    padding: 1rem;
+  }
+  .more:hover {
+    color: #af1713;
+  }
+}
+
+.history-car {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  object-fit: cover;
+  padding: 2rem;
 }
