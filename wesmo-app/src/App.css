@@ -101,26 +101,49 @@ h1 {
 /* Contact Us Page */
 .socials {
   &.icon {
-    font-size: 50px !important;
-    margin-right: 10px;
+    font-size: 60px !important;
+    margin-right: 5rem;
   }
 
   &.container {
     display: flex;
     align-items: center;
+    padding-left: 3rem;
+
+    &.top {
+      padding-top: 3rem;
+    }
+
+    &.middle {
+      padding: 3rem;
+    }
+
+    &.bottom {
+      padding-bottom: 3rem;
+    }
   }
+}
+
+.contact-info {
+  background-color: rgba(59, 59, 59, 1);
+  width: 650px;
+  height: fit-content;
+  margin: 40px;
+  left: 70px;
+  font-size: 20px;
+  justify-content: center;
+  vertical-align: middle;
+  padding: 2rem;
 }
 
 .contact-text {
   color: white;
   font-family: "Roboto";
   font-size: 20px;
-  padding-left: 50px;
-  padding-bottom: 7%;
+  /* padding-left: 2rem; */
   justify-content: center;
   text-align: left;
   vertical-align: middle;
-  line-height: 1px;
 }
 
 /* Nav bar */
