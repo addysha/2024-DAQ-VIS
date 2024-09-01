@@ -1,7 +1,7 @@
 // Filename - pages/race-data.tsx
 import React, { useEffect, useState } from "react";
-import "../App.css";
 import { io, Socket } from "socket.io-client";
+import "../App.css";
 
 import BurgerMenu from "../components/BurgerMenu.tsx";
 import Logo from "../components/Logo.tsx";

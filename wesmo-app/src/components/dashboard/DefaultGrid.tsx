@@ -5,14 +5,14 @@ import GridContainer from "../../components/dashboard/GridContainer.tsx";
 import NumberContainer from "../../components/dashboard/NumberContainer.tsx";
 import BarContainer from "../../components/dashboard/BarContainer.tsx";
 import StatusBar from "../../components/dashboard/StatusBar.tsx";
+import ErrorContainer from "../../components/dashboard/ErrorContainer.tsx";
 import DialContainer from "./DialContainer.tsx";
 import StatusContainer from "../../components/dashboard/StatusContainer.tsx";
-import DoubleNumberContainer from "./DoubleNumberContainer.tsx";
 import QuadNumberContainer from "./QuadNumberContainer.tsx";
-import ErrorLog from "./ErrorContainer.tsx";
 import PopUp from "./PopUpContainer.tsx";
 
 import { DataItem } from "../../pages/data.tsx";
+import HistoryList from "./HistoryList.tsx";
 
 interface Props {
   data: DataItem[];
@@ -52,7 +52,7 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
       </PopUp>
       <div>
         <StatusBar data={data} />
-        <ErrorLog data={data} />
+        <ErrorContainer data={data} />
       </div>
       <div>
         <div className="dashboard-row">
@@ -66,14 +66,7 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
           </GridContainer>
           <GridContainer
             size={3}
-            onClick={() =>
-              togglePopUp(
-                <>
-                  <h2>Rectangle Content 1</h2>
-                  <p>This is the content inside the rectangle 1.</p>
-                </>
-              )
-            }
+            onClick={() => togglePopUp(<HistoryList></HistoryList>)}
           >
             {/* Battery State of Charge */}
             <BarContainer

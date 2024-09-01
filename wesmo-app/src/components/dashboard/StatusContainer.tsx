@@ -42,7 +42,6 @@ const StatusContainer: React.FC<Props> = ({
     fontSize: "50px",
   };
 
-  console.log(stateValue);
   const computedTextColourClass = lightText ? "text--light" : "text--dark";
 
   return (

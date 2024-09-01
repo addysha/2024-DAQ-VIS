@@ -28,7 +28,7 @@ const ErrorLog: React.FC<Props> = ({ data }) => {
       </div>
       <br />
       <div className="scolling_list">
-        <ul>{errorListItems}</ul>
+        <ol reversed>{errorListItems}</ol>
       </div>
     </div>
   );

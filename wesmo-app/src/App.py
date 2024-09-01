@@ -7,6 +7,8 @@ from dummy_data import DummySensorData
 app = Flask(__name__)
 socketio = SocketIO(app, logger=True, engineio_logger=True, cors_allowed_origins="*")
 
+historical_data = {"Battery State of Charge": [], "Motor Temperature": []}
+
 
 @app.route("/")
 def index():
@@ -33,7 +35,7 @@ def create_data():
         "Break Pressure Rear", 5189, -100, 8000, "kPa"
     )
     high_voltage = DummySensorData("High Voltage", 0, 0, 1, "")
-    error = DummySensorData("Error", "Error", 0, 0, "")
+    error = DummySensorData("Vehicle Errors", "Error", 0, 0, "")
     predict_charge = DummySensorData("Predictive State of Charge", 45, 0, 100, "%")
 
     return [
@@ -52,7 +54,7 @@ def create_data():
         break_pressure_front,
         break_pressure_rear,
         high_voltage,
-        # error,
+        error,
         predict_charge,
     ]
 
@@ -76,14 +78,26 @@ def generate_data(sensors):
     sensors[15].update_string()  # error
     sensors[16].update_value_step(step=3)  # predict_charge
 
+    log_data(sensors)
+
+
+def log_data(sensors):
+    historical_data.get("Battery State of Charge").append(sensors[3].value)
+
 
 @socketio.on("testing")
 def handle_register():
     sensors = create_data()
     while True:
-        # generate_data(sensors)
+        generate_data(sensors)
         socketio.emit("data", [sensor.to_dict() for sensor in sensors], to=request.sid)
         time.sleep(1)
+
+
+@socketio.on("history")
+def handle_register():
+    print("*********", historical_data)
+    socketio.emit("historic_data", historical_data, to=request.sid)
 
 
 @socketio.on("update_clients")

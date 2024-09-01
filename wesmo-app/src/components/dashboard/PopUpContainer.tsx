@@ -16,6 +16,7 @@ const PopUp: React.FC<Props> = ({ isVisible, onClose, children }) => {
         <button className="close-button" onClick={onClose}>
           x
         </button>
+        <br />
         {children}
       </div>
     </div>
