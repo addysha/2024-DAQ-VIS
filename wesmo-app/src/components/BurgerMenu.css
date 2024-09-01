@@ -2,7 +2,12 @@
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  z-index: 2;
+  z-index: 3000;
+  position: relative;
+}
+
+.hamburger-menu.black .line {
+  background-color: black;
 }
 
 .nav-cover.active + .hamburger-menu {
@@ -63,6 +68,7 @@
 .hamburger-menu.toggle .line:nth-child(1) {
   transform: rotate(-45deg) translateY(7px);
   transition: transform 0.3s ease-in-out;
+  background-color: white;
 }
 
 .hamburger-menu.toggle .line:nth-child(2) {
@@ -72,4 +78,9 @@
 .hamburger-menu.toggle .line:nth-child(3) {
   transform: rotate(45deg) translateY(-7px);
   transition: transform 0.3s ease-in-out;
+  background-color: white;
+}
+
+.nav-cover.active + .hamburger-menu {
+  z-index: 4;
 }

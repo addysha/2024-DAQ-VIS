@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import "./BurgerMenu.css";
 
-const HamburgerMenu: React.FC = () => {
+interface HamburgerMenuProps {
+  colour?: string;
+}
+
+const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ colour }) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   const closeMenu = () => {
@@ -32,11 +36,13 @@ const HamburgerMenu: React.FC = () => {
           <a href="/about-fsae">About FSAE</a>
           <a href="/sponsors">Sponsors</a>
           <a href="/race-data">Race Data</a>
-          <a href="/2023">History</a>
+          <a href="/history">History</a>
         </div>
       </div>
       <div
-        className={`hamburger-menu ${isMenuOpen ? "toggle" : ""}`}
+        className={`hamburger-menu ${isMenuOpen ? "toggle" : ""} ${
+          colour === "black" ? "black" : ""
+        }`}
         onClick={toggleMenu}
       >
         <div className="line"></div>

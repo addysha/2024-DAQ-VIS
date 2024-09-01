@@ -8,7 +8,7 @@ import TitleCard from "../components/TitleCard.tsx";
 import SponsorRow from "../components/Sponsors.tsx";
 
 import proposal from "../files/Sponsorship_Proposal_2024.pdf";
-import logo from "../images/logo_header.png";
+import logo from "../images/wesmo-logo/logo_header.png";
 
 import { bronze, silver, gold, platinum } from "../components/sponsor_info.tsx";
 

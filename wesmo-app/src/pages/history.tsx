@@ -43,19 +43,19 @@ const History: React.FC = () => {
         </div>
         <img src={car_2023} alt="W-FS23" className="history-car" />
 
-        <div className="year-title">2022</div>
+        {/* <div className="year-title">2022</div>
         <div className="subtitle">
           <div className="year">Internal Combustion Engine</div>
           <a href="/history-2023">
             <u className="more">Read More</u>
           </a>
         </div>
-        <br />
+        <br /> */}
 
         <div className="year-title">2018</div>
         <div className="subtitle">
-          <div className="year">Internal Combustion Engines</div>
-          <a href="/history-2023">
+          <div className="year">Internal Combustion Engine</div>
+          <a href="/history-2018">
             <u className="more">Read More</u>
           </a>
         </div>
@@ -63,8 +63,8 @@ const History: React.FC = () => {
 
         <div className="year-title">2017</div>
         <div className="subtitle">
-          <div className="year">Internal Combustion Engines</div>
-          <a href="/history-2023">
+          <div className="year">Internal Combustion Engine</div>
+          <a href="/history-2017">
             <u className="more">Read More</u>
           </a>
         </div>
@@ -72,17 +72,17 @@ const History: React.FC = () => {
 
         <div className="year-title">2016</div>
         <div className="subtitle">
-          <div className="year">Internal Combustion Engines</div>
-          <a href="/history-2023">
+          <div className="year">Internal Combustion Engine</div>
+          {/* <a href="/history-2016">
             <u className="more">Read More</u>
-          </a>
+          </a> */}
         </div>
         <img src={car_2016} alt="W-FS16" className="history-car" />
 
         <div className="year-title">2015</div>
         <div className="subtitle">
-          <div className="year">Internal Combustion Engines</div>
-          <a href="/history-2023">
+          <div className="year">Internal Combustion Engine</div>
+          <a href="/history-2015">
             <u className="more">Read More</u>
           </a>
         </div>
@@ -90,8 +90,8 @@ const History: React.FC = () => {
 
         <div className="year-title">2014</div>
         <div className="subtitle">
-          <div className="year">Internal Combustion Engines</div>
-          <a href="/history-2023">
+          <div className="year">Internal Combustion Engine</div>
+          <a href="/history-2014">
             <u className="more">Read More</u>
           </a>
         </div>

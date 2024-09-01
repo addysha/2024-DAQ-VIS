@@ -5,7 +5,7 @@ import BurgerMenu from "../components/BurgerMenu.tsx";
 import Logo from "../components/Logo.tsx";
 import TitleCard from "../components/TitleCard.tsx";
 import Button from "@mui/material/Button";
-import logo from "../images/logo_header.png";
+import logo from "../images/wesmo-logo/logo_header.png";
 
 import "../App.css";
 

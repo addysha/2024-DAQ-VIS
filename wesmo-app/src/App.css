@@ -77,6 +77,13 @@ h1 {
     overflow-x: hidden;
   }
 
+  &.history-table {
+    background-image: none;
+    background-color: white;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
   &.history {
     background-image: none;
     background-color: rgb(167, 165, 165);
@@ -126,7 +133,7 @@ h1 {
 
   .nav-left {
     align-items: center;
-    width: 100%;
+    width: 90%;
   }
 
   .nav-right {
@@ -593,4 +600,23 @@ h1 {
   width: 50%;
   object-fit: cover;
   padding: 2rem;
+}
+
+#car_table {
+  border: 1px solid #ddd;
+  margin-bottom: 2rem;
+  color: black;
+  box-sizing: border-box;
+  table-layout: auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+#table_col {
+  background-color: #d4d4d4;
+  color: black;
+  border-top: 0;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
 }
