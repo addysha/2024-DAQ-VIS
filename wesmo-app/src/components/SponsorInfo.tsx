@@ -82,11 +82,6 @@ export const gold = [
     img: coroflex,
     link: "https://www.coroflex-cable.com/en/",
   },
-  {
-    title: "Stafford",
-    img: stafford,
-    link: "https://staffordrecruit.co.nz/",
-  },
 ];
 
 export const platinum = [
@@ -149,6 +144,11 @@ export const platinum = [
     title: "APL Window Solutions",
     img: apl,
     link: "https://www.aplnz.co.nz/",
+  },
+  {
+    title: "Stafford",
+    img: stafford,
+    link: "https://staffordrecruit.co.nz/",
   },
   {
     title: "Waikato Students Union",

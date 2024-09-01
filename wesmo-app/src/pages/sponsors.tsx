@@ -10,7 +10,7 @@ import SponsorRow from "../components/Sponsors.tsx";
 import proposal from "../files/Sponsorship_Proposal_2024.pdf";
 import logo from "../images/wesmo-logo/logo_header.png";
 
-import { bronze, silver, gold, platinum } from "../components/sponsor_info.tsx";
+import { bronze, silver, gold, platinum } from "../components/SponsorInfo.tsx";
 
 import "../App.css";
 
