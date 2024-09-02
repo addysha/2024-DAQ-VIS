@@ -8,6 +8,10 @@ import "../App.css";
 const Data: React.FC = () => {
   return (
     <div className="App">
+      <link
+        href="https://fonts.googleapis.com/css?family=Roboto Condensed"
+        rel="stylesheet"
+      ></link>
       <div className="background">
         <div className="navbar">
           <div className="nav-left">
