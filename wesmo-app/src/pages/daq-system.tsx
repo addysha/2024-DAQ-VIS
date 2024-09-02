@@ -11,7 +11,7 @@ import "../App.css";
 import auckland from "../images/daq/auck_fsae.jpg";
 import pi from "../images/daq/rpi.jpeg";
 import figma from "../images/daq/figma_designing.png";
-import car from "../images/wesmo_night.jpeg";
+import car from "../images/backgrounds/wesmo_night.jpeg";
 
 const Daq: React.FC = () => {
   return (

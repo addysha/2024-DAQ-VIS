@@ -1,0 +1,36 @@
+.status_bar {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  padding-top: 0.5rem;
+
+  color: black;
+
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 1rem;
+
+  .title {
+    display: inline;
+    text-align: center;
+    vertical-align: top;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    p {
+      padding-left: 1rem;
+    }
+
+    .dot {
+      height: 20px;
+      width: 20px;
+      background-color: #bbb;
+      border-radius: 50%;
+    }
+  }
+}

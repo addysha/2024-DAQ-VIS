@@ -35,7 +35,7 @@ const Home: React.FC = () => {
           </h1>
           <a href="/about-wesmo">
             <div href="#" id="subTitle">
-              FIND OUT MORE{" "}
+              FIND OUT MORE
             </div>
           </a>
         </div>

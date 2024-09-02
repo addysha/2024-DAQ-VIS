@@ -1,0 +1,18 @@
+.status__icon {
+  padding: 0.8rem;
+  display: inline-block;
+  text-align: center;
+}
+
+.status__text-label {
+  font-size: 1rem;
+}
+
+.status__text-status {
+  font-size: 1rem;
+  transform: translateY(-10px);
+}
+
+.status__container {
+  text-align: center;
+}

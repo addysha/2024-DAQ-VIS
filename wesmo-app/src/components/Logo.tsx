@@ -1,5 +1,6 @@
 import React from "react";
 import "./Logo.css";
+
 import WesmoLogo from "../images/wesmo-logo/WESMOLogo.png";
 import WesmoLogoDark from "../images/wesmo-logo/WESMOLogoBlack.png";
 

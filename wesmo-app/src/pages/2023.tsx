@@ -6,7 +6,7 @@ import TitleCard from "../components/TitleCard.tsx";
 import Logo from "../components/Logo.tsx";
 import StudentDetails from "../components/StudentDetails.tsx";
 
-import Car_Backend from "../images/car_backend.jpg";
+import Car_Backend from "../images/backgrounds/car_backend.jpg";
 import Team1 from "../images/2023_team.jpg";
 import Team2 from "../images/2023_team2.jpg";
 
