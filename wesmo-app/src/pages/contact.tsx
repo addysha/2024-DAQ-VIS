@@ -29,8 +29,8 @@ const Contact: React.FC = () => {
           </div>
         </div>
         <TitleCard title="Contact Us" />
-        <div className="dark-grey">
-          <div className="socials container">
+        <div className="contact-info">
+          <div className="socials container top">
             <i className="fa fa-instagram socials icon"></i>
             <div className="contact-text">
               <h6>Instagram</h6>
@@ -39,7 +39,7 @@ const Contact: React.FC = () => {
               </Link>
             </div>
           </div>
-          <div className="socials container">
+          <div className="socials container middle">
             <i className="fa fa-facebook-square socials icon"></i>
             <div className="contact-text">
               <h6>Facebook</h6>
@@ -48,7 +48,7 @@ const Contact: React.FC = () => {
               </Link>
             </div>
           </div>
-          <div className="socials container">
+          <div className="socials container bottom">
             <i className="fa fa-envelope-square socials icon"></i>
             <div className="contact-text">
               <h6>Email</h6>

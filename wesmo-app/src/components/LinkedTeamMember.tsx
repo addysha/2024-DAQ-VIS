@@ -1,6 +1,6 @@
 import React from "react";
 import TeamMember from "../components/TeamMember.tsx";
-import logo from "../images/logo_header.png";
+import logo from "../images/wesmo-logo/logo_header.png";
 import Hannah from "../images/team/Hannah_murphy.jpeg";
 
 const TeamMemberWithLinkedName = () => {
