@@ -22,7 +22,7 @@ import LachlanB from "../images/team/Lachlan_brown.jpeg";
 import LachlanC from "../images/team/Lachlan_coleman.jpeg";
 import Shane from "../images/team/Shane_thompson.jpeg";
 import Trent from "../images/team/Trent_tuapiki.jpeg";
-import logo from "../images/logo_header.png";
+import logo from "../images/wesmo-logo/logo_header.png";
 
 const Engineering: React.FC = () => {
   return (

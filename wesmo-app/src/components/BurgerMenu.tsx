@@ -40,7 +40,7 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ colour }) => {
           <a href="/about-fsae">About FSAE</a>
           <a href="/sponsors">Sponsors</a>
           <a href="/race-data">Race Data</a>
-          <a href="/2023">History</a>
+          <a href="/history">History</a>
         </div>
       </div>
       <div

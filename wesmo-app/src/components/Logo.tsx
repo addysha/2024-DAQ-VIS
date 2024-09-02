@@ -1,7 +1,8 @@
 import React from "react";
 import "./Logo.css";
-import WesmoLogo from "../images/WESMOLogo.png";
-import WesmoLogoDark from "../images/WESMOLogoBlack.png";
+
+import WesmoLogo from "../images/wesmo-logo/WESMOLogo.png";
+import WesmoLogoDark from "../images/wesmo-logo/WESMOLogoBlack.png";
 
 interface LogoProps {
   colour?: string;

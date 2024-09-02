@@ -15,7 +15,7 @@ import "../App.css";
 const History_2023: React.FC = () => {
   return (
     <div className="App">
-      <div className="background history">
+      <div className="background history-2023">
         <link
           href="https://fonts.googleapis.com/css?family=Roboto Condensed"
           rel="stylesheet"
