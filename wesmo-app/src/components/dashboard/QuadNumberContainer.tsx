@@ -23,6 +23,7 @@ const QuadNumberContainer: React.FC<Props> = ({
   parameter3,
   parameter4,
 }) => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const parameters = [parameter1, parameter2, parameter3, parameter4];
 
   const barStyles = useMemo(() => {

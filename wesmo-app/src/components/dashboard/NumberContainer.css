@@ -3,9 +3,10 @@
 }
 .number__text-label {
   font-size: 1rem;
+  margin-top: 1rem;
 }
 .number__text-value {
-  margin-top: 2.5rem;
+  margin-top: 2rem;
   font-size: 2rem;
 }
 .number__text-value > span {
@@ -24,6 +25,7 @@
   padding-left: 2rem;
   padding-right: 2rem;
 }
+
 .parameter {
   display: flex;
   justify-content: space-evenly;

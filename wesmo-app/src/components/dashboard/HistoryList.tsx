@@ -34,7 +34,7 @@ const HistoryList: React.FC = () => {
       socket.on("historic_data", (receivedData) => {
         try {
           if (receivedData) {
-            console.log("Raw received data:", receivedData); // Log raw data
+            console.log("Raw received data:", receivedData);
             setHistoricalData(receivedData);
           } else {
             console.error("Received empty data");
@@ -48,8 +48,9 @@ const HistoryList: React.FC = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [socketInstance]);
-  // Specify the key to display
-  const keyToDisplay = "Battery State of Charge"; // Change this to the key you want to display
+
+  const keyToDisplay = "Battery State of Charge";
+
   if (historicalData) {
     return (
       <div>

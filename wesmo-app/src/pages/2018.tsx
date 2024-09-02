@@ -5,7 +5,7 @@ import BurgerMenu from "../components/BurgerMenu.tsx";
 import TitleCard from "../components/TitleCard.tsx";
 import Logo from "../components/Logo.tsx";
 
-import car_2018 from "../images/wesmoBackGround.jpg";
+import car_2018 from "../images/backgrounds/wesmoBackGround.jpg";
 
 import "../App.css";
 

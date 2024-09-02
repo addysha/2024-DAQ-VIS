@@ -26,6 +26,12 @@ h1 {
   padding-top: 2rem;
 }
 
+h3 {
+  font-size: 1.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
 .link {
   color: white;
   font-family: Roboto, sans-serif;
@@ -87,7 +93,6 @@ h1 {
     overflow-x: hidden;
   }
 
-
   &.history-table {
     background-image: none;
     background-color: white;
@@ -101,7 +106,7 @@ h1 {
     overflow-y: scroll;
     overflow-x: hidden;
   }
-  
+
   &.data {
     background-image: none;
     background-color: rgb(255, 255, 255);
@@ -152,7 +157,6 @@ h1 {
   justify-content: center;
   vertical-align: middle;
   padding: 2rem;
-
 }
 
 .contact-text {
