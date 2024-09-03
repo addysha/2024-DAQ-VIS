@@ -12,6 +12,10 @@ const PopUp: React.FC<Props> = ({ isVisible, onClose, children }) => {
 
   return (
     <div className="pop_up">
+      <link
+        href="https://fonts.googleapis.com/css?family=Roboto Condensed"
+        rel="stylesheet"
+      ></link>
       <div className="pop_up_container">
         <button className="close-button" onClick={onClose}>
           x

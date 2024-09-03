@@ -77,7 +77,7 @@ def log_data(sensors):
 def handle_testing():
     sensors = create_data()
     while True:
-        generate_data(sensors)
+        # generate_data(sensors)
         socketio.emit("data", [sensor.to_dict() for sensor in sensors], to=request.sid)
         time.sleep(1)
 
