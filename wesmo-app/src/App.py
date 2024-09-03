@@ -8,8 +8,30 @@ app = Flask(__name__)
 socketio = SocketIO(app, logger=True, engineio_logger=True, cors_allowed_origins="*")
 
 historical_data = {
-    "Battery State of Charge": [],
     "Motor Temperature": [],
+    "Battery Temperature": [],
+    "Motor Speed": [],
+    "Battery State of Charge": [],
+    "Battery Voltage": [],
+    "Battery Current": [],
+    "Suspension Travel": [],
+    "Pedal Angle 1": [],
+    "Pedal Angle 2": [],
+    "Track Time": [],
+    "Wheel Speed LF": [],
+    "Wheel Speed RF": [],
+    "Wheel Speed LB": [],
+    "Wheel Speed RB": [],
+    "Warnings": [],
+    "Break Pressure Front": [],
+    "Break Pressure Rear": [],
+    "High Voltage": [],
+    "Vehicle Errors": [],
+    "Predictive State of Charge": [],
+    "Low Voltage": [],
+    "Electrical Systems": [],
+    "Sensors": [],
+    "Ready to Drive": [],
 }
 
 
@@ -73,11 +95,73 @@ def generate_data(sensors):
 
 def log_data(sensors):
     timestamp = datetime.datetime.now().strftime("%s")
+    historical_data["Motor Temperature"].append(
+        {"timestamp": timestamp, "value": sensors[0].value}
+    )
+    historical_data["Battery Temperature"].append(
+        {"timestamp": timestamp, "value": sensors[1].value}
+    )
+    historical_data["Motor Speed"].append(
+        {"timestamp": timestamp, "value": sensors[2].value}
+    )
     historical_data["Battery State of Charge"].append(
         {"timestamp": timestamp, "value": sensors[3].value}
     )
-    historical_data["Motor Temperature"].append(
-        {"timestamp": timestamp, "value": sensors[0].value}
+    historical_data["Battery Voltage"].append(
+        {"timestamp": timestamp, "value": sensors[4].value}
+    )
+    historical_data["Battery Current"].append(
+        {"timestamp": timestamp, "value": sensors[5].value}
+    )
+    historical_data["Suspension Travel"].append(
+        {"timestamp": timestamp, "value": sensors[6].value}
+    )
+    historical_data["Pedal Angle 1"].append(
+        {"timestamp": timestamp, "value": sensors[7].value}
+    )
+    historical_data["Pedal Angle 2"].append(
+        {"timestamp": timestamp, "value": sensors[8].value}
+    )
+    historical_data["Track Time"].append(
+        {"timestamp": timestamp, "value": sensors[9].value}
+    )
+    historical_data["Wheel Speed LF"].append(
+        {"timestamp": timestamp, "value": sensors[10].value}
+    )
+    historical_data["Wheel Speed RF"].append(
+        {"timestamp": timestamp, "value": sensors[11].value}
+    )
+    historical_data["Wheel Speed LB"].append(
+        {"timestamp": timestamp, "value": sensors[12].value}
+    )
+    historical_data["Wheel Speed RB"].append(
+        {"timestamp": timestamp, "value": sensors[13].value}
+    )
+    historical_data["Warnings"].append({"timestamp": timestamp, "value": sensors[14].value})
+    historical_data["Break Pressure Front"].append(
+        {"timestamp": timestamp, "value": sensors[15].value}
+    )
+    historical_data["Break Pressure Rear"].append(
+        {"timestamp": timestamp, "value": sensors[16].value}
+    )
+    historical_data["High Voltage"].append(
+        {"timestamp": timestamp, "value": sensors[17].value}
+    )
+    historical_data["Vehicle Errors"].append(
+        {"timestamp": timestamp, "value": sensors[18].value}
+    )
+    historical_data["Predictive State of Charge"].append(
+        {"timestamp": timestamp, "value": sensors[19].value}
+    )
+    historical_data["Low Voltage"].append(
+        {"timestamp": timestamp, "value": sensors[20].value}
+    )
+    historical_data["Electrical Systems"].append(
+        {"timestamp": timestamp, "value": sensors[21].value}
+    )
+    historical_data["Sensors"].append({"timestamp": timestamp, "value": sensors[22].value})
+    historical_data["Ready to Drive"].append(
+        {"timestamp": timestamp, "value": sensors[23].value}
     )
 
 
@@ -87,7 +171,7 @@ def handle_testing():
     while True:
         generate_data(sensors)
         socketio.emit("data", [sensor.to_dict() for sensor in sensors], to=request.sid)
-        time.sleep(1)
+        time.sleep(5)
 
 
 @socketio.on("history")

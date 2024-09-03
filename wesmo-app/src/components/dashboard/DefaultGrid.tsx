@@ -59,7 +59,12 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
       </div>
       <div>
         <div className="dashboard-row">
-          <GridContainer size={2}>
+          <GridContainer
+            size={2}
+            onClick={() =>
+              togglePopUp(<HistoryList keyToDisplay="Track Time"></HistoryList>)
+            }
+          >
             {/* Track Time */}
             <NumberContainer
               text={trackTime?.name ?? "Track Time"}
@@ -69,7 +74,11 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
           </GridContainer>
           <GridContainer
             size={3}
-            onClick={() => togglePopUp(<HistoryList></HistoryList>)}
+            onClick={() =>
+              togglePopUp(
+                <HistoryList keyToDisplay="Battery State of Charge"></HistoryList>
+              )
+            }
           >
             {/* Battery State of Charge */}
             <BarContainer
@@ -79,7 +88,14 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
               unit={batteryCharge?.unit ?? "%"}
             />
           </GridContainer>
-          <GridContainer size={2}>
+          <GridContainer
+            size={2}
+            onClick={() =>
+              togglePopUp(
+                <HistoryList keyToDisplay="Battery Current"></HistoryList>
+              )
+            }
+          >
             {/* Battery Current */}
             <NumberContainer
               text={batteryCurrent?.name ?? "Battery Current"}
@@ -87,7 +103,14 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
               unit={batteryCurrent?.unit ?? "V"}
             />
           </GridContainer>
-          <GridContainer size={2}>
+          <GridContainer
+            size={2}
+            onClick={() =>
+              togglePopUp(
+                <HistoryList keyToDisplay="Battery Voltage"></HistoryList>
+              )
+            }
+          >
             {/* Battery Voltage */}
             <NumberContainer
               text={batteryVoltage?.name ?? "Battery Voltage"}
@@ -97,7 +120,14 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
           </GridContainer>
         </div>
         <div className="dashboard-row">
-          <GridContainer size={2}>
+          <GridContainer
+            size={2}
+            onClick={() =>
+              togglePopUp(
+                <HistoryList keyToDisplay="Motor Temperature"></HistoryList>
+              )
+            }
+          >
             {/* Motor Temperature */}
             <DialContainer
               textValue={motorTemp?.name ?? "Motor Temperature"}
@@ -106,7 +136,14 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
               unit={motorTemp?.unit ?? "C"}
             />
           </GridContainer>
-          <GridContainer size={2}>
+          <GridContainer
+            size={2}
+            onClick={() =>
+              togglePopUp(
+                <HistoryList keyToDisplay="Battery Temperature"></HistoryList>
+              )
+            }
+          >
             {/* Battery Temperature */}
             <DialContainer
               textValue={batteryTemp?.name ?? "Battery Temperature"}
@@ -122,7 +159,14 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
               stateValue={+(warnings?.value ?? 0)}
             />
           </GridContainer>
-          <GridContainer size={3}>
+          <GridContainer
+            size={3}
+            onClick={() =>
+              togglePopUp(
+                <HistoryList keyToDisplay="Predictive State of Charge"></HistoryList>
+              )
+            }
+          >
             {/* Predictive Battery State of Charge */}
             <BarContainer
               textValue={predictiveCharge?.name ?? "Predictive State of Charge"}
@@ -133,7 +177,14 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
           </GridContainer>
         </div>
         <div className="dashboard-row">
-          <GridContainer size={3}>
+          <GridContainer
+            size={3}
+            // onClick={() =>
+            //   togglePopUp(
+            //     <HistoryList keyToDisplay="Battery State of Charge"></HistoryList>
+            //   )
+            // }
+          >
             {/* Wheel Speed */}
             <QuadNumberContainer
               parameter1={wheelSpeed_lf ?? null}
@@ -142,7 +193,14 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
               parameter4={wheelSpeed_rb ?? null}
             />
           </GridContainer>
-          <GridContainer size={2}>
+          <GridContainer
+            size={2}
+            onClick={() =>
+              togglePopUp(
+                <HistoryList keyToDisplay="Motor Speed"></HistoryList>
+              )
+            }
+          >
             {/* Motor Speed */}
             <BarContainer
               textValue={motorSpeed?.name ?? "Motor Speed"}
@@ -152,7 +210,14 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
               unit={motorSpeed?.unit ?? "RPM"}
             />
           </GridContainer>
-          <GridContainer size={3}>
+          <GridContainer
+            size={3}
+            // onClick={() =>
+            //   togglePopUp(
+            //     <HistoryList keyToDisplay="Battery State of Charge"></HistoryList>
+            //   )
+            // }
+          >
             {/* Pedal Angles & Break Pressures */}
             <QuadNumberContainer
               parameter1={pedalAngle1 ?? null}

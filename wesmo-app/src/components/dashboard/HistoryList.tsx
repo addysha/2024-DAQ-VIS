@@ -11,12 +11,16 @@ import {
 } from "recharts";
 import Log from "./ListContainer.tsx";
 
-const HistoryList = () => {
+interface Props {
+  keyToDisplay: string;
+}
+
+const HistoryList: React.FC<Props> = ({ keyToDisplay }) => {
   const [socketInstance, setSocketInstance] = useState<Socket | undefined>(
     undefined
   );
   const [historicalData, setHistoricalData] = useState({
-    "Battery State of Charge": [],
+    keyToDisplay: [],
   });
 
   useEffect(() => {
@@ -41,8 +45,6 @@ const HistoryList = () => {
       socket.emit("history");
     }
   }, [socketInstance]);
-
-  const keyToDisplay = "Battery State of Charge";
 
   return (
     <div style={{ width: "700px", height: "300px" }}>
@@ -91,7 +93,7 @@ const HistoryList = () => {
           </LineChart>
         </ResponsiveContainer>
 
-        <Log data={historicalData[keyToDisplay]}></Log>
+        <Log data={historicalData[keyToDisplay] || []}></Log>
       </div>
     </div>
   );
