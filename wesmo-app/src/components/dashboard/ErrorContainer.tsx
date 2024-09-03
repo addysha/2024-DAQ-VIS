@@ -11,12 +11,13 @@ const ErrorLog: React.FC<Props> = ({ data }) => {
 
   useEffect(() => {
     const newErrors = data
-      .filter((item) => item.name === "Error")
+      .filter((item) => item.name === "Vehicle Errors")
       .map((item) => String(item.value));
 
     setErrors((prevErrors) => [...newErrors, ...prevErrors]);
   }, [data]);
 
+  console.log(errors);
   const errorListItems = errors.map((error, index) => (
     <li key={index}>{error}</li>
   ));
