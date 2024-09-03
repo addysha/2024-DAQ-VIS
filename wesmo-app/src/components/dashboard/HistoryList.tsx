@@ -1,23 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { io, Socket } from "socket.io-client";
-import "../../App.css";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
+import Log from "./ListContainer.tsx";
 
-import Log from "../../components/dashboard/ListContainer.tsx";
-
-export interface DataHistory {
-  [key: string]: number[];
-}
-
-const HistoryList: React.FC = () => {
+const HistoryList = () => {
   const [socketInstance, setSocketInstance] = useState<Socket | undefined>(
     undefined
   );
-  const [historicalData, setHistoricalData] = useState<DataHistory[]>();
+  const [historicalData, setHistoricalData] = useState({
+    "Battery State of Charge": [],
+  });
 
   useEffect(() => {
     if (!socketInstance) {
-      // const URL = process.env.NODE_ENV === 'production' ? undefined : 'http://127.0.0.1:5000';
-
       const socket = io("http://127.0.0.1:5000/", {
         transports: ["websocket"],
       });
@@ -32,35 +35,67 @@ const HistoryList: React.FC = () => {
       });
 
       socket.on("historic_data", (receivedData) => {
-        try {
-          if (receivedData) {
-            console.log("Raw received data:", receivedData);
-            setHistoricalData(receivedData);
-          } else {
-            console.error("Received empty data");
-          }
-        } catch (error) {
-          console.error("Error parsing JSON:", error);
-        }
+        console.log("Received Historical Data:", receivedData);
+        setHistoricalData(receivedData);
       });
 
       socket.emit("history");
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [socketInstance]);
 
   const keyToDisplay = "Battery State of Charge";
 
-  if (historicalData) {
-    return (
-      <div>
-        <h3>{keyToDisplay}</h3>
-        <div className="data_history">
-          <Log data={historicalData[keyToDisplay]}></Log>
-        </div>
+  return (
+    <div style={{ width: "700px", height: "300px" }}>
+      <h3 style={{ color: "black" }}>{keyToDisplay}</h3>
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          flexDirection: "row",
+        }}
+      >
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart
+            data={historicalData[keyToDisplay] || []}
+            margin={{ top: 15, right: 20, left: 0, bottom: 20 }}
+          >
+            <CartesianGrid strokeDasharray="3 3" fill="white" />
+            <XAxis
+              dataKey="timestamp"
+              tickFormatter={(timestamp) =>
+                new Date(timestamp * 1000).toLocaleTimeString()
+              }
+              angle={-45}
+              textAnchor="end"
+              tickCount={10}
+              tick={{ fontSize: 10, stroke: "black", strokeWidth: 0.25 }}
+              color="black"
+            />
+            <YAxis
+              tickCount={10}
+              tick={{ fontSize: 12, stroke: "black", strokeWidth: 0.25 }}
+            />
+            <Tooltip
+              labelFormatter={(timestamp) =>
+                new Date(timestamp * 1000).toLocaleTimeString()
+              }
+            />
+            <Line
+              type="monotone"
+              dataKey="value"
+              stroke="#4da14b"
+              strokeWidth={2}
+              dot={{ strokeWidth: 3 }}
+            />
+          </LineChart>
+        </ResponsiveContainer>
+
+        <Log data={historicalData[keyToDisplay]}></Log>
       </div>
-    );
-  }
+    </div>
+  );
 };
 
 export default HistoryList;

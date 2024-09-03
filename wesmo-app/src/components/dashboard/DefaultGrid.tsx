@@ -32,7 +32,10 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
   const batteryTemp = data.find((item) => item.name === "Battery Temperature");
   const pedalAngle1 = data.find((item) => item.name === "Pedal Angle 1");
   const pedalAngle2 = data.find((item) => item.name === "Pedal Angle 2");
-  const wheelSpeed = data.find((item) => item.name === "Wheel Speed");
+  const wheelSpeed_lf = data.find((item) => item.name === "Wheel Speed LF");
+  const wheelSpeed_rf = data.find((item) => item.name === "Wheel Speed RF");
+  const wheelSpeed_lb = data.find((item) => item.name === "Wheel Speed LB");
+  const wheelSpeed_rb = data.find((item) => item.name === "Wheel Speed RB");
   const trackTime = data.find((item) => item.name === "Track Time");
   const warnings = data.find((item) => item.name === "Warnings");
   const front_bp = data.find((item) => item.name === "Break Pressure Front");
@@ -133,10 +136,10 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
           <GridContainer size={3}>
             {/* Wheel Speed */}
             <QuadNumberContainer
-              parameter1={wheelSpeed ?? null}
-              parameter2={wheelSpeed ?? null}
-              parameter3={wheelSpeed ?? null}
-              parameter4={wheelSpeed ?? null}
+              parameter1={wheelSpeed_lf ?? null}
+              parameter2={wheelSpeed_lb ?? null}
+              parameter3={wheelSpeed_rf ?? null}
+              parameter4={wheelSpeed_rb ?? null}
             />
           </GridContainer>
           <GridContainer size={2}>

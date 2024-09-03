@@ -1,26 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./ListContainer.css";
 
+interface HistoricalData {
+  timestamp: number;
+  value: number;
+}
+
 interface Props {
-  data: number[];
+  data: HistoricalData[];
 }
 
 const Log: React.FC<Props> = ({ data }) => {
-  const [data_log, setData] = useState<string[]>([]);
+  const listItems = data.map((item, index) => {
+    const timestampDate = new Date(+item.timestamp);
+    return (
+      <li key={index}>
+        {timestampDate
+          .toLocaleTimeString()
+          .replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$2")}
+        &ensp;:&ensp;
+        {item.value !== undefined ? item.value : "No value available"}
+      </li>
+    );
+  });
 
-  useEffect(() => {
-    const newData = data.map((item) => String(item));
-
-    setData((prevData) => [...newData, ...prevData]);
-  }, [data]);
-
-  const listItems = data_log.map((item, index) => <li key={index}>{item}</li>);
   return (
     <div className="log">
       <div className="scolling_list">
-        <ol reversed>
-          <li>{listItems}</li>
-        </ol>
+        <ol>{listItems}</ol>
       </div>
     </div>
   );

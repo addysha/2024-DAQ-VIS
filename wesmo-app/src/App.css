@@ -26,10 +26,9 @@ h1 {
   padding-top: 2rem;
 }
 
-h3 {
+.status_bar h3 {
   font-size: 1.5rem;
   padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
 }
 
 .link {
@@ -709,7 +708,6 @@ ol {
 }
 
 .pop_up {
-  background-color: rgba(0, 0, 0, 0.8);
   position: fixed;
   top: 0;
   left: 0;
@@ -724,9 +722,9 @@ ol {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 700px;
+  width: 750px;
   height: 400px;
-  background-color: #8e8888;
+  background-color: #adadad;
   border-radius: 1rem;
   padding: 16px;
   box-sizing: border-box;
@@ -734,21 +732,21 @@ ol {
 }
 
 .close-button {
+  display: inline-block;
   position: absolute;
   top: 10px;
   right: 15px;
+  padding: 0;
+  font-size: 28px;
+  line-height: 28px;
   border: none;
   background: none;
-  font-size: 24px;
   cursor: pointer;
-  color: white;
-}
-
-.close-button:hover {
   color: black;
 }
 
-.data_history {
-  display: flex;
-  flex-direction: row;
+.close-button:hover {
+  cursor: pointer;
+  background: none;
+  color: #af1713;
 }

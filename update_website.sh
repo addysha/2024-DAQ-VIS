@@ -17,7 +17,7 @@ cd $APP_DIR
 git pull
 
 # Install the necessary npm packages
-npm install --force
+npm install
 
 # Build the application
 npm run build
