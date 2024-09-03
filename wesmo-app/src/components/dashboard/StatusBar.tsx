@@ -17,10 +17,10 @@ const StatusBar: React.FC<Props> = ({ data }) => {
   };
 
   const statusLabels = [
-    { label: "Ready to Drive", dataName: "readyToDrive" },
-    { label: "Electrical Systems", dataName: "electricalSystems" },
-    { label: "Sensors", dataName: "sensors" },
-    { label: "Low Voltage", dataName: "lowVoltage" },
+    { label: "Ready to Drive", dataName: "Ready to Drive" },
+    { label: "Electrical Systems", dataName: "Electrical Systems" },
+    { label: "Sensors", dataName: "Sensors" },
+    { label: "Low Voltage", dataName: "Low Voltage" },
     { label: "High Voltage", dataName: "High Voltage" },
   ];
 

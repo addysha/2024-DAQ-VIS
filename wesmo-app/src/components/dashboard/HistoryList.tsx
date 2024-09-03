@@ -35,7 +35,6 @@ const HistoryList = () => {
       });
 
       socket.on("historic_data", (receivedData) => {
-        console.log("Received Historical Data:", receivedData);
         setHistoricalData(receivedData);
       });
 

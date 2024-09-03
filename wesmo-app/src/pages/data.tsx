@@ -25,7 +25,11 @@ const Data: React.FC = () => {
   const [socketInstance, setSocketInstance] = useState<Socket | undefined>(
     undefined
   );
-  const error = false;
+
+  const systemErrors = [];
+  const errorListItems = systemErrors.map((error, index) => (
+    <li key={index}>{error}</li>
+  ));
 
   useEffect(() => {
     if (!socketInstance) {
@@ -69,10 +73,6 @@ const Data: React.FC = () => {
   if (!data || !loaded) {
     return (
       <div className="App">
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/font-awesome.min.css"
-        ></link>
         <div className="background data">
           <div className="navbar">
             <div className="nav-left">
@@ -93,14 +93,6 @@ const Data: React.FC = () => {
   } else {
     return (
       <div className="App">
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/font-awesome.min.css"
-        ></link>
-        <link
-          href="https://fonts.googleapis.com/css?family=Roboto Condensed"
-          rel="stylesheet"
-        ></link>
         <div className="background data">
           <div className="navbar">
             <div className="nav-left">
@@ -111,11 +103,15 @@ const Data: React.FC = () => {
                 togglePopUp(
                   <div className="error-popup">
                     <h4>Software System Errors</h4>
+                    <br />
+                    <div className="scolling_list">
+                      <ol reversed>{errorListItems}</ol>
+                    </div>
                   </div>
                 )
               }
             >
-              <ErrorIcon errors={error} />
+              <ErrorIcon errors={systemErrors} />
             </div>
             <div
               onClick={() =>
@@ -128,73 +124,77 @@ const Data: React.FC = () => {
                       while it's out on the track.
                     </div>
                     <table style={{ width: "100%" }}>
-                      <tr>
-                        <th>Colours</th>
-                        <th></th>
-                        <th>Actions</th>
-                      </tr>
-                      <tr style={{ height: "1rem" }}>
-                        <td>
-                          <span
-                            className="dot"
-                            style={{ backgroundColor: "#3274b1" }}
-                          ></span>
-                        </td>
-                        <td>Values in blue are just normal data points.</td>
-                        <td>
-                          1. Clicking on a data widget allows you to see its
-                          recent history.
-                        </td>
-                      </tr>
-                      <tr style={{ height: "1rem" }}>
-                        <td>
-                          <span
-                            className="dot"
-                            style={{ backgroundColor: "#4da14b" }}
-                          ></span>
-                        </td>
-                        <td>
-                          Green is good, the value is in the expected range.
-                        </td>
-                        <td>
-                          2. The system status on the left shows the current
-                          status of our car. If the systems are on, heres where
-                          youll see.
-                        </td>
-                      </tr>
-                      <tr style={{ height: "1rem" }}>
-                        <td>
-                          <span
-                            className="dot"
-                            style={{ backgroundColor: "#eac054" }}
-                          ></span>
-                        </td>
-                        <td>
-                          Warnings will be yellow, this is data our team needs
-                          to watch.
-                        </td>
-                        <td>
-                          3. In the bottom left are any errors picked up in our
-                          vehiclesa system.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <span
-                            className="dot"
-                            style={{ backgroundColor: "#af1713" }}
-                          ></span>
-                        </td>
-                        <td>
-                          Red means issues and its time to get the driver to
-                          pull over.
-                        </td>
-                        <td>
-                          4. At the top right by the menu is general information
-                          about the dashbaord and an indicator if our software
-                          has any issues.
-                        </td>
-                      </tr>
+                      <thead>
+                        <tr>
+                          <th>Colours</th>
+                          <th></th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr style={{ height: "1rem" }}>
+                          <td>
+                            <span
+                              className="dot"
+                              style={{ backgroundColor: "#3274b1" }}
+                            ></span>
+                          </td>
+                          <td>Values in blue are just normal data points.</td>
+                          <td>
+                            1. Clicking on a data widget allows you to see its
+                            recent history.
+                          </td>
+                        </tr>
+                        <tr style={{ height: "1rem" }}>
+                          <td>
+                            <span
+                              className="dot"
+                              style={{ backgroundColor: "#4da14b" }}
+                            ></span>
+                          </td>
+                          <td>
+                            Green is good, the value is in the expected range.
+                          </td>
+                          <td>
+                            2. The system status on the left shows the current
+                            status of our car. If the systems are on, heres
+                            where youll see.
+                          </td>
+                        </tr>
+                        <tr style={{ height: "1rem" }}>
+                          <td>
+                            <span
+                              className="dot"
+                              style={{ backgroundColor: "#eac054" }}
+                            ></span>
+                          </td>
+                          <td>
+                            Warnings will be yellow, this is data our team needs
+                            to watch.
+                          </td>
+                          <td>
+                            3. In the bottom left are any errors picked up in
+                            our vehiclesa system.
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span
+                              className="dot"
+                              style={{ backgroundColor: "#af1713" }}
+                            ></span>
+                          </td>
+                          <td>
+                            Red means issues and its time to get the driver to
+                            pull over.
+                          </td>
+                          <td>
+                            4. At the top right by the menu is general
+                            information about the dashbaord and an indicator if
+                            our software has any issues.
+                          </td>
+                        </tr>
+                      </tbody>
                     </table>
                   </div>
                 )

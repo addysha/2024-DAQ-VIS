@@ -35,6 +35,10 @@ def create_data():
         DummySensorData("High Voltage", 0, 0, 1, ""),
         DummySensorData("Vehicle Errors", "Error", 0, 0, ""),
         DummySensorData("Predictive State of Charge", 45, 0, 100, "%"),
+        DummySensorData("Low Voltage", 0, 0, 1, ""),
+        DummySensorData("Electrical Systems", 0, 0, 1, ""),
+        DummySensorData("Sensors", 0, 0, 1, ""),
+        DummySensorData("Ready to Drive", 0, 0, 1, ""),
     ]
 
 
@@ -59,6 +63,10 @@ def generate_data(sensors):
     sensors[17].update_value_boolean()  # high_voltage
     sensors[18].update_string()  # error
     sensors[19].update_value_step(step=3)  # predict_charge
+    sensors[20].update_value_boolean()  # low_voltage
+    sensors[21].update_value_boolean()  # electrical_systems
+    sensors[22].update_value_boolean()  # sensors
+    sensors[23].update_value_boolean()  # ready_to_drive
 
     log_data(sensors)
 
@@ -77,7 +85,7 @@ def log_data(sensors):
 def handle_testing():
     sensors = create_data()
     while True:
-        # generate_data(sensors)
+        generate_data(sensors)
         socketio.emit("data", [sensor.to_dict() for sensor in sensors], to=request.sid)
         time.sleep(1)
 
