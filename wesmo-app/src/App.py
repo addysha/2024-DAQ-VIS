@@ -18,13 +18,9 @@ historical_data = {
     "Pedal Angle 1": [],
     "Pedal Angle 2": [],
     "Track Time": [],
-    "Wheel Speed LF": [],
-    "Wheel Speed RF": [],
-    "Wheel Speed LB": [],
-    "Wheel Speed RB": [],
+    "Wheel Speeds": [],
     "Warnings": [],
-    "Break Pressure Front": [],
-    "Break Pressure Rear": [],
+    "Break Pressures": [],
     "High Voltage": [],
     "Vehicle Errors": [],
     "Predictive State of Charge": [],
@@ -125,24 +121,20 @@ def log_data(sensors):
     historical_data["Track Time"].append(
         {"timestamp": timestamp, "value": sensors[9].value}
     )
-    historical_data["Wheel Speed LF"].append(
-        {"timestamp": timestamp, "value": sensors[10].value}
+    historical_data["Wheel Speeds"].append(
+        {
+            "timestamp": timestamp,
+            "LF": sensors[10].value,
+            "RF": sensors[11].value,
+            "LB": sensors[12].value,
+            "RB": sensors[13].value,
+        }
     )
-    historical_data["Wheel Speed RF"].append(
-        {"timestamp": timestamp, "value": sensors[11].value}
+    historical_data["Warnings"].append(
+        {"timestamp": timestamp, "value": sensors[14].value}
     )
-    historical_data["Wheel Speed LB"].append(
-        {"timestamp": timestamp, "value": sensors[12].value}
-    )
-    historical_data["Wheel Speed RB"].append(
-        {"timestamp": timestamp, "value": sensors[13].value}
-    )
-    historical_data["Warnings"].append({"timestamp": timestamp, "value": sensors[14].value})
-    historical_data["Break Pressure Front"].append(
-        {"timestamp": timestamp, "value": sensors[15].value}
-    )
-    historical_data["Break Pressure Rear"].append(
-        {"timestamp": timestamp, "value": sensors[16].value}
+    historical_data["Break Pressures"].append(
+        {"timestamp": timestamp, "front": sensors[15].value, "rear": sensors[16].value}
     )
     historical_data["High Voltage"].append(
         {"timestamp": timestamp, "value": sensors[17].value}
@@ -159,7 +151,9 @@ def log_data(sensors):
     historical_data["Electrical Systems"].append(
         {"timestamp": timestamp, "value": sensors[21].value}
     )
-    historical_data["Sensors"].append({"timestamp": timestamp, "value": sensors[22].value})
+    historical_data["Sensors"].append(
+        {"timestamp": timestamp, "value": sensors[22].value}
+    )
     historical_data["Ready to Drive"].append(
         {"timestamp": timestamp, "value": sensors[23].value}
     )

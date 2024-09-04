@@ -9,7 +9,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import Log from "./ListContainer.tsx";
+import LogQuad from "./ListContainerQuad.tsx";
 
 interface Props {
   keyToDisplay: string;
@@ -59,7 +59,7 @@ const HistoryList: React.FC<Props> = ({ keyToDisplay }) => {
       >
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
-            data={historicalData[keyToDisplay] || []}
+            data={historicalData[keyToDisplay]}
             margin={{ top: 15, right: 20, left: 0, bottom: 20 }}
           >
             <CartesianGrid strokeDasharray="3 3" fill="white" />
@@ -85,15 +85,36 @@ const HistoryList: React.FC<Props> = ({ keyToDisplay }) => {
             />
             <Line
               type="monotone"
-              dataKey="value"
+              dataKey="LF"
               stroke="#4da14b"
-              strokeWidth={2}
               dot={false}
+              strokeWidth={2}
+            />
+            <Line
+              type="monotone"
+              dataKey="RF"
+              stroke="#eac054"
+              dot={false}
+              strokeWidth={2}
+            />
+            <Line
+              type="monotone"
+              dataKey="LB"
+              stroke="#af1317"
+              dot={false}
+              strokeWidth={2}
+            />
+            <Line
+              type="monotone"
+              dataKey="RB"
+              stroke="#3274B1"
+              dot={false}
+              strokeWidth={2}
             />
           </LineChart>
         </ResponsiveContainer>
 
-        <Log data={historicalData[keyToDisplay] || []}></Log>
+        <LogQuad data={historicalData[keyToDisplay] || []}></LogQuad>
       </div>
     </div>
   );

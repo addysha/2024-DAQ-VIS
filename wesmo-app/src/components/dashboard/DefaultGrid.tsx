@@ -13,6 +13,8 @@ import PopUp from "./PopUpContainer.tsx";
 
 import { DataItem } from "../../pages/data.tsx";
 import HistoryList from "./HistoryList.tsx";
+import HistoryListWheelSpeed from "./HistoryListWheelSpeed.tsx";
+import HistoryListBreaks from "./HistoryListBreaks.tsx";
 
 interface Props {
   data: DataItem[];
@@ -179,11 +181,13 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
         <div className="dashboard-row">
           <GridContainer
             size={3}
-            // onClick={() =>
-            //   togglePopUp(
-            //     <HistoryList keyToDisplay="Battery State of Charge"></HistoryList>
-            //   )
-            // }
+            onClick={() =>
+              togglePopUp(
+                <HistoryListWheelSpeed
+                  keyToDisplay={"Wheel Speeds"}
+                ></HistoryListWheelSpeed>
+              )
+            }
           >
             {/* Wheel Speed */}
             <QuadNumberContainer
@@ -212,11 +216,13 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
           </GridContainer>
           <GridContainer
             size={3}
-            // onClick={() =>
-            //   togglePopUp(
-            //     <HistoryList keyToDisplay="Battery State of Charge"></HistoryList>
-            //   )
-            // }
+            onClick={() =>
+              togglePopUp(
+                <HistoryListBreaks
+                  keyToDisplay={"Break Pressures"}
+                ></HistoryListBreaks>
+              )
+            }
           >
             {/* Pedal Angles & Break Pressures */}
             <QuadNumberContainer
