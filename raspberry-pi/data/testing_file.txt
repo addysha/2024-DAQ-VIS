@@ -1,0 +1,222 @@
+['time: 2024-07-29 15:06:18.238539', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time:fi2024-07-29 15:06:18.238778', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:505', 'logic power supply voltage:10783', 'current demand:0']
+['time: 2024-07-29 15:06:18.238984', '3', 'motor current actual: 3', 'electrical angle: 12704', 'phase a current: 65531']
+['time: 2024-07-29 15:06:18.239211', '4', 'torque regulator: 538', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:19.239132', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:19.239375', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:504', 'logic power supply voltage:10783', 'current demand:0']
+['time: 2024-07-29 15:06:19.239576', '3', 'motor current actual: 0', 'electrical angle: 12704', 'phase a current: 11']
+['time: 2024-07-29 15:06:19.239804', '4', 'torque regulator: 408', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:20.247344', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:20.247582', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:505', 'logic power supply voltage:10783', 'current demand:0']
+['time: 2024-07-29 15:06:20.247786', '3', 'motor current actual: 65529', 'electrical angle: 12704', 'phase a current: 11']
+['time: 2024-07-29 15:06:20.248012', '4', 'torque regulator: 447', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:21.269194', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:21.269433', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:507', 'logic power supply voltage:10783', 'current demand:0']
+['time: 2024-07-29 15:06:21.269634', '3', 'motor current actual: 14', 'electrical angle: 12704', 'phase a current: 11']
+['time: 2024-07-29 15:06:21.269861', '4', 'torque regulator: 513', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:22.268991', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:22.269234', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:504', 'logic power supply voltage:10783', 'current demand:0']
+['time: 2024-07-29 15:06:22.269434', '3', 'motor current actual: 65526', 'electrical angle: 12704', 'phase a current: 65515']
+['time: 2024-07-29 15:06:22.269656', '4', 'torque regulator: 464', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:23.276567', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:23.276803', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:503', 'logic power supply voltage:10783', 'current demand:0']
+['time: 2024-07-29 15:06:23.277007', '3', 'motor current actual: 0', 'electrical angle: 12704', 'phase a current: 65515']
+['time: 2024-07-29 15:06:23.277231', '4', 'torque regulator: 585', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:24.281276', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:24.281513', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:505', 'logic power supply voltage:10783', 'current demand:0']
+['time: 2024-07-29 15:06:24.281710', '3', 'motor current actual: 65526', 'electrical angle: 12704', 'phase a current: 65515']
+['time: 2024-07-29 15:06:24.281939', '4', 'torque regulator: 627', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:25.237206', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:25.237444', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:505', 'logic power supply voltage:10783', 'current demand:0']
+['time: 2024-07-29 15:06:25.237646', '3', 'motor current actual: 65529', 'electrical angle: 12704', 'phase a current: 27']
+['time: 2024-07-29 15:06:25.237872', '4', 'torque regulator: 483', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:26.244872', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:26.245110', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:505', 'logic power supply voltage:10783', 'current demand:0']
+['time: 2024-07-29 15:06:26.245310', '3', 'motor current actual: 3', 'electrical angle: 12704', 'phase a current: 11']
+['time: 2024-07-29 15:06:26.245534', '4', 'torque regulator: 417', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:27.237551', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:27.237790', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:505', 'logic power supply voltage:10783', 'current demand:0']
+['time: 2024-07-29 15:06:27.237993', '3', 'motor current actual: 65529', 'electrical angle: 12704', 'phase a current: 11']
+['time: 2024-07-29 15:06:27.238220', '4', 'torque regulator: 458', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:28.233449', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:28.233689', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:507', 'logic power supply voltage:10783', 'current demand:0']
+['time: 2024-07-29 15:06:28.233895', '3', 'motor current actual: 0', 'electrical angle: 12704', 'phase a current: 65531']
+['time: 2024-07-29 15:06:28.234125', '4', 'torque regulator: 465', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:29.233828', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:29.236439', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:504', 'logic power supply voltage:10783', 'current demand:0']
+['time: 2024-07-29 15:06:29.236641', '3', 'motor current actual: 14', 'electrical angle: 12704', 'phase a current: 11']
+['time: 2024-07-29 15:06:29.236867', '4', 'torque regulator: 495', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:30.230588', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:30.230830', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:504', 'logic power supply voltage:10783', 'current demand:0']
+['time: 2024-07-29 15:06:30.231038', '3', 'motor current actual: 65533', 'electrical angle: 12704', 'phase a current: 65531']
+['time: 2024-07-29 15:06:30.231264', '4', 'torque regulator: 503', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:31.243810', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:31.244049', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:505', 'logic power supply voltage:10783', 'current demand:0']
+['time: 2024-07-29 15:06:31.244252', '3', 'motor current actual: 0', 'electrical angle: 12704', 'phase a current: 65515']
+['time: 2024-07-29 15:06:31.244480', '4', 'torque regulator: 396', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:32.239818', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:32.240060', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:504', 'logic power supply voltage:10783', 'current demand:0']
+['time: 2024-07-29 15:06:32.240266', '3', 'motor current actual: 0', 'electrical angle: 12704', 'phase a current: 65531']
+['time: 2024-07-29 15:06:32.240490', '4', 'torque regulator: 547', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:33.238725', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:33.238961', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:505', 'logic power supply voltage:10783', 'current demand:0']
+['time: 2024-07-29 15:06:33.239166', '3', 'motor current actual: 3', 'electrical angle: 12704', 'phase a current: 65531']
+['time: 2024-07-29 15:06:33.239392', '4', 'torque regulator: 554', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:34.235472', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:34.235706', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:505', 'logic power supply voltage:10791', 'current demand:0']
+['time: 2024-07-29 15:06:34.235914', '3', 'motor current actual: 65526', 'electrical angle: 12704', 'phase a current: 65531']
+['time: 2024-07-29 15:06:34.236141', '4', 'torque regulator: 491', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:35.235191', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:35.235430', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:505', 'logic power supply voltage:10783', 'current demand:0']
+['time: 2024-07-29 15:06:35.235631', '3', 'motor current actual: 0', 'electrical angle: 12704', 'phase a current: 11']
+['time: 2024-07-29 15:06:35.235857', '4', 'torque regulator: 596', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:36.231993', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:36.232235', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:504', 'logic power supply voltage:10783', 'current demand:0']
+['time: 2024-07-29 15:06:36.232438', '3', 'motor current actual: 65533', 'electrical angle: 12704', 'phase a current: 27']
+['time: 2024-07-29 15:06:36.232662', '4', 'torque regulator: 696', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:37.237918', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:37.238161', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:504', 'logic power supply voltage:10783', 'current demand:0']
+['time: 2024-07-29 15:06:37.238363', '3', 'motor current actual: 0', 'electrical angle: 12704', 'phase a current: 11']
+['time: 2024-07-29 15:06:37.238587', '4', 'torque regulator: 617', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:38.228665', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:38.228904', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:505', 'logic power supply voltage:10783', 'current demand:0']
+['time: 2024-07-29 15:06:38.229105', '3', 'motor current actual: 0', 'electrical angle: 12704', 'phase a current: 11']
+['time: 2024-07-29 15:06:38.229332', '4', 'torque regulator: 468', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:39.236811', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:39.237049', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:505', 'logic power supply voltage:10783', 'current demand:0']
+['time: 2024-07-29 15:06:39.237251', '3', 'motor current actual: 65533', 'electrical angle: 12704', 'phase a current: 11']
+['time: 2024-07-29 15:06:39.237477', '4', 'torque regulator: 505', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:40.242894', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:40.243133', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:505', 'logic power supply voltage:10783', 'current demand:0']
+['time: 2024-07-29 15:06:40.243339', '3', 'motor current actual: 10', 'electrical angle: 12704', 'phase a current: 65531']
+['time: 2024-07-29 15:06:40.243566', '4', 'torque regulator: 460', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:41.234223', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:41.234463', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:507', 'logic power supply voltage:10783', 'current demand:0']
+['time: 2024-07-29 15:06:41.234668', '3', 'motor current actual: 3', 'electrical angle: 12704', 'phase a current: 65531']
+['time: 2024-07-29 15:06:41.234897', '4', 'torque regulator: 434', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:42.241986', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:42.242224', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:505', 'logic power supply voltage:10783', 'current demand:0']
+['time: 2024-07-29 15:06:42.242426', '3', 'motor current actual: 0', 'electrical angle: 12704', 'phase a current: 11']
+['time: 2024-07-29 15:06:42.242650', '4', 'torque regulator: 584', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:43.230570', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:43.230809', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:505', 'logic power supply voltage:10783', 'current demand:0']
+['time: 2024-07-29 15:06:43.231017', '3', 'motor current actual: 65529', 'electrical angle: 12704', 'phase a current: 65531']
+['time: 2024-07-29 15:06:43.231241', '4', 'torque regulator: 564', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:44.236338', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:44.236576', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:505', 'logic power supply voltage:10783', 'current demand:0']
+['time: 2024-07-29 15:06:44.236781', '3', 'motor current actual: 65529', 'electrical angle: 12704', 'phase a current: 11']
+['time: 2024-07-29 15:06:44.237005', '4', 'torque regulator: 621', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:45.229954', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:45.230197', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:504', 'logic power supply voltage:10783', 'current demand:0']
+['time: 2024-07-29 15:06:45.230403', '3', 'motor current actual: 0', 'electrical angle: 12704', 'phase a current: 65531']
+['time: 2024-07-29 15:06:45.230633', '4', 'torque regulator: 465', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:46.237373', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:46.237612', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:505', 'logic power supply voltage:10783', 'current demand:0']
+['time: 2024-07-29 15:06:46.237818', '3', 'motor current actual: 0', 'electrical angle: 12704', 'phase a current: 65531']
+['time: 2024-07-29 15:06:46.238042', '4', 'torque regulator: 590', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:47.228431', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:47.228668', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:507', 'logic power supply voltage:10791', 'current demand:0']
+['time: 2024-07-29 15:06:47.228874', '3', 'motor current actual: 0', 'electrical angle: 12704', 'phase a current: 65531']
+['time: 2024-07-29 15:06:47.229101', '4', 'torque regulator: 619', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:48.232540', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:48.232780', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:505', 'logic power supply voltage:10783', 'current demand:0']
+['time: 2024-07-29 15:06:48.232988', '3', 'motor current actual: 65529', 'electrical angle: 12704', 'phase a current: 65531']
+['time: 2024-07-29 15:06:48.233215', '4', 'torque regulator: 551', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:49.240260', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:49.240504', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:504', 'logic power supply voltage:10775', 'current demand:0']
+['time: 2024-07-29 15:06:49.240709', '3', 'motor current actual: 0', 'electrical angle: 12704', 'phase a current: 65531']
+['time: 2024-07-29 15:06:49.240939', '4', 'torque regulator: 482', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:50.243459', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:50.243701', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:504', 'logic power supply voltage:10783', 'current demand:0']
+['time: 2024-07-29 15:06:50.243909', '3', 'motor current actual: 65529', 'electrical angle: 12704', 'phase a current: 65531']
+['time: 2024-07-29 15:06:50.244137', '4', 'torque regulator: 442', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:51.249831', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:51.250070', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:505', 'logic power supply voltage:10783', 'current demand:0']
+['time: 2024-07-29 15:06:51.250272', '3', 'motor current actual: 0', 'electrical angle: 12704', 'phase a current: 11']
+['time: 2024-07-29 15:06:51.250498', '4', 'torque regulator: 476', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:52.256514', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:52.256756', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:504', 'logic power supply voltage:10783', 'current demand:0']
+['time: 2024-07-29 15:06:52.256963', '3', 'motor current actual: 3', 'electrical angle: 12704', 'phase a current: 65531']
+['time: 2024-07-29 15:06:52.257187', '4', 'torque regulator: 621', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:53.248648', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:53.248885', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:505', 'logic power supply voltage:10783', 'current demand:0']
+['time: 2024-07-29 15:06:53.249090', '3', 'motor current actual: 65529', 'electrical angle: 12704', 'phase a current: 65515']
+['time: 2024-07-29 15:06:53.249313', '4', 'torque regulator: 531', 'flux regulator count: 5', 'velocity actual value: 0']
+['time: 2024-07-29 15:06:54.251302', '1', 'status word: 39', 'position actual: 4294966491', 'torque actual: 0']
+
+
+['time: 2024-07-29 15:06:54.251540', '2', 'controller temp:25', 'motor temp:0', 'DC link circuit voltage:505', 'logic power supply voltage:10783', 'current demand:0']
+['time: 2024-07-29 15:06:54.251747', '3', 'motor current actual: 3', 'electrical angle: 12704', 'phase a current: 65531']
+['time: 2024-07-29 15:06:54.251973', '4', 'torque regulator: 521', 'flux regulator count: 5', 'velocity actual value: 0']

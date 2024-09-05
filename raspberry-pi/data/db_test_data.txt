@@ -1,0 +1,7 @@
+Timestamp: 1718756829.889949        ID: 0281    S Rx                DL:  8    1a 00 fb 01 b2 28 36 00     Channel: can0
+Timestamp: 1718756830.902377        ID: 0281    S Rx                DL:  8    1a 00 f9 01 a2 28 36 00     Channel: can0
+Timestamp: 1718756831.913778        ID: 0281    S Rx                DL:  8    1a 00 f9 01 a2 28 36 00     Channel: can0
+Timestamp: 1718756833.936626        ID: 0281    S Rx                DL:  8    1a 00 f9 01 aa 28 36 00     Channel: can0
+Timestamp: 1718756828.879475        ID: 0381    S Rx                DL:  6    02 00 ab ea 02 00           Channel: can0
+Timestamp: 1718756831.913976        ID: 0381    S Rx                DL:  6    48 00 aa 6a e2 ff           Channel: can0
+Timestamp: 1718756833.936832        ID: 0381    S Rx                DL:  6    00 00 ff 3f f2 ff           Channel: can0
