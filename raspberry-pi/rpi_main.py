@@ -65,6 +65,7 @@ def connect_mqtt() -> mqtt_client:
     """
     client = None
     try:
+
         def on_connect(client, userdata, flags, reason_code, properties=None):
             if reason_code == 0:
                 print("connected to MQTT")
@@ -95,9 +96,9 @@ def publish(client, can0):
         msg = "sent from pi"
         result = client.publish(topic, str(msg))
         status = result[0]
-        #if status != 0:
+        # if status != 0:
         #    print(f"Failed to send message to topic {topic}")
-        #else:
+        # else:
         #    print("success")
 
 
@@ -114,14 +115,14 @@ def main():
 
     if not can0:
         shutdown_device()
-    
+
     connected = False
     while not connected:
         client = connect_mqtt()
         print(client)
         if client != None:
-    client.loop_start()
-    publish(client, can0)
+            client.loop_start()
+            publish(client, can0)
 
 
 if __name__ == "__main__":

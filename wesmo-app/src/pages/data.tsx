@@ -56,7 +56,7 @@ const Data: React.FC = () => {
 
       setLoaded(true);
 
-      // Take out when set up dummy data
+      // Only to be used during testing
       socket.emit("testing");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -53,9 +53,13 @@ class MCTranslator:
             )
 
         return [
-            f"torque regulator: {torque_regulator}",
-            f"flux regulator count: {flux_regulator_count}",
-            f"velocity actual value: {velocity_actual_value}",
+            {"name": "torque regulator", "value": torque_regulator, "unit": ""},
+            {"name": "flux regulator count", "value": flux_regulator_count, "unit": ""},
+            {
+                "name": "velocity actual value",
+                "value": velocity_actual_value,
+                "unit": "",
+            },
         ]
 
     def decode_mc_pdo_3(self, can_data):
@@ -77,11 +81,31 @@ class MCTranslator:
             f"phase a current: {phase_a_current}",
         ]
 
+        data = [
+            {
+                "name": "motor current actual",
+                "value": motor_current_actual,
+                "unit": "A",
+            },
+            {"name": "electrical angle", "value": electrical_angle, "unit": ""},
+            {
+                "name": "phase a current",
+                "value": phase_a_current,
+                "unit": "A",
+            },
+        ]
+
         if len(can_data) == 16:
             phase_b_current = self.interpret_signed_int(
                 int(can_data[16:14] + can_data[12:14], 16), 16
             )
-            data += [f"phase b current: {phase_b_current}"]
+            data += [
+                {
+                    "name": "phase b current",
+                    "value": phase_b_current,
+                    "unit": "A",
+                }
+            ]
 
         return data
 
@@ -100,12 +124,31 @@ class MCTranslator:
         current_demand = self.interpret_signed_int(
             int(can_data[16:14] + can_data[12:14], 16), 16
         )
+        # return [
+        #     f"controller temp:{controller_temp}",
+        #     f"motor temp:{motor_temp}",
+        #     f"DC link circuit voltage:{DC_link_circuit_voltage}",
+        #     f"logic power supply voltage:{logic_power_supply_voltage}",
+        #     f"current demand:{current_demand}",
+        # ]
         return [
-            f"controller temp:{controller_temp}",
-            f"motor temp:{motor_temp}",
-            f"DC link circuit voltage:{DC_link_circuit_voltage}",
-            f"logic power supply voltage:{logic_power_supply_voltage}",
-            f"current demand:{current_demand}",
+            {"name": "controller temp", "value": controller_temp, "unit": "c"},
+            {"name": "motor temp", "value": motor_temp, "unit": ""},
+            {
+                "name": "DC link circuit voltage",
+                "value": DC_link_circuit_voltage,
+                "unit": "V",
+            },
+            {
+                "name": "logic power supply voltage",
+                "value": logic_power_supply_voltage,
+                "unit": "V",
+            },
+            {
+                "name": "current demand",
+                "value": current_demand,
+                "unit": "A",
+            },
         ]
 
     def decode_mc_pdo_1(self, can_data):
@@ -122,9 +165,13 @@ class MCTranslator:
         )
 
         return [
-            f"status word: {status_word}",
-            f"position actual: {position_actual_value}",
-            f"torque actual: {torque_actual_value}",
+            {"name": "status word", "value": status_word, "unit": ""},
+            {"name": "position actual", "value": position_actual_value, "unit": ""},
+            {
+                "name": "torque actual",
+                "value": torque_actual_value,
+                "unit": "",
+            },
         ]
 
     def decode_pdo(self, can_data):

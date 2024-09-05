@@ -80,6 +80,7 @@ if __name__ == "__main__":
 
 
 ### POSTGRES COMMANDS
+# psql wesmo - start psql
 # \l - list databases
 # \c wesmo - connect to database
 # \dt - list tables

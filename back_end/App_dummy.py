@@ -1,11 +1,13 @@
 from flask import Flask, request
-from flask_socketio import SocketIO
+
+# from flask_socketio import SocketIO
+import socketio
 import time
 import datetime
 from dummy_data import DummySensorData
 
 app = Flask(__name__)
-socketio = SocketIO(app, logger=True, engineio_logger=True, cors_allowed_origins="*")
+# socketio = SocketIO(app, logger=True, engineio_logger=True, cors_allowed_origins="*")
 
 historical_data = {
     "Motor Temperature": [],
