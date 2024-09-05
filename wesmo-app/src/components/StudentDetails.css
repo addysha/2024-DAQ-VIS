@@ -1,0 +1,48 @@
+.student-details-container {
+  width: 400px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  display: inline-flex;
+
+  .left-container {
+    padding: 8px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 8px;
+    display: inline-flex;
+  }
+
+  .right-container {
+    width: 240px;
+    font-size: 12px;
+    font-weight: 400;
+  }
+
+  .info-container {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 4px;
+    display: flex;
+  }
+
+  .name {
+    width: 160px;
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .discipline {
+    align-self: stretch;
+    font-size: 12px;
+    font-weight: 400;
+  }
+
+  .component {
+    font-size: 12px;
+    font-weight: 400;
+  }
+}

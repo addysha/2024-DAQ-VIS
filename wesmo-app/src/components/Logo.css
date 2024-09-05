@@ -1,0 +1,12 @@
+#imgLogo {
+  padding-top: 10px;
+  width: 200px;
+  cursor: pointer;
+}
+
+#logo {
+  font-size: 40px;
+  font-weight: 900;
+  font-style: italic;
+  margin: 0px;
+}

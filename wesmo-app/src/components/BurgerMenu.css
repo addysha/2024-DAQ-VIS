@@ -1,0 +1,90 @@
+.hamburger-menu {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  z-index: 3000;
+  position: relative;
+}
+
+.hamburger-menu.black .line {
+  background-color: black;
+}
+
+.nav-cover.active + .hamburger-menu {
+  display: block;
+}
+
+.line {
+  background-color: white;
+  height: 3px;
+  margin: 2px 0;
+  width: 25px;
+}
+
+.nav-cover {
+  height: 100%;
+  max-width: 400px;
+  min-width: 300px;
+  width: 30vw;
+  position: fixed;
+  z-index: 1;
+  right: -400px;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+  font: "Roboto Condensed";
+
+  &.active {
+    right: 0px;
+    visibility: visible;
+  }
+}
+
+.nav-links {
+  font-family: "Roboto Condensed";
+  display: flex;
+  text-align: right;
+  left: 0;
+  float: right;
+  margin-right: 12%;
+  justify-content: center;
+  height: 100%;
+  flex-direction: column;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  padding: 0.25rem;
+  padding-right: 2rem;
+  font-size: 40px;
+  font-family: "Roboto Condensed";
+}
+
+.nav-links a:hover {
+  color: rgb(190, 0, 0);
+  text-decoration: none;
+  padding: 0.25rem;
+  padding-right: 2rem;
+}
+
+.hamburger-menu.toggle .line:nth-child(1) {
+  transform: rotate(-45deg) translateY(7px);
+  transition: transform 0.3s ease-in-out;
+  background-color: white;
+}
+
+.hamburger-menu.toggle .line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu.toggle .line:nth-child(3) {
+  transform: rotate(45deg) translateY(-7px);
+  transition: transform 0.3s ease-in-out;
+  background-color: white;
+}
+
+.nav-cover.active + .hamburger-menu {
+  z-index: 4;
+}
