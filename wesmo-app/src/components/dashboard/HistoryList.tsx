@@ -38,11 +38,11 @@ const HistoryList: React.FC<Props> = ({ keyToDisplay }) => {
         console.log(`Disconnected with id: ${socket.id}`);
       });
 
-      socket.on("historic_data", (receivedData) => {
+      socket.on("recieve_historic_data", (receivedData) => {
         setHistoricalData(receivedData);
       });
 
-      socket.emit("history");
+      socket.emit("send_history");
     }
   }, [socketInstance]);
 

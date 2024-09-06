@@ -133,7 +133,7 @@ class MCTranslator:
         # ]
         return [
             {"name": "controller temp", "value": controller_temp, "unit": "c"},
-            {"name": "motor temp", "value": motor_temp, "unit": ""},
+            {"name": "Motor Temperature", "value": motor_temp, "unit": "c"},
             {
                 "name": "DC link circuit voltage",
                 "value": DC_link_circuit_voltage,

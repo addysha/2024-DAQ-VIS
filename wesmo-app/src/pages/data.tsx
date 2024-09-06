@@ -57,7 +57,7 @@ const Data: React.FC = () => {
       setLoaded(true);
 
       // Only to be used during testing
-      socket.emit("testing");
+      socket.emit("update_clients");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [socketInstance]);
@@ -70,7 +70,7 @@ const Data: React.FC = () => {
     setPopUpVisible((prev) => !prev);
   };
 
-  if (!data || !loaded) {
+  if (!loaded) {
     return (
       <div className="App">
         <div className="background data">
@@ -87,6 +87,27 @@ const Data: React.FC = () => {
             <p>Waiting for connection...</p>
           </div>
           <Spinner />
+        </div>
+      </div>
+    );
+  } else if (!data) {
+    return (
+      <div className="App">
+        <div className="background data">
+          <div className="navbar">
+            <div className="nav-left">
+              <Logo colour="dark" />
+            </div>
+            <div className="nav-right">
+              <BurgerMenu colour="black" />
+              <div className="nav-right"></div>
+            </div>
+          </div>
+          <div className="no-data">
+            <p>W-FS24 isn't racing</p>
+            <br />
+            <p>Come back soon</p>
+          </div>
         </div>
       </div>
     );

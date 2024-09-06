@@ -32,9 +32,6 @@ def connect_mqtt() -> mqtt_client:
     try:
 
         def on_connect(client, userdata, flags, reason_code, properties=None):
-            if reason_code == 0:
-                print("connected to MQTT")
-                connected = True
             if reason_code != 0:
                 print("Failed to connect, return code %d\n", reason_code)
 

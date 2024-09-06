@@ -1,5 +1,7 @@
 import random
+import redis
 import psycopg2
+import pickle
 from paho.mqtt import client as mqtt_client
 from MCTranslator_Class import MCTranslator
 
@@ -20,6 +22,79 @@ client_list = []
 
 ### Translators
 mc_translator = MCTranslator()
+
+"""
+        REDIS
+"""
+
+
+def start_redis():
+    r = redis.Redis(host="localhost", port=6379, db=0)
+    return r
+
+
+def query_all_latest_data():
+    keys = redis_client.keys("*")
+    all_data = []
+
+    for key in keys:
+        data = redis_client.get(key)
+        if data:
+            try:
+                deserialized_data = pickle.loads(data)
+                all_data.append(
+                    {
+                        "time": deserialized_data["time"],
+                        "name": deserialized_data["name"],
+                        "value": deserialized_data["value"],
+                        "unit": deserialized_data["unit"],
+                    }
+                )
+            except pickle.PickleError as e:
+                print(f" -! # Error deserializing data for key {key}: {e}")
+        else:
+            print(f" -! #  No data found for key {key}")
+
+    return all_data
+
+
+def query_latest(data_name, redis_client):
+    print(f"QUERYING DATA")
+    data = redis_client.get(data_name)
+    if data:
+        try:
+            deserialized_data = pickle.loads(data)
+            latest_data = {
+                "time": deserialized_data.get("time", ""),
+                "name": deserialized_data.get("name", ""),
+                "value": deserialized_data.get("value", ""),
+                "unit": deserialized_data.get("unit", ""),
+            }
+            return latest_data
+        except pickle.PickleError as e:
+            print(f" -! # Error deserializing data for {data_name}: {e}")
+    else:
+        print(f" -! # No data found for {data_name}")
+        return None
+
+
+def cache_data(time, value):
+    try:
+        redis_key = value["name"]
+        redis_value = {
+            "time": time[1] + " " + time[2],
+            "name": value["name"],
+            "value": value["value"],
+            "unit": "",
+        }
+        redis_client.set(
+            redis_key,
+            pickle.dumps(redis_value),
+        )
+        # print(f" - # Storing in Redis: {redis_key} -> {redis_value}")
+
+    except Exception as e:
+        print(f" -! # Error with {redis_key}: {e}")
 
 
 """
@@ -80,28 +155,30 @@ def create_mc_table(cursor, conn):
     conn.commit()
 
 
-def save_to_db(cursor, conn, data, pdo, unit=None):
+def save_to_db(cursor, conn, data, pdo, redis_client):
     if len(data) < 2:
         return
     time = data[0].split(" ")
     for value in data[2:]:
         query = f"""INSERT INTO MOTOR_CONTROLLER(
         TIME, PDO, NAME, VALUE, UNIT)
-        VALUES ('{time[1]+" "+time[2]}', {pdo}, '{value["name"]}', {value["value"]}, '{unit}')"""
+        VALUES ('{time[1]+" "+time[2]}', {pdo}, '{value["name"]}', {value["value"]}, '{value["unit"]}')"""
         try:
             cursor.execute(query)
             conn.commit()
 
         except Exception as e:
             conn.rollback()
-            print(f" # - Error in saving to database: {e}")
+            print(f" -! # Error in saving to database: {e}")
+
+        cache_data(time, value)
 
 
 def query_data(data_name):
     if data_name == "Motor Temperature":  #  or data_name == "Motor Speed"
         query = "SELECT time, value from MOTOR_CONTROLLER where name == 'motor temp'"
     else:
-        print(" # - ERROR")
+        print(" -! #  ERROR")
 
     cursor.execute(query)
     return cursor.fetchall()
@@ -131,7 +208,7 @@ def connect_mqtt() -> mqtt_client:
     return client
 
 
-def subscribe(client: mqtt_client):
+def subscribe(client: mqtt_client, redis_client):
     """_summary_
     Subscribes to the CAN messages using MQTT.
     Print out any received messages to the console and to a text file.
@@ -156,7 +233,7 @@ def subscribe(client: mqtt_client):
 
                 if data:
                     # store
-                    save_to_db(cursor, conn, data, data[1])
+                    save_to_db(cursor, conn, data, data[1], redis_client)
 
     client.subscribe(topic)
     client.on_message = on_message
@@ -164,13 +241,16 @@ def subscribe(client: mqtt_client):
 
 def start_mqtt_subscriber():
     # Connect & Set up database
-    global cursor, conn
+    global cursor, conn, redis_client
     cursor, conn = start_postgresql()
     setup_db(cursor)
     cursor, conn = connect_to_db()
     create_mc_table(cursor, conn)
 
+    # Initialize Redis connection
+    redis_client = start_redis()
+
     # Set up MQTT communications
     client = connect_mqtt()
-    subscribe(client)
+    subscribe(client, redis_client)
     client.loop_forever()

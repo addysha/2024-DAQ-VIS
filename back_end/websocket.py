@@ -1,6 +1,7 @@
+import time
 from flask import Flask, request
 from flask_socketio import SocketIO
-from mqtt_db_subscriber import query_data
+from mqtt_db_subscriber import query_data, query_all_latest_data
 
 """ GLOBAL VARIABLES """
 app = Flask(__name__)
@@ -17,22 +18,23 @@ def handle_history(data):
     socketio.emit("recieve_historic_data", historical_data, to=request.sid)
 
 
-# TODO Have something poll this every 1 second etc to update client list
 @socketio.on("update_clients")
 def handle_update_clients():
-    # socketio.emit("data", [sensor.to_dict() for sensor in sensors])
-    pass
+    time.sleep(2)
+    latest_data = query_all_latest_data()
+    print(f" - * {latest_data}")
+    socketio.emit("data", latest_data)
 
 
 @socketio.on("connect")
 def handle_connect():
-    print(f" # - User connected!")
+    print(f" - * User connected!")
     client_list.append(request.sid)
 
 
 @socketio.on("disconnect")
 def handle_disconnect():
-    print(f" # - User disconnected!")
+    print(f" - * User disconnected!")
 
 
 def start_webserver():
