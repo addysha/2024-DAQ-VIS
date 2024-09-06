@@ -53,12 +53,23 @@ class MCTranslator:
             )
 
         return [
-            {"name": "torque regulator", "value": torque_regulator, "unit": ""},
-            {"name": "flux regulator count", "value": flux_regulator_count, "unit": ""},
+            {
+                "name": "torque regulator",
+                "value": torque_regulator,
+                "unit": "",
+                "max": 100,
+            },
+            {
+                "name": "flux regulator count",
+                "value": flux_regulator_count,
+                "unit": "",
+                "max": 100,
+            },
             {
                 "name": "velocity actual value",
                 "value": velocity_actual_value,
                 "unit": "",
+                "max": 100,
             },
         ]
 
@@ -86,12 +97,19 @@ class MCTranslator:
                 "name": "motor current actual",
                 "value": motor_current_actual,
                 "unit": "A",
+                "max": 100,
             },
-            {"name": "electrical angle", "value": electrical_angle, "unit": ""},
+            {
+                "name": "electrical angle",
+                "value": electrical_angle,
+                "unit": "",
+                "max": 100,
+            },
             {
                 "name": "phase a current",
                 "value": phase_a_current,
                 "unit": "A",
+                "max": 100,
             },
         ]
 
@@ -104,6 +122,7 @@ class MCTranslator:
                     "name": "phase b current",
                     "value": phase_b_current,
                     "unit": "A",
+                    "max": 100,
                 }
             ]
 
@@ -124,30 +143,37 @@ class MCTranslator:
         current_demand = self.interpret_signed_int(
             int(can_data[16:14] + can_data[12:14], 16), 16
         )
-        # return [
-        #     f"controller temp:{controller_temp}",
-        #     f"motor temp:{motor_temp}",
-        #     f"DC link circuit voltage:{DC_link_circuit_voltage}",
-        #     f"logic power supply voltage:{logic_power_supply_voltage}",
-        #     f"current demand:{current_demand}",
-        # ]
+
         return [
-            {"name": "controller temp", "value": controller_temp, "unit": "c"},
-            {"name": "Motor Temperature", "value": motor_temp, "unit": "c"},
+            {
+                "name": "controller temp",
+                "value": controller_temp,
+                "unit": "c",
+                "max": 100,
+            },
+            {
+                "name": "Motor Temperature",
+                "value": motor_temp,
+                "unit": "c",
+                "max": 100,
+            },
             {
                 "name": "DC link circuit voltage",
                 "value": DC_link_circuit_voltage,
                 "unit": "V",
+                "max": 100,
             },
             {
                 "name": "logic power supply voltage",
                 "value": logic_power_supply_voltage,
                 "unit": "V",
+                "max": 100,
             },
             {
                 "name": "current demand",
                 "value": current_demand,
                 "unit": "A",
+                "max": 100,
             },
         ]
 
@@ -165,12 +191,23 @@ class MCTranslator:
         )
 
         return [
-            {"name": "status word", "value": status_word, "unit": ""},
-            {"name": "position actual", "value": position_actual_value, "unit": ""},
+            {
+                "name": "status word",
+                "value": status_word,
+                "unit": "",
+                "max": 100,
+            },
+            {
+                "name": "position actual",
+                "value": position_actual_value,
+                "unit": "",
+                "max": 100,
+            },
             {
                 "name": "torque actual",
                 "value": torque_actual_value,
                 "unit": "",
+                "max": 100,
             },
         ]
 

@@ -48,6 +48,7 @@ def query_all_latest_data():
                         "name": deserialized_data["name"],
                         "value": deserialized_data["value"],
                         "unit": deserialized_data["unit"],
+                        "max": deserialized_data["max"],
                     }
                 )
             except pickle.PickleError as e:
@@ -59,7 +60,6 @@ def query_all_latest_data():
 
 
 def query_latest(data_name, redis_client):
-    print(f"QUERYING DATA")
     data = redis_client.get(data_name)
     if data:
         try:
@@ -69,6 +69,7 @@ def query_latest(data_name, redis_client):
                 "name": deserialized_data.get("name", ""),
                 "value": deserialized_data.get("value", ""),
                 "unit": deserialized_data.get("unit", ""),
+                "max": deserialized_data.get("max", ""),
             }
             return latest_data
         except pickle.PickleError as e:
@@ -85,7 +86,8 @@ def cache_data(time, value):
             "time": time[1] + " " + time[2],
             "name": value["name"],
             "value": value["value"],
-            "unit": "",
+            "unit": value["unit"],
+            "max": value["max"],
         }
         redis_client.set(
             redis_key,
@@ -147,7 +149,8 @@ def create_mc_table(cursor, conn):
         PDO INT,
         NAME CHAR(50),
         VALUE INT,
-        UNIT CHAR(25)
+        UNIT CHAR(25),
+        MAX CHAR(25)
     )"""
 
     cursor.execute(sql)
@@ -155,14 +158,14 @@ def create_mc_table(cursor, conn):
     conn.commit()
 
 
-def save_to_db(cursor, conn, data, pdo, redis_client):
+def save_to_db(cursor, conn, data, pdo):
     if len(data) < 2:
         return
     time = data[0].split(" ")
     for value in data[2:]:
         query = f"""INSERT INTO MOTOR_CONTROLLER(
-        TIME, PDO, NAME, VALUE, UNIT)
-        VALUES ('{time[1]+" "+time[2]}', {pdo}, '{value["name"]}', {value["value"]}, '{value["unit"]}')"""
+        TIME, PDO, NAME, VALUE, UNIT, MAX)
+        VALUES ('{time[1]+" "+time[2]}', {pdo}, '{value["name"]}', {value["value"]}, '{value["unit"]}', '{value["max"]}')"""
         try:
             cursor.execute(query)
             conn.commit()
@@ -175,8 +178,8 @@ def save_to_db(cursor, conn, data, pdo, redis_client):
 
 
 def query_data(data_name):
-    if data_name == "Motor Temperature":  #  or data_name == "Motor Speed"
-        query = "SELECT time, value from MOTOR_CONTROLLER where name == 'motor temp'"
+    if data_name == "Motor Temperature" or data_name == "Motor Speed":
+        query = f"SELECT time, value from MOTOR_CONTROLLER where name == '{data_name}'"
     else:
         print(" -! #  ERROR")
 
@@ -217,8 +220,6 @@ def subscribe(client: mqtt_client, redis_client):
     """
 
     def on_message(client, userdata, msg):
-        # Timestamp: 1718756828.377694        ID: 0201    S Rx                DL:  8    0f 00 00 00 00 00 36 00     Channel: can0
-
         raw_data = msg.payload.decode()
         if raw_data != "None":
             # Motor Controller
@@ -233,7 +234,7 @@ def subscribe(client: mqtt_client, redis_client):
 
                 if data:
                     # store
-                    save_to_db(cursor, conn, data, data[1], redis_client)
+                    save_to_db(cursor, conn, data, data[1])
 
     client.subscribe(topic)
     client.on_message = on_message
