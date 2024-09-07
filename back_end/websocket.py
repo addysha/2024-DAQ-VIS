@@ -34,7 +34,7 @@ def handle_connect():
 
 @socketio.on("disconnect")
 def handle_disconnect():
-    print(f" - * User disconnected!")
+    print(f" # - User disconnected!")
 
 
 def start_webserver():

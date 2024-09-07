@@ -1,3 +1,5 @@
+import datetime
+import json
 import random
 import redis
 import psycopg2
@@ -169,7 +171,6 @@ def save_to_db(cursor, conn, data, pdo):
         try:
             cursor.execute(query)
             conn.commit()
-
         except Exception as e:
             conn.rollback()
             print(f" -! # Error in saving to database: {e}")
@@ -178,13 +179,24 @@ def save_to_db(cursor, conn, data, pdo):
 
 
 def query_data(data_name):
-    if data_name == "Motor Temperature" or data_name == "Motor Speed":
-        query = f"SELECT time, value from MOTOR_CONTROLLER where name == '{data_name}'"
-    else:
-        print(" -! #  ERROR")
+    try:
+        if data_name == "Motor Temperature" or data_name == "Motor Speed":
+            query = (
+                f"SELECT time, value from MOTOR_CONTROLLER where name = '{data_name}'"
+            )
+        else:
+            print(" -! #  ERROR")
 
-    cursor.execute(query)
-    return cursor.fetchall()
+        cursor.execute(query)
+        data = cursor.fetchall()
+        converted_data = []
+        for dt, value in data:
+            timestamp = int(dt.timestamp())
+            converted_data.append({"timestamp": timestamp, "value": value})
+        print(converted_data)
+        return converted_data
+    except Exception as e:
+        print(f" -! # Error collecting data from: {e}")
 
 
 """

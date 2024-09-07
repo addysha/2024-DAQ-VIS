@@ -41,6 +41,8 @@ const Data: React.FC = () => {
       setSocketInstance(socket);
 
       socket.on("connect", () => {
+        setLoaded(true);
+
         console.log(`Connected with id: ${socket.id}`);
       });
 
@@ -53,8 +55,6 @@ const Data: React.FC = () => {
           setData(receivedData);
         }
       });
-
-      setLoaded(true);
 
       // Only to be used during testing
       socket.emit("update_clients");

@@ -77,3 +77,13 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+### POSTGRES COMMANDS
+# psql wesmo - start psql
+# \l - list databases
+# \c wesmo - connect to database
+# \dt - list tables
+# \d motor_controller - describe table
+# SELECT * FROM motor_controller; - show all rows in table
+# \q - quit
