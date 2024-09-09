@@ -1,5 +1,17 @@
 import cantools
 import datetime
+from enum import Enum
+
+
+class Status(Enum):
+    VOLTAGE = 1
+    CURRENT = 2
+    RELAY = 4
+    CELL_BALENCING = 8
+    CHARGE_INTERLOCK = 16
+    THERMISTOR_B_VALUE_INVALID = 32
+    INPUT_POWER_SUPPLY = 64
+    RESERVED = 128
 
 
 class BMSTranslator:
@@ -71,3 +83,12 @@ class BMSTranslator:
                 "max": 100,
             },
         ]
+
+    def index_failsafe_status(self, value):
+        set_flags = []
+
+        for status in Status:
+            if value & status.value:
+                set_flags.append(status.name)
+
+        return set_flags

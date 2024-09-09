@@ -115,8 +115,19 @@ def query_data(data_name):
             query = (
                 f"SELECT time, value from MOTOR_CONTROLLER where name = '{data_name}'"
             )
+        elif (
+            data_name == "High Temperature"
+            or data_name == "Battery Current"
+            or data_name == "Battery State of Charge"
+            or data_name == "Battery Voltage"
+            or data_name == "Battery Power"
+            or data_name == "Battery DCL"
+            or data_name == "Battery Status"
+            or data_name == "Battery Checksum"
+        ):
+            query = f"SELECT time, value from BATTERY_MANAGEMENT_SYSTEM where name = '{data_name}'"
         else:
-            print(" -! #  ERROR")
+            print(f" -! #  ERROR: Data '{data_name}' does not exist in database.")
 
         cursor.execute(query)
         data = cursor.fetchall()
@@ -190,7 +201,7 @@ def start_mqtt_subscriber():
     # Connect & Set up database
     global cursor, conn, redis_client
     cursor, conn = start_postgresql()
-    setup_db(cursor)
+    setup_db(cursor, conn)
     cursor, conn = connect_to_db()
     create_mc_table(cursor, conn)
     create_bms_table(cursor, conn)

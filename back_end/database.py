@@ -33,7 +33,7 @@ def connect_to_db():
     return cursor, conn
 
 
-def setup_db(cursor):
+def setup_db(cursor, conn):
     try:
         cursor.execute("SELECT 1 FROM pg_catalog.pg_database WHERE datname = 'wesmo'")
         exists = cursor.fetchone()
