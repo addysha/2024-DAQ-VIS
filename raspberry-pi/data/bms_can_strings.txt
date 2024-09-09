@@ -1,0 +1,10 @@
+Timestamp:        0.000001    ID: 000006b1    X Rx                DL:  8    28 1a 78 3c 0a 05 01 00
+Timestamp:        0.000002    ID: 000006b1    X Rx                DL:  8    32 14 5a 28 0f 07 02 00
+Timestamp:        0.000003    ID: 000006b1    X Rx                DL:  8    1e 1c 50 2d 12 0a 00 00
+Timestamp:        0.000004    ID: 000006b1    X Rx                DL:  8    3c 20 82 30 1c 0f 03 00
+Timestamp:        0.000005    ID: 000006b1    X Rx                DL:  8    20 16 64 25 14 09 01 00
+Timestamp:        0.000006    ID: 000006b1    X Rx                DL:  8    24 22 91 38 1a 0e 00 00
+Timestamp:        0.000007    ID: 000006b1    X Rx                DL:  8    2e 1e 78 2f 10 0b 02 00
+Timestamp:        0.000008    ID: 000006b1    X Rx                DL:  8    18 1b 3c 1e 08 06 00 00
+Timestamp:        0.000009    ID: 000006b1    X Rx                DL:  8    3a 24 96 40 1d 10 01 00
+Timestamp:        0.000010    ID: 000006b1    X Rx                DL:  8    2c 19 50 27 0e 08 03 00
