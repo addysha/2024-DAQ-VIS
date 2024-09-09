@@ -111,8 +111,6 @@ def save_to_db_mc(cursor, conn, data, pdo):
 def save_to_db_bms(cursor, conn, data):
     from mqtt_subscriber import cache_data
 
-    print(data)
-
     if len(data) < 2:
         return
     time = data[0].split(" ")
