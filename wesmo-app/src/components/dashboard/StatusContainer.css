@@ -17,3 +17,7 @@
 .status__container {
   text-align: center;
 }
+
+.bms {
+  list-style-type: circle;
+}

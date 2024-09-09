@@ -1,11 +1,18 @@
-import datetime
-import json
 import random
 import redis
-import psycopg2
 import pickle
 from paho.mqtt import client as mqtt_client
 from MCTranslator_Class import MCTranslator
+from BMSTranslator_Class import BMSTranslator
+from database import (
+    start_postgresql,
+    setup_db,
+    connect_to_db,
+    create_mc_table,
+    save_to_db_mc,
+    save_to_db_bms,
+    create_bms_table,
+)
 
 
 """ GLOBAL VARIABLES
@@ -22,8 +29,10 @@ username = "wesmo"
 password = "public"
 client_list = []
 
-### Translators
+""" COMPONENT TRANSLATORS """
 mc_translator = MCTranslator()
+bms_translator = BMSTranslator()
+
 
 """
         REDIS
@@ -95,87 +104,9 @@ def cache_data(time, value):
             redis_key,
             pickle.dumps(redis_value),
         )
-        # print(f" - # Storing in Redis: {redis_key} -> {redis_value}")
 
     except Exception as e:
         print(f" -! # Error with {redis_key}: {e}")
-
-
-"""
-        POSTGRESQL
-"""
-
-
-def start_postgresql():
-    conn = psycopg2.connect(
-        database="postgres",
-        user="hannah",
-        password="password",
-        host="127.0.0.1",
-        port="5432",
-    )
-    conn.autocommit = True
-    cursor = conn.cursor()
-
-    return cursor, conn
-
-
-def connect_to_db():
-    conn = psycopg2.connect(
-        database="wesmo",
-        user="hannah",
-        password="password",
-        host="127.0.0.1",
-        port="5432",
-    )
-    conn.autocommit = True
-    cursor = conn.cursor()
-
-    return cursor, conn
-
-
-def setup_db(cursor):
-    cursor.execute("SELECT 1 FROM pg_catalog.pg_database WHERE datname = 'wesmo'")
-    exists = cursor.fetchone()
-    if not exists:
-        cursor.execute("CREATE DATABASE wesmo")
-        print(" # - Database created successfully")
-    print(" # - Database already exists")
-
-
-def create_mc_table(cursor, conn):
-    cursor.execute("DROP TABLE IF EXISTS MOTOR_CONTROLLER")
-
-    sql = """CREATE TABLE MOTOR_CONTROLLER(
-        TIME TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,  -- Auto-filled timestamp,
-        PDO INT,
-        NAME CHAR(50),
-        VALUE INT,
-        UNIT CHAR(25),
-        MAX CHAR(25)
-    )"""
-
-    cursor.execute(sql)
-    print(" # - Motor Controller table created successfully")
-    conn.commit()
-
-
-def save_to_db(cursor, conn, data, pdo):
-    if len(data) < 2:
-        return
-    time = data[0].split(" ")
-    for value in data[2:]:
-        query = f"""INSERT INTO MOTOR_CONTROLLER(
-        TIME, PDO, NAME, VALUE, UNIT, MAX)
-        VALUES ('{time[1]+" "+time[2]}', {pdo}, '{value["name"]}', {value["value"]}, '{value["unit"]}', '{value["max"]}')"""
-        try:
-            cursor.execute(query)
-            conn.commit()
-        except Exception as e:
-            conn.rollback()
-            print(f" -! # Error in saving to database: {e}")
-
-        cache_data(time, value)
 
 
 def query_data(data_name):
@@ -184,8 +115,19 @@ def query_data(data_name):
             query = (
                 f"SELECT time, value from MOTOR_CONTROLLER where name = '{data_name}'"
             )
+        elif (
+            data_name == "Battery Temperature"
+            or data_name == "Battery Current"
+            or data_name == "Battery State of Charge"
+            or data_name == "Battery Voltage"
+            or data_name == "Battery Power"
+            or data_name == "Battery DCL"
+            or data_name == "Battery Status"
+            or data_name == "Battery Checksum"
+        ):
+            query = f"SELECT time, value from BATTERY_MANAGEMENT_SYSTEM where name = '{data_name}'"
         else:
-            print(" -! #  ERROR")
+            print(f" -! #  ERROR: Data '{data_name}' does not exist in database.")
 
         cursor.execute(query)
         data = cursor.fetchall()
@@ -232,6 +174,7 @@ def subscribe(client: mqtt_client, redis_client):
     """
 
     def on_message(client, userdata, msg):
+        data = []
         raw_data = msg.payload.decode()
         if raw_data != "None":
             # Motor Controller
@@ -241,12 +184,14 @@ def subscribe(client: mqtt_client, redis_client):
                 or "ID: 0381" in raw_data
                 or "ID: 0481" in raw_data
             ):
-                # decode
                 data = mc_translator.decode(raw_data)
-
-                if data:
-                    # store
-                    save_to_db(cursor, conn, data, data[1])
+                if data != []:
+                    save_to_db_mc(cursor, conn, data, data[1])
+            # Battery Management System
+            elif "ID: 1713" in raw_data or "ID: 000006b1" in raw_data:
+                data = bms_translator.decode(raw_data)
+                if data != []:
+                    save_to_db_bms(cursor, conn, data)
 
     client.subscribe(topic)
     client.on_message = on_message
@@ -256,9 +201,10 @@ def start_mqtt_subscriber():
     # Connect & Set up database
     global cursor, conn, redis_client
     cursor, conn = start_postgresql()
-    setup_db(cursor)
+    setup_db(cursor, conn)
     cursor, conn = connect_to_db()
     create_mc_table(cursor, conn)
+    create_bms_table(cursor, conn)
 
     # Initialize Redis connection
     redis_client = start_redis()
