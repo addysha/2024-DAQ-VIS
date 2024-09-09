@@ -1,7 +1,7 @@
 import time
 from flask import Flask, request
 from flask_socketio import SocketIO
-from mqtt_db_subscriber import query_data, query_all_latest_data
+from mqtt_subscriber import query_data, query_all_latest_data
 
 """ GLOBAL VARIABLES """
 app = Flask(__name__)

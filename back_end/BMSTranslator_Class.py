@@ -1,5 +1,5 @@
-import datetime
 import cantools
+import datetime
 
 
 class BMSTranslator:
@@ -13,15 +13,15 @@ class BMSTranslator:
         dl = int(can_data[7])
         data_list = can_data[8:]
         if len(data_list) != dl:
-            return "Error"
+            return []
 
         id = int(can_data[3], 16)
-        # time = can_data[1]
         data = bytearray.fromhex("".join(data_list))
 
         decoded_message = dbc.decode_message(id, data)
+        data = [f"time: {datetime.datetime.fromtimestamp(float(can_data[1]))}"]
 
-        return [
+        return data + [
             {
                 "name": "High Temperature",
                 "value": decoded_message["High_Temperature"],
