@@ -35,32 +35,32 @@ class BMSTranslator:
 
         return data + [
             {
-                "name": "High Temperature",
+                "name": "Battery Temperature",
                 "value": decoded_message["High_Temperature"],
                 "unit": "C",
                 "max": 60,
             },
             {
                 "name": "Battery Current",
-                "value": decoded_message["Pack_Current"],
+                "value": round(decoded_message["Pack_Current"], 2),
                 "unit": "A",
                 "max": 100,
             },
             {
                 "name": "Battery State of Charge",
-                "value": decoded_message["Pack_Current"],
+                "value": round(decoded_message["Pack_Current"], 2),
                 "unit": "%",
                 "max": 100,
             },
             {
                 "name": "Battery Voltage",
-                "value": decoded_message["Pack_Inst_Voltage"],
+                "value": round(decoded_message["Pack_Inst_Voltage"], 2),
                 "unit": "V",
                 "max": 100,
             },
             {
                 "name": "Battery Power",
-                "value": decoded_message["Pack_kW_Power"],
+                "value": round(decoded_message["Pack_kW_Power"], 2),
                 "unit": "kW",
                 "max": 100,
             },

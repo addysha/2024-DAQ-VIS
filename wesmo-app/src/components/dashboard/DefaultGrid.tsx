@@ -21,17 +21,24 @@ interface Props {
 }
 
 const DefaultGrid: React.FC<Props> = ({ data }) => {
+  // Connected to DB values
+  const motorTemp = data.find((item) => item.name === "Motor Temperature");
+  const motorSpeed = data.find((item) => item.name === "Motor Speed");
+
   const batteryCharge = data.find(
     (item) => item.name === "Battery State of Charge"
   );
   const predictiveCharge = data.find(
     (item) => item.name === "Predictive State of Charge"
   );
-  const motorTemp = data.find((item) => item.name === "Motor Temperature");
-  const motorSpeed = data.find((item) => item.name === "Motor Speed");
   const batteryVoltage = data.find((item) => item.name === "Battery Voltage");
   const batteryCurrent = data.find((item) => item.name === "Battery Current");
+  const batteryPower = data.find((item) => item.name === "Battery Power");
   const batteryTemp = data.find((item) => item.name === "Battery Temperature");
+  const batteryDCL = data.find((item) => item.name === "Battery DCL"); // discharge current limit
+  const batteryStatus = data.find((item) => item.name === "Battery Status");
+
+  // Not connected
   const pedalAngle1 = data.find((item) => item.name === "Pedal Angle 1");
   const pedalAngle2 = data.find((item) => item.name === "Pedal Angle 2");
   const wheelSpeed_lf = data.find((item) => item.name === "Wheel Speed LF");
@@ -155,10 +162,10 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
             />
           </GridContainer>
           <GridContainer size={2}>
-            {/* Warnings */}
+            {/* Warnings - Battery Status */}
             <StatusContainer
-              textValue={warnings?.name ?? "Warnings"}
-              stateValue={+(warnings?.value ?? 0)}
+              textValue={batteryStatus?.name ?? "Warnings"}
+              stateValue={+(batteryStatus?.value ?? 0)}
             />
           </GridContainer>
           <GridContainer

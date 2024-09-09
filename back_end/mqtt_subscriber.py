@@ -116,7 +116,7 @@ def query_data(data_name):
                 f"SELECT time, value from MOTOR_CONTROLLER where name = '{data_name}'"
             )
         elif (
-            data_name == "High Temperature"
+            data_name == "Battery Temperature"
             or data_name == "Battery Current"
             or data_name == "Battery State of Charge"
             or data_name == "Battery Voltage"
