@@ -58,12 +58,12 @@ class BMSTranslator:
                 "unit": "V",
                 "max": 100,
             },
-            {
-                "name": "Battery Power",
-                "value": round(decoded_message["Pack_kW_Power"], 2),
-                "unit": "kW",
-                "max": 100,
-            },
+            # {
+            #     "name": "Battery Power",
+            #     "value": round(decoded_message["Pack_kW_Power"], 2),
+            #     "unit": "kW",
+            #     "max": 100,
+            # },
             {
                 "name": "Battery DCL",  # discharge current limit
                 "value": decoded_message["Maximum_Pack_DCL"],

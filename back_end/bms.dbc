@@ -1,9 +1,9 @@
-BO_ 1713 MSGID_0X6B1: 8 BMS
-SG_ High_Temperature : 7|8@0+ (1.0,0) [0|0] "Celsius" Vector__XXX
-SG_ Pack_Current : 15|8@0+ (0.1,0) [0|0] "Amps" Vector__XXX
-SG_ Pack_SOC : 23|8@0+ (0.5,0) [0|0] "Percent" Vector__XXX
-SG_ Pack_Inst_Voltage : 31|8@0+ (0.1,0) [0|0] "Volts" Vector__XXX
-SG_ Pack_kW_Power : 39|8@0+ (0.1,0) [0|0] "kW" Vector__XXX
-SG_ Maximum_Pack_DCL : 47|8@0+ (1.0,0) [0|0] "Amps" Vector__XXX
-SG_ Failsafe_Statuses : 55|8@0+ (1.0,0) [0|0] "" Vector__XXX
-SG_ CRC_Checksum : 63|8@0+ (1.0,0) [0|0] "" Vector__XXX
+BO_ 77 MSGID_0X4D: 8 BMS
+ SG_ High_Temperature : 7|8@0+ (1.0,0) [0|0] "Celsius"  Third_Party_Device
+ SG_ Pack_Current : 15|8@0+ (0.1,0) [0|0] "Amps"  Third_Party_Device
+ SG_ Pack_SOC : 23|8@0+ (0.5,0) [0|0] "Percent"  Third_Party_Device
+ SG_ Pack_Inst_Voltage : 31|8@0+ (0.1,0) [0|0] "Volts"  Third_Party_Device
+ SG_ Blank : 39|8@0+ (1.0,0) [0|0] ""  Third_Party_Device
+ SG_ Maximum_Pack_DCL : 47|8@0+ (1.0,0) [0|0] "Amps"  Third_Party_Device
+ SG_ Failsafe_Statuses : 55|8@0+ (1.0,0) [0|0] ""  Third_Party_Device
+ SG_ CRC_Checksum : 63|8@0+ (1.0,0) [0|0] ""  Third_Party_Device

@@ -188,7 +188,12 @@ def subscribe(client: mqtt_client, redis_client):
                 if data != []:
                     save_to_db_mc(cursor, conn, data, data[1])
             # Battery Management System
-            elif "ID: 1713" in raw_data or "ID: 000006b1" in raw_data:
+            elif (
+                "ID: 1713" in raw_data
+                or "ID: 000006b1" in raw_data
+                or "ID: 77" in raw_data
+                or "ID: 4d" in raw_data
+            ):
                 data = bms_translator.decode(raw_data)
                 if data != []:
                     save_to_db_bms(cursor, conn, data)
