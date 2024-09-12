@@ -57,7 +57,7 @@ const Data: React.FC = () => {
       });
 
       // Only to be used during testing
-      socket.emit("update_clients");
+      // socket.emit("update_clients");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [socketInstance]);
@@ -73,7 +73,7 @@ const Data: React.FC = () => {
   if (!loaded) {
     return (
       <div className="App">
-        <div className="background data">
+        <div className="background data load">
           <div className="navbar">
             <div className="nav-left">
               <Logo colour="dark" />
@@ -84,7 +84,7 @@ const Data: React.FC = () => {
             </div>
           </div>
           <div className="loading">
-            <p>Waiting for connection...</p>
+            <h2>Waiting for connection...</h2>
           </div>
           <Spinner />
         </div>
@@ -93,7 +93,7 @@ const Data: React.FC = () => {
   } else if (!data) {
     return (
       <div className="App">
-        <div className="background data">
+        <div className="background data load">
           <div className="navbar">
             <div className="nav-left">
               <Logo colour="dark" />
@@ -104,9 +104,9 @@ const Data: React.FC = () => {
             </div>
           </div>
           <div className="no-data">
-            <p>W-FS24 isn't racing</p>
+            <h2>W-FS24 isn't racing</h2>
             <br />
-            <p>Come back soon</p>
+            <h4>Come back soon</h4>
           </div>
         </div>
       </div>
