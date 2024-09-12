@@ -1,5 +1,6 @@
 node_modules
-venv
 .vscode
-raspberry-pi/venv
-env
+raspberry-pi/env
+back_end/env
+back_end/__pycache__/
+*.pyc
