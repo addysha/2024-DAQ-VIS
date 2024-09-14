@@ -1,6 +1,14 @@
-""" 
-    This file is to simulate the Raspberry Pi sending CAN data over MQTT.
+"""
+File: simulate.py
+Author: Hannah Murphy
+Date: 2024-09-14
+Description: This file is to simulate the Raspberry Pi sending CAN data over MQTT.
     Used for testing of the backend system.
+
+Copyright (c) 2024 WESMO. All rights reserved.
+This code is part of the WESMO Data Acquisition and Visualisation Project.
+
+Usage: Python3 simulate.py
 """
 
 import random

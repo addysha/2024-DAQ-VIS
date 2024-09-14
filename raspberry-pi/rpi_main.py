@@ -1,9 +1,17 @@
 #!/usr/bin/env python3
-"""_summary_
-    Python3 script to set up and run the Raspberry Pi for CAN Bus telemetry
-    Developer: Hannah Murphy
-    Organisation: WESMO 2024
 """
+File: rpi_main.py
+Author: Hannah Murphy
+Date: 2024-09-14
+Description: Python3 script to set up and run the Raspberry Pi for CAN Bus telemetry.
+    Runs automatically when the WESMO Raspberry Pi boots.
+
+Copyright (c) 2024 WESMO. All rights reserved.
+This code is part of the WESMO Data Acquisition and Visualisation Project.
+
+Usage: Python3 rpi_main.py
+"""
+
 import os
 import can
 import random
