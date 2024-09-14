@@ -1,3 +1,13 @@
+/*
+ * File: components/Sponsors.tsx
+ * Author: Hannah Murphy
+ * Date: 2024-09-14
+ * Description: An image array component for the sponsors page.
+ *
+ * Copyright (c) 2024 WESMO. All rights reserved.
+ * This code is part of the  WESMO Data Acquisition and Visualisation Project.
+ */
+
 import * as React from "react";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";

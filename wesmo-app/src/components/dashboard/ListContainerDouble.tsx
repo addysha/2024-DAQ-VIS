@@ -1,3 +1,13 @@
+/*
+ * File: components/dashboard/ListContainerDouble.tsx
+ * Author: Hannah Murphy
+ * Date: 2024-09-14
+ * Description: A dynamic list container component which lists 2 related data pieces.
+ *
+ * Copyright (c) 2024 WESMO. All rights reserved.
+ * This code is part of the  WESMO Data Acquisition and Visualisation Project.
+ */
+
 import React from "react";
 import "./ListContainer.css";
 

@@ -1,3 +1,13 @@
+/*
+ * File: components/dashboard/StatusContainer.tsx
+ * Author: Hannah Murphy
+ * Date: 2024-09-14
+ * Description: A pop up container with an exit button which displays html content passed to it.
+ *
+ * Copyright (c) 2024 WESMO. All rights reserved.
+ * This code is part of the  WESMO Data Acquisition and Visualisation Project.
+ */
+
 import React from "react";
 import "../../App.css";
 

@@ -1,3 +1,13 @@
+/*
+ * File: components/dashboard/HistoryListWheelSpeed.tsx
+ * Author: Hannah Murphy
+ * Date: 2024-09-14
+ * Description: A container component which lists the data history of the wheel speed.
+ *
+ * Copyright (c) 2024 WESMO. All rights reserved.
+ * This code is part of the  WESMO Data Acquisition and Visualisation Project.
+ */
+
 import React, { useEffect, useState } from "react";
 import { io, Socket } from "socket.io-client";
 import {

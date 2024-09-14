@@ -1,3 +1,13 @@
+/*
+ * File: components/InfoExplore.tsx
+ * Author: Hannah Murphy
+ * Date: 2024-09-14
+ * Description: An information pop-up clickable component.
+ *
+ * Copyright (c) 2024 WESMO. All rights reserved.
+ * This code is part of the  WESMO Data Acquisition and Visualisation Project.
+ */
+
 import React, { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import { Fab, Card, CardContent, CardHeader, Drawer } from "@mui/material";

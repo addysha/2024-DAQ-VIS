@@ -1,3 +1,13 @@
+/*
+ * File: components/dashboard/DialContainer.tsx
+ * Author: Hannah Murphy
+ * Date: 2024-09-14
+ * Description: A container component with a colour dial displaying a data value.
+ *
+ * Copyright (c) 2024 WESMO. All rights reserved.
+ * This code is part of the  WESMO Data Acquisition and Visualisation Project.
+ */
+
 import React, { useMemo } from "react";
 import "./DialContainer.css";
 

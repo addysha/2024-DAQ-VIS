@@ -1,6 +1,13 @@
-// Filename - components/sponsor_info.tsx
-// Description - Arrays of all sponsors and their information for 2024.
-// These arrays are imported and used in pages/sponsors.tsx
+/*
+ * File: components/SponsorInfo.tsx
+ * Author: Hannah Murphy
+ * Date: 2024-09-14
+ * Description: Arrays of all sponsors and their information for 2024.
+ *              These arrays are imported and used in pages/sponsors.tsx
+ *
+ * Copyright (c) 2024 WESMO. All rights reserved.
+ * This code is part of the  WESMO Data Acquisition and Visualisation Project.
+ */
 
 import nhp from "../images/sponsors/nhp.png";
 import hall_machinery from "../images/sponsors/hall_machinery.png";

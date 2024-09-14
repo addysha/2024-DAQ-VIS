@@ -1,3 +1,13 @@
+/*
+ * File: components/dashboard/defaultGrid.tsx
+ * Author: Hannah Murphy
+ * Date: 2024-09-14
+ * Description: A large component which holds all the container components of the dashboard.
+ *
+ * Copyright (c) 2024 WESMO. All rights reserved.
+ * This code is part of the  WESMO Data Acquisition and Visualisation Project.
+ */
+
 import React, { useState } from "react";
 import "../../App.css";
 
