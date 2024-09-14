@@ -1,4 +1,15 @@
 #!/bin/bash
+# File: update_website.sh
+# Author: Hannah Murphy
+# Date: 2024-09-14
+# Description:  Strips the VM of the old website directories,
+#               pulls the lasted code from GitHub and then redeploys
+#               the website with the new code.
+#
+# Copyright (c) 2024 WESMO. All rights reserved.
+# This script is part of the WESMO Data Acquisition and Visualisation Project.
+#
+# Usage: ./update_website.sh
 
 # Define variables
 WEB_DIR="/var/www/wesmo.co.nz/html"
