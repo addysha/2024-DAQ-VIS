@@ -1,3 +1,14 @@
+"""
+File: websocket.py
+Author: Hannah Murphy
+Date: 2024-09-14
+Description: Run by the main app server, contains all websocket relevent methods.
+
+Copyright (c) 2024 WESMO. All rights reserved.
+This code is part of the WESMO Data Acquisition and Visualisation Project.
+
+"""
+
 import time
 from flask import Flask, request
 from flask_socketio import SocketIO

@@ -1,9 +1,18 @@
+"""
+File: dummy_data.py
+Author: Hannah Murphy
+Date: 2024-09-14
+Description: The object class for the dummy data used in App_dummy.py
+
+Copyright (c) 2024 WESMO. All rights reserved.
+This code is part of the WESMO Data Acquisition and Visualisation Project.
+
+"""
+
 import random
-import datetime
 import json
 
 
-## DATA CLASS FOR DUMMY DATA
 class DummySensorData:
     def __init__(self, name, value, min_value, max_value, unit):
         self.name = name

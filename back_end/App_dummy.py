@@ -1,3 +1,15 @@
+"""
+File: App_dummy.py
+Author: Hannah Murphy
+Date: 2024-09-14
+Description: Used to create a rough simulation for the data displayed on the digital dashboard
+
+Copyright (c) 2024 WESMO. All rights reserved.
+This code is part of the WESMO Data Acquisition and Visualisation Project.
+
+Usage: Python3 App_dummy.py
+"""
+
 from flask import Flask, request
 
 # from flask_socketio import SocketIO

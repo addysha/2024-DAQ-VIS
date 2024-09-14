@@ -1,9 +1,20 @@
+"""
+File: mqtt_subscriber.py
+Author: Hannah Murphy
+Date: 2024-09-14
+Description: Run by the main app server, contains all MQTT and Redis relevent methods.
+
+Copyright (c) 2024 WESMO. All rights reserved.
+This code is part of the WESMO Data Acquisition and Visualisation Project.
+
+"""
+
 import random
 import redis
 import pickle
 from paho.mqtt import client as mqtt_client
-from MCTranslator_Class import MCTranslator
-from BMSTranslator_Class import BMSTranslator
+from back_end.MCTranslatorClass import MCTranslator
+from back_end.BMSTranslatorClass import BMSTranslator
 from database import (
     start_postgresql,
     setup_db,
