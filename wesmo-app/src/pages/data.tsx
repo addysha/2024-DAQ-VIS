@@ -1,4 +1,14 @@
-// Filename - pages/race-data.tsx
+/*
+ * File: pages/data.tsx
+ * Author: Hannah Murphy
+ * Date: 2024-09-14
+ * Description: Webpage which connnects to the WESMO digital dashboard for driving analytics.
+ *
+ * Copyright (c) 2024 WESMO. All rights reserved.
+ * This code is part of the  WESMO Data Acquisition and Visualisation Project.
+ *
+ */
+
 import React, { useEffect, useState } from "react";
 import { io, Socket } from "socket.io-client";
 import "../App.css";
