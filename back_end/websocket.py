@@ -31,10 +31,10 @@ def handle_history(data):
 
 @socketio.on("update_clients")
 def handle_update_clients():
-    time.sleep(2)
-    latest_data = query_all_latest_data()
-    print(f" - * {latest_data}")
-    socketio.emit("data", latest_data)
+    while True:
+        latest_data = query_all_latest_data()
+        # print(f" - * {latest_data}")
+        socketio.emit("data", latest_data)
 
 
 @socketio.on("connect")

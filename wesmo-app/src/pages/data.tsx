@@ -67,7 +67,7 @@ const Data: React.FC = () => {
       });
 
       // Only to be used during testing
-      // socket.emit("update_clients");
+      socket.emit("update_clients");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [socketInstance]);

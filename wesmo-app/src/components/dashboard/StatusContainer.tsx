@@ -71,7 +71,6 @@ const StatusContainer: React.FC<Props> = ({
   let error_value = 0;
 
   const bms_errors = indexFailsafeStatus(stateValue);
-  console.log(bms_errors);
 
   if (bms_errors.length !== 0) {
     error_value = 3;

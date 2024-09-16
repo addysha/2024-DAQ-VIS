@@ -13,8 +13,8 @@ import random
 import redis
 import pickle
 from paho.mqtt import client as mqtt_client
-from back_end.MCTranslatorClass import MCTranslator
-from back_end.BMSTranslatorClass import BMSTranslator
+from MCTranslatorClass import MCTranslator
+from BMSTranslatorClass import BMSTranslator
 from database import (
     start_postgresql,
     setup_db,

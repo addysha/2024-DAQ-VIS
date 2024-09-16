@@ -27,7 +27,6 @@ import History from "./pages/history.tsx";
 import Data from "./pages/data.tsx";
 import Fsae from "./pages/fsae.tsx";
 import Explore from "./pages/explore.tsx";
-import Daq from "./pages/daq-system.tsx";
 
 const App: React.FC = () => {
   return (
@@ -49,7 +48,6 @@ const App: React.FC = () => {
         <Route path="/history-2014" element={<History2014 />} />
 
         <Route path="/about-wesmo/explore" element={<Explore />} />
-        <Route path="/daq-system" element={<Daq />} />
       </Routes>
     </Router>
   );
