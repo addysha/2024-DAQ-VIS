@@ -13,3 +13,4 @@ BO_ 77 MSGID_0X4D: 8 BMS
  BA_ "MoTeC_Channel" SG_ 77 Pack_SOC "Pack State of Charge";
  BA_ "MoTeC_Channel" SG_ 77 Pack_Inst_Voltage "Pack Instant Voltage";
  BA_ "MoTeC_Channel" SG_ 77 Maximum_Pack_DCL "Maximum Pack DCL";
+ BA_ "MoTeC_Channel" SG_ 77 Failsafe_Statuses "Failsafe Statuses";
