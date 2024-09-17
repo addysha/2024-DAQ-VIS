@@ -17,7 +17,7 @@ interface Props {
   maxValue: number;
   minValue?: number;
   unit?: string;
-  onError?: (error: string) => void; // Callback prop for error handling
+  onError?: (error: string) => void;
 }
 
 const BarContainer: React.FC<Props> = ({
