@@ -55,30 +55,21 @@ const StatusContainer: React.FC<Props> = ({
     RESERVED = 128,
   }
 
-  function indexFailsafeStatus(value: number): string[] {
-    const setFlags: string[] = [];
+  // Function to get active status flags
+  const getActiveStatuses = (value: number): string[] => {
+    return Object.values(Status)
+      .filter((status) => {
+        return typeof status === "number" && (value & status) !== 0;
+      })
+      .map((status) => Status[status as keyof typeof Status]);
+  };
 
-    for (const status in Status) {
-      const statusValue = Number(Status[status]);
-      if (!isNaN(statusValue) && value & statusValue) {
-        setFlags.push(status);
-      }
-    }
+  const activeStatuses = getActiveStatuses(stateValue);
+  const errorValue = activeStatuses.length > 0 ? 3 : 1;
 
-    return setFlags;
-  }
-
-  let error_value = 0;
-
-  const bms_errors = indexFailsafeStatus(stateValue);
-
-  if (bms_errors.length !== 0) {
-    error_value = 3;
-  }
-
-  const iconClass = iconClasses[error_value] || iconClasses[1];
-  const iconColor = colors[error_value] || "#4da14b";
-  const statusValue = types[error_value] || types[1];
+  const iconClass = iconClasses[errorValue] || iconClasses[1];
+  const iconColor = colors[errorValue] || "#4da14b";
+  const statusValue = types[errorValue] || types[1];
 
   const iconStyle = {
     color: iconColor,
@@ -107,7 +98,11 @@ const StatusContainer: React.FC<Props> = ({
             <div>
               <h3>BMS System</h3>
               <h4>The active failsafe statuses:</h4>
-              <ol className="bms">{bms_errors}</ol>
+              <ol className="bms">
+                {activeStatuses.map((status, index) => (
+                  <li key={index}>{status}</li>
+                ))}
+              </ol>
             </div>
           )
         }
