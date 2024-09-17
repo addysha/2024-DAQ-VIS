@@ -67,6 +67,13 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
     setPopUpContent(content ?? null);
     setPopUpVisible((prev) => !prev);
   };
+
+  const [errorMessages, setErrorMessages] = useState<string[]>([]);
+
+  const handleError = (error: string) => {
+    setErrorMessages((prevErrors) => [...prevErrors, error]);
+  };
+
   return (
     <div className="dashboard">
       <PopUp isVisible={isPopUpVisible} onClose={() => setPopUpVisible(false)}>
@@ -74,7 +81,7 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
       </PopUp>
       <div>
         <StatusBar data={data} />
-        <ErrorContainer data={data} />
+        <ErrorContainer data={errorMessages} />
       </div>
       <div>
         <div className="dashboard-row">
@@ -105,6 +112,7 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
               currentValue={+(batteryCharge?.value ?? 0)}
               maxValue={+(batteryCharge?.max ?? 0)}
               unit={batteryCharge?.unit ?? "%"}
+              onError={handleError} // Pass handleError to BarContainer
             />
           </GridContainer>
           <GridContainer

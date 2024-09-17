@@ -167,21 +167,6 @@ const Data: React.FC = () => {
             <div
               onClick={() =>
                 togglePopUp(
-                  <div className="error-popup">
-                    <h4>Software System Errors</h4>
-                    <br />
-                    <div className="scolling_list">
-                      <ol reversed>{errorListItems}</ol>
-                    </div>
-                  </div>
-                )
-              }
-            >
-              <ErrorIcon errors={systemErrors} />
-            </div>
-            <div
-              onClick={() =>
-                togglePopUp(
                   <div className="info-popup">
                     <h4>WESMO Race Dashboard</h4>
                     <div>

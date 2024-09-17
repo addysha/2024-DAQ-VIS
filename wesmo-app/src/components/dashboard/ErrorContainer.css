@@ -4,9 +4,11 @@
   margin-bottom: 1.5rem;
   padding: 1.5rem;
   padding-top: 0.5rem;
+  padding-left: 0.5rem;
 
   .scolling_list {
     max-height: 140px;
+    font-size: 0.75rem;
     overflow-y: auto;
   }
 

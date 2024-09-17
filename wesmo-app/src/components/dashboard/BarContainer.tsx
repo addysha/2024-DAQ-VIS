@@ -8,7 +8,7 @@
  * This code is part of the  WESMO Data Acquisition and Visualisation Project.
  */
 
-import React, { CSSProperties, useMemo } from "react";
+import React, { CSSProperties, useMemo, useEffect } from "react";
 import "./BarContainer.css";
 
 interface Props {
@@ -17,6 +17,7 @@ interface Props {
   maxValue: number;
   minValue?: number;
   unit?: string;
+  onError?: (error: string) => void; // Callback prop for error handling
 }
 
 const BarContainer: React.FC<Props> = ({
@@ -25,6 +26,7 @@ const BarContainer: React.FC<Props> = ({
   maxValue,
   minValue,
   unit,
+  onError,
 }) => {
   if (minValue) {
     maxValue = maxValue - minValue;
@@ -45,6 +47,12 @@ const BarContainer: React.FC<Props> = ({
     }
     return colour;
   }, [maxValue, currentValue]);
+
+  if (setColour === "#af1317" && onError) {
+    onError(`${textValue}: Critical`);
+  } else if (setColour === "#eac054" && onError) {
+    onError(`${textValue}: Warning`);
+  }
 
   const setBarStyle = useMemo(() => {
     const barStyle: CSSProperties = {
