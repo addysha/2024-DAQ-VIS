@@ -35,6 +35,10 @@ const Data: React.FC = () => {
   const [socketInstance, setSocketInstance] = useState<Socket | undefined>(
     undefined
   );
+  const [noDataReceived, setNoDataReceived] = useState(false);
+  const [lastDataTimestamp, setLastDataTimestamp] = useState<number>(
+    Date.now()
+  );
 
   const systemErrors = [];
   const errorListItems = systemErrors.map((error, index) => (
@@ -52,7 +56,7 @@ const Data: React.FC = () => {
 
       socket.on("connect", () => {
         setLoaded(true);
-
+        setLastDataTimestamp(Date.now());
         console.log(`Connected with id: ${socket.id}`);
       });
 
@@ -63,14 +67,24 @@ const Data: React.FC = () => {
       socket.on("data", (receivedData) => {
         if (data !== receivedData) {
           setData(receivedData);
+          setLastDataTimestamp(Date.now());
+          setNoDataReceived(false);
         }
       });
-
-      // Only to be used during testing
-      socket.emit("update_clients");
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [socketInstance]);
+  }, [socketInstance, data]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (Date.now() - lastDataTimestamp > 30000) {
+        setNoDataReceived(true);
+      }
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [lastDataTimestamp]);
 
   const [isPopUpVisible, setPopUpVisible] = useState<boolean>(false);
   const [popUpContent, setPopUpContent] = useState<React.ReactNode>(null);
@@ -117,6 +131,27 @@ const Data: React.FC = () => {
             <h2>W-FS24 isn't racing</h2>
             <br />
             <h4>Come back soon</h4>
+          </div>
+        </div>
+      </div>
+    );
+  } else if (noDataReceived) {
+    return (
+      <div className="App">
+        <div className="background data load">
+          <div className="navbar">
+            <div className="nav-left">
+              <Logo colour="dark" />
+            </div>
+            <div className="nav-right">
+              <BurgerMenu colour="black" />
+              <div className="nav-right"></div>
+            </div>
+          </div>
+          <div className="no-data">
+            <h2>Lost connection to W-FS24</h2>
+            <br />
+            <h4>System Error</h4>
           </div>
         </div>
       </div>

@@ -21,7 +21,6 @@ interface Props {
 }
 
 const Log: React.FC<Props> = ({ data }) => {
-  console.log(data);
   if (Object.keys(data).length === 0) {
     return (
       <div className="log">
