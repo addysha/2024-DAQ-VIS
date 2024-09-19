@@ -37,12 +37,14 @@ interface Props {
   textValue: string;
   stateValue: number;
   lightText?: boolean;
+  onError?: (error: string) => void;
 }
 
 const StatusContainer: React.FC<Props> = ({
   textValue = "",
   stateValue = 0,
   lightText = false,
+  onError,
 }) => {
   enum Status {
     VOLTAGE = 1,
@@ -65,6 +67,11 @@ const StatusContainer: React.FC<Props> = ({
   };
 
   const activeStatuses = getActiveStatuses(stateValue);
+
+  activeStatuses.forEach((value) => {
+    if (onError) onError(`${value}: Critical`);
+  });
+
   const errorValue = activeStatuses.length > 0 ? 3 : 1;
 
   const iconClass = iconClasses[errorValue] || iconClasses[1];

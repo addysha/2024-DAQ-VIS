@@ -186,7 +186,7 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
             <StatusContainer
               textValue={batteryStatus?.name ?? "Warnings"}
               stateValue={+(batteryStatus?.value ?? 0)}
-              // onError={handleError}
+              onError={handleError}
             />
           </GridContainer>
           <GridContainer

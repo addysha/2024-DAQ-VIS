@@ -121,7 +121,7 @@ def save_to_db_bms(cursor, conn, data):
     if len(data) < 2:
         return
     time = data[0].split(" ")
-    for value in data[2:]:
+    for value in data[1:]:
         query = f"""INSERT INTO BATTERY_MANAGEMENT_SYSTEM(
         TIME, NAME, VALUE, UNIT, MAX)
         VALUES ('{time[1]+" "+time[2]}', '{value["name"]}', {value["value"]}, '{value["unit"]}', '{value["max"]}')"""

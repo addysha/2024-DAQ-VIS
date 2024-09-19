@@ -67,7 +67,6 @@ const Data: React.FC = () => {
       socket.on("data", (receivedData) => {
         if (data !== receivedData) {
           setData(receivedData);
-          console.log(receivedData);
           setLastDataTimestamp(Date.now());
           setNoDataReceived(false);
         }
