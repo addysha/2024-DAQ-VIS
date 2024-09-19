@@ -1,7 +1,7 @@
 /*
  * File: components/StudentDetails.tsx
  * Author: Hannah Murphy
- * Date: 2024-09-14
+ * Date: 2024
  * Description: A container component, to hold text and images used on the engineering team page.
  *
  * Copyright (c) 2024 WESMO. All rights reserved.

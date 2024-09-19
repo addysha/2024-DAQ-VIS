@@ -1,3 +1,13 @@
+/*
+ * File: components/dashboard/NumberContainer.tsx
+ * Author: Hannah Murphy
+ * Date: 2024
+ * Description: A container component a single numerical data piece.
+ *
+ * Copyright (c) 2024 WESMO. All rights reserved.
+ * This code is part of the  WESMO Data Acquisition and Visualisation Project.
+ */
+
 import React, { useMemo } from "react";
 import "./NumberContainer.css";
 import { DataItem } from "../../pages/data.tsx";
@@ -5,6 +15,7 @@ import { DataItem } from "../../pages/data.tsx";
 interface Props {
   parameter1: DataItem | null;
   parameter2: DataItem | null;
+  onError?: (error: string) => void;
 }
 
 function getColour(maxValue, value): string {
@@ -15,7 +26,12 @@ function getColour(maxValue, value): string {
   return "#af1317";
 }
 
-const DoubleNumberContainer: React.FC<Props> = ({ parameter1, parameter2 }) => {
+const DoubleNumberContainer: React.FC<Props> = ({
+  parameter1,
+  parameter2,
+  onError,
+}) => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const parameters = [parameter1, parameter2];
 
   const barStyles = useMemo(() => {
@@ -23,6 +39,14 @@ const DoubleNumberContainer: React.FC<Props> = ({ parameter1, parameter2 }) => {
       backgroundColor: param ? getColour(param.max, param.value) : "#3274B1",
     }));
   }, [parameters]);
+
+  parameters.forEach((param, index) => {
+    if (barStyles[index].backgroundColor === "#af1317" && onError) {
+      onError(`${param?.name}: Critical`);
+    } else if (barStyles[index].backgroundColor === "#eac054" && onError) {
+      onError(`${param?.name}: Warning`);
+    }
+  });
 
   return (
     <div className="number__container">

@@ -1,7 +1,7 @@
 /*
  * File: components/dashboard/StatusBar.tsx
  * Author: Hannah Murphy
- * Date: 2024-09-14
+ * Date: 2024
  * Description: A container component which lists different main components of the vehicle and their status.
  *
  * Copyright (c) 2024 WESMO. All rights reserved.

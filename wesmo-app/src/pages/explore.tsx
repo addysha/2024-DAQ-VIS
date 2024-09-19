@@ -1,7 +1,7 @@
 /*
  * File: pages/explore.tsx
  * Author: Hannah Murphy
- * Date: 2024-09-14
+ * Date: 2024
  * Description: Webpage for interactive exploration of a WESMO FSAE vehicle.
  *
  * Copyright (c) 2024 WESMO. All rights reserved.

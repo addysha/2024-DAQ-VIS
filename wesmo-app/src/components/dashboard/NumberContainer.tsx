@@ -1,14 +1,14 @@
 /*
  * File: components/dashboard/NumberContainer.tsx
  * Author: Hannah Murphy
- * Date: 2024-09-14
+ * Date: 2024
  * Description: A container component a single numerical data piece.
  *
  * Copyright (c) 2024 WESMO. All rights reserved.
  * This code is part of the  WESMO Data Acquisition and Visualisation Project.
  */
 
-import React, { CSSProperties, useMemo } from "react";
+import React, { CSSProperties, useMemo, useEffect } from "react";
 import "./NumberContainer.css";
 
 interface Props {
@@ -16,9 +16,16 @@ interface Props {
   value: number;
   unit?: string;
   maxValue?: number;
+  onError?: (error: string) => void;
 }
 
-const NumberContainer: React.FC<Props> = ({ text, value, unit, maxValue }) => {
+const NumberContainer: React.FC<Props> = ({
+  text,
+  value,
+  unit,
+  maxValue,
+  onError,
+}) => {
   const setColour = useMemo(() => {
     let colour: string = "";
     if (maxValue) {
@@ -41,6 +48,15 @@ const NumberContainer: React.FC<Props> = ({ text, value, unit, maxValue }) => {
     };
     return barStyle;
   }, [setColour]);
+
+  useEffect(() => {
+    if (setColour === "#af1317" && onError) {
+      onError(`${text}: Critical`);
+    } else if (setColour === "#eac054" && onError) {
+      onError(`${text}: Warning`);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [setColour, text]);
 
   return (
     <div className="number__container">

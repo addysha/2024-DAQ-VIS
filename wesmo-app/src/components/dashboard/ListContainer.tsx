@@ -1,7 +1,7 @@
 /*
  * File: components/dashboard/ListContainer.tsx
  * Author: Hannah Murphy
- * Date: 2024-09-14
+ * Date: 2024
  * Description: A dynamic list container component which lists data information.
  *
  * Copyright (c) 2024 WESMO. All rights reserved.
@@ -10,26 +10,22 @@
 
 import React from "react";
 import "./ListContainer.css";
-
-interface HistoricalData {
-  timestamp: number;
-  value: number;
-}
+import { HistoricalData } from "./HistoryList";
 
 interface Props {
-  data: HistoricalData[];
+  log_data: HistoricalData;
 }
 
-const Log: React.FC<Props> = ({ data }) => {
-  if (Object.keys(data).length === 0) {
+const Log: React.FC<Props> = ({ log_data }) => {
+  if (Object.keys(log_data).length === 0) {
     return (
       <div className="log">
         <p>No historical data found</p>
       </div>
     );
   }
-  if (Object.keys(data).length !== 0) {
-    const listItems = data.map((item, index) => {
+  if (Object.keys(log_data).length !== 0) {
+    const listItems = log_data.map((item, index) => {
       const timestampDate = new Date(+item.timestamp);
       return (
         <li key={index}>
@@ -45,7 +41,7 @@ const Log: React.FC<Props> = ({ data }) => {
     return (
       <div className="log">
         <div className="scolling_list">
-          <ol>{listItems}</ol>
+          <ol reversed>{listItems}</ol>
         </div>
       </div>
     );

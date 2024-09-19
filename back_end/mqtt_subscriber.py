@@ -183,8 +183,8 @@ def subscribe(client: mqtt_client, redis_client):
         Args:
             client (mqtt_client): The publisher object connected to the AWS broker.
     """
-
     def on_message(client, userdata, msg):
+        # No message for 30s turn off?
         data = []
         raw_data = msg.payload.decode()
         if raw_data != "None":

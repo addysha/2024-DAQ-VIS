@@ -1,7 +1,7 @@
 /*
  * File: pages/2018.tsx
  * Author: Hannah Murphy
- * Date: 2024-09-14
+ * Date: 2024
  * Description: Webpage describing the 2018 WESMO FSAE vehicle.
  *
  * Copyright (c) 2024 WESMO. All rights reserved.

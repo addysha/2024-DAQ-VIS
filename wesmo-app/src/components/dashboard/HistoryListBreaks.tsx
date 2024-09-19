@@ -1,7 +1,7 @@
 /*
  * File: components/dashboard/HistoryListBreaks.tsx
  * Author: Hannah Murphy
- * Date: 2024-09-14
+ * Date: 2024
  * Description: A container component to list the history of the two brakes data pieces.
  *
  * Copyright (c) 2024 WESMO. All rights reserved.

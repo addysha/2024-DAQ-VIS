@@ -1,14 +1,14 @@
 /*
  * File: components/dashboard/DialContainer.tsx
  * Author: Hannah Murphy
- * Date: 2024-09-14
+ * Date: 2024
  * Description: A container component with a colour dial displaying a data value.
  *
  * Copyright (c) 2024 WESMO. All rights reserved.
  * This code is part of the  WESMO Data Acquisition and Visualisation Project.
  */
 
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import "./DialContainer.css";
 
 interface Props {
@@ -17,6 +17,7 @@ interface Props {
   maxValue: number;
   unit?: string;
   highGood?: boolean;
+  onError?: (error: string) => void;
 }
 
 const ProgressDial: React.FC<Props> = ({
@@ -25,6 +26,7 @@ const ProgressDial: React.FC<Props> = ({
   maxValue = 100,
   unit,
   highGood = false,
+  onError,
 }) => {
   const size = 120;
   const radius = (size - 18) / 2;
@@ -53,6 +55,15 @@ const ProgressDial: React.FC<Props> = ({
       return colour;
     }
   }, [currentValue, highGood, maxValue]);
+
+  useEffect(() => {
+    if (setColour === "#af1317" && onError) {
+      onError(`${textValue}: Critical`);
+    } else if (setColour === "#eac054" && onError) {
+      onError(`${textValue}: Warning`);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [setColour, textValue]);
 
   const offset = useMemo(() => {
     return circumference - (currentValue / maxValue) * circumference;

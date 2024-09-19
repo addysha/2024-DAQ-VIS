@@ -1,7 +1,7 @@
 /*
  * File: pages/history.tsx
  * Author: Hannah Murphy
- * Date: 2024-09-14
+ * Date: 2024
  * Description: Webpage describing the 2023 team and their work with EV and IC.
  *
  * Copyright (c) 2024 WESMO. All rights reserved.

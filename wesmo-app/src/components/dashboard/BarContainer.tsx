@@ -1,7 +1,7 @@
 /*
  * File: components/dashboard/BarContainer.tsx
  * Author: Hannah Murphy
- * Date: 2024-09-14
+ * Date: 2024
  * Description: A container component with a coloured bar displaying a data value.
  *
  * Copyright (c) 2024 WESMO. All rights reserved.
@@ -48,11 +48,14 @@ const BarContainer: React.FC<Props> = ({
     return colour;
   }, [maxValue, currentValue]);
 
-  if (setColour === "#af1317" && onError) {
-    onError(`${textValue}: Critical`);
-  } else if (setColour === "#eac054" && onError) {
-    onError(`${textValue}: Warning`);
-  }
+  useEffect(() => {
+    if (setColour === "#af1317" && onError) {
+      onError(`${textValue}: Critical`);
+    } else if (setColour === "#eac054" && onError) {
+      onError(`${textValue}: Warning`);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [setColour, textValue]);
 
   const setBarStyle = useMemo(() => {
     const barStyle: CSSProperties = {

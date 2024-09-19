@@ -1,7 +1,7 @@
 /*
  * File: pages/data.tsx
  * Author: Hannah Murphy
- * Date: 2024-09-14
+ * Date: 2024
  * Description: Webpage which connnects to the WESMO digital dashboard for driving analytics.
  *
  * Copyright (c) 2024 WESMO. All rights reserved.
@@ -77,6 +77,7 @@ const Data: React.FC = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       if (Date.now() - lastDataTimestamp > 30000) {
+        console.log("Error 503: Lost connection to server");
         setNoDataReceived(true);
       }
     }, 1000);
@@ -151,7 +152,7 @@ const Data: React.FC = () => {
           <div className="no-data">
             <h2>Lost connection to W-FS24</h2>
             <br />
-            <h4>System Error</h4>
+            <h4>Service Unavalible</h4>
           </div>
         </div>
       </div>

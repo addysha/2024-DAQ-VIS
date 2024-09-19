@@ -1,7 +1,7 @@
 /*
  * File: pages/fsae.tsx
  * Author: Hannah Murphy
- * Date: 2024-09-14
+ * Date: 2024
  * Description: Webpage describing what FSAE is and the compeition WESMO attends in Australia.
  *
  * Copyright (c) 2024 WESMO. All rights reserved.

@@ -1,7 +1,7 @@
 /*
  * File: pages/engineering-team.tsx
  * Author: Hannah Murphy
- * Date: 2024-09-14
+ * Date: 2024
  * Description: Webpage which details the current engineering members of WESMO.
  *
  * Copyright (c) 2024 WESMO. All rights reserved.

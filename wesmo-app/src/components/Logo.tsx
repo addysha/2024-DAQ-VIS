@@ -1,7 +1,7 @@
 /*
  * File: components/Logo.tsx
  * Author: Hannah Murphy
- * Date: 2024-09-14
+ * Date: 2024
  * Description: A WESMO logo component.
  *
  * Copyright (c) 2024 WESMO. All rights reserved.

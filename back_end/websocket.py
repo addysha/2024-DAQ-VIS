@@ -48,4 +48,4 @@ def handle_disconnect():
 
 def start_webserver():
     # Set up websocket and server
-    socketio.run(app, port=5000)
+    socketio.run(app, port=5000, log_output=False)

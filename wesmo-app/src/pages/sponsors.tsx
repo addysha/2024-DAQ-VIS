@@ -1,7 +1,7 @@
 /*
  * File: pages/sponsors.tsx
  * Author: Hannah Murphy
- * Date: 2024-09-14
+ * Date: 2024
  * Description: Webpage detailing the WESMO 2024 sponsors.
  *
  * Copyright (c) 2024 WESMO. All rights reserved.

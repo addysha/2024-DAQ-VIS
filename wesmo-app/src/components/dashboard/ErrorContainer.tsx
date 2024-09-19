@@ -1,7 +1,7 @@
 /*
  * File: components/dashboard/ErrorContainer.tsx
  * Author: Hannah Murphy
- * Date: 2024-09-14
+ * Date: 2024
  * Description: A dynamic list component which lists any errors related to the vehicle.
  *
  * Copyright (c) 2024 WESMO. All rights reserved.

@@ -1,7 +1,7 @@
 /*
  * File: components/dashboard/ListContainerQuad.tsx
  * Author: Hannah Murphy
- * Date: 2024-09-14
+ * Date: 2024
  * Description: A dynamic list container component which lists 4 related data pieces.
  *
  * Copyright (c) 2024 WESMO. All rights reserved.

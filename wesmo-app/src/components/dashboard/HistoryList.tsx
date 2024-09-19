@@ -1,7 +1,7 @@
 /*
  * File: components/dashboard/HistoryList.tsx
  * Author: Hannah Murphy
- * Date: 2024-09-14
+ * Date: 2024
  * Description: A container component which lists the history of the data which name is passed in.
  *
  * Copyright (c) 2024 WESMO. All rights reserved.
@@ -30,7 +30,7 @@ interface DataPoint {
   value: number;
 }
 
-interface HistoricalData {
+export interface HistoricalData {
   [key: string]: DataPoint[];
 }
 
@@ -76,7 +76,7 @@ const HistoryList: React.FC<Props> = ({ keyToDisplay }) => {
         >
           <ResponsiveContainer width="100%" height="100%">
             <LineChart
-              data={historicalData || []}
+              data={historicalData}
               margin={{ top: 15, right: 20, left: 0, bottom: 20 }}
             >
               <CartesianGrid strokeDasharray="3 3" fill="white" />
@@ -109,7 +109,7 @@ const HistoryList: React.FC<Props> = ({ keyToDisplay }) => {
               />
             </LineChart>
           </ResponsiveContainer>
-          <Log data={historicalData || []}></Log>
+          <Log log_data={historicalData}></Log>
         </div>
       </div>
     );

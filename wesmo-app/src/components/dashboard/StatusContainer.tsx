@@ -1,7 +1,7 @@
 /*
  * File: components/dashboard/StatusContainer.tsx
  * Author: Hannah Murphy
- * Date: 2024-09-14
+ * Date: 2024
  * Description: A container component showing icons which relate to data statuses.
  *
  * Copyright (c) 2024 WESMO. All rights reserved.
@@ -56,7 +56,7 @@ const StatusContainer: React.FC<Props> = ({
   }
 
   // Function to get active status flags
-  const getActiveStatuses = (value: number): string[] => {
+  const getActiveStatuses = (value: number): Status[] => {
     return Object.values(Status)
       .filter((status) => {
         return typeof status === "number" && (value & status) !== 0;

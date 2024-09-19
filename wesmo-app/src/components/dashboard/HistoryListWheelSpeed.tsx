@@ -1,7 +1,7 @@
 /*
  * File: components/dashboard/HistoryListWheelSpeed.tsx
  * Author: Hannah Murphy
- * Date: 2024-09-14
+ * Date: 2024
  * Description: A container component which lists the data history of the wheel speed.
  *
  * Copyright (c) 2024 WESMO. All rights reserved.

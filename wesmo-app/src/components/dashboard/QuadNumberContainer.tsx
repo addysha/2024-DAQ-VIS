@@ -1,7 +1,7 @@
 /*
  * File: components/dashboard/QuadNumberContainer.tsx
  * Author: Hannah Murphy
- * Date: 2024-09-14
+ * Date: 2024
  * Description: A container component which holds 4 related data pieces.
  *
  * Copyright (c) 2024 WESMO. All rights reserved.
@@ -17,6 +17,7 @@ interface Props {
   parameter2: DataItem | null;
   parameter3: DataItem | null;
   parameter4: DataItem | null;
+  onError?: (error: string) => void;
 }
 
 function getColour(maxValue, value, name): string {
@@ -32,6 +33,7 @@ const QuadNumberContainer: React.FC<Props> = ({
   parameter2,
   parameter3,
   parameter4,
+  onError,
 }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const parameters = [parameter1, parameter2, parameter3, parameter4];
@@ -44,6 +46,14 @@ const QuadNumberContainer: React.FC<Props> = ({
       return { backgroundColor: colour };
     });
   }, [parameters]);
+
+  parameters.forEach((param, index) => {
+    if (barStyles[index].backgroundColor === "#af1317" && onError) {
+      onError(`${param?.name}: Critical`);
+    } else if (barStyles[index].backgroundColor === "#eac054" && onError) {
+      onError(`${param?.name}: Warning`);
+    }
+  });
 
   return (
     <div className="quad_number__container">

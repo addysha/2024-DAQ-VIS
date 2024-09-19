@@ -1,7 +1,7 @@
 /*
  * File: components/dashboard/GridContainer.tsx
  * Author: Hannah Murphy
- * Date: 2024-09-14
+ * Date: 2024
  * Description: A container component which creates the background for a component of a given size.
  *
  * Copyright (c) 2024 WESMO. All rights reserved.

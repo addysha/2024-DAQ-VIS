@@ -60,7 +60,7 @@ def publish(client):
         Args:
             client (mqtt_client): The publisher object connected to the AWS broker.
     """
-    with open("data/bms_can_strings.txt", "r") as file:
+    with open("data/merged_output.txt", "r") as file:
         while True:
             msg = ""
             for line in file:

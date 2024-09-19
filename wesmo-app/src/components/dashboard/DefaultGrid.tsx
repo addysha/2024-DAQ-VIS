@@ -1,7 +1,7 @@
 /*
  * File: components/dashboard/defaultGrid.tsx
  * Author: Hannah Murphy
- * Date: 2024-09-14
+ * Date: 2024
  * Description: A large component which holds all the container components of the dashboard.
  *
  * Copyright (c) 2024 WESMO. All rights reserved.
@@ -112,7 +112,7 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
               currentValue={+(batteryCharge?.value ?? 0)}
               maxValue={+(batteryCharge?.max ?? 0)}
               unit={batteryCharge?.unit ?? "%"}
-              onError={handleError} // Pass handleError to BarContainer
+              onError={handleError}
             />
           </GridContainer>
           <GridContainer
@@ -161,6 +161,7 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
               currentValue={+(motorTemp?.value ?? 0)}
               maxValue={+(motorTemp?.max ?? 0)}
               unit={motorTemp?.unit ?? "C"}
+              onError={handleError}
             />
           </GridContainer>
           <GridContainer
@@ -177,6 +178,7 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
               currentValue={+(batteryTemp?.value ?? 0)}
               maxValue={+(batteryTemp?.max ?? 0)}
               unit={batteryTemp?.unit ?? "C"}
+              onError={handleError}
             />
           </GridContainer>
           <GridContainer size={2}>
@@ -184,6 +186,7 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
             <StatusContainer
               textValue={batteryStatus?.name ?? "Warnings"}
               stateValue={+(batteryStatus?.value ?? 0)}
+              onError={handleError}
             />
           </GridContainer>
           <GridContainer
@@ -220,6 +223,7 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
               parameter2={wheelSpeed_lb ?? null}
               parameter3={wheelSpeed_rf ?? null}
               parameter4={wheelSpeed_rb ?? null}
+              onError={handleError}
             />
           </GridContainer>
           <GridContainer
@@ -237,6 +241,7 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
               maxValue={+(motorSpeed?.max ?? 0)}
               minValue={+(motorSpeed?.min ?? 0)}
               unit={motorSpeed?.unit ?? "RPM"}
+              onError={handleError}
             />
           </GridContainer>
           <GridContainer
@@ -255,6 +260,7 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
               parameter2={pedalAngle2 ?? null}
               parameter3={front_bp ?? null}
               parameter4={rear_pb ?? null}
+              onError={handleError}
             />
           </GridContainer>
         </div>

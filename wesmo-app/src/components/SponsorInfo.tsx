@@ -1,7 +1,7 @@
 /*
  * File: components/SponsorInfo.tsx
  * Author: Hannah Murphy
- * Date: 2024-09-14
+ * Date: 2024
  * Description: Arrays of all sponsors and their information for 2024.
  *              These arrays are imported and used in pages/sponsors.tsx
  *
