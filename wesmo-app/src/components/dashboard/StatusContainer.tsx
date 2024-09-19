@@ -8,7 +8,7 @@
  * This code is part of the  WESMO Data Acquisition and Visualisation Project.
  */
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./StatusContainer.css";
 import PopUp from "./PopUpContainer.tsx";
 
@@ -68,9 +68,12 @@ const StatusContainer: React.FC<Props> = ({
 
   const activeStatuses = getActiveStatuses(stateValue);
 
-  activeStatuses.forEach((value) => {
-    if (onError) onError(`${value}: Critical`);
-  });
+  useEffect(() => {
+    activeStatuses.forEach((value) => {
+      if (onError) onError(`${value}: Critical`);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeStatuses]);
 
   const errorValue = activeStatuses.length > 0 ? 3 : 1;
 

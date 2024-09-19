@@ -26,30 +26,54 @@ const StatusBar: React.FC<Props> = ({ data }) => {
     return "#bbb";
   };
 
+  const batteryTemp = data.find((item) => item.name === "Battery Temperature");
+
   const statusLabels = [
     { label: "Ready to Drive", dataName: "Ready to Drive" },
     { label: "Electrical Systems", dataName: "Electrical Systems" },
     { label: "Sensors", dataName: "Sensors" },
     { label: "Low Voltage", dataName: "Low Voltage" },
-    { label: "High Voltage", dataName: "High Voltage" },
+    { label: "Battery Systems", dataName: "Battery Temperature" },
   ];
 
   const dataMap = new Map(data.map((item) => [item.name, item]));
 
   const statusItems = statusLabels.map(({ label, dataName }, index) => {
     const dataItem = dataMap.get(dataName);
-    const color = dataItem ? getColorFromValue(dataItem.value) : "#bbb";
+    let color = "";
+    if (dataName === "Battery Temperature") {
+      if (batteryTemp && +batteryTemp.value > 40) {
+        color = "#af1317";
+      } else {
+        color = "#4da14b";
+      }
+    } else {
+      color = dataItem ? getColorFromValue(dataItem.value) : "#bbb";
+    }
 
     const dotStyle: CSSProperties = {
       backgroundColor: color,
     };
 
-    return (
-      <div className="info" key={index}>
-        <span className="dot" style={dotStyle}></span>
-        <p>{label}</p>
-      </div>
-    );
+    if (
+      dataName === "Battery Temperature" &&
+      batteryTemp &&
+      +batteryTemp.value > 40
+    ) {
+      return (
+        <div className="info" key={index}>
+          <i className="fa-solid fa-fan icon" style={{ color: "#af1317" }}></i>
+          <p>{label}</p>
+        </div>
+      );
+    } else {
+      return (
+        <div className="info" key={index}>
+          <span className="dot" style={dotStyle}></span>
+          <p>{label}</p>
+        </div>
+      );
+    }
   });
 
   return (

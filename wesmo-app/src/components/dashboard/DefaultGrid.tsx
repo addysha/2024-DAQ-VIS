@@ -38,17 +38,15 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
   const batteryCharge = data.find(
     (item) => item.name === "Battery State of Charge"
   );
-  const predictiveCharge = data.find(
-    (item) => item.name === "Predictive State of Charge"
-  );
   const batteryVoltage = data.find((item) => item.name === "Battery Voltage");
   const batteryCurrent = data.find((item) => item.name === "Battery Current");
-  const batteryPower = data.find((item) => item.name === "Battery Power");
   const batteryTemp = data.find((item) => item.name === "Battery Temperature");
-  const batteryDCL = data.find((item) => item.name === "Battery DCL"); // discharge current limit
   const batteryStatus = data.find((item) => item.name === "Battery Status");
 
   // Not connected
+  const predictiveCharge = data.find(
+    (item) => item.name === "Predictive State of Charge"
+  );
   const pedalAngle1 = data.find((item) => item.name === "Pedal Angle 1");
   const pedalAngle2 = data.find((item) => item.name === "Pedal Angle 2");
   const wheelSpeed_lf = data.find((item) => item.name === "Wheel Speed LF");
@@ -56,7 +54,6 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
   const wheelSpeed_lb = data.find((item) => item.name === "Wheel Speed LB");
   const wheelSpeed_rb = data.find((item) => item.name === "Wheel Speed RB");
   const trackTime = data.find((item) => item.name === "Track Time");
-  const warnings = data.find((item) => item.name === "Warnings");
   const front_bp = data.find((item) => item.name === "Break Pressure Front");
   const rear_pb = data.find((item) => item.name === "Break Pressure Rear");
 

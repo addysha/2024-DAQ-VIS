@@ -18,7 +18,6 @@ import Logo from "../components/Logo.tsx";
 import DefaultGrid from "../components/dashboard/DefaultGrid.tsx";
 import Spinner from "../components/dashboard/Spinner.tsx";
 import InfoIcon from "../components/dashboard/InfoIcon.tsx";
-import ErrorIcon from "../components/dashboard/ErrorIcon.tsx";
 import PopUp from "../components/dashboard/PopUpContainer.tsx";
 
 export interface DataItem {
@@ -39,11 +38,6 @@ const Data: React.FC = () => {
   const [lastDataTimestamp, setLastDataTimestamp] = useState<number>(
     Date.now()
   );
-
-  const systemErrors = [];
-  const errorListItems = systemErrors.map((error, index) => (
-    <li key={index}>{error}</li>
-  ));
 
   useEffect(() => {
     if (!socketInstance) {
