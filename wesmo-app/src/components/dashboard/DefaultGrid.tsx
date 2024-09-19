@@ -110,7 +110,7 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
             <BarContainer
               textValue={batteryCharge?.name ?? "Battery State of Charge"}
               currentValue={+(batteryCharge?.value ?? 0)}
-              maxValue={+(batteryCharge?.max ?? 0)}
+              maxValue={+(batteryCharge?.max ?? 100)}
               unit={batteryCharge?.unit ?? "%"}
               onError={handleError}
             />
@@ -159,7 +159,7 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
             <DialContainer
               textValue={motorTemp?.name ?? "Motor Temperature"}
               currentValue={+(motorTemp?.value ?? 0)}
-              maxValue={+(motorTemp?.max ?? 0)}
+              maxValue={+(motorTemp?.max ?? 100)}
               unit={motorTemp?.unit ?? "C"}
               onError={handleError}
             />
@@ -176,7 +176,7 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
             <DialContainer
               textValue={batteryTemp?.name ?? "Battery Temperature"}
               currentValue={+(batteryTemp?.value ?? 0)}
-              maxValue={+(batteryTemp?.max ?? 0)}
+              maxValue={+(batteryTemp?.max ?? 100)}
               unit={batteryTemp?.unit ?? "C"}
               onError={handleError}
             />
@@ -186,7 +186,7 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
             <StatusContainer
               textValue={batteryStatus?.name ?? "Warnings"}
               stateValue={+(batteryStatus?.value ?? 0)}
-              onError={handleError}
+              // onError={handleError}
             />
           </GridContainer>
           <GridContainer

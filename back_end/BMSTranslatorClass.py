@@ -62,7 +62,7 @@ class BMSTranslator:
             },
             {
                 "name": "Battery State of Charge",
-                "value": round(decoded_message["Pack_Current"], 2),
+                "value": round(decoded_message["Pack_SOC"], 2),
                 "unit": "%",
                 "max": 100,
             },

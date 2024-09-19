@@ -68,6 +68,7 @@ const BarContainer: React.FC<Props> = ({
   if (minValue) {
     currentValue = currentValue + minValue;
   }
+  console.log(setBarStyle);
   return (
     <div className="bar_parent">
       <div>
