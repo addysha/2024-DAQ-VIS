@@ -56,12 +56,12 @@ def connect_mqtt() -> mqtt_client:
 
 def publish(client):
     """_summary_
-    Publishes CAN messages to the MQTT broker.
+    Publishes CAN messages to the MQTT broker. Using the simulation data
         Args:
             client (mqtt_client): The publisher object connected to the AWS broker.
     """
-    with open("data/merged_output.txt", "r") as file:
-        while True:
+    while True:
+        with open("data/simulation_data.txt", "r") as file:
             msg = ""
             for line in file:
                 result = client.publish(topic, line.strip())
@@ -70,7 +70,7 @@ def publish(client):
                     print(f"Failed to send message to topic {topic}")
                 else:
                     print(line.strip())
-                time.sleep(1)
+                time.sleep(0.25)
 
 
 def main():

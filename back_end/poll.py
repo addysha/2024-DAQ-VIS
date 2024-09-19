@@ -10,7 +10,7 @@ def main():
         while True:
             sio.emit("update_clients")
             print("Polling Server")
-            time.sleep(1)
+            time.sleep(0.5)
     except Exception as e:
         print(f"An error occurred: {e}")
 

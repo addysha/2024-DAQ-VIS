@@ -56,9 +56,9 @@ def start_redis():
 
 
 def query_all_latest_data():
+    redis_client = redis.Redis(host="localhost", port=6379, db=0)
     keys = redis_client.keys("*")
     all_data = []
-
     for key in keys:
         data = redis_client.get(key)
         if data:
@@ -70,14 +70,12 @@ def query_all_latest_data():
                         "name": deserialized_data["name"],
                         "value": deserialized_data["value"],
                         "unit": deserialized_data["unit"],
-                        "max": deserialized_data["max"],
                     }
                 )
             except pickle.PickleError as e:
                 print(f" -! # Error deserializing data for key {key}: {e}")
         else:
             print(f" -! #  No data found for key {key}")
-
     return all_data
 
 
@@ -91,7 +89,6 @@ def query_latest(data_name, redis_client):
                 "name": deserialized_data.get("name", ""),
                 "value": deserialized_data.get("value", ""),
                 "unit": deserialized_data.get("unit", ""),
-                "max": deserialized_data.get("max", ""),
             }
             return latest_data
         except pickle.PickleError as e:
@@ -102,20 +99,19 @@ def query_latest(data_name, redis_client):
 
 
 def cache_data(time, value):
+    redis_client = redis.Redis(host="localhost", port=6379, db=0)
     try:
         redis_key = value["name"]
         redis_value = {
             "time": time[1] + " " + time[2],
             "name": value["name"],
             "value": value["value"],
-            "unit": value["unit"],
-            "max": value["max"],
+            "unit": "",
         }
         redis_client.set(
             redis_key,
             pickle.dumps(redis_value),
         )
-
     except Exception as e:
         print(f" -! # Error with {redis_key}: {e}")
 
@@ -146,7 +142,6 @@ def query_data(data_name):
         for dt, value in data:
             timestamp = int(dt.timestamp())
             converted_data.append({"timestamp": timestamp, "value": value})
-        print(converted_data)
         return converted_data
     except Exception as e:
         print(f" -! # Error collecting data from: {e}")
@@ -183,6 +178,7 @@ def subscribe(client: mqtt_client, redis_client):
         Args:
             client (mqtt_client): The publisher object connected to the AWS broker.
     """
+
     def on_message(client, userdata, msg):
         # No message for 30s turn off?
         data = []
@@ -199,11 +195,13 @@ def subscribe(client: mqtt_client, redis_client):
                 if data != []:
                     save_to_db_mc(cursor, conn, data, data[1])
             # Battery Management System
+
             elif (
                 "ID: 1713" in raw_data
                 or "ID: 000006b1" in raw_data
                 or "ID: 77" in raw_data
                 or "ID: 4d" in raw_data
+                or "ID: 4D" in raw_data
             ):
                 data = bms_translator.decode(raw_data)
                 if data != []:
@@ -229,3 +227,11 @@ def start_mqtt_subscriber():
     client = connect_mqtt()
     subscribe(client, redis_client)
     client.loop_forever()
+
+
+def main():
+    start_mqtt_subscriber()
+
+
+if __name__ == "__main__":
+    main()

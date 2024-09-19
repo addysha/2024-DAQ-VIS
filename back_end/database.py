@@ -8,6 +8,7 @@ Copyright (c) 2024 WESMO. All rights reserved.
 This code is part of the WESMO Data Acquisition and Visualisation Project.
 
 """
+
 import psycopg2
 
 
@@ -120,7 +121,6 @@ def save_to_db_bms(cursor, conn, data):
     if len(data) < 2:
         return
     time = data[0].split(" ")
-
     for value in data[2:]:
         query = f"""INSERT INTO BATTERY_MANAGEMENT_SYSTEM(
         TIME, NAME, VALUE, UNIT, MAX)

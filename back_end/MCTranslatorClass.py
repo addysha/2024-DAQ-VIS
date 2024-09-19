@@ -19,7 +19,6 @@ class MCTranslator:
     def decode(self, can_data):
         can_data = can_data.split()
         dl = int(can_data[7])
-
         values = [
             can_data[1],
             can_data[3],

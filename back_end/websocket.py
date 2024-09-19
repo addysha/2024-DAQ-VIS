@@ -12,13 +12,12 @@ This code is part of the WESMO Data Acquisition and Visualisation Project.
 import time
 from flask import Flask, request
 from flask_socketio import SocketIO
-from mqtt_subscriber import query_data, query_all_latest_data
+from mqtt_subscriber import query_data, query_all_latest_data, start_redis
 
 """ GLOBAL VARIABLES """
 app = Flask(__name__)
 socketio = SocketIO(app, logger=True, engineio_logger=True, cors_allowed_origins="*")
 client_list = []
-
 
 """ SOCKET HANDELING """
 
@@ -49,3 +48,11 @@ def handle_disconnect():
 def start_webserver():
     # Set up websocket and server
     socketio.run(app, port=5000, log_output=False)
+
+
+def main():
+    start_webserver()
+
+
+if __name__ == "__main__":
+    main()
