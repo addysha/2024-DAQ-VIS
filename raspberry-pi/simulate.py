@@ -70,7 +70,7 @@ def publish(client):
                     print(f"Failed to send message to topic {topic}")
                 else:
                     print(line.strip())
-                time.sleep(0.25)
+                time.sleep(0.5)
 
 
 def main():

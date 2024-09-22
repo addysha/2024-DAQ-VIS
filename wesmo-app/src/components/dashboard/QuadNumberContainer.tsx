@@ -8,7 +8,7 @@
  * This code is part of the  WESMO Data Acquisition and Visualisation Project.
  */
 
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import "./QuadNumberContainer.css";
 import { DataItem } from "../../pages/data.tsx";
 
@@ -47,13 +47,18 @@ const QuadNumberContainer: React.FC<Props> = ({
     });
   }, [parameters]);
 
-  parameters.forEach((param, index) => {
-    if (barStyles[index].backgroundColor === "#af1317" && onError) {
-      onError(`${param?.name}: Critical`);
-    } else if (barStyles[index].backgroundColor === "#eac054" && onError) {
-      onError(`${param?.name}: Warning`);
+  useEffect(() => {
+    if (onError) {
+      parameters.forEach((param, index) => {
+        if (barStyles[index].backgroundColor === "#af1317") {
+          onError(`${param?.name}: Critical`);
+        } else if (barStyles[index].backgroundColor === "#eac054") {
+          onError(`${param?.name}: Warning`);
+        }
+      });
     }
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [barStyles, parameters]);
 
   return (
     <div className="quad_number__container">

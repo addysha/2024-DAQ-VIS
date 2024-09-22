@@ -33,7 +33,6 @@ class BMSTranslator:
         try:
             dbc = cantools.database.load_file("bms.dbc")
             can_data = can_data.split()
-
             dl = int(can_data[7])
             data_list = can_data[8 : 8 + dl]
             if len(data_list) != dl:
@@ -41,9 +40,9 @@ class BMSTranslator:
 
             id = int(can_data[3], 16)
             data = bytearray.fromhex("".join(data_list))
-
             decoded_message = dbc.decode_message(id, data)
             data = [f"time: {datetime.datetime.fromtimestamp(float(can_data[1]))}"]
+
         except Exception as e:
             print(f" -! # Error translating bms data: {e}")
 

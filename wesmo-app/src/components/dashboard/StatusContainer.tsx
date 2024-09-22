@@ -8,7 +8,7 @@
  * This code is part of the  WESMO Data Acquisition and Visualisation Project.
  */
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import "./StatusContainer.css";
 import PopUp from "./PopUpContainer.tsx";
 
@@ -40,38 +40,38 @@ interface Props {
   onError?: (error: string) => void;
 }
 
+enum Status {
+  VOLTAGE = 1,
+  CURRENT = 2,
+  RELAY = 4,
+  CELL_BALANCING = 8,
+  CHARGE_INTERLOCK = 16,
+  THERMISTOR_B_VALUE_INVALID = 32,
+  INPUT_POWER_SUPPLY = 64,
+  RESERVED = 128,
+}
+
 const StatusContainer: React.FC<Props> = ({
   textValue = "",
   stateValue = 0,
   lightText = false,
   onError,
 }) => {
-  enum Status {
-    VOLTAGE = 1,
-    CURRENT = 2,
-    RELAY = 4,
-    CELL_BALANCING = 8,
-    CHARGE_INTERLOCK = 16,
-    THERMISTOR_B_VALUE_INVALID = 32,
-    INPUT_POWER_SUPPLY = 64,
-    RESERVED = 128,
-  }
-
   // Function to get active status flags
-  const getActiveStatuses = (value: number): Status[] => {
+  const activeStatuses = useMemo((): Status[] => {
     return Object.values(Status)
       .filter((status) => {
-        return typeof status === "number" && (value & status) !== 0;
+        return typeof status === "number" && (stateValue & status) !== 0;
       })
       .map((status) => Status[status as keyof typeof Status]);
-  };
-
-  const activeStatuses = getActiveStatuses(stateValue);
+  }, [stateValue]);
 
   useEffect(() => {
-    activeStatuses.forEach((value) => {
-      if (onError) onError(`${value}: Critical`);
-    });
+    if (onError) {
+      activeStatuses.forEach((value) => {
+        onError(`${value}: Critical`);
+      });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeStatuses]);
 
