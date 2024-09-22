@@ -1,7 +1,7 @@
 """
 File: mqtt_subscriber.py
 Author: Hannah Murphy
-Date: 2024-09-14
+Date: 2024
 Description: Run by the main app server, contains all MQTT and Redis relevent methods.
 
 Copyright (c) 2024 WESMO. All rights reserved.

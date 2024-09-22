@@ -1,7 +1,7 @@
 """
 File: App.py
 Author: Hannah Murphy
-Date: 2024-09-14
+Date: 2024
 Description: Used to start up and run the server side of the WESMO website.
 
 Copyright (c) 2024 WESMO. All rights reserved.
