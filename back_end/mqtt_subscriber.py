@@ -15,6 +15,7 @@ import pickle
 from paho.mqtt import client as mqtt_client
 from MCTranslatorClass import MCTranslator
 from BMSTranslatorClass import BMSTranslator
+from VCUTranslatorClass import VCUTranslator
 from database import (
     start_postgresql,
     setup_db,
@@ -23,6 +24,8 @@ from database import (
     save_to_db_mc,
     save_to_db_bms,
     create_bms_table,
+    create_vcu_table,
+    save_to_db_vcu,
 )
 
 
@@ -43,6 +46,7 @@ client_list = []
 """ COMPONENT TRANSLATORS """
 mc_translator = MCTranslator()
 bms_translator = BMSTranslator()
+vcu_translator = VCUTranslator()
 
 
 """
@@ -184,6 +188,7 @@ def subscribe(client: mqtt_client, redis_client):
         data = []
         raw_data = msg.payload.decode()
         if raw_data != "None":
+
             # Motor Controller
             if (
                 "ID: 0181" in raw_data
@@ -194,8 +199,8 @@ def subscribe(client: mqtt_client, redis_client):
                 data = mc_translator.decode(raw_data)
                 if data != []:
                     save_to_db_mc(cursor, conn, data, data[1])
-            # Battery Management System
 
+            # Battery Management System
             elif (
                 "ID: 1713" in raw_data
                 or "ID: 000006b1" in raw_data
@@ -207,18 +212,29 @@ def subscribe(client: mqtt_client, redis_client):
                 if data != []:
                     save_to_db_bms(cursor, conn, data)
 
+            # Vehicle Control Unit
+            elif (
+                "ID: 010" in raw_data or "ID: 201" in raw_data or "ID: 000" in raw_data
+            ):
+                data = vcu_translator.decode(raw_data)
+                if data != []:
+                    save_to_db_vcu(cursor, conn, data, data[1])
+
     client.subscribe(topic)
     client.on_message = on_message
 
 
 def start_mqtt_subscriber():
-    # Connect & Set up database
+    # Connect & Set up DB
     global cursor, conn, redis_client
     cursor, conn = start_postgresql()
     setup_db(cursor, conn)
     cursor, conn = connect_to_db()
+
+    # Create DB tables
     create_mc_table(cursor, conn)
     create_bms_table(cursor, conn)
+    create_vcu_table(cursor, conn)
 
     # Initialize Redis connection
     redis_client = start_redis()

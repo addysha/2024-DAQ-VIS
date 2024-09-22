@@ -1,7 +1,7 @@
 """
 File: database.py
 Author: Hannah Murphy
-Date: 2024-09-14
+Date: 2024
 Description: Run by the main app server, contains all PostgreSQL relevent methods.
 
 Copyright (c) 2024 WESMO. All rights reserved.
@@ -74,6 +74,26 @@ def create_mc_table(cursor, conn):
         print(" -! # Error creating table - Motor Contoller")
 
 
+def create_vcu_table(cursor, conn):
+    try:
+        cursor.execute("DROP TABLE IF EXISTS VEHICLE_CONTROLL_UNIT")
+
+        sql = """CREATE TABLE VEHICLE_CONTROLL_UNIT(
+            TIME TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,  -- Auto-filled timestamp,
+            NAME CHAR(50),
+            VALUE INT,
+            UNIT CHAR(25),
+            MAX CHAR(25)
+        )"""
+
+        cursor.execute(sql)
+        print(" # - Vehicle Control Unit table created successfully")
+        conn.commit()
+    except Exception as e:
+        conn.rollback()
+        print(" -! # Error creating table - Vehicle Control Unit")
+
+
 def create_bms_table(cursor, conn):
     try:
         cursor.execute("DROP TABLE IF EXISTS BATTERY_MANAGEMENT_SYSTEM")
@@ -111,6 +131,26 @@ def save_to_db_mc(cursor, conn, data, pdo):
         except Exception as e:
             conn.rollback()
             print(f" -! # Error in saving to database - Motor Controller Table : {e}")
+
+        cache_data(time, value)
+
+
+def save_to_db_vcu(cursor, conn, data):
+    from mqtt_subscriber import cache_data
+
+    if len(data) < 2:
+        return
+    time = data[0].split(" ")
+    for value in data[1:]:
+        query = f"""INSERT INTO VEHICLE_CONTROLL_UNIT(
+        TIME, NAME, VALUE, UNIT, MAX)
+        VALUES ('{time[1]+" "+time[2]}', '{value["name"]}', {value["value"]}, '{value["unit"]}', '{value["max"]}')"""
+        try:
+            cursor.execute(query)
+            conn.commit()
+        except Exception as e:
+            conn.rollback()
+            print(f" -! # Error in saving to database - VCU table: {e}")
 
         cache_data(time, value)
 
