@@ -1,0 +1,27 @@
+Error message
+Message ID:     0x010
+DLC:            2
+
+Each bit represents a different error
+message:
+0b 0000 0000 0000 0000
+bit 0:   APPS voltage fault
+bit 1:   APPS mismatch fault
+bit2:    Brake conflict warning
+
+
+RPDO1
+Message ID:    0x201
+DLC:           8
+
+byte 1, byte 2:     Controlword
+byte 3-6:           not used
+byte 7, byte 8:     Target torque
+
+
+Startup message
+Message ID:    0x000
+DLC:           2
+
+byte 1:        MCU Mode of operation
+byte 2:        Destination node (MCU is node 1)
