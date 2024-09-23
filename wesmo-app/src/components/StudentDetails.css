@@ -46,3 +46,34 @@
     font-weight: 400;
   }
 }
+
+@media (max-width: 768px) {
+  .student-details-container {
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .left-container {
+    align-items: center;
+    padding: 12px;
+  }
+
+  .right-container {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .info-container {
+    gap: 8px;
+  }
+
+  .name {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .discipline,
+  .component {
+    font-size: 14px;
+  }
+}

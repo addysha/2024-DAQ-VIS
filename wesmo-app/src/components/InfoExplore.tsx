@@ -81,11 +81,12 @@ const InfoExplore: React.FC<IProps> = ({
         <Drawer anchor="bottom" open={open} onClose={toggleDrawer(false)}>
           <Card sx={{ bgcolor: "#3B3B3B", color: "white" }}>
             <CardHeader
+              sx={{ color: "white" }}
               title={contentHeader.title}
               subheader={contentHeader.subheader}
             />
             <CardContent>{contentBody}</CardContent>
-            <CardContent>{contentExpanded}</CardContent>{" "}
+            <CardContent>{contentExpanded}</CardContent>
           </Card>
         </Drawer>
       </ThemeProvider>

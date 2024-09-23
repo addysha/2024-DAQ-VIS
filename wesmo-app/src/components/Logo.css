@@ -10,3 +10,9 @@
   font-style: italic;
   margin: 0px;
 }
+
+@media (max-width: 768px) {
+  #imgLogo {
+    width: 150px;
+  }
+}
