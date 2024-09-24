@@ -42,38 +42,47 @@
   }
 
   .component {
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 400;
   }
 }
 
 @media (max-width: 768px) {
   .student-details-container {
-    gap: 16px;
-    padding: 16px;
-  }
-
-  .left-container {
+    gap: 0;
+    padding: 10px;
+    flex-direction: column;
     align-items: center;
-    padding: 12px;
-  }
+    justify-content: center;
+    height: 100px;
+    width: 100%;
 
-  .right-container {
-    font-size: 14px;
-    text-align: center;
-  }
+    .left-container {
+      align-items: center;
+      padding: 12px;
+    }
 
-  .info-container {
-    gap: 8px;
-  }
+    .right-container {
+      font-size: 12px;
+      text-align: center;
+      align-items: center;
+    }
 
-  .name {
-    font-size: 18px;
-    text-align: center;
-  }
+    .info-container {
+      gap: 8px;
+    }
 
-  .discipline,
-  .component {
-    font-size: 14px;
+    .name {
+      font-size: 15px;
+      text-align: center;
+      align-items: center;
+    }
+
+    .discipline {
+      align-self: center;
+    }
+    .component {
+      font-size: 10px;
+    }
   }
 }
