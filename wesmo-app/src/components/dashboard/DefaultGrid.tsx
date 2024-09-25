@@ -43,10 +43,12 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
   const batteryTemp = data.find((item) => item.name === "Battery Temperature");
   const batteryStatus = data.find((item) => item.name === "Battery Status");
 
-  // Not connected
   const predictiveCharge = data.find(
     (item) => item.name === "Predictive State of Charge"
   );
+  console.log(predictiveCharge);
+
+  // Not connected
   const pedalAngle1 = data.find((item) => item.name === "Pedal Angle 1");
   const pedalAngle2 = data.find((item) => item.name === "Pedal Angle 2");
   const wheelSpeed_lf = data.find((item) => item.name === "Wheel Speed LF");
@@ -198,8 +200,8 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
             <BarContainer
               textValue={predictiveCharge?.name ?? "Predictive State of Charge"}
               currentValue={+(predictiveCharge?.value ?? 0)}
-              maxValue={+(predictiveCharge?.max ?? 0)}
-              unit={predictiveCharge?.unit ?? "%"}
+              maxValue={+(predictiveCharge?.max ?? 30)}
+              unit={predictiveCharge?.unit ?? "Hours"}
             />
           </GridContainer>
         </div>

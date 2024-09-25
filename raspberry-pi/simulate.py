@@ -21,7 +21,7 @@ Set the address, port and topic of MQTT Broker connection.
 At the same time, we call the Python function random.randint 
 to randomly generate the MQTT client id.
 """
-broker = "3.107.68.65"
+broker = "52.64.83.72"
 port = 1883
 topic = "/wesmo-data"
 client_id = f"wesmo-{random.randint(0, 100)}"

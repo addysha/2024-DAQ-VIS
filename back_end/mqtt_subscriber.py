@@ -35,7 +35,7 @@ Set the address, port and topic of MQTT Broker connection.
 At the same time, we call the Python function random.randint 
 to randomly generate the MQTT client id.
 """
-broker = "3.107.68.65"
+broker = "52.64.83.72"
 port = 1883
 topic = "/wesmo-data"
 client_id = f"wesmo-{random.randint(0, 100)}"
@@ -88,6 +88,7 @@ def query_latest(data_name, redis_client):
     if data:
         try:
             deserialized_data = pickle.loads(data)
+            print(deserialized_data)
             latest_data = {
                 "time": deserialized_data.get("time", ""),
                 "name": deserialized_data.get("name", ""),
@@ -110,7 +111,7 @@ def cache_data(time, value):
             "time": time[1] + " " + time[2],
             "name": value["name"],
             "value": value["value"],
-            "unit": "",
+            "unit": value["unit"],
         }
         redis_client.set(
             redis_key,
