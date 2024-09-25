@@ -12,6 +12,9 @@ This code is part of the WESMO Data Acquisition and Visualisation Project.
 import cantools
 import datetime
 from enum import Enum
+from collections import deque
+
+last_10_currents = deque(maxlen=10)
 
 
 class Status(Enum):
@@ -114,7 +117,11 @@ class BMSTranslator:
 
     def predict_soc(self, pack_current, pack_inst_voltage, pack_soc):
         max_pack_current = 6
-        avg_power = pack_current * pack_inst_voltage
+
+        last_10_currents.append(pack_current)
+        avg_pack_current = sum(last_10_currents) / len(last_10_currents)
+
+        avg_power = avg_pack_current * pack_inst_voltage
         current_kwh = pack_soc * max_pack_current
 
         return round(current_kwh / avg_power)

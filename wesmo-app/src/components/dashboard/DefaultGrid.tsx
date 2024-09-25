@@ -46,7 +46,6 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
   const predictiveCharge = data.find(
     (item) => item.name === "Predictive State of Charge"
   );
-  console.log(predictiveCharge);
 
   // Not connected
   const pedalAngle1 = data.find((item) => item.name === "Pedal Angle 1");
