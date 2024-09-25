@@ -77,8 +77,7 @@ const BarContainer: React.FC<Props> = ({
         <span style={setBarStyle}></span>
       </div>
       <p className="bar_text-value">
-        {currentValue}
-        <span>{unit}</span>
+        {currentValue} {unit}
       </p>
     </div>
   );
