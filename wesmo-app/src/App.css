@@ -813,6 +813,7 @@ ol {
 
   .navbar {
     padding: 0.25rem 1.5rem 0.5rem;
+    flex-wrap: nowrap;
   }
 
   #imgLogo {
@@ -862,7 +863,6 @@ ol {
   }
 
   .contact-info {
-    background-color: rgba(59, 59, 59, 1);
     width: 275px;
     height: fit-content;
     margin: 10px;
@@ -1071,6 +1071,77 @@ ol {
 
   .history-car {
     width: 80%;
+  }
+
+  /* Dashboard Page */
+  .loading {
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+    h2 {
+      font-size: 20px;
+      color: white;
+    }
+  }
+
+  .no-data {
+    font-size: 1rem;
+    padding-top: 4rem;
+
+    h2 {
+      font-size: 30px;
+    }
+  }
+
+  /* Pop Up Containers */
+
+  .pop_up_container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90vw;
+    height: 60vh;
+    overflow-y: scroll;
+  }
+
+  .close-button {
+    position: fixed;
+    top: 10px;
+    right: 15px;
+  }
+
+  .info-popup {
+    padding: 1rem;
+
+    td {
+      padding-right: 1.5rem;
+    }
+
+    th {
+      padding-top: 1rem;
+    }
+
+    .dot {
+      height: 10px;
+      width: 10px;
+      border-radius: 50%;
+      margin-left: 1rem;
+    }
+  }
+
+  .dashboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .dashboard-row {
+    display: flex;
+    flex-direction: column;
+    padding-top: 0.75rem;
   }
 }
 

@@ -81,6 +81,8 @@
   .team-member-container .image-text-component {
     margin-top: 1rem;
     width: 100%;
+    display: flex;
+    flex-direction: row;
   }
 
   .team-member-container .image-container .image {
