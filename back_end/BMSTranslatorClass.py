@@ -34,7 +34,7 @@ class BMSTranslator:
 
     def decode(self, can_data):
         try:
-            dbc = cantools.database.load_file("bms.dbc")
+            dbc = cantools.database.load_file("dbc/bms.dbc")
             can_data = can_data.split()
             dl = int(can_data[7])
             data_list = can_data[8 : 8 + dl]

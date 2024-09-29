@@ -215,11 +215,19 @@ def subscribe(client: mqtt_client, redis_client):
 
             # Vehicle Control Unit
             elif (
-                "ID: 010" in raw_data or "ID: 201" in raw_data or "ID: 000" in raw_data
+                "ID: 16" in raw_data
+                or "ID: 385" in raw_data
+                or "ID: 641" in raw_data
+                or "ID: 281" in raw_data
+                or "ID: 1383" in raw_data
+                or "ID: 513" in raw_data
             ):
                 data = vcu_translator.decode(raw_data)
-                if data != []:
-                    save_to_db_vcu(cursor, conn, data, data[1])
+
+                if data is not None:
+                    if len(data) > 1:
+                        print(data)
+                        save_to_db_vcu(cursor, conn, data, data[1])
 
     client.subscribe(topic)
     client.on_message = on_message
