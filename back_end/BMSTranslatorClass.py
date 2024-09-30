@@ -45,7 +45,6 @@ class BMSTranslator:
             id = int(can_data[3], 16)
             data = bytearray.fromhex("".join(data_list))
             decoded_message = dbc.decode_message(id, data)
-            print(f"BMS: {decoded_message}")
             data = [f"time: {datetime.datetime.fromtimestamp(float(can_data[1]))}"]
 
             predictive_soc = self.predict_soc(

@@ -9,22 +9,28 @@ This code is part of the WESMO Data Acquisition and Visualisation Project.
 
 """
 
-import time
+import logging
 from flask import Flask, request
 from flask_socketio import SocketIO
-from mqtt_subscriber import query_data, query_all_latest_data, start_redis
+from mqtt_subscriber import query_data, query_all_latest_data, connect_to_db
 
 """ GLOBAL VARIABLES """
 app = Flask(__name__)
-socketio = SocketIO(app, logger=True, engineio_logger=True, cors_allowed_origins="*")
+socketio = SocketIO(app, logger=False, engineio_logger=False, cors_allowed_origins="*")
 client_list = []
+
+# Supress socket logging
+logging.basicConfig(level=logging.ERROR)
+logging.getLogger("engineio").setLevel(logging.WARNING)
+logging.getLogger("werkzeug").setLevel(logging.WARNING)
 
 """ SOCKET HANDELING """
 
 
 @socketio.on("send_history")
 def handle_history(data):
-    historical_data = query_data(data)
+    historical_data = query_data(data, cursor, conn)
+    print(historical_data)
     socketio.emit("recieve_historic_data", historical_data, to=request.sid)
 
 
@@ -47,6 +53,8 @@ def handle_disconnect():
 
 def start_webserver():
     # Set up websocket and server
+    global cursor, conn
+    cursor, conn = connect_to_db()
     socketio.run(app, port=5000, log_output=False)
 
 

@@ -121,12 +121,14 @@ def cache_data(time, value):
         print(f" -! # Error with {redis_key}: {e}")
 
 
-def query_data(data_name):
+def query_data(data_name, cursor, conn):
     try:
         if data_name == "Motor Temperature" or data_name == "Motor Speed":
             query = (
                 f"SELECT time, value from MOTOR_CONTROLLER where name = '{data_name}'"
             )
+        elif data_name == "Wheel Speed":
+            query = f"SELECT time, value, name FROM VEHICLE_CONTROLL_UNIT WHERE name IN ('Wheel Speed RR', 'Wheel Speed RL', 'Wheel Speed FR', 'Wheel Speed FL');"
         elif (
             data_name == "Battery Temperature"
             or data_name == "Battery Current"
@@ -136,6 +138,7 @@ def query_data(data_name):
             or data_name == "Battery DCL"
             or data_name == "Battery Status"
             or data_name == "Battery Checksum"
+            or data_name == "Predictive State of Charge"
         ):
             query = f"SELECT time, value from BATTERY_MANAGEMENT_SYSTEM where name = '{data_name}'"
         else:
@@ -144,9 +147,17 @@ def query_data(data_name):
         cursor.execute(query)
         data = cursor.fetchall()
         converted_data = []
-        for dt, value in data:
-            timestamp = int(dt.timestamp())
-            converted_data.append({"timestamp": timestamp, "value": value})
+
+        if data_name == "Wheel Speed":
+            for dt, value, name in data:
+                timestamp = int(dt.timestamp())
+                converted_data.append(
+                    {"timestamp": timestamp, "value": value, "name": name.strip()}
+                )
+        else:
+            for dt, value in data:
+                timestamp = int(dt.timestamp())
+                converted_data.append({"timestamp": timestamp, "value": value})
         return converted_data
     except Exception as e:
         print(f" -! # Error collecting data from: {e}")
@@ -199,7 +210,6 @@ def subscribe(client: mqtt_client, redis_client):
             ):
                 data = mc_translator.decode(raw_data)
                 if data != []:
-                    print(data)
                     save_to_db_mc(cursor, conn, data, data[1])
 
             # Battery Management System
@@ -212,7 +222,6 @@ def subscribe(client: mqtt_client, redis_client):
             ):
                 data = bms_translator.decode(raw_data)
                 if data != []:
-                    print(data)
                     save_to_db_bms(cursor, conn, data)
 
             # Vehicle Control Unit
@@ -224,7 +233,6 @@ def subscribe(client: mqtt_client, redis_client):
                 data = vcu_translator.decode(raw_data)
 
                 if data is not None:
-                    print(data)
                     if len(data) > 1:
                         save_to_db_vcu(cursor, conn, data)
 

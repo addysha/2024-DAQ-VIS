@@ -56,13 +56,14 @@ const HistoryList: React.FC<Props> = ({ keyToDisplay }) => {
       });
 
       socket.on("recieve_historic_data", (receivedData) => {
+        console.log(receivedData);
         setHistoricalData(receivedData);
       });
 
       socket.emit("send_history", keyToDisplay);
     }
   }, [socketInstance, keyToDisplay]);
-  if (Object.keys(historicalData).length !== 0) {
+  if (historicalData && Object.keys(historicalData).length !== 0) {
     return (
       <div style={{ width: "700px", height: "300px" }}>
         <h3 style={{ color: "black" }}>{keyToDisplay}</h3>
