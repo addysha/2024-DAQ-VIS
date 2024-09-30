@@ -7,19 +7,23 @@
  * Copyright (c) 2024 WESMO. All rights reserved.
  * This code is part of the  WESMO Data Acquisition and Visualisation Project.
  */
-
 import React from "react";
 import "./ErrorContainer.css";
 
+interface ErrorMessage {
+  message: string;
+  timestamp: number;
+}
+
 interface Props {
-  data: string[];
+  data: ErrorMessage[];
 }
 
 const ErrorLog: React.FC<Props> = ({ data }) => {
   const reversedErrorList = [...data].reverse();
 
   const errorListItems = reversedErrorList.map((error, index) => (
-    <li key={index}>{error}</li>
+    <li key={index}>{error.message}</li>
   ));
 
   return (
@@ -28,7 +32,7 @@ const ErrorLog: React.FC<Props> = ({ data }) => {
         <h4>Vehicle Errors</h4>
       </div>
       <br />
-      <div className="scolling_list">
+      <div className="scrolling_list">
         <ol>{errorListItems}</ol>
       </div>
     </div>

@@ -21,10 +21,14 @@ interface Props {
 }
 
 function getColour(maxValue, value, name): string {
-  if (!maxValue) return "#3274B1";
+  if (name.includes("Wheel Speed")) {
+    if (value === 0) {
+      return "#af1317";
+    }
+  }
   if (name.includes("Pedal Angle")) return "#3274B1";
-  if (value >= maxValue * (2 / 3)) return "#4da14b";
-  if (value >= maxValue * (1 / 3)) return "#eac054";
+  if (!maxValue) return "#3274B1";
+
   return "#af1317";
 }
 
