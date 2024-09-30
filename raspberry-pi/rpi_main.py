@@ -101,13 +101,8 @@ def publish(client, can0):
     """
     while True:
         msg = can0.recv(0.0)
-        msg = "sent from pi"
         result = client.publish(topic, str(msg))
         status = result[0]
-        # if status != 0:
-        #    print(f"Failed to send message to topic {topic}")
-        # else:
-        #    print("success")
 
 
 def main():

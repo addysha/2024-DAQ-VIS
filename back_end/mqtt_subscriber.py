@@ -188,26 +188,27 @@ def subscribe(client: mqtt_client, redis_client):
         # No message for 30s turn off?
         data = []
         raw_data = msg.payload.decode()
-        if raw_data != "None":
+        # print(raw_data)
 
+        if raw_data != "None":
             # Motor Controller
             if (
-                "ID: 0181" in raw_data
-                or "ID: 0281" in raw_data
-                or "ID: 0381" in raw_data
-                or "ID: 0481" in raw_data
+                "ID:      0181" in raw_data
+                or "ID:      0281" in raw_data
+                or "ID:      0381" in raw_data
+                or "ID:      0481" in raw_data
             ):
                 data = mc_translator.decode(raw_data)
                 if data != []:
                     save_to_db_mc(cursor, conn, data, data[1])
 
             # Battery Management System
-            elif (
-                "ID: 1713" in raw_data
-                or "ID: 000006b1" in raw_data
-                or "ID: 77" in raw_data
-                or "ID: 4d" in raw_data
-                or "ID: 4D" in raw_data
+            if (
+                "ID:      1713" in raw_data
+                or "ID:      000006b1" in raw_data
+                or "ID:      77" in raw_data
+                or "ID:      4d" in raw_data
+                or "ID:      4D" in raw_data
             ):
                 data = bms_translator.decode(raw_data)
                 if data != []:
@@ -215,19 +216,15 @@ def subscribe(client: mqtt_client, redis_client):
 
             # Vehicle Control Unit
             elif (
-                "ID: 16" in raw_data
-                or "ID: 385" in raw_data
-                or "ID: 641" in raw_data
-                or "ID: 281" in raw_data
-                or "ID: 1383" in raw_data
-                or "ID: 513" in raw_data
+                "ID:      010" in raw_data
+                or "ID:      567" in raw_data
+                or "ID:      201" in raw_data
             ):
                 data = vcu_translator.decode(raw_data)
 
                 if data is not None:
                     if len(data) > 1:
-                        print(data)
-                        save_to_db_vcu(cursor, conn, data, data[1])
+                        save_to_db_vcu(cursor, conn, data)
 
     client.subscribe(topic)
     client.on_message = on_message

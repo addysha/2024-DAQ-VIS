@@ -37,13 +37,13 @@ BU_: H300 M150
 
 
 BO_ 16 Vehicle_Status: 4 Vector__XXX
- SG_ VCU_Error_Present : 7|1@0+ (1,0) [0|1] "" Vector__XXX
  SG_ RTD_Running : 1|1@0+ (1,0) [0|1] "" Vector__XXX
- SG_ NMT_isOperational : 3|1@0+ (1,0) [0|1] "" Vector__XXX
  SG_ MCU_isRTD : 2|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ NMT_isOperational : 3|1@0+ (1,0) [0|1] "" Vector__XXX
  SG_ Brake_Conflict_Warning : 4|1@0+ (1,0) [0|1] "" Vector__XXX
  SG_ APPS_Mismatch_Fault : 5|1@0+ (1,0) [0|1] "" Vector__XXX
  SG_ APPS_Voltage_Fault : 6|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ VCU_Error_Present : 7|1@0+ (1,0) [0|1] "" Vector__XXX
 
 BO_ 0 NMT_Commands: 2 Vector__XXX
  SG_ NMT_Node : 15|8@0- (1,0) [-128|127] "" Vector__XXX

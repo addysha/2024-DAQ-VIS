@@ -31,15 +31,11 @@ class VCUTranslator:
             decoded_message = dbc.decode_message(id, data)
             data = [f"time: {datetime.datetime.fromtimestamp(float(can_data[1]))}"]
 
-            if ("16" == id) or ("10" == id):
+            if (16 == id) or (10 == id):
                 data += self.format_vehicle_status(decoded_message)
-            elif ("385" == id) or ("181" == id):
-                data += self.format_PD01(decoded_message)
-            elif ("641" == id) or ("281" == id):
-                data += self.format_PD02(decoded_message)
-            elif ("1383" == id) or ("567" == id):
+            elif (1383 == id) or (567 == id):
                 data += self.format_wheel_speed(decoded_message)
-            elif ("513" == id) or ("201" == id):
+            elif (513 == id) or (201 == id):
                 data += self.format_RPD01(decoded_message)
 
             return data
@@ -113,63 +109,6 @@ class VCUTranslator:
                 "value": messages["Target_Velocity"],
                 "unit": "rpm",
                 "max": 100000,
-            },
-        ]
-
-    def format_PD01(self, messages):
-        return [
-            {
-                "name": "Torque Actual Value",
-                "value": messages["Torque_Actual_Value"],
-                "unit": "",
-                "max": 100,
-            },
-            {
-                "name": "Position Actual Value",
-                "value": messages["Position_Actual_Value"],
-                "unit": "",
-                "max": 1000,
-            },
-            {
-                "name": "Status Word",
-                "value": messages["Statusword"],
-                "unit": "",
-                "max": 1000,
-            },
-        ]
-
-    def format_PD02(self, messages):
-        print("pdo2", messages)
-        return [
-            {
-                "name": "Current Demand",
-                "value": messages["Current_Demand"],
-                "unit": "",
-                "max": 100,
-            },
-            {
-                "name": "Logic Power Supply Voltage",
-                "value": messages["Logic_Power_Supply_Voltage"],
-                "unit": "",
-                "max": 1000,
-            },
-            {
-                "name": "DC Link Circuit Voltage",
-                "value": messages["DC_Link_Circuit_Voltage"],
-                "unit": "",
-                "max": 1000,
-            },
-            {
-                "name": "Motor Temperature",
-                "value": messages["Motor_Temperature"],
-                "unit": "",
-                "max": 100,
-            },
-            {
-                "name": "Controller Temperature",
-                "value": messages["Controller_Temperature"],
-                "unit": "",
-                "max": 1000,
             },
         ]
 
