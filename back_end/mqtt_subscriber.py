@@ -188,7 +188,6 @@ def subscribe(client: mqtt_client, redis_client):
         # No message for 30s turn off?
         data = []
         raw_data = msg.payload.decode()
-        # print(raw_data)
 
         if raw_data != "None":
             # Motor Controller
@@ -200,6 +199,7 @@ def subscribe(client: mqtt_client, redis_client):
             ):
                 data = mc_translator.decode(raw_data)
                 if data != []:
+                    print(data)
                     save_to_db_mc(cursor, conn, data, data[1])
 
             # Battery Management System
@@ -212,6 +212,7 @@ def subscribe(client: mqtt_client, redis_client):
             ):
                 data = bms_translator.decode(raw_data)
                 if data != []:
+                    print(data)
                     save_to_db_bms(cursor, conn, data)
 
             # Vehicle Control Unit
@@ -223,6 +224,7 @@ def subscribe(client: mqtt_client, redis_client):
                 data = vcu_translator.decode(raw_data)
 
                 if data is not None:
+                    print(data)
                     if len(data) > 1:
                         save_to_db_vcu(cursor, conn, data)
 

@@ -42,18 +42,18 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
   const batteryCurrent = data.find((item) => item.name === "Battery Current");
   const batteryTemp = data.find((item) => item.name === "Battery Temperature");
   const batteryStatus = data.find((item) => item.name === "Battery Status");
-
   const predictiveCharge = data.find(
     (item) => item.name === "Predictive State of Charge"
   );
+  const wheelSpeed_lf = data.find((item) => item.name === "Wheel Speed FL");
+  const wheelSpeed_rf = data.find((item) => item.name === "Wheel Speed FR");
+  const wheelSpeed_lb = data.find((item) => item.name === "Wheel Speed RL");
+  const wheelSpeed_rb = data.find((item) => item.name === "Wheel Speed RR");
 
   // Not connected
   const pedalAngle1 = data.find((item) => item.name === "Pedal Angle 1");
   const pedalAngle2 = data.find((item) => item.name === "Pedal Angle 2");
-  const wheelSpeed_lf = data.find((item) => item.name === "Wheel Speed LF");
-  const wheelSpeed_rf = data.find((item) => item.name === "Wheel Speed RF");
-  const wheelSpeed_lb = data.find((item) => item.name === "Wheel Speed LB");
-  const wheelSpeed_rb = data.find((item) => item.name === "Wheel Speed RB");
+
   const trackTime = data.find((item) => item.name === "Track Time");
   const front_bp = data.find((item) => item.name === "Break Pressure Front");
   const rear_pb = data.find((item) => item.name === "Break Pressure Rear");

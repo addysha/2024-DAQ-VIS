@@ -19,9 +19,9 @@ def main():
 
     try:
         sio.connect("http://127.0.0.1:5000/")
+        print("Starting server polling")
         while True:
             sio.emit("update_clients")
-            print("Polling Server")
             time.sleep(0.25)
     except Exception as e:
         print(f"An error occurred: {e}")
