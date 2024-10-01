@@ -88,7 +88,6 @@ def query_latest(data_name, redis_client):
     if data:
         try:
             deserialized_data = pickle.loads(data)
-            print(deserialized_data)
             latest_data = {
                 "time": deserialized_data.get("time", ""),
                 "name": deserialized_data.get("name", ""),

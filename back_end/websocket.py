@@ -30,7 +30,6 @@ logging.getLogger("werkzeug").setLevel(logging.WARNING)
 @socketio.on("send_history")
 def handle_history(data):
     historical_data = query_data(data, cursor, conn)
-    print(historical_data)
     socketio.emit("recieve_historic_data", historical_data, to=request.sid)
 
 

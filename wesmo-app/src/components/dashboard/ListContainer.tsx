@@ -10,10 +10,20 @@
 
 import React from "react";
 import "./ListContainer.css";
-import { HistoricalData } from "./HistoryList";
+import { DataPoint } from "./HistoryList";
 
 interface Props {
-  log_data: HistoricalData;
+  [key: string]: DataPoint[];
+}
+
+function formatUnixTimestamp(timestamp: number): string {
+  const date = new Date(timestamp * 1000);
+
+  const hours = String(date.getHours()).padStart(2, "0");
+  const minutes = String(date.getMinutes()).padStart(2, "0");
+  const seconds = String(date.getSeconds()).padStart(2, "0");
+
+  return `${hours}:${minutes}:${seconds}`;
 }
 
 const Log: React.FC<Props> = ({ log_data }) => {
@@ -25,13 +35,13 @@ const Log: React.FC<Props> = ({ log_data }) => {
     );
   }
   if (Object.keys(log_data).length !== 0) {
-    const listItems = log_data.map((item, index) => {
-      const timestampDate = new Date(+item.timestamp);
+    const reversedList = [...log_data].reverse();
+
+    const listItems = reversedList.map((item, index) => {
+      const timestampDate = formatUnixTimestamp(item.timestamp);
       return (
         <li key={index}>
-          {timestampDate
-            .toLocaleTimeString()
-            .replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$2")}
+          {timestampDate}
           &ensp;:&ensp;
           {item.value !== undefined ? item.value : "No value available"}
         </li>

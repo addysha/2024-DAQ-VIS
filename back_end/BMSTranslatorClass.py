@@ -46,6 +46,8 @@ class BMSTranslator:
             data = bytearray.fromhex("".join(data_list))
             decoded_message = dbc.decode_message(id, data)
             data = [f"time: {datetime.datetime.fromtimestamp(float(can_data[1]))}"]
+            # USED FOR SIMULATION DELETE WHEN IN PRODUCTION
+            data = [f"time: {datetime.datetime.now()}"]
 
             predictive_soc = self.predict_soc(
                 decoded_message["Pack_Current"],

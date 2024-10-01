@@ -224,6 +224,9 @@ class MCTranslator:
     def decode_pdo(self, can_data):
 
         data = [f"time: {datetime.datetime.fromtimestamp(float(can_data[0]))}"]
+        
+        # USED FOR SIMULATION DELETE WHEN IN PRODUCTION
+        data = [f"time: {datetime.datetime.now()}"]
 
         if can_data[1] == "181" or can_data[1] == "0181":
             data += "1"

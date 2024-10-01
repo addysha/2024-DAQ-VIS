@@ -25,7 +25,7 @@ interface Props {
   keyToDisplay: string;
 }
 
-interface DataPoint {
+export interface DataPoint {
   timestamp: number;
   value: number;
 }
