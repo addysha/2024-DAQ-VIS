@@ -9,7 +9,7 @@
     margin-right: 0;
   }
 
-  .scolling_list_double {
+  .scrolling_list_double {
     ol {
       font-size: 0.7rem;
       margin-right: 0.2rem;
@@ -19,7 +19,7 @@
     min-width: 240px;
     overflow-y: auto;
   }
-  .scolling_list {
+  .scrolling_list {
     max-height: 230px;
     min-width: 150px;
     overflow-y: auto;

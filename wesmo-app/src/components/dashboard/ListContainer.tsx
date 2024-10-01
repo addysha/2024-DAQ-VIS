@@ -16,7 +16,7 @@ interface Props {
   [key: string]: DataPoint[];
 }
 
-function formatUnixTimestamp(timestamp: number): string {
+export function formatUnixTimestamp(timestamp: number): string {
   const date = new Date(timestamp * 1000);
 
   const hours = String(date.getHours()).padStart(2, "0");
@@ -50,7 +50,7 @@ const Log: React.FC<Props> = ({ log_data }) => {
 
     return (
       <div className="log">
-        <div className="scolling_list">
+        <div className="scrolling_list">
           <ol reversed>{listItems}</ol>
         </div>
       </div>

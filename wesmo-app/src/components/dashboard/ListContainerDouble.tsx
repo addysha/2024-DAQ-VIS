@@ -40,7 +40,7 @@ const LogDouble: React.FC<Props> = ({ data }) => {
 
   return (
     <div className="log">
-      <div className="scolling_list_double">
+      <div className="scrolling_list_double">
         <ol>{listItems}</ol>
       </div>
     </div>
