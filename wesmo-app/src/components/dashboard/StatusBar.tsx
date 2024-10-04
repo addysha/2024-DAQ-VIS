@@ -27,10 +27,11 @@ const StatusBar: React.FC<Props> = ({ data }) => {
   };
 
   const batteryTemp = data.find((item) => item.name === "Battery Temperature");
+  const motorTemp = data.find((item) => item.name === "Motor Temperature");
 
   const statusLabels = [
     { label: "Ready to Drive", dataName: "Ready to Drive" },
-    { label: "Electrical Systems", dataName: "Electrical Systems" },
+    { label: "Electrical Systems", dataName: "Motor Temperature" },
     { label: "Sensors", dataName: "Sensors" },
     { label: "Low Voltage", dataName: "Low Voltage" },
     { label: "Battery Systems", dataName: "Battery Temperature" },
@@ -43,6 +44,14 @@ const StatusBar: React.FC<Props> = ({ data }) => {
     let color = "";
     if (dataName === "Battery Temperature") {
       if (batteryTemp && +batteryTemp.value > 40) {
+        color = "#af1317";
+      } else {
+        color = "#4da14b";
+      }
+    } else if (data !== null && dataName === "Low Voltage") {
+      color = "#4da14b";
+    } else if (dataName === "Motor Temperature") {
+      if (!motorTemp) {
         color = "#af1317";
       } else {
         color = "#4da14b";
@@ -63,6 +72,20 @@ const StatusBar: React.FC<Props> = ({ data }) => {
       return (
         <div className="info" key={index}>
           <i className="fa-solid fa-fan icon" style={{ color: "#af1317" }}></i>
+          <p>{label}</p>
+        </div>
+      );
+    } else if (dataName === "Low Voltage") {
+      return (
+        <div className="info" key={index}>
+          <span className="dot" style={dotStyle}></span>
+          <p>{label}</p>
+        </div>
+      );
+    } else if (dataName === "Motor Temperature") {
+      return (
+        <div className="info" key={index}>
+          <span className="dot" style={dotStyle}></span>
           <p>{label}</p>
         </div>
       );

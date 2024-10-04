@@ -9,6 +9,9 @@ This code is part of the WESMO Data Acquisition and Visualisation Project.
 
 """
 
+import requests
+import json
+import threading
 import random
 import redis
 import pickle
@@ -35,13 +38,17 @@ Set the address, port and topic of MQTT Broker connection.
 At the same time, we call the Python function random.randint 
 to randomly generate the MQTT client id.
 """
-broker = "3.107.68.65"
+broker = "52.64.83.72"
 port = 1883
 topic = "/wesmo-data"
 client_id = f"wesmo-{random.randint(0, 100)}"
 username = "wesmo"
 password = "public"
 client_list = []
+
+TIMEOUT = 30
+timeout_timer = None
+is_timed_out = False
 
 """ COMPONENT TRANSLATORS """
 mc_translator = MCTranslator()
@@ -110,7 +117,7 @@ def cache_data(time, value):
             "time": time[1] + " " + time[2],
             "name": value["name"],
             "value": value["value"],
-            "unit": "",
+            "unit": value["unit"],
         }
         redis_client.set(
             redis_key,
@@ -120,12 +127,14 @@ def cache_data(time, value):
         print(f" -! # Error with {redis_key}: {e}")
 
 
-def query_data(data_name):
+def query_data(data_name, cursor, conn):
     try:
         if data_name == "Motor Temperature" or data_name == "Motor Speed":
             query = (
                 f"SELECT time, value from MOTOR_CONTROLLER where name = '{data_name}'"
             )
+        elif data_name == "Wheel Speed":
+            query = f"SELECT time, value, name FROM VEHICLE_CONTROLL_UNIT WHERE name IN ('Wheel Speed RR', 'Wheel Speed RL', 'Wheel Speed FR', 'Wheel Speed FL');"
         elif (
             data_name == "Battery Temperature"
             or data_name == "Battery Current"
@@ -135,6 +144,7 @@ def query_data(data_name):
             or data_name == "Battery DCL"
             or data_name == "Battery Status"
             or data_name == "Battery Checksum"
+            or data_name == "Predictive State of Charge"
         ):
             query = f"SELECT time, value from BATTERY_MANAGEMENT_SYSTEM where name = '{data_name}'"
         else:
@@ -143,9 +153,17 @@ def query_data(data_name):
         cursor.execute(query)
         data = cursor.fetchall()
         converted_data = []
-        for dt, value in data:
-            timestamp = int(dt.timestamp())
-            converted_data.append({"timestamp": timestamp, "value": value})
+
+        if data_name == "Wheel Speed":
+            for dt, value, name in data:
+                timestamp = int(dt.timestamp())
+                converted_data.append(
+                    {"timestamp": timestamp, "value": value, "name": name.strip()}
+                )
+        else:
+            for dt, value in data:
+                timestamp = int(dt.timestamp())
+                converted_data.append({"timestamp": timestamp, "value": value})
         return converted_data
     except Exception as e:
         print(f" -! # Error collecting data from: {e}")
@@ -184,29 +202,31 @@ def subscribe(client: mqtt_client, redis_client):
     """
 
     def on_message(client, userdata, msg):
-        # No message for 30s turn off?
+        reset_timeout()
+        if is_timed_out:
+            on_timeout(False)
         data = []
         raw_data = msg.payload.decode()
-        if raw_data != "None":
 
+        if raw_data != "None":
             # Motor Controller
             if (
-                "ID: 0181" in raw_data
-                or "ID: 0281" in raw_data
-                or "ID: 0381" in raw_data
-                or "ID: 0481" in raw_data
+                "ID:      0181" in raw_data
+                or "ID:      0281" in raw_data
+                or "ID:      0381" in raw_data
+                or "ID:      0481" in raw_data
             ):
                 data = mc_translator.decode(raw_data)
                 if data != []:
                     save_to_db_mc(cursor, conn, data, data[1])
 
             # Battery Management System
-            elif (
-                "ID: 1713" in raw_data
-                or "ID: 000006b1" in raw_data
-                or "ID: 77" in raw_data
-                or "ID: 4d" in raw_data
-                or "ID: 4D" in raw_data
+            if (
+                "ID:      1713" in raw_data
+                or "ID:      000006b1" in raw_data
+                or "ID:      77" in raw_data
+                or "ID:      004d" in raw_data
+                or "ID:      4D" in raw_data
             ):
                 data = bms_translator.decode(raw_data)
                 if data != []:
@@ -214,14 +234,44 @@ def subscribe(client: mqtt_client, redis_client):
 
             # Vehicle Control Unit
             elif (
-                "ID: 010" in raw_data or "ID: 201" in raw_data or "ID: 000" in raw_data
+                "ID:      0010" in raw_data
+                or "ID:      0567" in raw_data
+                or "ID:      0201" in raw_data
             ):
                 data = vcu_translator.decode(raw_data)
-                if data != []:
-                    save_to_db_vcu(cursor, conn, data, data[1])
+
+                if data is not None:
+                    if len(data) > 1:
+                        save_to_db_vcu(cursor, conn, data)
 
     client.subscribe(topic)
     client.on_message = on_message
+
+
+def reset_timeout():
+    global timeout_timer
+    if timeout_timer:
+        timeout_timer.cancel()
+    timeout_timer = threading.Timer(TIMEOUT, lambda: on_timeout(True))
+    timeout_timer.start()
+
+
+def on_timeout(timeout):
+    global is_timed_out
+    print("Timeout setting")
+    url = "http://localhost:5001/timeout"
+
+    is_timed_out = not is_timed_out
+
+    try:
+        response = requests.post(
+            url, json={"timeout": timeout}, headers={"Content-Type": "application/json"}
+        )
+
+        if response.status_code != 200:
+            print(f"Failed: {response.status_code} - {response.json()}")
+    except requests.exceptions.RequestException as e:
+        print(f"Error making request: {e}")
 
 
 def start_mqtt_subscriber():
@@ -236,10 +286,13 @@ def start_mqtt_subscriber():
     create_bms_table(cursor, conn)
     create_vcu_table(cursor, conn)
 
+    global is_timed_out
+    is_timed_out = False
     # Initialize Redis connection
     redis_client = start_redis()
 
     # Set up MQTT communications
+    reset_timeout()
     client = connect_mqtt()
     subscribe(client, redis_client)
     client.loop_forever()

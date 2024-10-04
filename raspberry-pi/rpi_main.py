@@ -24,7 +24,7 @@ Set the address, port and topic of MQTT Broker connection.
 At the same time, we call the Python function random.randint 
 to randomly generate the MQTT client id.
 """
-broker = "3.107.68.65"
+broker = "52.64.83.72"
 port = 1883
 topic = "/wesmo-data"
 username = "wesmo"
@@ -101,13 +101,8 @@ def publish(client, can0):
     """
     while True:
         msg = can0.recv(0.0)
-        msg = "sent from pi"
         result = client.publish(topic, str(msg))
         status = result[0]
-        # if status != 0:
-        #    print(f"Failed to send message to topic {topic}")
-        # else:
-        #    print("success")
 
 
 def main():

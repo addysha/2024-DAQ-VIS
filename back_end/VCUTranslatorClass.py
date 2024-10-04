@@ -10,6 +10,7 @@ This code is part of the WESMO Data Acquisition and Visualisation Project.
 """
 
 import datetime
+import cantools
 
 
 class VCUTranslator:
@@ -17,88 +18,127 @@ class VCUTranslator:
         pass
 
     def decode(self, can_data):
-        can_data = can_data.split()
-        dl = int(can_data[7])
+        try:
+            dbc = cantools.database.load_file("dbc/EV24.dbc")
+            can_data = can_data.split()
+            can_data = can_data[:-2]
+            dl = int(can_data[7])
+            data_list = can_data[8 : 8 + dl]
+            if len(data_list) != dl:
+                return []
 
-        data = [f"time: {datetime.datetime.fromtimestamp(float(can_data[1]))}"]
-        id = can_data[3]
+            id = int(can_data[3], 16)
+            data = bytearray.fromhex("".join(data_list))
+            decoded_message = dbc.decode_message(id, data)
+            data = [f"time: {datetime.datetime.fromtimestamp(float(can_data[1]))}"]
+            # USED FOR SIMULATION DELETE WHEN IN PRODUCTION
+            data = [f"time: {datetime.datetime.now()}"]
 
-        data_list = can_data[8 : 8 + dl]
-        if len(data_list) != dl:
-            return []
+            if (16 == id) or (10 == id):
+                data += self.format_vehicle_status(decoded_message)
+            elif (1383 == id) or (567 == id):
+                data += self.format_wheel_speed(decoded_message)
+            elif (513 == id) or (201 == id):
+                data += self.format_RPD01(decoded_message)
 
-        if "010" in id:
-            data += self.decode_error_message(data_list)
-        elif "201" in id:
-            data += self.decode_RPDO1(data_list)
-        elif "000" in id:
-            data += self.decode_startup_message(data_list)
+            return data
 
-        return data
+        except Exception as e:
+            print(f" -! # Error translating vcu data: {e}")
 
-    def decode_error_message(self, data):
-        if len(data) != 2:
-            print(f"Invalid Error message length {data}")
-
-        byte1, byte2 = data[0], data[1]
-
-        voltage_fault = (byte1 >> 7) & 1
-        mismatch_fault = (byte1 >> 6) & 1
-        break_conflict = (byte1 >> 5) & 1
+    def format_vehicle_status(self, messages):
 
         return [
             {
                 "name": "APPS Voltage fault",
-                "value": voltage_fault,
+                "value": messages["APPS_Voltage_Fault"],
                 "unit": "",
                 "max": 1,
             },
             {
                 "name": "APPS Mismatch fault",
-                "value": mismatch_fault,
+                "value": messages["APPS_Mismatch_Fault"],
                 "unit": "",
                 "max": 1,
             },
             {
                 "name": "Break Conflict warning",
-                "value": break_conflict,
+                "value": messages["Brake_Conflict_Warning"],
+                "unit": "",
+                "max": 1,
+            },
+            {
+                "name": "MCU is RTD",
+                "value": messages["MCU_isRTD"],
+                "unit": "",
+                "max": 1,
+            },
+            {
+                "name": "NMT is Operational",
+                "value": messages["NMT_isOperational"],
+                "unit": "",
+                "max": 1,
+            },
+            {
+                "name": "RTD Running",
+                "value": messages["RTD_Running"],
+                "unit": "",
+                "max": 1,
+            },
+            {
+                "name": "VCU Error Present",
+                "value": messages["VCU_Error_Present"],
                 "unit": "",
                 "max": 1,
             },
         ]
 
-    def decode_RPDO1(self, data):
-        if len(data) != 16:
-            print(f"Invalid RPD01 message length {data}")
-
-        control_word = int(data[0:2] + data[2:4], 16)
-        target_torque = int(data[12:14] + data[14:16], 16)
-
+    def format_RPD01(self, messages):
         return [
-            {"name": "Control word", "value": control_word, "unit": "", "max": 100},
             {
-                "name": "Target torque",
-                "value": target_torque,
-                "unit": "rpm",
-                "max": 10000,
-            },
-        ]
-
-    def decode_startup_message(self, data):
-        if len(data) != 4:
-            print(f"Invalid startup message length {data}")
-
-        MCU_mode = int(data[0:2], 16)
-        dest_node = int(data[2:4], 16)
-
-        return [
-            {"name": "MCU Mode", "value": MCU_mode, "unit": "", "max": 100},
-            {
-                "name": "Destination Node",
-                "value": dest_node,
+                "name": "Control Word",
+                "value": messages["Controlword"],
                 "unit": "",
-                "max": 100,
+                "max": 65535,
+            },
+            {
+                "name": "Target Torque",
+                "value": messages["Target_Torque"],
+                "unit": "rpm",
+                "max": 32767,
+            },
+            {
+                "name": "Target Velocity",
+                "value": messages["Target_Velocity"],
+                "unit": "rpm",
+                "max": 100000,
             },
         ]
 
-        return []
+    def format_wheel_speed(self, messages):
+        return [
+            {
+                "name": "Wheel Speed RR",
+                "value": messages["wheel_speed_RR"],
+                "unit": "",
+                "max": 0,
+            },
+            {
+                "name": "Wheel Speed RL",
+                "value": messages["wheel_speed_RL"],
+                "unit": "",
+                "max": 0,
+            },
+            {
+                "name": "Wheel Speed FR",
+                "value": messages["wheel_speed_FR"],
+                "unit": "",
+                "max": 0,
+            },
+            {
+                "name": "Wheel Speed FL",
+                "value": messages["wheel_speed_FL"],
+                "unit": "",
+                "max": 0,
+            },
+        ]

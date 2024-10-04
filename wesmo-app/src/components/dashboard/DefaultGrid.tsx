@@ -26,14 +26,17 @@ import HistoryList from "./HistoryList.tsx";
 import HistoryListWheelSpeed from "./HistoryListWheelSpeed.tsx";
 import HistoryListBreaks from "./HistoryListBreaks.tsx";
 
+interface ErrorMessage {
+  message: string;
+  timestamp: number;
+}
+
 interface Props {
   data: DataItem[];
 }
 
 const DefaultGrid: React.FC<Props> = ({ data }) => {
-  // Connected to DB values
   const motorTemp = data.find((item) => item.name === "Motor Temperature");
-  const motorSpeed = data.find((item) => item.name === "Motor Speed");
 
   const batteryCharge = data.find(
     (item) => item.name === "Battery State of Charge"
@@ -42,20 +45,21 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
   const batteryCurrent = data.find((item) => item.name === "Battery Current");
   const batteryTemp = data.find((item) => item.name === "Battery Temperature");
   const batteryStatus = data.find((item) => item.name === "Battery Status");
-
-  // Not connected
   const predictiveCharge = data.find(
     (item) => item.name === "Predictive State of Charge"
   );
+  const wheelSpeed_lf = data.find((item) => item.name === "Wheel Speed FL");
+  const wheelSpeed_rf = data.find((item) => item.name === "Wheel Speed FR");
+  const wheelSpeed_lb = data.find((item) => item.name === "Wheel Speed RL");
+  const wheelSpeed_rb = data.find((item) => item.name === "Wheel Speed RR");
+
+  // Not connected
   const pedalAngle1 = data.find((item) => item.name === "Pedal Angle 1");
   const pedalAngle2 = data.find((item) => item.name === "Pedal Angle 2");
-  const wheelSpeed_lf = data.find((item) => item.name === "Wheel Speed LF");
-  const wheelSpeed_rf = data.find((item) => item.name === "Wheel Speed RF");
-  const wheelSpeed_lb = data.find((item) => item.name === "Wheel Speed LB");
-  const wheelSpeed_rb = data.find((item) => item.name === "Wheel Speed RB");
   const trackTime = data.find((item) => item.name === "Track Time");
   const front_bp = data.find((item) => item.name === "Break Pressure Front");
   const rear_pb = data.find((item) => item.name === "Break Pressure Rear");
+  const motorSpeed = data.find((item) => item.name === "Motor Speed");
 
   const [isPopUpVisible, setPopUpVisible] = useState<boolean>(false);
   const [popUpContent, setPopUpContent] = useState<React.ReactNode>(null);
@@ -65,10 +69,25 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
     setPopUpVisible((prev) => !prev);
   };
 
-  const [errorMessages, setErrorMessages] = useState<string[]>([]);
+  const [errorMessages, setErrorMessages] = useState<ErrorMessage[]>([]);
 
   const handleError = (error: string) => {
-    setErrorMessages((prevErrors) => [...prevErrors, error]);
+    const currentTime = Date.now();
+
+    setErrorMessages((prevErrors) => {
+      const filteredErrors = prevErrors.filter(
+        (errorObj) => currentTime - errorObj.timestamp < 30000
+      );
+
+      const isDuplicate = filteredErrors.some(
+        (errorObj) => errorObj.message === error
+      );
+
+      if (!isDuplicate) {
+        return [...filteredErrors, { message: error, timestamp: currentTime }];
+      }
+      return filteredErrors;
+    });
   };
 
   return (
@@ -198,8 +217,8 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
             <BarContainer
               textValue={predictiveCharge?.name ?? "Predictive State of Charge"}
               currentValue={+(predictiveCharge?.value ?? 0)}
-              maxValue={+(predictiveCharge?.max ?? 0)}
-              unit={predictiveCharge?.unit ?? "%"}
+              maxValue={+(predictiveCharge?.max ?? 30)}
+              unit={predictiveCharge?.unit ?? "Hours"}
             />
           </GridContainer>
         </div>

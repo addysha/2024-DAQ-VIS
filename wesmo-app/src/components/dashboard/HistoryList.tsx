@@ -25,7 +25,7 @@ interface Props {
   keyToDisplay: string;
 }
 
-interface DataPoint {
+export interface DataPoint {
   timestamp: number;
   value: number;
 }
@@ -42,7 +42,7 @@ const HistoryList: React.FC<Props> = ({ keyToDisplay }) => {
 
   useEffect(() => {
     if (!socketInstance) {
-      const socket = io("http://127.0.0.1:5000/", {
+      const socket = io("http://127.0.0.1:5001/", {
         transports: ["websocket"],
       });
       setSocketInstance(socket);
@@ -56,13 +56,14 @@ const HistoryList: React.FC<Props> = ({ keyToDisplay }) => {
       });
 
       socket.on("recieve_historic_data", (receivedData) => {
+        console.log(receivedData);
         setHistoricalData(receivedData);
       });
 
       socket.emit("send_history", keyToDisplay);
     }
   }, [socketInstance, keyToDisplay]);
-  if (Object.keys(historicalData).length !== 0) {
+  if (historicalData && Object.keys(historicalData).length !== 0) {
     return (
       <div style={{ width: "700px", height: "300px" }}>
         <h3 style={{ color: "black" }}>{keyToDisplay}</h3>

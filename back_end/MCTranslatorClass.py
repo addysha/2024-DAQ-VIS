@@ -18,13 +18,13 @@ class MCTranslator:
 
     def decode(self, can_data):
         can_data = can_data.split()
+        can_data = can_data[:-2]
         dl = int(can_data[7])
         values = [
             can_data[1],
             can_data[3],
             str(dl),
             "".join(can_data[8 : 8 + dl]),
-            can_data[8 + dl + 1],
         ]
 
         return self.decode_pdo(values)
@@ -224,6 +224,9 @@ class MCTranslator:
     def decode_pdo(self, can_data):
 
         data = [f"time: {datetime.datetime.fromtimestamp(float(can_data[0]))}"]
+        
+        # USED FOR SIMULATION DELETE WHEN IN PRODUCTION
+        data = [f"time: {datetime.datetime.now()}"]
 
         if can_data[1] == "181" or can_data[1] == "0181":
             data += "1"

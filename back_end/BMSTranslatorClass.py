@@ -12,6 +12,9 @@ This code is part of the WESMO Data Acquisition and Visualisation Project.
 import cantools
 import datetime
 from enum import Enum
+from collections import deque
+
+last_10_currents = deque(maxlen=10)
 
 
 class Status(Enum):
@@ -31,8 +34,9 @@ class BMSTranslator:
 
     def decode(self, can_data):
         try:
-            dbc = cantools.database.load_file("bms.dbc")
+            dbc = cantools.database.load_file("dbc/bms.dbc")
             can_data = can_data.split()
+            can_data = can_data[:-2]
             dl = int(can_data[7])
             data_list = can_data[8 : 8 + dl]
             if len(data_list) != dl:
@@ -42,6 +46,14 @@ class BMSTranslator:
             data = bytearray.fromhex("".join(data_list))
             decoded_message = dbc.decode_message(id, data)
             data = [f"time: {datetime.datetime.fromtimestamp(float(can_data[1]))}"]
+            # USED FOR SIMULATION DELETE WHEN IN PRODUCTION
+            data = [f"time: {datetime.datetime.now()}"]
+
+            predictive_soc = self.predict_soc(
+                decoded_message["Pack_Current"],
+                decoded_message["Pack_Inst_Voltage"],
+                decoded_message["Pack_SOC"],
+            )
 
         except Exception as e:
             print(f" -! # Error translating bms data: {e}")
@@ -50,7 +62,7 @@ class BMSTranslator:
             {
                 "name": "Battery Temperature",
                 "value": decoded_message["High_Temperature"],
-                "unit": "C",
+                "unit": "c",
                 "max": 60,
             },
             {
@@ -89,6 +101,12 @@ class BMSTranslator:
                 "unit": "",
                 "max": 100,
             },
+            {
+                "name": "Predictive State of Charge",
+                "value": predictive_soc,
+                "unit": "Hours",
+                "max": 100,
+            },
         ]
 
     def index_failsafe_status(self, value):
@@ -99,3 +117,14 @@ class BMSTranslator:
                 set_flags.append(status.name)
 
         return set_flags
+
+    def predict_soc(self, pack_current, pack_inst_voltage, pack_soc):
+        max_pack_current = 6
+
+        last_10_currents.append(pack_current)
+        avg_pack_current = sum(last_10_currents) / len(last_10_currents)
+
+        avg_power = avg_pack_current * pack_inst_voltage
+        current_kwh = pack_soc * max_pack_current
+
+        return round(current_kwh / avg_power)
