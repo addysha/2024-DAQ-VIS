@@ -9,6 +9,9 @@ This code is part of the WESMO Data Acquisition and Visualisation Project.
 
 """
 
+import requests
+import json
+import threading
 import random
 import redis
 import pickle
@@ -42,6 +45,10 @@ client_id = f"wesmo-{random.randint(0, 100)}"
 username = "wesmo"
 password = "public"
 client_list = []
+
+TIMEOUT = 30
+timeout_timer = None
+is_timed_out = False
 
 """ COMPONENT TRANSLATORS """
 mc_translator = MCTranslator()
@@ -195,7 +202,9 @@ def subscribe(client: mqtt_client, redis_client):
     """
 
     def on_message(client, userdata, msg):
-        # No message for 30s turn off?
+        reset_timeout()
+        if is_timed_out:
+            on_timeout(False)
         data = []
         raw_data = msg.payload.decode()
 
@@ -216,7 +225,7 @@ def subscribe(client: mqtt_client, redis_client):
                 "ID:      1713" in raw_data
                 or "ID:      000006b1" in raw_data
                 or "ID:      77" in raw_data
-                or "ID:      4d" in raw_data
+                or "ID:      004d" in raw_data
                 or "ID:      4D" in raw_data
             ):
                 data = bms_translator.decode(raw_data)
@@ -225,9 +234,9 @@ def subscribe(client: mqtt_client, redis_client):
 
             # Vehicle Control Unit
             elif (
-                "ID:      010" in raw_data
-                or "ID:      567" in raw_data
-                or "ID:      201" in raw_data
+                "ID:      0010" in raw_data
+                or "ID:      0567" in raw_data
+                or "ID:      0201" in raw_data
             ):
                 data = vcu_translator.decode(raw_data)
 
@@ -237,6 +246,32 @@ def subscribe(client: mqtt_client, redis_client):
 
     client.subscribe(topic)
     client.on_message = on_message
+
+
+def reset_timeout():
+    global timeout_timer
+    if timeout_timer:
+        timeout_timer.cancel()
+    timeout_timer = threading.Timer(TIMEOUT, lambda: on_timeout(True))
+    timeout_timer.start()
+
+
+def on_timeout(timeout):
+    global is_timed_out
+    print("Timeout setting")
+    url = "http://localhost:5001/timeout"
+
+    is_timed_out = not is_timed_out
+
+    try:
+        response = requests.post(
+            url, json={"timeout": timeout}, headers={"Content-Type": "application/json"}
+        )
+
+        if response.status_code != 200:
+            print(f"Failed: {response.status_code} - {response.json()}")
+    except requests.exceptions.RequestException as e:
+        print(f"Error making request: {e}")
 
 
 def start_mqtt_subscriber():
@@ -251,10 +286,13 @@ def start_mqtt_subscriber():
     create_bms_table(cursor, conn)
     create_vcu_table(cursor, conn)
 
+    global is_timed_out
+    is_timed_out = False
     # Initialize Redis connection
     redis_client = start_redis()
 
     # Set up MQTT communications
+    reset_timeout()
     client = connect_mqtt()
     subscribe(client, redis_client)
     client.loop_forever()

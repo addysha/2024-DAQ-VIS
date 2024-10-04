@@ -18,7 +18,7 @@ def main():
     sio = socketio.SimpleClient()
 
     try:
-        sio.connect("http://127.0.0.1:5000/")
+        sio.connect("http://127.0.0.1:5001/")
         print("Starting server polling")
         while True:
             sio.emit("update_clients")

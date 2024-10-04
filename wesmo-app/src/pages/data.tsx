@@ -41,9 +41,9 @@ const Data: React.FC = () => {
 
   useEffect(() => {
     if (!socketInstance) {
-      // const URL = process.env.NODE_ENV === 'production' ? undefined : 'http://127.0.0.1:5000';
+      // const URL = process.env.NODE_ENV === 'production' ? undefined : 'http://127.0.0.1:5001';
 
-      const socket = io("http://127.0.0.1:5000/", {
+      const socket = io("http://127.0.0.1:5001/", {
         transports: ["websocket"],
       });
       setSocketInstance(socket);
