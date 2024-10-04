@@ -50,6 +50,7 @@ const Data: React.FC = () => {
 
       socket.on("connect", () => {
         setLoaded(true);
+        setNoDataReceived(true);
         setLastDataTimestamp(Date.now());
         console.log(`Connected with id: ${socket.id}`);
       });
@@ -70,9 +71,10 @@ const Data: React.FC = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (Date.now() - lastDataTimestamp > 30000) {
+      if (Date.now() - lastDataTimestamp > 15000) {
         console.log("Error 503: Lost connection to server");
         setNoDataReceived(true);
+        setData(undefined);
       }
     }, 1000);
 
@@ -130,7 +132,7 @@ const Data: React.FC = () => {
         </div>
       </div>
     );
-  } else if (noDataReceived) {
+  } else if (!loaded && noDataReceived) {
     return (
       <div className="App">
         <div className="background data load">
