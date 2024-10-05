@@ -872,6 +872,12 @@ ol {
     white-space: nowrap;
   }
 
+  #info-drawer {
+    overflow-y: scroll;
+    height: 50vh;
+    max-height: 50vh;
+  }
+
   .explore-body {
     margin: 0;
     overflow: hidden;
