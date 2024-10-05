@@ -31,12 +31,15 @@ class VCUTranslator:
             data = bytearray.fromhex("".join(data_list))
             decoded_message = dbc.decode_message(id, data)
             data = [f"time: {datetime.datetime.fromtimestamp(float(can_data[1]))}"]
-            # USED FOR SIMULATION DELETE WHEN IN PRODUCTION
+
+            # TODO USED FOR SIMULATION DELETE WHEN IN PRODUCTION
             data = [f"time: {datetime.datetime.now()}"]
 
             if (16 == id) or (10 == id):
                 data += self.format_vehicle_status(decoded_message)
-            elif (1383 == id) or (567 == id):
+            elif (17 == id) or (11 == id):
+                data += self.format_pedals(decoded_message)
+            elif (18 == id) or (12 == id):
                 data += self.format_wheel_speed(decoded_message)
             elif (513 == id) or (201 == id):
                 data += self.format_RPD01(decoded_message)
@@ -62,7 +65,7 @@ class VCUTranslator:
                 "max": 1,
             },
             {
-                "name": "Break Conflict warning",
+                "name": "Break Conflict",
                 "value": messages["Brake_Conflict_Warning"],
                 "unit": "",
                 "max": 1,
@@ -88,6 +91,18 @@ class VCUTranslator:
             {
                 "name": "VCU Error Present",
                 "value": messages["VCU_Error_Present"],
+                "unit": "",
+                "max": 1,
+            },
+            {
+                "name": "RTD Switch State",
+                "value": messages["RTD_Switch_State"],
+                "unit": "",
+                "max": 1,
+            },
+            {
+                "name": "Comms Switch State",
+                "value": messages["Comms_Switch_State"],
                 "unit": "",
                 "max": 1,
             },
@@ -140,5 +155,33 @@ class VCUTranslator:
                 "value": messages["wheel_speed_FL"],
                 "unit": "",
                 "max": 0,
+            },
+        ]
+
+    def format_pedals(self, messages):
+        return [
+            {
+                "name": "Break Pressure Rear",
+                "value": messages["Brake_Pressure_Rear"],
+                "unit": "Bar",
+                "max": 32767,
+            },
+            {
+                "name": "Break Pressure Front",
+                "value": messages["Brake_Pressure_Front"],
+                "unit": "Bar",
+                "max": 32767,
+            },
+            {
+                "name": "Accelerator Travel 1",
+                "value": messages["APPS1_travel"],
+                "unit": "%",
+                "max": 32767,
+            },
+            {
+                "name": "Accelerator Travel 2",
+                "value": messages["APPS2_travel"],
+                "unit": "%",
+                "max": 32767,
             },
         ]

@@ -10,7 +10,6 @@ This code is part of the WESMO Data Acquisition and Visualisation Project.
 """
 
 import requests
-import json
 import threading
 import random
 import redis
@@ -235,7 +234,8 @@ def subscribe(client: mqtt_client, redis_client):
             # Vehicle Control Unit
             elif (
                 "ID:      0010" in raw_data
-                or "ID:      0567" in raw_data
+                or "ID:      0011" in raw_data
+                or "ID:      0012" in raw_data
                 or "ID:      0201" in raw_data
             ):
                 data = vcu_translator.decode(raw_data)

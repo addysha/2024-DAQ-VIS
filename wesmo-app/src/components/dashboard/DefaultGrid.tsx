@@ -37,7 +37,10 @@ interface Props {
 
 const DefaultGrid: React.FC<Props> = ({ data }) => {
   const motorTemp = data.find((item) => item.name === "Motor Temperature");
-
+  const dcLinkVolts = data.find(
+    (item) => item.name === "DC Link Circuit Voltage"
+  );
+  const motorSpeed = data.find((item) => item.name === "Velocity Actual Value");
   const batteryCharge = data.find(
     (item) => item.name === "Battery State of Charge"
   );
@@ -52,14 +55,24 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
   const wheelSpeed_rf = data.find((item) => item.name === "Wheel Speed FR");
   const wheelSpeed_lb = data.find((item) => item.name === "Wheel Speed RL");
   const wheelSpeed_rb = data.find((item) => item.name === "Wheel Speed RR");
-
-  // Not connected
-  const pedalAngle1 = data.find((item) => item.name === "Pedal Angle 1");
-  const pedalAngle2 = data.find((item) => item.name === "Pedal Angle 2");
-  const trackTime = data.find((item) => item.name === "Track Time");
-  const front_bp = data.find((item) => item.name === "Break Pressure Front");
-  const rear_pb = data.find((item) => item.name === "Break Pressure Rear");
-  const motorSpeed = data.find((item) => item.name === "Motor Speed");
+  const brake_pressure_rear = data.find(
+    (item) => item.name === "Break Pressure Rear"
+  );
+  const brake_pressure_front = data.find(
+    (item) => item.name === "Break Pressure Front"
+  );
+  const acc_1_travel = data.find(
+    (item) => item.name === "Accelerator Travel 1"
+  );
+  const acc_2_travel = data.find(
+    (item) => item.name === "Accelerator Travel 2"
+  );
+  const rtd_running = data.find((item) => item.name === "RTD Running");
+  const rtd_switch_state = data.find(
+    (item) => item.name === "RTD Switch State"
+  );
+  const vcu_error = data.find((item) => item.name === "VCU Error Present");
+  const break_conflict = data.find((item) => item.name === "Break Conflict");
 
   const [isPopUpVisible, setPopUpVisible] = useState<boolean>(false);
   const [popUpContent, setPopUpContent] = useState<React.ReactNode>(null);
@@ -107,11 +120,11 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
               togglePopUp(<HistoryList keyToDisplay="Track Time"></HistoryList>)
             }
           >
-            {/* Track Time */}
-            <NumberContainer
-              text={trackTime?.name ?? "Track Time"}
-              value={+(trackTime?.value ?? 0)}
-              unit={trackTime?.unit ?? "s"}
+            {/* Warnings - Battery Status */}
+            <StatusContainer
+              textValue={batteryStatus?.name ?? "Warnings"}
+              stateValue={+(batteryStatus?.value ?? 0)}
+              onError={handleError}
             />
           </GridContainer>
           <GridContainer
@@ -197,12 +210,18 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
               onError={handleError}
             />
           </GridContainer>
-          <GridContainer size={2}>
-            {/* Warnings - Battery Status */}
-            <StatusContainer
-              textValue={batteryStatus?.name ?? "Warnings"}
-              stateValue={+(batteryStatus?.value ?? 0)}
-              onError={handleError}
+          <GridContainer
+            size={2}
+            onClick={() =>
+              togglePopUp(
+                <HistoryList keyToDisplay="Velocity Actual Value"></HistoryList>
+              )
+            }
+          >
+            <NumberContainer
+              text={dcLinkVolts?.name ?? "Velocity Actual Value"}
+              value={+(dcLinkVolts?.value ?? 0)}
+              unit={dcLinkVolts?.unit ?? "V"}
             />
           </GridContainer>
           <GridContainer
@@ -250,13 +269,13 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
               )
             }
           >
-            {/* Motor Speed */}
+            {/* Motor Speed - Just put motor speed as name its easier */}
             <BarContainer
-              textValue={motorSpeed?.name ?? "Motor Speed"}
+              textValue={"Motor Speed"}
               currentValue={+(motorSpeed?.value ?? 0)}
               maxValue={+(motorSpeed?.max ?? 0)}
               minValue={+(motorSpeed?.min ?? 0)}
-              unit={motorSpeed?.unit ?? "RPM"}
+              unit={motorSpeed?.unit ?? "RPM?"}
               onError={handleError}
             />
           </GridContainer>
@@ -270,12 +289,12 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
               )
             }
           >
-            {/* Pedal Angles & Break Pressures */}
+            {/* Pedal Travel Angles & Break Pressures */}
             <QuadNumberContainer
-              parameter1={pedalAngle1 ?? null}
-              parameter2={pedalAngle2 ?? null}
-              parameter3={front_bp ?? null}
-              parameter4={rear_pb ?? null}
+              parameter1={acc_1_travel ?? null}
+              parameter2={acc_2_travel ?? null}
+              parameter3={brake_pressure_front ?? null}
+              parameter4={brake_pressure_rear ?? null}
               onError={handleError}
             />
           </GridContainer>
