@@ -814,6 +814,24 @@ ol {
   .navbar {
     padding: 0.25rem 1.5rem 0.5rem;
     flex-wrap: nowrap;
+    display: flex;
+    position: sticky;
+    top: 0;
+
+    justify-content: space-between;
+
+    .nav-left {
+      width: 90%;
+      top: 0;
+      left: 0;
+    }
+
+    .nav-right {
+      z-index: 2000;
+      right: 0;
+      position: fixed;
+      padding-right: 1.5rem;
+    }
   }
 
   #imgLogo {
@@ -832,6 +850,33 @@ ol {
   .background {
     background-size: cover;
     overflow-y: scroll;
+  }
+
+  .info-explore-container {
+    position: relative;
+  }
+
+  .background-scrollable {
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: cover;
+    background-attachment: local;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: white;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+  }
+
+  .explore-body {
+    margin: 0;
+    overflow: hidden;
+    width: 300%;
+    overflow-x: hidden;
   }
 
   /* Contact Us Page */
@@ -976,9 +1021,6 @@ ol {
   }
 
   /* Explore Car Page */
-  .info-explore-container {
-    position: relative;
-  }
 
   .explore {
     margin-left: 5%;
