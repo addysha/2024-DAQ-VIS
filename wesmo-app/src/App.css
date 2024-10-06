@@ -691,6 +691,15 @@ h1 {
   display: flex;
   justify-content: space-around;
   margin-top: 1rem;
+
+  .track-time {
+    color: black;
+    position: absolute;
+    font-size: large;
+    top: 50px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 
 .dashboard-row {

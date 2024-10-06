@@ -8,7 +8,7 @@
  * This code is part of the  WESMO Data Acquisition and Visualisation Project.
  */
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../App.css";
 
 import GridContainer from "../../components/dashboard/GridContainer.tsx";
@@ -33,9 +33,10 @@ interface ErrorMessage {
 
 interface Props {
   data: DataItem[];
+  timer: DataItem[];
 }
 
-const DefaultGrid: React.FC<Props> = ({ data }) => {
+const DefaultGrid: React.FC<Props> = ({ data, timer }) => {
   const motorTemp = data.find((item) => item.name === "Motor Temperature");
   const dcLinkVolts = data.find(
     (item) => item.name === "DC Link Circuit Voltage"
@@ -74,6 +75,7 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
   const vcu_error = data.find((item) => item.name === "VCU Error Present");
   const break_conflict = data.find((item) => item.name === "Break Conflict");
 
+  const track_time = timer.find((item) => item.name === "Track Time");
   const [isPopUpVisible, setPopUpVisible] = useState<boolean>(false);
   const [popUpContent, setPopUpContent] = useState<React.ReactNode>(null);
 
@@ -105,6 +107,7 @@ const DefaultGrid: React.FC<Props> = ({ data }) => {
 
   return (
     <div className="dashboard">
+      <div className="track-time">Track Time: {track_time?.value ?? 0}</div>
       <PopUp isVisible={isPopUpVisible} onClose={() => setPopUpVisible(false)}>
         {popUpContent}
       </PopUp>

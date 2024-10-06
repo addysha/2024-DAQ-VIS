@@ -28,8 +28,19 @@ export interface DataItem {
   unit: string;
 }
 
+const defaultTimer: DataItem[] = [
+  {
+    name: "Track Time",
+    value: "00:00:00",
+    min: "",
+    max: "",
+    unit: "",
+  },
+];
+
 const Data: React.FC = () => {
   const [data, setData] = useState<DataItem[] | undefined>(undefined);
+  const [timer, setTimer] = useState<DataItem[]>(defaultTimer);
   const [loaded, setLoaded] = useState(false);
   const [socketInstance, setSocketInstance] = useState<Socket | undefined>(
     undefined
@@ -64,7 +75,12 @@ const Data: React.FC = () => {
           setData(receivedData);
           setLastDataTimestamp(Date.now());
           setNoDataReceived(false);
+          socket.emit("timer");
         }
+      });
+
+      socket.on("timerRecieve", (timer) => {
+        setTimer(timer);
       });
     }
   }, [socketInstance, data]);
@@ -261,7 +277,7 @@ const Data: React.FC = () => {
               <div className="nav-right"></div>
             </div>
           </div>
-          <DefaultGrid data={data} />
+          <DefaultGrid data={data} timer={timer} />
         </div>
       </div>
     );

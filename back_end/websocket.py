@@ -12,7 +12,13 @@ import logging
 from flask import Flask, request, jsonify
 from flask_socketio import SocketIO
 from flask_cors import CORS
-from mqtt_subscriber import query_data, query_all_latest_data, connect_to_db
+from mqtt_subscriber import (
+    query_data,
+    query_all_latest_data,
+    connect_to_db,
+    query_latest,
+)
+from TrackTimer import TrackTimer
 
 """ GLOBAL VARIABLES """
 app = Flask(__name__)
@@ -20,6 +26,8 @@ CORS(app)
 socketio = SocketIO(app, cors_allowed_origins="*")
 client_list = []
 timeout = False
+track_timer = None
+on_track = False
 
 # Suppress socket logging
 logging.basicConfig(level=logging.ERROR)
@@ -41,6 +49,31 @@ def set_timeout():
         return jsonify({"error": "Invalid data"}), 400
 
 
+@app.route("/track-timer", methods=["POST"])
+def create_timer():
+    global track_timer, on_track
+    data = request.get_json()
+
+    if not track_timer:
+        track_timer = TrackTimer()
+
+    if not on_track and track_timer:
+        on_track = True
+        track_timer.start_timer()
+    if on_track and track_timer:
+        time = track_timer.check_timer(data)
+        return jsonify({"message": "Timer Update", "timer": time}), 200
+
+    return (
+        jsonify(
+            {
+                "message": "Track Timer request recieved",
+            }
+        ),
+        200,
+    )
+
+
 """ SOCKET HANDLING """
 
 
@@ -55,6 +88,13 @@ def handle_update_clients():
     if not timeout:
         latest_data = query_all_latest_data()
         socketio.emit("data", latest_data)
+
+
+@socketio.on("timer")
+def handle_timer():
+    global track_timer
+    if track_timer:
+        socketio.emit("timerRecieve", track_timer.update_timer())
 
 
 @socketio.on("connect")

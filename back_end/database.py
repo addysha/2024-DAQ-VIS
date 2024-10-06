@@ -142,15 +142,16 @@ def save_to_db_vcu(cursor, conn, data):
         return
     time = data[0].split(" ")
     for value in data[1:]:
-        query = f"""INSERT INTO VEHICLE_CONTROLL_UNIT(
-        TIME, NAME, VALUE, UNIT, MAX)
-        VALUES ('{time[1]+" "+time[2]}', '{value["name"]}', {value["value"]}, '{value["unit"]}', '{value["max"]}')"""
-        try:
-            cursor.execute(query)
-            conn.commit()
-        except Exception as e:
-            conn.rollback()
-            print(f" -! # Error in saving to database - VCU table: {e}")
+        if value["name"] != "Track Time":
+            query = f"""INSERT INTO VEHICLE_CONTROLL_UNIT(
+            TIME, NAME, VALUE, UNIT, MAX)
+            VALUES ('{time[1]+" "+time[2]}', '{value["name"]}', {value["value"]}, '{value["unit"]}', '{value["max"]}')"""
+            try:
+                cursor.execute(query)
+                conn.commit()
+            except Exception as e:
+                conn.rollback()
+                print(f" -! # Error in saving to database - VCU table: {e}")
 
         cache_data(time, value)
 

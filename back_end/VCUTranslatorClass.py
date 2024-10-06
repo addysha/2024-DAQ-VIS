@@ -11,6 +11,7 @@ This code is part of the WESMO Data Acquisition and Visualisation Project.
 
 import datetime
 import cantools
+import requests
 
 
 class VCUTranslator:
@@ -36,6 +37,7 @@ class VCUTranslator:
             data = [f"time: {datetime.datetime.now()}"]
 
             if (16 == id) or (10 == id):
+                self.check_timer(decoded_message)
                 data += self.format_vehicle_status(decoded_message)
             elif (17 == id) or (11 == id):
                 data += self.format_pedals(decoded_message)
@@ -48,6 +50,22 @@ class VCUTranslator:
 
         except Exception as e:
             print(f" -! # Error translating vcu data: {e}")
+
+    def check_timer(self, messages):
+        if messages["RTD_Running"] == 1:
+            url = "http://localhost:5001/track-timer"
+
+            try:
+                response = requests.post(
+                    url,
+                    json={"messages": messages},
+                    headers={"Content-Type": "application/json"},
+                )
+
+                if response.status_code != 200:
+                    print(f"Failed: {response.status_code} - {response.json()}")
+            except requests.exceptions.RequestException as e:
+                print(f"Error making request: {e}")
 
     def format_vehicle_status(self, messages):
 

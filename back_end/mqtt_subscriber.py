@@ -89,7 +89,8 @@ def query_all_latest_data():
     return all_data
 
 
-def query_latest(data_name, redis_client):
+def query_latest(data_name):
+    redis_client = redis.Redis(host="localhost", port=6379, db=0)
     data = redis_client.get(data_name)
     if data:
         try:
