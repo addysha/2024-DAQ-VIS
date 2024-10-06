@@ -41,7 +41,7 @@ const DefaultGrid: React.FC<Props> = ({ data, timer }) => {
   const dcLinkVolts = data.find(
     (item) => item.name === "DC Link Circuit Voltage"
   );
-  const motorSpeed = data.find((item) => item.name === "Velocity Actual Value");
+  const motorSpeed = data.find((item) => item.name === "Motor Speed");
   const batteryCharge = data.find(
     (item) => item.name === "Battery State of Charge"
   );
@@ -68,14 +68,9 @@ const DefaultGrid: React.FC<Props> = ({ data, timer }) => {
   const acc_2_travel = data.find(
     (item) => item.name === "Accelerator Travel 2"
   );
-  const rtd_running = data.find((item) => item.name === "RTD Running");
-  const rtd_switch_state = data.find(
-    (item) => item.name === "RTD Switch State"
-  );
-  const vcu_error = data.find((item) => item.name === "VCU Error Present");
   const break_conflict = data.find((item) => item.name === "Break Conflict");
-
   const track_time = timer.find((item) => item.name === "Track Time");
+
   const [isPopUpVisible, setPopUpVisible] = useState<boolean>(false);
   const [popUpContent, setPopUpContent] = useState<React.ReactNode>(null);
 
@@ -278,7 +273,7 @@ const DefaultGrid: React.FC<Props> = ({ data, timer }) => {
               currentValue={+(motorSpeed?.value ?? 0)}
               maxValue={+(motorSpeed?.max ?? 0)}
               minValue={+(motorSpeed?.min ?? 0)}
-              unit={motorSpeed?.unit ?? "RPM?"}
+              unit={motorSpeed?.unit ?? "RPM"}
               onError={handleError}
             />
           </GridContainer>

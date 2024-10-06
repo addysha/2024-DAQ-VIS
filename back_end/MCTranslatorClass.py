@@ -81,6 +81,12 @@ class MCTranslator:
                 "unit": "",
                 "max": 10000,
             },
+            {
+                "name": "Motor Speed",
+                "value": round(velocity_actual_value / 30),
+                "unit": "RPM",
+                "max": 16000,
+            },
         ]
 
     def decode_mc_pdo_3(self, can_data):

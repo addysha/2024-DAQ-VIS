@@ -261,14 +261,12 @@ def on_timeout(timeout):
     global is_timed_out
     print("Timeout setting")
     url = "http://localhost:5001/timeout"
-
     is_timed_out = not is_timed_out
 
     try:
         response = requests.post(
             url, json={"timeout": timeout}, headers={"Content-Type": "application/json"}
         )
-
         if response.status_code != 200:
             print(f"Failed: {response.status_code} - {response.json()}")
     except requests.exceptions.RequestException as e:
