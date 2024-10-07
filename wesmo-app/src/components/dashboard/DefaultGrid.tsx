@@ -132,7 +132,9 @@ const DefaultGrid: React.FC<Props> = ({ data, timer }) => {
           <GridContainer
             size={2}
             onClick={() =>
-              togglePopUp(<HistoryGraph keyToDisplay="Track Time"></HistoryGraph>)
+              togglePopUp(
+                <HistoryGraph keyToDisplay="Battery Status"></HistoryGraph>
+              )
             }
           >
             {/* Warnings - Battery Status */}
