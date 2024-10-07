@@ -88,3 +88,112 @@
 .nav-cover.active + .hamburger-menu {
   z-index: 4;
 }
+
+@media (max-width: 768px) {
+  .nav-links {
+    padding-bottom: 4rem;
+    display: flex;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    float: none;
+    height: 100%;
+    flex-direction: column;
+  }
+
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 0.1rem;
+    padding-right: 0;
+    font-size: 20px;
+    font-family: "Roboto Condensed";
+  }
+
+  .nav-links a:hover {
+    color: rgb(190, 0, 0);
+    text-decoration: none;
+    padding: 0.1rem;
+    padding-right: 0rem;
+  }
+
+  .nav-cover {
+    min-width: 100%;
+    min-height: 60%;
+    height: 30vw;
+    position: fixed;
+    z-index: 1;
+    top: 100%;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+    font: "Roboto Condensed";
+
+    &.active {
+      top: 400px;
+      width: 100vw;
+      visibility: visible;
+    }
+  }
+
+  .hamburger-menu.toggle {
+    position: fixed;
+    top: 430px;
+    right: 20px;
+    z-index: 3001;
+  }
+}
+
+@media (max-height: 700px) {
+  .nav-links {
+    padding-bottom: 7rem;
+    display: flex;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    float: none;
+    height: 100%;
+    flex-direction: column;
+  }
+
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 0.1rem;
+    padding-right: 0;
+    font-size: 15px;
+    font-family: "Roboto Condensed";
+  }
+
+  .nav-links a:hover {
+    text-decoration: none;
+    padding: 0.1rem;
+    padding-right: 0rem;
+  }
+
+  .nav-cover {
+    min-width: 100%;
+    min-height: 60%;
+    height: 30vw;
+    position: fixed;
+    z-index: 1;
+    top: 100%;
+    right: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+
+    &.active {
+      top: 400px;
+      width: 100vw;
+      visibility: visible;
+    }
+  }
+
+  .hamburger-menu.toggle {
+    position: fixed;
+    top: 430px;
+    right: 20px;
+    z-index: 3001;
+  }
+}

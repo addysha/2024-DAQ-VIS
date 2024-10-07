@@ -40,7 +40,7 @@ const History_2023: React.FC = () => {
         </div>
         <br />
         <TitleCard title="2023 Team" />
-        <div style={{ height: "80px" }}></div>
+        <br></br>
         <div className="image-text-component left">
           <div className="image-container left">
             <img src={Car_Backend} alt="" className="image left" />

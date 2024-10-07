@@ -39,3 +39,10 @@
     stroke-dashoffset: -124;
   }
 }
+
+@media (max-width: 768px) {
+  .spinner {
+    width: 75px;
+    height: 75px;
+  }
+}

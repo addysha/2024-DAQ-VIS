@@ -137,7 +137,7 @@ const StatusBar: React.FC<Props> = ({ data }) => {
         <h3>System Status</h3>
       </div>
       <br />
-      {statusItems}
+      <div className="status_content">{statusItems}</div>
     </div>
   );
 };

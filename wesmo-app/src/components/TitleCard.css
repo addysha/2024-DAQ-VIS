@@ -13,3 +13,9 @@
   align-items: center;
   justify-content: center;
 }
+
+@media (max-width: 768px) {
+  .title-card {
+    font-size: 20px;
+  }
+}

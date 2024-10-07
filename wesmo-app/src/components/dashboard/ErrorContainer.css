@@ -24,3 +24,11 @@
     vertical-align: top;
   }
 }
+
+@media (max-width: 768px) {
+  .error_log {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem;
+  }
+}

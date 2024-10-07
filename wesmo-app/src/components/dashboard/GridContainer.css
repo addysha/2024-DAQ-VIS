@@ -29,3 +29,20 @@
     flex: 1 1 200px;
   }
 }
+
+@media (max-width: 768px) {
+  .complication__container {
+    margin: 0rem 2rem;
+
+    &.medium-grid-size {
+      max-width: 350px;
+      height: 200px;
+    }
+
+    &.large-grid-size {
+      max-width: 350px;
+      min-width: 300px;
+      height: 200px;
+    }
+  }
+}
