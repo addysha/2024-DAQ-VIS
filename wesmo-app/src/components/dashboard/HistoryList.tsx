@@ -56,7 +56,6 @@ const HistoryList: React.FC<Props> = ({ keyToDisplay }) => {
       });
 
       socket.on("recieve_historic_data", (receivedData) => {
-        console.log(receivedData);
         setHistoricalData(receivedData);
       });
 

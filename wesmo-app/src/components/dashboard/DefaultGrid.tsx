@@ -8,7 +8,7 @@
  * This code is part of the  WESMO Data Acquisition and Visualisation Project.
  */
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../../App.css";
 
 import GridContainer from "../../components/dashboard/GridContainer.tsx";
@@ -99,6 +99,18 @@ const DefaultGrid: React.FC<Props> = ({ data, timer }) => {
       return filteredErrors;
     });
   };
+
+  if (break_conflict && break_conflict.value === 1) {
+    handleError("Break conflict occured");
+  } else if (wheelSpeed_lf && wheelSpeed_lf.value === 0) {
+    handleError("Traction lost to front left wheel");
+  } else if (wheelSpeed_rf && wheelSpeed_rf.value === 0) {
+    handleError("Traction lost to front right wheel");
+  } else if (wheelSpeed_lb && wheelSpeed_lb.value === 0) {
+    handleError("Traction lost to rear left wheel");
+  } else if (wheelSpeed_rb && wheelSpeed_rb.value === 0) {
+    handleError("Traction lost to rear right wheel");
+  }
 
   return (
     <div className="dashboard">
@@ -236,6 +248,7 @@ const DefaultGrid: React.FC<Props> = ({ data, timer }) => {
               currentValue={+(predictiveCharge?.value ?? 0)}
               maxValue={+(predictiveCharge?.max ?? 30)}
               unit={predictiveCharge?.unit ?? "Hours"}
+              onError={handleError}
             />
           </GridContainer>
         </div>

@@ -794,4 +794,7 @@ Timestamp: 0000.0000    ID:      004d      X Rx        DL:  8   1C 18 98 65 00 2
 Timestamp: 0000.0000    ID:      0281  S Rx  DL:  8  00 28 00 00 00 00 00 00     Channel: can0
 Timestamp: 0000.0000    ID:      0010      S Rx        DL:  4   00 80 00 00 00 00 00 00      Channel: can0
 Timestamp: 0000.0000    ID:      0567     S Rx        DL:  8    04 69 04 69 04 69 04 69     Channel: can0
-Timestamp: 0000.0000    ID:      004d      X Rx        DL:  8   1C 18 98 65 00 2B 00 00     Channel: can0Timestamp: 0000.0000    ID:      0281  S Rx  DL:  8  00 28 00 00 00 00 00 00     Channel: can0Timestamp: 0000.0000    ID:      0010      S Rx        DL:  4   00 80 00 00 00 00 00 00      Channel: can0Timestamp: 0000.0000    ID:      0567     S Rx        DL:  8    04 69 04 69 04 69 04 69     Channel: can0
+Timestamp: 0000.0000    ID:      004d      X Rx        DL:  8   1C 18 98 65 00 2B 00 00     Channel: can0
+Timestamp: 0000.0000    ID:      0281  S Rx  DL:  8  00 28 00 00 00 00 00 00     Channel: can0
+Timestamp: 0000.0000    ID:      0010      S Rx        DL:  4   00 80 00 00 00 00 00 00      Channel: can0
+Timestamp: 0000.0000    ID:      0567     S Rx        DL:  8    04 69 04 69 04 69 04 69     Channel: can0
