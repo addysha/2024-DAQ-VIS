@@ -85,7 +85,7 @@ class MCTranslator:
                 "name": "Motor Speed",
                 "value": round(velocity_actual_value / 30),
                 "unit": "RPM",
-                "max": 16000,
+                "max": 10000,
             },
         ]
 

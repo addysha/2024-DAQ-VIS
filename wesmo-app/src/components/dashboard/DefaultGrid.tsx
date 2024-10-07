@@ -292,7 +292,7 @@ const DefaultGrid: React.FC<Props> = ({ data, timer }) => {
               textValue={"Motor Speed"}
               currentValue={+(motorSpeed?.value ?? 0)}
               maxValue={+(motorSpeed?.max ?? 0)}
-              minValue={+(motorSpeed?.min ?? 0)}
+              minValue={+(motorSpeed?.min ?? 5200)}
               unit={motorSpeed?.unit ?? "RPM"}
               onError={handleError}
             />
