@@ -139,6 +139,8 @@ def query_data(data_name, cursor, conn):
             )
         elif data_name == "Wheel Speed":
             query = f"SELECT time, value, name FROM VEHICLE_CONTROLL_UNIT WHERE name IN ('Wheel Speed RR', 'Wheel Speed RL', 'Wheel Speed FR', 'Wheel Speed FL');"
+        elif data_name == "Brakes and APPS":
+            query = f"SELECT time, value, name FROM VEHICLE_CONTROLL_UNIT WHERE name IN ('Break Pressure Rear', 'Break Pressure Front', 'Accelerator Travel 1', 'Accelerator Travel 2');"
         elif (
             data_name == "Battery Temperature"
             or data_name == "Battery Current"
@@ -158,7 +160,7 @@ def query_data(data_name, cursor, conn):
         data = cursor.fetchall()
         converted_data = []
 
-        if data_name == "Wheel Speed":
+        if data_name == "Wheel Speed" or data_name == "Brakes and APPS":
             for dt, value, name in data:
                 timestamp = int(dt.timestamp())
                 converted_data.append(

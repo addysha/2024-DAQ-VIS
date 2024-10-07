@@ -19,7 +19,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import LogQuad from "./ListContainerQuad.tsx";
+import Log from "./ListContainerWheelSpeed.tsx";
 
 interface Props {
   keyToDisplay: string;
@@ -65,8 +65,6 @@ const HistoryList: React.FC<Props> = ({ keyToDisplay }) => {
           },
           []
         );
-
-        console.log("Formatted Data:", formattedData);
 
         setHistoricalData(formattedData);
       });
@@ -144,7 +142,7 @@ const HistoryList: React.FC<Props> = ({ keyToDisplay }) => {
             </LineChart>
           </ResponsiveContainer>
 
-          <LogQuad data={historicalData || []}></LogQuad>
+          <Log data={historicalData || []}></Log>
         </div>
       </div>
     );

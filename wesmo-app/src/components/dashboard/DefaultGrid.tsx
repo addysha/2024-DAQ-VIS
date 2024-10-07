@@ -22,9 +22,9 @@ import QuadNumberContainer from "./QuadNumberContainer.tsx";
 import PopUp from "./PopUpContainer.tsx";
 
 import { DataItem } from "../../pages/data.tsx";
-import HistoryList from "./HistoryList.tsx";
-import HistoryListWheelSpeed from "./HistoryListWheelSpeed.tsx";
-import HistoryListBreaks from "./HistoryListBreaks.tsx";
+import HistoryGraph from "./HistoryGraph.tsx";
+import HistoryGraphWheelSpeed from "./HistoryGraphWheelSpeed.tsx";
+import HistoryGraphPedals from "./HistoryGraphPedals.tsx";
 
 interface ErrorMessage {
   message: string;
@@ -101,14 +101,19 @@ const DefaultGrid: React.FC<Props> = ({ data, timer }) => {
   };
 
   if (break_conflict && break_conflict.value === 1) {
+    // eslint-disable-next-line
     const error = () => handleError("Break conflict occured");
   } else if (wheelSpeed_lf && wheelSpeed_lf.value === 0) {
+    // eslint-disable-next-line
     const error = () => handleError("Traction lost to front left wheel");
   } else if (wheelSpeed_rf && wheelSpeed_rf.value === 0) {
+    // eslint-disable-next-line
     const error = () => handleError("Traction lost to front right wheel");
   } else if (wheelSpeed_lb && wheelSpeed_lb.value === 0) {
+    // eslint-disable-next-line
     const error = () => handleError("Traction lost to rear left wheel");
   } else if (wheelSpeed_rb && wheelSpeed_rb.value === 0) {
+    // eslint-disable-next-line
     const error = () => handleError("Traction lost to rear right wheel");
   }
 
@@ -127,7 +132,7 @@ const DefaultGrid: React.FC<Props> = ({ data, timer }) => {
           <GridContainer
             size={2}
             onClick={() =>
-              togglePopUp(<HistoryList keyToDisplay="Track Time"></HistoryList>)
+              togglePopUp(<HistoryGraph keyToDisplay="Track Time"></HistoryGraph>)
             }
           >
             {/* Warnings - Battery Status */}
@@ -141,7 +146,7 @@ const DefaultGrid: React.FC<Props> = ({ data, timer }) => {
             size={3}
             onClick={() =>
               togglePopUp(
-                <HistoryList keyToDisplay="Battery State of Charge"></HistoryList>
+                <HistoryGraph keyToDisplay="Battery State of Charge"></HistoryGraph>
               )
             }
           >
@@ -158,7 +163,7 @@ const DefaultGrid: React.FC<Props> = ({ data, timer }) => {
             size={2}
             onClick={() =>
               togglePopUp(
-                <HistoryList keyToDisplay="Battery Current"></HistoryList>
+                <HistoryGraph keyToDisplay="Battery Current"></HistoryGraph>
               )
             }
           >
@@ -173,7 +178,7 @@ const DefaultGrid: React.FC<Props> = ({ data, timer }) => {
             size={2}
             onClick={() =>
               togglePopUp(
-                <HistoryList keyToDisplay="Battery Voltage"></HistoryList>
+                <HistoryGraph keyToDisplay="Battery Voltage"></HistoryGraph>
               )
             }
           >
@@ -190,7 +195,7 @@ const DefaultGrid: React.FC<Props> = ({ data, timer }) => {
             size={2}
             onClick={() =>
               togglePopUp(
-                <HistoryList keyToDisplay="Motor Temperature"></HistoryList>
+                <HistoryGraph keyToDisplay="Motor Temperature"></HistoryGraph>
               )
             }
           >
@@ -207,7 +212,7 @@ const DefaultGrid: React.FC<Props> = ({ data, timer }) => {
             size={2}
             onClick={() =>
               togglePopUp(
-                <HistoryList keyToDisplay="Battery Temperature"></HistoryList>
+                <HistoryGraph keyToDisplay="Battery Temperature"></HistoryGraph>
               )
             }
           >
@@ -224,7 +229,7 @@ const DefaultGrid: React.FC<Props> = ({ data, timer }) => {
             size={2}
             onClick={() =>
               togglePopUp(
-                <HistoryList keyToDisplay="DC Link Circuit Voltage"></HistoryList>
+                <HistoryGraph keyToDisplay="DC Link Circuit Voltage"></HistoryGraph>
               )
             }
           >
@@ -238,7 +243,7 @@ const DefaultGrid: React.FC<Props> = ({ data, timer }) => {
             size={3}
             onClick={() =>
               togglePopUp(
-                <HistoryList keyToDisplay="Predictive State of Charge"></HistoryList>
+                <HistoryGraph keyToDisplay="Predictive State of Charge"></HistoryGraph>
               )
             }
           >
@@ -257,9 +262,9 @@ const DefaultGrid: React.FC<Props> = ({ data, timer }) => {
             size={3}
             onClick={() =>
               togglePopUp(
-                <HistoryListWheelSpeed
+                <HistoryGraphWheelSpeed
                   keyToDisplay={"Wheel Speeds"}
-                ></HistoryListWheelSpeed>
+                ></HistoryGraphWheelSpeed>
               )
             }
           >
@@ -276,7 +281,7 @@ const DefaultGrid: React.FC<Props> = ({ data, timer }) => {
             size={2}
             onClick={() =>
               togglePopUp(
-                <HistoryList keyToDisplay="Motor Speed"></HistoryList>
+                <HistoryGraph keyToDisplay="Motor Speed"></HistoryGraph>
               )
             }
           >
@@ -294,9 +299,9 @@ const DefaultGrid: React.FC<Props> = ({ data, timer }) => {
             size={3}
             onClick={() =>
               togglePopUp(
-                <HistoryListBreaks
-                  keyToDisplay={"Break Pressures"}
-                ></HistoryListBreaks>
+                <HistoryGraphPedals
+                  keyToDisplay={"Brakes and APPS"}
+                ></HistoryGraphPedals>
               )
             }
           >

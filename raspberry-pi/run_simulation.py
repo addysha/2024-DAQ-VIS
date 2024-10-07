@@ -77,7 +77,6 @@ def main():
     connected = False
     while not connected:
         client = connect_mqtt()
-        print(client)
         if client != None:
             client.loop_start()
             publish(client)

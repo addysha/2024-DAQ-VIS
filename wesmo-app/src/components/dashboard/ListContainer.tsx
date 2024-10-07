@@ -10,7 +10,7 @@
 
 import React from "react";
 import "./ListContainer.css";
-import { DataPoint } from "./HistoryList";
+import { DataPoint } from "./HistoryGraph";
 
 interface Props {
   [key: string]: DataPoint[];
