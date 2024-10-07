@@ -17,6 +17,7 @@ interface Props {
   parameter2: DataItem | null;
   parameter3: DataItem | null;
   parameter4: DataItem | null;
+  conflict?: DataItem | null;
   onError?: (error: string) => void;
 }
 
@@ -37,6 +38,7 @@ const QuadNumberContainer: React.FC<Props> = ({
   parameter2,
   parameter3,
   parameter4,
+  conflict,
   onError,
 }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -44,12 +46,17 @@ const QuadNumberContainer: React.FC<Props> = ({
 
   const barStyles = useMemo(() => {
     return parameters.map((param) => {
-      const colour = param
-        ? getColour(param.max, param.value, param.name)
-        : "#3274B1";
+      let colour = "";
+      if (conflict && conflict.value === 1) {
+        colour = "#af1317";
+      } else {
+        colour = param
+          ? getColour(param.max, param.value, param.name)
+          : "#3274B1";
+      }
       return { backgroundColor: colour };
     });
-  }, [parameters]);
+  }, [parameters, conflict]);
 
   useEffect(() => {
     if (onError) {

@@ -101,15 +101,15 @@ const DefaultGrid: React.FC<Props> = ({ data, timer }) => {
   };
 
   if (break_conflict && break_conflict.value === 1) {
-    handleError("Break conflict occured");
+    const error = () => handleError("Break conflict occured");
   } else if (wheelSpeed_lf && wheelSpeed_lf.value === 0) {
-    handleError("Traction lost to front left wheel");
+    const error = () => handleError("Traction lost to front left wheel");
   } else if (wheelSpeed_rf && wheelSpeed_rf.value === 0) {
-    handleError("Traction lost to front right wheel");
+    const error = () => handleError("Traction lost to front right wheel");
   } else if (wheelSpeed_lb && wheelSpeed_lb.value === 0) {
-    handleError("Traction lost to rear left wheel");
+    const error = () => handleError("Traction lost to rear left wheel");
   } else if (wheelSpeed_rb && wheelSpeed_rb.value === 0) {
-    handleError("Traction lost to rear right wheel");
+    const error = () => handleError("Traction lost to rear right wheel");
   }
 
   return (
@@ -224,12 +224,12 @@ const DefaultGrid: React.FC<Props> = ({ data, timer }) => {
             size={2}
             onClick={() =>
               togglePopUp(
-                <HistoryList keyToDisplay="Velocity Actual Value"></HistoryList>
+                <HistoryList keyToDisplay="DC Link Circuit Voltage"></HistoryList>
               )
             }
           >
             <NumberContainer
-              text={dcLinkVolts?.name ?? "Velocity Actual Value"}
+              text={dcLinkVolts?.name ?? "DC Link Circuit Voltage"}
               value={+(dcLinkVolts?.value ?? 0)}
               unit={dcLinkVolts?.unit ?? "V"}
             />

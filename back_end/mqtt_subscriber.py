@@ -129,7 +129,11 @@ def cache_data(time, value):
 
 def query_data(data_name, cursor, conn):
     try:
-        if data_name == "Motor Temperature" or data_name == "Motor Speed":
+        if (
+            data_name == "Motor Temperature"
+            or data_name == "Motor Speed"
+            or data_name == "DC Link Circuit Voltage"
+        ):
             query = (
                 f"SELECT time, value from MOTOR_CONTROLLER where name = '{data_name}'"
             )

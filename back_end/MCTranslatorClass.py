@@ -177,7 +177,7 @@ class MCTranslator:
                 "name": "DC Link Circuit Voltage",
                 "value": DC_link_circuit_voltage,
                 "unit": "V",
-                "max": 100,
+                "max": 400,
             },
             {
                 "name": "logic power supply voltage",

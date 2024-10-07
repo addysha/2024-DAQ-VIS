@@ -55,6 +55,7 @@ def create_timer():
     data = request.get_json()
 
     if not track_timer:
+        on_track = False
         track_timer = TrackTimer()
 
     if not on_track and track_timer:

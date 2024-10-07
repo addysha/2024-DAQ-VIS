@@ -80,8 +80,6 @@ BO_ 513 RPDO1: 8 M150
  SG_ Controlword : 7|16@0+ (1,0) [0|65535] "" Vector__XXX
  SG_ Target_Torque : 55|16@0- (1,0) [-32768|32767] "mA"  H300
 
-
-
 CM_ BU_ C127 "Screen / Datalogger MoTeC C127";
 CM_ BU_ H300 "Emdrive H300 motor controller";
 CM_ BU_ M150 "VCU MoTeC M150";
