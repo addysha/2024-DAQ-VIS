@@ -35,17 +35,17 @@ class TrackTimer:
             elapsed_time = time.time() - self.start_time
             timer_display = self.format_elapsed_time(elapsed_time)
         else:
-            timer_display = "00:00:00"
+            timer_display = "00:00.00"
         return [{"name": "Track Time", "value": timer_display, "unit": "", "max": ""}]
 
     def format_elapsed_time(self, seconds):
         """Helper function to format elapsed time into a readable format."""
         milliseconds = int(str(seconds)[-2:])
         minutes, seconds = divmod(int(seconds), 60)
-        return f"{minutes:02}:{seconds:02}:{milliseconds:02}"
+        return f"{minutes:02}:{seconds:02}.{milliseconds:02}"
 
     def update_timer(self):
-        timer_display = "00:00:00"
+        timer_display = "00:00.00"
         if self.start_time:
             elapsed_time = time.time() - self.start_time
             timer_display = self.format_elapsed_time(elapsed_time)

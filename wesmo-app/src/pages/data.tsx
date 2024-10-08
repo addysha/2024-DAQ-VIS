@@ -9,7 +9,7 @@
  *
  */
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { io, Socket } from "socket.io-client";
 import "../App.css";
 
@@ -42,48 +42,55 @@ const Data: React.FC = () => {
   const [data, setData] = useState<DataItem[] | undefined>(undefined);
   const [timer, setTimer] = useState<DataItem[]>(defaultTimer);
   const [loaded, setLoaded] = useState(false);
-  const [socketInstance, setSocketInstance] = useState<Socket | undefined>(
-    undefined
-  );
   const [noDataReceived, setNoDataReceived] = useState(false);
   const [lastDataTimestamp, setLastDataTimestamp] = useState<number>(
     Date.now()
   );
 
   useEffect(() => {
-    if (!socketInstance) {
-      // const URL = process.env.NODE_ENV === 'production' ? undefined : 'http://127.0.0.1:5001';
+    const connect = () => {
+      setLoaded(true);
+      setNoDataReceived(true);
+      setLastDataTimestamp(Date.now());
+      console.log(`Connected with id: ${socket.id}`);
+    };
 
-      const socket = io("http://127.0.0.1:5001/", {
-        transports: ["websocket"],
-      });
-      setSocketInstance(socket);
+    const disconnect = () => {
+      console.log(`Disconnected with id: ${socket.id}`);
+    };
 
-      socket.on("connect", () => {
-        setLoaded(true);
-        setNoDataReceived(true);
+    const handleNewData = (receivedData: DataItem[] | undefined) => {
+      if (data !== receivedData) {
+        setData(receivedData);
         setLastDataTimestamp(Date.now());
-        console.log(`Connected with id: ${socket.id}`);
-      });
+        setNoDataReceived(false);
+        socket.emit("timer");
+      }
+    };
 
-      socket.on("disconnect", () => {
-        console.log(`Disconnected with id: ${socket.id}`);
-      });
+    const timerRecieve = (timer: DataItem[]) => {
+      setTimer(timer);
+    };
+    // const URL = process.env.NODE_ENV === 'production' ? undefined : 'http://127.0.0.1:5001';
 
-      socket.on("data", (receivedData) => {
-        if (data !== receivedData) {
-          setData(receivedData);
-          setLastDataTimestamp(Date.now());
-          setNoDataReceived(false);
-          socket.emit("timer");
-        }
-      });
+    const socket = io("http://127.0.0.1:5001/", {
+      transports: ["websocket"],
+    });
 
-      socket.on("timerRecieve", (timer) => {
-        setTimer(timer);
-      });
-    }
-  }, [socketInstance, data]);
+    socket.on("connect", connect);
+    socket.on("disconnect", disconnect);
+    socket.on("data", handleNewData);
+    socket.on("timerRecieve", timerRecieve);
+
+    return () => {
+      socket.off("connect", connect);
+      socket.off("disconnect", disconnect);
+      socket.off("data", handleNewData);
+      socket.off("timerRecieve", timerRecieve);
+    };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {

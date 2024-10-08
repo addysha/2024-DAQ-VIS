@@ -42,7 +42,9 @@ const QuadNumberContainer: React.FC<Props> = ({
   onError,
 }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const parameters = [parameter1, parameter2, parameter3, parameter4];
+  const parameters = useMemo(() => {
+    return [parameter1, parameter2, parameter3, parameter4];
+  }, [parameter1, parameter2, parameter3, parameter4]);
 
   const barStyles = useMemo(() => {
     return parameters.map((param) => {
@@ -56,9 +58,9 @@ const QuadNumberContainer: React.FC<Props> = ({
       }
       return { backgroundColor: colour };
     });
-  }, [parameters, conflict]);
+  }, [parameter1, parameter2, parameter3, parameter4, conflict]);
 
-  useMemo(() => {
+  useEffect(() => {
     if (onError) {
       parameters.forEach((param, index) => {
         if (barStyles[index].backgroundColor === "#af1317") {
