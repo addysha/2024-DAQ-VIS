@@ -112,3 +112,41 @@
     }
   }
 }
+
+@media (max-width: 410px) {
+  .status_bar {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem;
+
+    .status_content {
+      display: flex;
+      flex-direction: row;
+    }
+
+    margin-bottom: 1.5rem;
+    padding: 0.5rem;
+
+    .info {
+      display: flex;
+      flex-direction: column;
+
+      .icon {
+        font-size: 1rem;
+      }
+
+      p {
+        text-align: center;
+        padding: 0.25rem;
+        font-size: 0.75rem;
+      }
+
+      .dot {
+        height: 20px;
+        width: 20px;
+        background-color: #bbb;
+        border-radius: 50%;
+      }
+    }
+  }
+}

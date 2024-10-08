@@ -49,7 +49,7 @@ const NumberContainer: React.FC<Props> = ({
     return barStyle;
   }, [setColour]);
 
-  useEffect(() => {
+  useMemo(() => {
     if (setColour === "#af1317" && onError) {
       onError(`${text}: Critical`);
     } else if (setColour === "#eac054" && onError) {

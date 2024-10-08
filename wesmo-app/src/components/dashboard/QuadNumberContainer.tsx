@@ -58,7 +58,7 @@ const QuadNumberContainer: React.FC<Props> = ({
     });
   }, [parameters, conflict]);
 
-  useEffect(() => {
+  useMemo(() => {
     if (onError) {
       parameters.forEach((param, index) => {
         if (barStyles[index].backgroundColor === "#af1317") {

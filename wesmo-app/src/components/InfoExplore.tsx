@@ -18,7 +18,7 @@ import {
   SwipeableDrawer,
   useMediaQuery,
 } from "@mui/material";
-import { useTheme, ThemeProvider, createTheme } from "@mui/material/styles";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { PaletteColorOptions } from "@mui/material/styles";
 
 // Extend Material-UI theme to include custom palette options (red in this case)

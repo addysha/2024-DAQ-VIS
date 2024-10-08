@@ -64,16 +64,9 @@ const HistoryList: React.FC<Props> = ({ keyToDisplay }) => {
   }, [socketInstance, keyToDisplay]);
   if (historicalData && Object.keys(historicalData).length !== 0) {
     return (
-      <div style={{ width: "700px", height: "300px" }}>
+      <div className="graph-box">
         <h3 style={{ color: "black" }}>{keyToDisplay}</h3>
-        <div
-          style={{
-            width: "100%",
-            height: "100%",
-            display: "flex",
-            flexDirection: "row",
-          }}
-        >
+        <div className="graph-container">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart
               data={historicalData}

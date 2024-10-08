@@ -221,7 +221,6 @@ h1 {
   min-width: 200px;
 }
 
-/* Media query for screens smaller than 768px (tablets and smaller) */
 @media (max-width: 768px) {
   .footer .content {
     flex-direction: column;
@@ -719,6 +718,18 @@ h1 {
   }
 }
 
+.graph-box {
+  width: 700px;
+  height: 300px;
+
+  .graph-container {
+    display: flex;
+    width: 90%;
+    height: 90%;
+    flex-direction: row;
+  }
+}
+
 .no-data {
   display: flex;
   justify-content: center;
@@ -821,25 +832,37 @@ ol {
   }
 
   .navbar {
-    padding: 0.25rem 1.5rem 0.5rem;
-    flex-wrap: nowrap;
-    display: flex;
-    position: sticky;
-    top: 0;
+    &.explore {
+      flex-wrap: nowrap;
+      display: flex;
+      position: sticky;
+      top: 0;
+      z-index: 2000;
 
+      .nav-right {
+        z-index: 2000;
+        right: 0;
+        position: fixed;
+        padding-right: 1.5rem;
+      }
+
+      .nav-left {
+        width: 90%;
+        top: 0;
+        left: 0;
+      }
+    }
+
+    padding: 0.25rem 1.5rem 0.5rem;
     justify-content: space-between;
 
     .nav-left {
-      width: 90%;
-      top: 0;
-      left: 0;
-    }
-
-    .nav-right {
-      z-index: 2000;
-      right: 0;
-      position: fixed;
-      padding-right: 1.5rem;
+      &.nav-dashboard {
+        width: 70%;
+        align-items: self-start;
+        padding-top: 0;
+        margin: 0;
+      }
     }
   }
 
@@ -1150,6 +1173,22 @@ ol {
     }
   }
 
+  .graph-box {
+    width: 80vw;
+    height: 50vh;
+
+    h3{
+      font-size: medium;
+    }
+
+    .graph-container {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      flex-direction: column;
+    }
+  }
+
   /* Pop Up Containers */
 
   .pop_up_container {
@@ -1193,6 +1232,15 @@ ol {
     justify-content: space-around;
     margin-top: 1rem;
     margin-bottom: 2rem;
+
+    .track-time {
+      color: black;
+      position: absolute;
+      font-size: large;
+      top: 100px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
 
   .dashboard-row {

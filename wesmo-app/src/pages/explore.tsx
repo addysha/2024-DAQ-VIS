@@ -25,7 +25,7 @@ const Explore: React.FC = () => {
           href="https://fonts.googleapis.com/css?family=Roboto Condensed"
           rel="stylesheet"
         ></link>
-        <div className="navbar">
+        <div className="navbar explore">
           <div className="nav-left">
             <Logo />
           </div>

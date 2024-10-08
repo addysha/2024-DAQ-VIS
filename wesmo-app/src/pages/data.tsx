@@ -174,7 +174,7 @@ const Data: React.FC = () => {
       <div className="App">
         <div className="background data">
           <div className="navbar">
-            <div className="nav-left">
+            <div className="nav-left nav-dashboard">
               <Logo colour="dark" />
             </div>
             <div
