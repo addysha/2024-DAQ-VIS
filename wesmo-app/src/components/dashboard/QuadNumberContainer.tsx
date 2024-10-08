@@ -58,6 +58,7 @@ const QuadNumberContainer: React.FC<Props> = ({
       }
       return { backgroundColor: colour };
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [parameter1, parameter2, parameter3, parameter4, conflict]);
 
   useEffect(() => {

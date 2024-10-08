@@ -25,7 +25,7 @@ const Explore: React.FC = () => {
           href="https://fonts.googleapis.com/css?family=Roboto Condensed"
           rel="stylesheet"
         ></link>
-        <div className="navbar explore">
+        <div className="navbar nav-explore">
           <div className="nav-left">
             <Logo />
           </div>
@@ -36,6 +36,9 @@ const Explore: React.FC = () => {
         <br />
         <div className="explore-body">
           <TitleCard title="Explore the W-SF18 & W-SF23" />
+          <div className="helper">
+            Scroll <i className="fa-solid fa-arrow-right"></i>
+          </div>
           <div id="info-container">
             <InfoExplore
               x="58"

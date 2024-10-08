@@ -8,7 +8,7 @@
  * This code is part of the  WESMO Data Acquisition and Visualisation Project.
  */
 
-import React, { useEffect, useMemo, useReducer, useState } from "react";
+import React, { useMemo, useReducer, useState } from "react";
 import "../../App.css";
 
 import GridContainer from "../../components/dashboard/GridContainer.tsx";

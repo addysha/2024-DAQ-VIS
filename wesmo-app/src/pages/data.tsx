@@ -9,8 +9,8 @@
  *
  */
 
-import React, { useEffect, useMemo, useState } from "react";
-import { io, Socket } from "socket.io-client";
+import React, { useEffect, useState } from "react";
+import { io } from "socket.io-client";
 import "../App.css";
 
 import BurgerMenu from "../components/BurgerMenu.tsx";

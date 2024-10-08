@@ -8,7 +8,7 @@
  * This code is part of the  WESMO Data Acquisition and Visualisation Project.
  */
 
-import React, { CSSProperties, useMemo, useEffect } from "react";
+import React, { CSSProperties, useMemo } from "react";
 import "./NumberContainer.css";
 
 interface Props {

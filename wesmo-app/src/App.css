@@ -601,6 +601,9 @@ h1 {
   position: relative;
 }
 
+.helper {
+  display: none;
+}
 .explore {
   margin-left: 20%;
   margin-top: 20%;
@@ -834,7 +837,7 @@ ol {
   }
 
   .navbar {
-    &.explore {
+    &.nav-explore {
       flex-wrap: nowrap;
       display: flex;
       position: sticky;
@@ -917,6 +920,13 @@ ol {
     overflow: hidden;
     width: 300%;
     overflow-x: hidden;
+
+    .helper {
+      display: block;
+      font-size: large;
+      margin-left: 3.5rem;
+      margin-top: 1rem;
+    }
   }
 
   /* Contact Us Page */
