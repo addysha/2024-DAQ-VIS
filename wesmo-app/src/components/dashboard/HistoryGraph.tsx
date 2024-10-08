@@ -64,45 +64,50 @@ const HistoryList: React.FC<Props> = ({ keyToDisplay }) => {
   }, [socketInstance, keyToDisplay]);
   if (historicalData && Object.keys(historicalData).length !== 0) {
     return (
-      <div className="graph-box">
+      <div>
         <h3 style={{ color: "black" }}>{keyToDisplay}</h3>
-        <div className="graph-container">
-          <ResponsiveContainer width="100%" height="100%">
-            <LineChart
-              data={historicalData}
-              margin={{ top: 15, right: 20, left: 0, bottom: 20 }}
-            >
-              <CartesianGrid strokeDasharray="3 3" fill="white" />
-              <XAxis
-                dataKey="timestamp"
-                tickFormatter={(timestamp) =>
-                  new Date(timestamp * 1000).toLocaleTimeString()
-                }
-                angle={-45}
-                textAnchor="end"
-                tickCount={10}
-                tick={{ fontSize: 10, stroke: "black", strokeWidth: 0.25 }}
-                color="black"
-              />
-              <YAxis
-                tickCount={10}
-                tick={{ fontSize: 12, stroke: "black", strokeWidth: 0.25 }}
-              />
-              <Tooltip
-                labelFormatter={(timestamp) =>
-                  new Date(timestamp * 1000).toLocaleTimeString()
-                }
-              />
-              <Line
-                type="monotone"
-                dataKey="value"
-                stroke="#4da14b"
-                strokeWidth={2}
-                dot={false}
-              />
-            </LineChart>
-          </ResponsiveContainer>
-          <Log log_data={historicalData}></Log>
+        <div className="graph-box">
+          <div className="graph-container">
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart
+                data={historicalData}
+                margin={{ top: 15, right: 20, left: 0, bottom: 20 }}
+                isAnimationActive={false}
+              >
+                <CartesianGrid strokeDasharray="3 3" fill="white" />
+                <XAxis
+                  dataKey="timestamp"
+                  tickFormatter={(timestamp) =>
+                    new Date(timestamp * 1000).toLocaleTimeString()
+                  }
+                  angle={-45}
+                  textAnchor="end"
+                  tickCount={6}
+                  tick={{ fontSize: 10, stroke: "black", strokeWidth: 0.25 }}
+                  color="black"
+                  reversed={true}
+                />
+                <YAxis
+                  tickCount={10}
+                  tick={{ fontSize: 12, stroke: "black", strokeWidth: 0.25 }}
+                />
+                <Tooltip
+                  labelFormatter={(timestamp) =>
+                    new Date(timestamp * 1000).toLocaleTimeString()
+                  }
+                  labelStyle={{ color: "black" }}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="value"
+                  stroke="#4da14b"
+                  strokeWidth={2}
+                  dot={false}
+                />
+              </LineChart>
+            </ResponsiveContainer>
+            <Log log_data={historicalData}></Log>
+          </div>
         </div>
       </div>
     );

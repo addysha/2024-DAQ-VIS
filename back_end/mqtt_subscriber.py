@@ -134,13 +134,11 @@ def query_data(data_name, cursor, conn):
             or data_name == "Motor Speed"
             or data_name == "DC Link Circuit Voltage"
         ):
-            query = (
-                f"SELECT time, value from MOTOR_CONTROLLER where name = '{data_name}'"
-            )
+            query = f"SELECT time, value from MOTOR_CONTROLLER where name = '{data_name}' ORDER BY time DESC LIMIT 50;"
         elif data_name == "Wheel Speed":
-            query = f"SELECT time, value, name FROM VEHICLE_CONTROLL_UNIT WHERE name IN ('Wheel Speed RR', 'Wheel Speed RL', 'Wheel Speed FR', 'Wheel Speed FL');"
+            query = f"SELECT time, value, name FROM VEHICLE_CONTROLL_UNIT WHERE name IN ('Wheel Speed RR', 'Wheel Speed RL', 'Wheel Speed FR', 'Wheel Speed FL') ORDER BY time DESC LIMIT 50;"
         elif data_name == "Brakes and APPS":
-            query = f"SELECT time, value, name FROM VEHICLE_CONTROLL_UNIT WHERE name IN ('Break Pressure Rear', 'Break Pressure Front', 'Accelerator Travel 1', 'Accelerator Travel 2');"
+            query = f"SELECT time, value, name FROM VEHICLE_CONTROLL_UNIT WHERE name IN ('Break Pressure Rear', 'Break Pressure Front', 'Accelerator Travel 1', 'Accelerator Travel 2') ORDER BY time DESC LIMIT 50;"
         elif (
             data_name == "Battery Temperature"
             or data_name == "Battery Current"
@@ -152,7 +150,7 @@ def query_data(data_name, cursor, conn):
             or data_name == "Battery Checksum"
             or data_name == "Predictive State of Charge"
         ):
-            query = f"SELECT time, value from BATTERY_MANAGEMENT_SYSTEM where name = '{data_name}'"
+            query = f"SELECT time, value from BATTERY_MANAGEMENT_SYSTEM where name = '{data_name}' ORDER BY time DESC LIMIT 50;"
         else:
             print(f" -! #  ERROR: Data '{data_name}' does not exist in database.")
 

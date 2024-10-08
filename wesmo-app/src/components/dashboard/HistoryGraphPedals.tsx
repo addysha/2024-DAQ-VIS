@@ -75,67 +75,71 @@ const HistoryList: React.FC<Props> = ({ keyToDisplay }) => {
 
   if (historicalData && Object.keys(historicalData).length !== 0) {
     return (
-      <div className="graph-box">
+      <div>
         <h3 style={{ color: "black" }}>{keyToDisplay}</h3>
-        <div className="graph-container">
-          <ResponsiveContainer width="100%" height="100%">
-            <LineChart
-              data={historicalData}
-              margin={{ top: 15, right: 20, left: 0, bottom: 20 }}
-            >
-              <CartesianGrid strokeDasharray="3 3" fill="white" />
-              <XAxis
-                dataKey="timestamp"
-                tickFormatter={(timestamp) =>
-                  new Date(timestamp * 1000).toLocaleTimeString()
-                }
-                angle={-45}
-                textAnchor="end"
-                tickCount={10}
-                tick={{ fontSize: 10, stroke: "black", strokeWidth: 0.25 }}
-                color="black"
-              />
-              <YAxis
-                tickCount={10}
-                tick={{ fontSize: 12, stroke: "black", strokeWidth: 0.25 }}
-              />
-              <Tooltip
-                labelFormatter={(timestamp) =>
-                  new Date(timestamp * 1000).toLocaleTimeString()
-                }
-              />
-              <Line
-                type="monotone"
-                dataKey="Break Pressure Rear"
-                stroke="#4da14b"
-                dot={false}
-                strokeWidth={2}
-              />
-              <Line
-                type="monotone"
-                dataKey="Break Pressure Front"
-                stroke="#eac054"
-                dot={false}
-                strokeWidth={2}
-              />
-              <Line
-                type="monotone"
-                dataKey="Accelerator Travel 1"
-                stroke="#af1317"
-                dot={false}
-                strokeWidth={2}
-              />
-              <Line
-                type="monotone"
-                dataKey="Accelerator Travel 2"
-                stroke="#3274B1"
-                dot={false}
-                strokeWidth={2}
-              />
-            </LineChart>
-          </ResponsiveContainer>
+        <div className="graph-box">
+          <div className="graph-container">
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart
+                data={historicalData}
+                margin={{ top: 15, right: 20, left: 0, bottom: 20 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" fill="white" />
+                <XAxis
+                  dataKey="timestamp"
+                  tickFormatter={(timestamp) =>
+                    new Date(timestamp * 1000).toLocaleTimeString()
+                  }
+                  angle={-45}
+                  textAnchor="end"
+                  tickCount={10}
+                  tick={{ fontSize: 10, stroke: "black", strokeWidth: 0.25 }}
+                  color="black"
+                  reversed={true}
+                />
+                <YAxis
+                  tickCount={10}
+                  tick={{ fontSize: 12, stroke: "black", strokeWidth: 0.25 }}
+                />
+                <Tooltip
+                  labelFormatter={(timestamp) =>
+                    new Date(timestamp * 1000).toLocaleTimeString()
+                  }
+                  labelStyle={{ color: "black" }}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="Break Pressure Rear"
+                  stroke="#4da14b"
+                  dot={false}
+                  strokeWidth={2}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="Break Pressure Front"
+                  stroke="#eac054"
+                  dot={false}
+                  strokeWidth={2}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="Accelerator Travel 1"
+                  stroke="#af1317"
+                  dot={false}
+                  strokeWidth={2}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="Accelerator Travel 2"
+                  stroke="#3274B1"
+                  dot={false}
+                  strokeWidth={2}
+                />
+              </LineChart>
+            </ResponsiveContainer>
 
-          <Log data={historicalData || []}></Log>
+            <Log data={historicalData || []}></Log>
+          </div>
         </div>
       </div>
     );

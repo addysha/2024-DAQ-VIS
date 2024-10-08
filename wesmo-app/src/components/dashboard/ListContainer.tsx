@@ -35,9 +35,7 @@ const Log: React.FC<Props> = ({ log_data }) => {
     );
   }
   if (Object.keys(log_data).length !== 0) {
-    const reversedList = [...log_data].reverse();
-
-    const listItems = reversedList.map((item, index) => {
+    const listItems = log_data.map((item, index) => {
       const timestampDate = formatUnixTimestamp(item.timestamp);
       return (
         <li key={index}>

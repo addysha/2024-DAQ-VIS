@@ -5,6 +5,8 @@
   padding: 1rem;
   margin-right: 2rem;
   margin-left: 1rem;
+  min-width: 240px;
+
   &.quad {
     margin-right: 0;
   }
@@ -16,7 +18,7 @@
       padding-left: 0;
     }
     max-height: 230px;
-    min-width: 240px;
+    min-width: 210px;
     overflow-y: auto;
   }
   .scrolling_list {
