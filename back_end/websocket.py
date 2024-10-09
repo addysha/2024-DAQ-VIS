@@ -55,12 +55,14 @@ def create_timer():
     data = request.get_json()
 
     if not track_timer:
-        on_track = False
         track_timer = TrackTimer()
+        print(f"Creating timer - on_track: {on_track}, track_timer: {track_timer}")
 
     if not on_track and track_timer:
         on_track = True
         track_timer.start_timer()
+        print(f"Starting timer - on_track: {on_track}, track_timer: {track_timer}")
+
     if on_track and track_timer:
         time = track_timer.check_timer(data)
         return jsonify({"message": "Timer Update", "timer": time}), 200
@@ -69,6 +71,28 @@ def create_timer():
         jsonify(
             {
                 "message": "Track Timer request recieved",
+            }
+        ),
+        200,
+    )
+
+
+@app.route("/track-timer", methods=["DELETE"])
+def delete_timer():
+    global track_timer, on_track
+
+    if on_track:
+        on_track = False
+    if track_timer:
+        track_timer.reset_timer()
+        track_timer = None
+
+    print(f"Deleteing timer - on_track: {on_track}, track_timer: {track_timer}")
+
+    return (
+        jsonify(
+            {
+                "message": "Track Timer has successfully been removed",
             }
         ),
         200,

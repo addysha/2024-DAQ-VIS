@@ -52,9 +52,9 @@ class VCUTranslator:
             print(f" -! # Error translating vcu data: {e}")
 
     def check_timer(self, messages):
-        if messages["RTD_Running"] == 1:
-            url = "http://localhost:5001/track-timer"
+        url = "http://localhost:5001/track-timer"
 
+        if messages["RTD_Running"] == 1:
             try:
                 response = requests.post(
                     url,
@@ -66,6 +66,17 @@ class VCUTranslator:
                     print(f"Failed: {response.status_code} - {response.json()}")
             except requests.exceptions.RequestException as e:
                 print(f"Error making request: {e}")
+        if messages["RTD_Switch_State"] == 0:
+            try:
+                response = requests.delete(
+                    url,
+                    headers={"Content-Type": "application/json"},
+                )
+
+                if response.status_code != 200:
+                    print(f"Failed: {response.status_code} - {response.json()}")
+            except requests.exceptions.RequestException as e:
+                print(f"Error requesting delete: {e}")
 
     def format_vehicle_status(self, messages):
 

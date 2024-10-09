@@ -21,7 +21,11 @@ class TrackTimer:
         if not self.timer_started:
             self.timer_started = True
             self.start_time = time.time()
-            print("RTD Running is high. Timer started.")
+
+    def reset_timer(self):
+        print("resetting timer")
+        self.timer_started = False
+        self.start_time = None
 
     def check_timer(self, messages):
         if messages["messages"]["RTD_Switch_State"] == 0:
