@@ -31,6 +31,9 @@ import LachlanB from "../images/team/Lachlan_brown.jpeg";
 import LachlanC from "../images/team/Lachlan_coleman.jpeg";
 import Shane from "../images/team/Shane_thompson.jpeg";
 import Trent from "../images/team/Trent_tuapiki.jpeg";
+import Cameron from "../images/team/cameron_mailer.jpeg";
+import Allan from "../images/team/allan_liang.jpeg";
+import Anthony from "../images/team/anthony_east.jpeg";
 import logo from "../images/wesmo-logo/logo_header.png";
 
 const Engineering: React.FC = () => {
@@ -79,7 +82,7 @@ const Engineering: React.FC = () => {
             name2="Keean Cooper"
             discipline2="Mechanical Engineering"
             component2="Aerodynamics"
-            image1={logo}
+            image1={Anthony}
             image2={Keean}
           ></TeamMember>
           <TeamMember
@@ -89,7 +92,7 @@ const Engineering: React.FC = () => {
             name2="Shane Thompson"
             discipline2="Mechanical Engineering"
             component2="Steering"
-            image1={logo}
+            image1={Allan}
             image2={Shane}
           ></TeamMember>
           <TeamMember
@@ -109,7 +112,7 @@ const Engineering: React.FC = () => {
             name2="Hannah Murphy"
             discipline2="Software Engineering"
             component2="Data Aquisition and Visualisation"
-            image1={logo}
+            image1={Cameron}
             image2={Hannah}
           ></TeamMember>
           <TeamMember

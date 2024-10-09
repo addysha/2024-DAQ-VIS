@@ -34,6 +34,7 @@ import wsu from "../images/sponsors/wsu.png";
 import stafford from "../images/sponsors/stafford.png";
 import coroflex from "../images/sponsors/coroflex.png";
 import vulcan from "../images/sponsors/vulcan.png";
+import polymaker from "../images/sponsors/polymaker.png";
 
 export const bronze = [
   { title: "JLC PCB", img: jlc_pcb, link: "https://jlcpcb.com/" },
@@ -88,6 +89,11 @@ export const gold = [
     title: "Coroflex",
     img: coroflex,
     link: "https://www.coroflex-cable.com/en/",
+  },
+  {
+    title: "Polymaker",
+    img: polymaker,
+    link: "https://polymaker.com/",
   },
 ];
 
