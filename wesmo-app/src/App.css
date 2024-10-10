@@ -32,12 +32,9 @@ h1 {
 }
 
 .link {
+  font-family: Roboto, sans-serif;
   color: white;
-  font-family: Roboto, sans-serif;
-}
 
-.link {
-  font-family: Roboto, sans-serif;
   &.fsae {
     color: black;
   }
@@ -978,6 +975,16 @@ ol {
     font-family: "Roboto Condensed";
   }
 
+  .link {
+    font-family: Roboto, sans-serif;
+    color: white;
+    text-decoration: underline;
+
+    &.fsae {
+      color: white;
+    }
+  }
+
   /* Image Text Component */
   .image-text-component {
     display: flex;
@@ -1031,6 +1038,8 @@ ol {
 
       &.fsae {
         max-height: 50%;
+        max-width: 100%;
+        align-content: center;
       }
 
       &.daq {
@@ -1042,7 +1051,7 @@ ol {
         object-fit: cover;
         justify-content: left;
         max-width: 100%;
-        min-width: 645px;
+        /* min-width: 645px; */
       }
 
       .image {
@@ -1051,20 +1060,25 @@ ol {
 
         &.fsae {
           height: 100%;
+
           &.logo {
-            border: 10%;
             padding-left: 10%;
-            object-fit: contain;
+            object-fit: cover;
+            max-height: fit-content;
+            max-width: min-content;
+            min-width: 100px;
           }
         }
 
         &.left {
-          height: max-content;
+          height: 100%;
+          max-width: inherit;
+          object-fit: contain;
         }
         &.right {
-          /* height: 50%; */
           object-fit: contain;
-          max-width: 300px;
+          min-width: 285px;
+          max-width: inherit;
         }
       }
     }
@@ -1126,8 +1140,9 @@ ol {
         }
 
         .image {
-          width: 75%;
-          height: 75%;
+          max-width: 75%;
+          height: auto;
+          width: auto;
           max-height: 100px;
           object-fit: contain;
         }
