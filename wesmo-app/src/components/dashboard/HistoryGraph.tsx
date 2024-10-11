@@ -68,7 +68,7 @@ const HistoryList: React.FC<Props> = ({ keyToDisplay }) => {
         <h3 style={{ color: "black" }}>{keyToDisplay}</h3>
         <div className="graph-box">
           <div className="graph-container">
-            <ResponsiveContainer width="100%" height="100%">
+            <ResponsiveContainer>
               <LineChart
                 data={historicalData}
                 margin={{ top: 15, right: 20, left: 0, bottom: 20 }}
