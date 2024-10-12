@@ -17,7 +17,7 @@ from datetime import datetime
 def start_postgresql():
     conn = psycopg2.connect(
         database="postgres",
-        user="hannah",
+        user="postgres",
         password="password",
         host="127.0.0.1",
         port="5432",
@@ -31,7 +31,7 @@ def start_postgresql():
 def connect_to_db():
     conn = psycopg2.connect(
         database="wesmo",
-        user="hannah",
+        user="postgres",
         password="password",
         host="127.0.0.1",
         port="5432",
