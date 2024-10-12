@@ -1,7 +1,7 @@
 #!/bin/bash
 # File: update_website.sh
 # Author: Hannah Murphy
-# Date: 2024-09-14
+# Date: 2024
 # Description:  Strips the VM of the old website directories,
 #               pulls the lasted code from GitHub and then redeploys
 #               the website with the new code.
