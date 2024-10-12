@@ -137,7 +137,7 @@ def handle_disconnect():
 def start_webserver():
     global cursor, conn
     cursor, conn = connect_to_db()
-    socketio.run(app, port=5001, host="0.0.0.0")
+    socketio.run(app, port=5001, host="0.0.0.0", allow_unsafe_werkzeug=True)
 
 
 def main():
