@@ -16,8 +16,8 @@ from mqtt_subscriber import (
     query_data,
     query_all_latest_data,
     connect_to_db,
-    query_latest,
 )
+from database import export_and_clear_database
 from TrackTimer import TrackTimer
 
 """ GLOBAL VARIABLES """
@@ -79,13 +79,14 @@ def create_timer():
 
 @app.route("/track-timer", methods=["DELETE"])
 def delete_timer():
-    global track_timer, on_track
+    global track_timer, on_track, cursor, conn
 
     if on_track:
         on_track = False
     if track_timer:
         track_timer.reset_timer()
         track_timer = None
+        export_and_clear_database(cursor, conn)
 
     print(f"Deleteing timer - on_track: {on_track}, track_timer: {track_timer}")
 

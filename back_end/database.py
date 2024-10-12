@@ -9,7 +9,9 @@ This code is part of the WESMO Data Acquisition and Visualisation Project.
 
 """
 
+import csv
 import psycopg2
+from datetime import datetime
 
 
 def start_postgresql():
@@ -174,3 +176,45 @@ def save_to_db_bms(cursor, conn, data):
             print(f" -! # Error in saving to database - BMS table: {e}")
 
         cache_data(time, value)
+
+
+# ONLY TO BE USED IN SIMULATION
+def export_and_clear_database(cursor, conn):
+    # BMS
+    cursor.execute("SELECT * FROM BATTERY_MANAGEMENT_SYSTEM")
+    results = cursor.fetchall()
+
+    date_time = datetime.now()
+    formatted_date = f"{date_time.year}-{date_time.month:02d}-{date_time.day:02d}"
+    filepath = f"/home/ubuntu/WESMO-2024/back_end/database/bms-{formatted_date}.txt"
+
+    with open(filepath, "w") as f:
+        for row in results:
+            f.write("\t".join(str(cell) for cell in row) + "\n")
+
+    cursor.execute("DELETE FROM BATTERY_MANAGEMENT_SYSTEM")
+    conn.commit()
+
+    # VCU
+    cursor.execute("SELECT * FROM VEHICLE_CONTROLL_UNIT")
+    results = cursor.fetchall()
+    filepath = f"/home/ubuntu/WESMO-2024/back_end/database/vcu-{formatted_date}.txt"
+
+    with open(filepath, "w") as f:
+        for row in results:
+            f.write("\t".join(str(cell) for cell in row) + "\n")
+
+    cursor.execute("DELETE FROM VEHICLE_CONTROLL_UNIT")
+    conn.commit()
+
+    # MC
+    cursor.execute("SELECT * FROM MOTOR_CONTROLLER")
+    results = cursor.fetchall()
+    filepath = f"/home/ubuntu/WESMO-2024/back_end/database/mc-{formatted_date}.txt"
+
+    with open(filepath, "w") as f:
+        for row in results:
+            f.write("\t".join(str(cell) for cell in row) + "\n")
+
+    cursor.execute("DELETE FROM MOTOR_CONTROLLER")
+    conn.commit()
