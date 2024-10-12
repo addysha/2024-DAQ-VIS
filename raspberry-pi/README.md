@@ -1,15 +1,16 @@
 # Raspberry Pi Telemetry System 2024
 
 ## Running Raspberry Pi Telemetry
-To collect CAN bus data run the `rpi-main.py` script on the WESMO Raspberry Pi.
+To collect CAN bus data run the `python3 rpi-main.py` script on the WESMO Raspberry Pi.
 This should connect the Pi to the AWS MQTT Broker and begin transmitting an CAN Bus messaged recieved.
+If Raspberry Pi is within the 2024 car it should do this automatically when the vehicle starts up.
 
-## Running Telemetry Reciever Device
-To collect telemetry data run the `main.py` script. The script can be run with the following command line arguments:
-    -c, --convert: Convert the input file to CSV format. Convert must be used with:
-        -i, --input_file: The file containing the CAN messages.
-        -o, --output_file: The file to write the CSV formatted data.
-    -s, --subscribe: Subscribe to CAN messages using MQTT. Output can messages to console and to a txt file with todays date.
+## EDS Simulation
+To display the work completed in 2024 at the Waikato Engineering Design show a simulation has been developed.
+Using the files within 'sim-data' which are mock CAN messages, run `python3 merge_simulation_data.py` to shuffle
+all the messages, may require tidying up in final lines of the result file '/data/simulation_data.py'.
+
+Using a Python enviroment run `python3 run_simulation.py`, this will simulate the results which the Raspberry Pi collects.
 
 ## CAN Bus
 The can bus for the raspberry pi is a 2-CH CAN HAT. The links for each hat is set up on system start up.
