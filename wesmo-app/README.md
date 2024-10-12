@@ -19,6 +19,6 @@ You may also see any lint errors in the console.
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
+The build is minified and the filenames include the hashes.
 
 This is what is used on the AWS EC2 server which hosts the live website at https://wesmo.co.nz
