@@ -10,7 +10,8 @@
 ```sudo apt-get install supervisor```
 
 To run the backend of the website (only require if running the race-data dashboard), you need to create 
-three config file (below), the contents for the files are in 'supervisord.txt'.
+three config file (below), the contents for the files are in 'supervisord.txt'. Ensure that the virtual envrioment
+is active when starting the supervisor.
 
 ```sudo nano /etc/supervisor/conf.d/websocket.conf```  
 ```sudo nano /etc/supervisor/conf.d/mqtt_subscriber.conf```  
