@@ -12,7 +12,6 @@ This code is part of the WESMO Data Acquisition and Visualisation Project.
 
 import socketio
 import time
-import gc
 
 def main():
     sio = socketio.SimpleClient()
@@ -24,10 +23,16 @@ def main():
         while True:
             itteration += 1
             sio.emit("update_clients")
-            time.sleep(0.25)
-            if itteration %128==0:
+            # 4 minutes
+            if itteration % 960 == 0:
                 itteration = 0
-                gc.collect()
+                sio.disconnect()
+                time.sleep(0.2)
+                sio.connect("http://127.0.0.1:5001/")
+            else:
+                time.sleep(0.25)
+                
+                
                 
     except Exception as e:
         print(f"An error occurred: {e}")
