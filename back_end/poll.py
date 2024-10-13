@@ -12,7 +12,7 @@ This code is part of the WESMO Data Acquisition and Visualisation Project.
 
 import socketio
 import time
-
+import gc
 
 def main():
     sio = socketio.SimpleClient()
@@ -20,9 +20,15 @@ def main():
     try:
         sio.connect("http://127.0.0.1:5001/")
         print("Starting server polling")
+        itteration=0
         while True:
+            itteration += 1
             sio.emit("update_clients")
             time.sleep(0.25)
+            if itteration %128==0:
+                itteration = 0
+                gc.collect()
+                
     except Exception as e:
         print(f"An error occurred: {e}")
 
