@@ -72,10 +72,7 @@ const Data: React.FC = () => {
       setTimer(timer);
     };
     // const URL = process.env.NODE_ENV === 'production' ? undefined : 'http://127.0.0.1:5001';
-    // const socket = io("https://wesmo.co.nz:5001/", {
-    //   transports: ["websocket"],
-    // });
-    const socket = io("http://3.27.191.140:5001/", {
+    const socket = io("https://wesmo.co.nz:5001/", {
       transports: ["websocket"],
     });
 

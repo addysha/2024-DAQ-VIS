@@ -35,7 +35,7 @@ const HistoryList: React.FC<Props> = ({ keyToDisplay }) => {
 
   useEffect(() => {
     if (!socketInstance) {
-      const socket = io("http://3.27.191.140:5001/", {
+      const socket = io("https://wesmo.co.nz:5001/", {
         transports: ["websocket"],
       });
       setSocketInstance(socket);
