@@ -2,9 +2,19 @@
 ## Data Acquisition and Visualisation System
 
 ### Set up Python Virtual Envrioment
+```sudo apt install python3.12-venv```
 ```python3 -m venv env```  
 ```source env/bin/activate```  
-```sudo pip install -r requirements.txt```  
+```sudo pip install -r requirements.txt```
+
+### Install Redis Database
+```sudo apt-get install redis```
+
+### Set up Postgresql Database
+```sudo apt-get install postgresql```
+```sudo -u postgres psql```
+```\password password```
+```CREATE DATABASE wesmo```
 
 ### Set up Supervisor for Backend Scripts
 ```sudo apt-get install supervisor```

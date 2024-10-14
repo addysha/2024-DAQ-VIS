@@ -1,0 +1,47 @@
+# /etc/nginx/sites-enabled/wesmo.co.nz & /etc/nginx/sites-avaliable/wesmo.co.nz
+server {
+
+        root /var/www/wesmo.co.nz/html;
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name wesmo.co.nz www.wesmo.co.nz;
+
+        location / {
+                try_files $uri /index.html;
+        }
+
+        location /socket.io {
+                proxy_pass http://127.0.0.1:5001;
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection "Upgrade";
+                proxy_read_timeout  3600;
+        }
+
+    # managed by Certbot
+    listen [::]:443 ssl ipv6only=on;
+    listen 443 ssl;
+    ssl_certificate /etc/letsencrypt/live/wesmo.co.nz/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/wesmo.co.nz/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+
+}
+
+# managed by Certbot
+server {
+    if ($host = www.wesmo.co.nz) {
+        return 301 https://$host$request_uri;
+    }
+
+    if ($host = wesmo.co.nz) {
+        return 301 https://$host$request_uri;
+    }
+
+    listen 80;
+    listen [::]:80;
+
+    server_name wesmo.co.nz www.wesmo.co.nz;
+    return 404;
+}

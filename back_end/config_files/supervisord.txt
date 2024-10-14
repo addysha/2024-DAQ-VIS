@@ -1,5 +1,3 @@
-# sudo apt-get install supervisor
-
 # sudo nano /etc/supervisor/conf.d/websocket.conf
 [program:websocket]
 command=/home/ubuntu/WESMO-2024/back_end/env/bin/python3 /home/ubuntu/WESMO-2024/back_end/websocket.py

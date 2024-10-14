@@ -71,8 +71,7 @@ const Data: React.FC = () => {
     const timerRecieve = (timer: DataItem[]) => {
       setTimer(timer);
     };
-    // const URL = process.env.NODE_ENV === 'production' ? undefined : 'http://127.0.0.1:5001';
-    const socket = io("https://wesmo.co.nz:5001/", {
+    const socket = io("wesmo.co.nz:5001/", {
       transports: ["websocket"],
     });
 
