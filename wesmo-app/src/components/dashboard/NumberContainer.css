@@ -1,0 +1,33 @@
+.number__icon {
+  font-size: 1rem;
+}
+.number__text-label {
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+.number__text-value {
+  margin-top: 2rem;
+  font-size: 2rem;
+}
+.number__text-value > span {
+  font-size: 1rem;
+  margin-left: 0.3rem;
+}
+.number__container {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  color: #ffffff;
+}
+.number_value_colour {
+  background-color: #4da14b;
+  border-radius: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.parameter {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+}

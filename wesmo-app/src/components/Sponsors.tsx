@@ -1,6 +1,8 @@
 import * as React from "react";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
 
 interface Image {
   title: string;
@@ -14,26 +16,40 @@ interface IProps {
 }
 
 function SponsorRow({ images, width }: IProps) {
+  const theme = useTheme();
+
+  const isXs = useMediaQuery(theme.breakpoints.down("xs"));
+  const isSm = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMd = useMediaQuery(theme.breakpoints.down("md"));
+
+  const cols = isXs ? 1 : isSm ? 2 : isMd ? 3 : 5;
+
+  const maxHeight = isXs || isSm ? 150 : 300;
+  const responsiveWidth = isXs || isSm ? 100 : isMd ? width / 1.5 : width;
+
   return (
     <ImageList
-      cols={5}
+      cols={cols}
       sx={{
         marginLeft: "1rem",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        flexWrap: "wrap",
+        padding: isXs ? "0.5rem" : "1rem",
       }}
     >
-      {images.map((item, index) => (
+      {images.map((item) => (
         <ImageListItem
           key={item.img}
           sx={{
             objectFit: "contain",
             marginLeft: "1vw",
             marginRight: "1vw",
-            width,
-            maxHeight: 300,
+            width: responsiveWidth,
+            maxHeight: maxHeight,
             overflowY: "hidden",
+            margin: isXs || isSm ? "0.5rem 0" : "1vw",
           }}
         >
           <div
@@ -54,7 +70,11 @@ function SponsorRow({ images, width }: IProps) {
                 srcSet={item.img}
                 alt={item.title}
                 loading="lazy"
-                style={{ maxWidth: width + "px", maxHeight: "300px" }}
+                style={{
+                  maxWidth: "100%",
+                  maxHeight: maxHeight + "px",
+                  width: "100%",
+                }}
               />
             </a>
           </div>

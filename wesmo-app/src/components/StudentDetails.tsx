@@ -1,3 +1,13 @@
+/*
+ * File: components/StudentDetails.tsx
+ * Author: Hannah Murphy
+ * Date: 2024
+ * Description: A container component, to hold text and images used on the engineering team page.
+ *
+ * Copyright (c) 2024 WESMO. All rights reserved.
+ * This code is part of the  WESMO Data Acquisition and Visualisation Project.
+ */
+
 import React from "react";
 import "./StudentDetails.css";
 

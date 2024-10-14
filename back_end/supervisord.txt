@@ -1,0 +1,47 @@
+# sudo apt-get install supervisor
+
+# sudo nano /etc/supervisor/conf.d/websocket.conf
+[program:websocket]
+command=/home/ubuntu/WESMO-2024/back_end/env/bin/python3 /home/ubuntu/WESMO-2024/back_end/websocket.py
+directory=/home/ubuntu/WESMO-2024/back_end
+autostart=true
+autorestart=true
+stderr_logfile=/var/log/websocket-py.err.log
+stdout_logfile=/var/log/websocket-py.out.log
+environment=PATH= "/home/ubuntu/WESMO-2024/back_end/env/bin"
+
+# sudo nano /etc/supervisor/conf.d/mqtt_subscriber.conf
+[program:mqtt_subscriber]
+command=/home/ubuntu/WESMO-2024/back_end/env/bin/python3 /home/ubuntu/WESMO-2024/back_end/mqtt_subscriber.py
+directory=/home/ubuntu/WESMO-2024/back_end
+autostart=true
+autorestart=true
+stderr_logfile=/var/log/mqtt_subscriber-py.err.log
+stdout_logfile=/var/log/mqtt_subscriber-py.out.log
+environment=PATH= "/home/ubuntu/WESMO-2024/back_end/env/bin"
+
+
+# sudo nano /etc/supervisor/conf.d/poll.conf
+[program:poll]
+command=/home/ubuntu/WESMO-2024/back_end/env/bin/python3 /home/ubuntu/WESMO-2024/back_end/poll.py
+directory=/home/ubuntu/WESMO-2024/back_end
+autostart=true
+autorestart=true
+stderr_logfile=/var/log/poll-py.err.log
+stdout_logfile=/var/log/poll-py.out.log
+environment=PATH= "/home/ubuntu/WESMO-2024/back_end/env/bin"
+
+
+# sudo supervisorctl reread
+# sudo supervisorctl update
+# sudo supervisorctl start websocket mqtt_subscriber poll
+# sudo supervisorctl stop websocket mqtt_subscriber poll
+
+[program:can]
+command=/home/ubuntu/WESMO-2024/raspberry-pi/env/bin/python3 /home/ubuntu/WESMO-2024/raspberry-pi/run_simulation.py
+directory=/home/ubuntu/WESMO-2024/raspberry-pi
+autostart=true
+autorestart=true
+stderr_logfile=/var/log/can-py.err.log
+stdout_logfile=/var/log/can-py.out.log
+environment=PATH= "/home/ubuntu/WESMO-2024/raspberry-pi/env/bin"

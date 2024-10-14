@@ -1,4 +1,13 @@
-// Filename - pages/index.tsx
+/*
+ * File: pages/index.tsx
+ * Author: Hannah Murphy
+ * Date: 2024
+ * Description: The WESMO site home page
+ *
+ * Copyright (c) 2024 WESMO. All rights reserved.
+ * This code is part of the  WESMO Data Acquisition and Visualisation Project.
+ *
+ */
 
 import React from "react";
 import Typewriter from "../components/TypeWriter.tsx";
@@ -35,7 +44,7 @@ const Home: React.FC = () => {
           </h1>
           <a href="/about-wesmo">
             <div href="#" id="subTitle">
-              FIND OUT MORE{" "}
+              FIND OUT MORE
             </div>
           </a>
         </div>

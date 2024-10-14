@@ -1,5 +1,16 @@
+/*
+ * File: components/Logo.tsx
+ * Author: Hannah Murphy
+ * Date: 2024
+ * Description: A WESMO logo component.
+ *
+ * Copyright (c) 2024 WESMO. All rights reserved.
+ * This code is part of the  WESMO Data Acquisition and Visualisation Project.
+ */
+
 import React from "react";
 import "./Logo.css";
+
 import WesmoLogo from "../images/wesmo-logo/WESMOLogo.png";
 import WesmoLogoDark from "../images/wesmo-logo/WESMOLogoBlack.png";
 

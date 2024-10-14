@@ -1,11 +1,19 @@
-// Filename - pages/engineering-team.tsx
+/*
+ * File: pages/engineering-team.tsx
+ * Author: Hannah Murphy
+ * Date: 2024
+ * Description: Webpage which details the current engineering members of WESMO.
+ *
+ * Copyright (c) 2024 WESMO. All rights reserved.
+ * This code is part of the  WESMO Data Acquisition and Visualisation Project.
+ *
+ */
 
 import React from "react";
 import BurgerMenu from "../components/BurgerMenu.tsx";
 import Logo from "../components/Logo.tsx";
 import TeamMember from "../components/TeamMember.tsx";
 import TitleCard from "../components/TitleCard.tsx";
-import TeamMemberWithLinkedName from "../components/LinkedTeamMember.tsx";
 
 import "../App.css";
 

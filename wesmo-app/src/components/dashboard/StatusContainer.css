@@ -1,0 +1,24 @@
+.status__icon {
+  padding: 0.5rem;
+  display: inline-block;
+  text-align: center;
+}
+
+.status__text-label {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+.status__text-status {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.status__container {
+  text-align: center;
+}
+
+.bms {
+  list-style-type: circle;
+  color: black;
+}

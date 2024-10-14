@@ -1,4 +1,13 @@
-// Filename - pages/2023.tsx
+/*
+ * File: pages/history.tsx
+ * Author: Hannah Murphy
+ * Date: 2024
+ * Description: Webpage describing the 2023 team and their work with EV and IC.
+ *
+ * Copyright (c) 2024 WESMO. All rights reserved.
+ * This code is part of the  WESMO Data Acquisition and Visualisation Project.
+ *
+ */
 
 import React from "react";
 import BurgerMenu from "../components/BurgerMenu.tsx";
@@ -6,7 +15,7 @@ import TitleCard from "../components/TitleCard.tsx";
 import Logo from "../components/Logo.tsx";
 
 import car_2023 from "../images/car_backend_cropped.jpg";
-import car_2018 from "../images/wesmo_night.jpeg";
+import car_2018 from "../images/backgrounds/wesmo_night.jpeg";
 import car_2017 from "../images/2017_car.jpg";
 import car_2016 from "../images/2016_car.jpg";
 import car_2015 from "../images/2015_car.jpg";

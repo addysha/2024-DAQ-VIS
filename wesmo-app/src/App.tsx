@@ -1,8 +1,18 @@
-// Filename - App.js
+/*
+ * File: App.tsx
+ * Author: Hannah Murphy
+ * Date: 2024
+ * Description: The main file for the WESMO website, handle the sub-page routing.
+ *
+ * Copyright (c) 2024 WESMO. All rights reserved.
+ * This code is part of the  WESMO Data Acquisition and Visualisation Project.
+ *
+ * Usage: Compile this file using the TypeScript compiler to check type safety. Run entire App with 'npm start'.
+ */
 
 import React from "react";
-import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.css";
 import Home from "./pages/index.tsx";
 import Contact from "./pages/contact.tsx";
 import About from "./pages/about.tsx";
@@ -17,7 +27,6 @@ import History from "./pages/history.tsx";
 import Data from "./pages/data.tsx";
 import Fsae from "./pages/fsae.tsx";
 import Explore from "./pages/explore.tsx";
-import Daq from "./pages/daq-system.tsx";
 
 const App: React.FC = () => {
   return (
@@ -39,7 +48,6 @@ const App: React.FC = () => {
         <Route path="/history-2014" element={<History2014 />} />
 
         <Route path="/about-wesmo/explore" element={<Explore />} />
-        <Route path="/daq-system" element={<Daq />} />
       </Routes>
     </Router>
   );

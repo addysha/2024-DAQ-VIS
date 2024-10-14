@@ -1,4 +1,15 @@
 #!/bin/bash
+# File: update_website.sh
+# Author: Hannah Murphy
+# Date: 2024
+# Description:  Strips the VM of the old website directories,
+#               pulls the lasted code from GitHub and then redeploys
+#               the website with the new code.
+#
+# Copyright (c) 2024 WESMO. All rights reserved.
+# This script is part of the WESMO Data Acquisition and Visualisation Project.
+#
+# Usage: ./update_website.sh
 
 # Define variables
 WEB_DIR="/var/www/wesmo.co.nz/html"
@@ -17,7 +28,7 @@ cd $APP_DIR
 git pull
 
 # Install the necessary npm packages
-npm install --force
+npm install
 
 # Build the application
 npm run build

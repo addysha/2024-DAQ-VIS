@@ -1,4 +1,13 @@
-// Filename - pages/2023.tsx
+/*
+ * File: pages/2023.tsx
+ * Author: Hannah Murphy
+ * Date: 2024
+ * Description: Webpage describing the 2023 WESMO FSAE vehicle.
+ *
+ * Copyright (c) 2024 WESMO. All rights reserved.
+ * This code is part of the  WESMO Data Acquisition and Visualisation Project.
+ *
+ */
 
 import React from "react";
 import BurgerMenu from "../components/BurgerMenu.tsx";
@@ -6,7 +15,7 @@ import TitleCard from "../components/TitleCard.tsx";
 import Logo from "../components/Logo.tsx";
 import StudentDetails from "../components/StudentDetails.tsx";
 
-import Car_Backend from "../images/car_backend.jpg";
+import Car_Backend from "../images/backgrounds/car_backend.jpg";
 import Team1 from "../images/2023_team.jpg";
 import Team2 from "../images/2023_team2.jpg";
 
@@ -31,7 +40,7 @@ const History_2023: React.FC = () => {
         </div>
         <br />
         <TitleCard title="2023 Team" />
-        <div style={{ height: "80px" }}></div>
+        <br></br>
         <div className="image-text-component left">
           <div className="image-container left">
             <img src={Car_Backend} alt="" className="image left" />

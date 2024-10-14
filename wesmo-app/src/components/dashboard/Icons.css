@@ -1,0 +1,32 @@
+.info_icon {
+  color: #3274b1;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.error_icon {
+  color: #cacaca;
+  font-size: 1.5rem;
+  margin-right: 1.5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .info_icon {
+    color: #3274b1;
+    font-size: 1.5rem;
+    margin-right: 2rem;
+    margin-top: 0.25rem;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 430px) {
+  .info_icon {
+    color: #3274b1;
+    font-size: 1.5rem;
+    margin-right: 2.5rem;
+    margin-top: 0.25rem;
+    cursor: pointer;
+  }
+}

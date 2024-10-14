@@ -1,0 +1,97 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: C127 H300 M150
+
+
+BO_ 17 Pedals: 8 M150
+ SG_ Brake_Pressure_Rear : 55|16@0- (1,0) [-32768|32767] "Bar" Vector__XXX
+ SG_ Brake_Pressure_Front : 39|16@0- (1,0) [-32768|32767] "" Vector__XXX
+ SG_ APPS2_travel : 23|16@0- (1,0) [-32768|32767] "" Vector__XXX
+ SG_ APPS1_travel : 7|16@0- (1,0) [-32768|32767] "%" Vector__XXX
+
+BO_ 16 Vehicle_Status: 4 M150
+ SG_ Comms_Switch_State : 3|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ RTD_Switch_State : 2|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ VCU_Error_Present : 7|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ RTD_Running : 15|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ NMT_isOperational : 1|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ MCU_isRTD : 0|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ Brake_Conflict_Warning : 4|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ APPS_Mismatch_Fault : 5|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ APPS_Voltage_Fault : 6|1@0+ (1,0) [0|1] "" Vector__XXX
+
+BO_ 0 NMT_Commands: 2 M150
+ SG_ NMT_Node : 15|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ NMT_Mode : 7|8@0+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 385 TPDO1: 8 H300
+ SG_ Torque_Actual_Value : 55|16@0- (1,0) [0|0] "" Vector__XXX
+ SG_ Position_Actual_Value : 23|32@0- (1,0) [-2147483648|2147483647] "" Vector__XXX
+ SG_ Statusword : 7|16@0- (1,0) [-32768|32767] "" Vector__XXX
+
+BO_ 641 TPDO2: 8 H300
+ SG_ Current_Demand : 55|16@0- (1,0) [-32768|32767] "" Vector__XXX
+ SG_ Logic_Power_Supply_Voltage : 39|16@0- (1,0) [-32768|32767] "" Vector__XXX
+ SG_ DC_Link_Circuit_Voltage : 23|16@0- (1,0) [-32768|32767] "" Vector__XXX
+ SG_ Motor_Temperature : 15|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ Controller_Temperature : 7|8@0+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 18 wheel_speeds: 8 M150
+ SG_ wheel_speed_RR : 55|16@0- (1,0) [-32768|32767] "RPM" Vector__XXX
+ SG_ wheel_speed_RL : 39|16@0- (1,0) [-32768|32767] "RPM" Vector__XXX
+ SG_ wheel_speed_FR : 23|16@0- (1,0) [-32768|32767] "RPM" Vector__XXX
+ SG_ wheel_speed_FL : 7|16@0- (1,0) [-32768|32767] "RPM" Vector__XXX
+
+BO_ 513 RPDO1: 8 M150
+ SG_ Target_Velocity : 23|32@0- (1,0) [-2147483648|2147483647] "" Vector__XXX
+ SG_ Controlword : 7|16@0+ (1,0) [0|65535] "" Vector__XXX
+ SG_ Target_Torque : 55|16@0- (1,0) [-32768|32767] "mA"  H300
+
+
+
+CM_ BU_ C127 "Screen / Datalogger MoTeC C127";
+CM_ BU_ H300 "Emdrive H300 motor controller";
+CM_ BU_ M150 "VCU MoTeC M150";
+CM_ SG_ 18 wheel_speed_RR "Rear right wheel speed";
+CM_ SG_ 18 wheel_speed_RL "Rear left wheel speed";
+CM_ SG_ 18 wheel_speed_FR "Front right wheel speed";
+CM_ SG_ 18 wheel_speed_FL "Front left wheel speed";
+CM_ SG_ 513 Target_Torque "Torque requested from VCU, calculated from pedal travel%";
+BA_DEF_  "MultiplexExtEnabled" ENUM  "No","Yes";
+BA_DEF_  "BusType" STRING ;
+BA_DEF_DEF_  "MultiplexExtEnabled" "No";
+BA_DEF_DEF_  "BusType" "CAN";
+

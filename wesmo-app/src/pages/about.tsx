@@ -1,5 +1,13 @@
-// Filename - pages/about-wesmo.tsx
-
+/*
+ * File: pages/about-wesmo.tsx
+ * Author: Hannah Murphy
+ * Date: 2024
+ * Description: Webpage describing the WESMO club and what they do.
+ *
+ * Copyright (c) 2024 WESMO. All rights reserved.
+ * This code is part of the  WESMO Data Acquisition and Visualisation Project.
+ *
+ */
 import React from "react";
 import BurgerMenu from "../components/BurgerMenu.tsx";
 import Logo from "../components/Logo.tsx";

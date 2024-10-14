@@ -1,11 +1,20 @@
-// Filename - pages/2018.tsx
+/*
+ * File: pages/2018.tsx
+ * Author: Hannah Murphy
+ * Date: 2024
+ * Description: Webpage describing the 2018 WESMO FSAE vehicle.
+ *
+ * Copyright (c) 2024 WESMO. All rights reserved.
+ * This code is part of the  WESMO Data Acquisition and Visualisation Project.
+ *
+ */
 
 import React from "react";
 import BurgerMenu from "../components/BurgerMenu.tsx";
 import TitleCard from "../components/TitleCard.tsx";
 import Logo from "../components/Logo.tsx";
 
-import car_2018 from "../images/wesmoBackGround.jpg";
+import car_2018 from "../images/backgrounds/wesmoBackGround.jpg";
 
 import "../App.css";
 
