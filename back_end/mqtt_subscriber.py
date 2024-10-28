@@ -215,10 +215,10 @@ def subscribe(client: mqtt_client, redis_client):
         if raw_data != "None":
             # Motor Controller
             if (
-                "ID:      0181" in raw_data
-                or "ID:      0281" in raw_data
-                or "ID:      0381" in raw_data
-                or "ID:      0481" in raw_data
+                "ID:      181" in raw_data
+                or "ID:      281" in raw_data
+                or "ID:      381" in raw_data
+                or "ID:      481" in raw_data
             ):
                 data = mc_translator.decode(raw_data)
                 if data != []:
