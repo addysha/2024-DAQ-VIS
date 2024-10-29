@@ -50,7 +50,7 @@ class BMSTranslator:
 
             predictive_soc = self.predict_soc(
                 decoded_message["Pack_Current"],
-                decoded_message["Pack_Inst_Voltage"],
+                decoded_message["Pack_Summed_Voltage"],
                 decoded_message["Pack_SOC"],
             )
 
