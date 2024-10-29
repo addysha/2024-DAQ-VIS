@@ -48,11 +48,12 @@ class BMSTranslator:
             decoded_message = dbc.decode_message(id, data)
             data = [f"time: {datetime.datetime.fromtimestamp(float(can_data[1]))}"]
 
-            predictive_soc = self.predict_soc(
-                decoded_message["Pack_Current"],
-                decoded_message["Pack_Summed_Voltage"],
-                decoded_message["Pack_SOC"],
-            )
+            if(decoded_message["Pack_Current"] != 0 and decoded_message["Pack_Summed_Voltage"] != 0 and decoded_message["Pack_SOC"] != 0):
+                predictive_soc = self.predict_soc(
+                    decoded_message["Pack_Current"],
+                    decoded_message["Pack_Summed_Voltage"],
+                    decoded_message["Pack_SOC"],
+                )
 
         except Exception as e:
             print(f" -! # Error translating bms data: {e}")
