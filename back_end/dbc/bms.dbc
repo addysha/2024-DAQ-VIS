@@ -1,7 +1,7 @@
 BO_ 77 MSGID_0X4D: 8 BMS
  SG_ High_Temperature : 7|8@0+ (1.0,0) [0|0] "Celsius"  Third_Party_Device
  SG_ Pack_Current : 15|8@0+ (0.1,0) [0|0] "Amps"  Third_Party_Device
- SG_ Pack_SOC : 23|8@0+ (1,0) [0|0] "Percent"  Third_Party_Device
+ SG_ Pack_SOC : 23|8@0+ (0.5,0) [0|0] "Percent"  Third_Party_Device
  SG_ Pack_Summed_Voltage : 31|16@0+ (0.01,0) [0|0] "Volts"  Third_Party_Device
  SG_ Maximum_Pack_DCL : 47|8@0+ (1.0,0) [0|0] "Amps"  Third_Party_Device
  SG_ Failsafe_Statuses : 55|8@0+ (1.0,0) [0|0] ""  Third_Party_Device
