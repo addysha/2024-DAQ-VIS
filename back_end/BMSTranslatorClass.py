@@ -33,6 +33,7 @@ class BMSTranslator:
         pass
 
     def decode(self, can_data):
+        predictive_soc = 0
         try:
             dbc = cantools.database.load_file("dbc/bms.dbc")
             can_data = can_data.split()
@@ -46,8 +47,6 @@ class BMSTranslator:
             data = bytearray.fromhex("".join(data_list))
             decoded_message = dbc.decode_message(id, data)
             data = [f"time: {datetime.datetime.fromtimestamp(float(can_data[1]))}"]
-            # USED FOR SIMULATION DELETE WHEN IN PRODUCTION
-            data = [f"time: {datetime.datetime.now()}"]
 
             predictive_soc = self.predict_soc(
                 decoded_message["Pack_Current"],
@@ -79,7 +78,7 @@ class BMSTranslator:
             },
             {
                 "name": "Battery Voltage",
-                "value": round(decoded_message["Pack_Inst_Voltage"], 2),
+                "value": decoded_message["Pack_Inst_Voltage"],
                 "unit": "V",
                 "max": 100,
             },

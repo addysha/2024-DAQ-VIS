@@ -175,7 +175,7 @@ class MCTranslator:
             },
             {
                 "name": "DC Link Circuit Voltage",
-                "value": DC_link_circuit_voltage,
+                "value": DC_link_circuit_voltage/10,
                 "unit": "V",
                 "max": 400,
             },
