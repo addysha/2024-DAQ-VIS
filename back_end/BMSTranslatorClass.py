@@ -78,7 +78,7 @@ class BMSTranslator:
             },
             {
                 "name": "Battery Voltage",
-                "value": decoded_message["Pack_Summed_Voltage"],
+                "value": round(decoded_message["Pack_Summed_Voltage"],2),
                 "unit": "V",
                 "max": 100,
             },
