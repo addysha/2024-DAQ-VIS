@@ -231,9 +231,6 @@ class MCTranslator:
 
         data = [f"time: {datetime.datetime.fromtimestamp(float(can_data[0]))}"]
 
-        # TODO USED FOR SIMULATION DELETE WHEN IN PRODUCTION
-        data = [f"time: {datetime.datetime.now()}"]
-
         if can_data[1] == "181" or can_data[1] == "0181":
             data += "1"
             data += self.decode_mc_pdo_1(can_data[3])

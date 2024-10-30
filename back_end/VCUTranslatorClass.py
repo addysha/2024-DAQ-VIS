@@ -33,9 +33,6 @@ class VCUTranslator:
             decoded_message = dbc.decode_message(id, data)
             data = [f"time: {datetime.datetime.fromtimestamp(float(can_data[1]))}"]
 
-            # TODO USED FOR SIMULATION DELETE WHEN IN PRODUCTION
-            data = [f"time: {datetime.datetime.now()}"]
-
             if (16 == id) or (10 == id):
                 self.check_timer(decoded_message)
                 data += self.format_vehicle_status(decoded_message)
