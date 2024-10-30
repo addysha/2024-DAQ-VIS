@@ -101,8 +101,18 @@ def publish(client, can0):
     """
     while True:
         msg = can0.recv(0.0)
-        result = client.publish(topic, str(msg))
-        status = result[0]
+        # Only send MC, BMS and specific VCU Messages
+        if("ID:      181" in msg
+            or "ID:      281" in msg
+            or "ID:      381" in msg
+            or "ID:      481" in msg
+            or "ID:      04d" in msg
+            or "ID:      010" in msg
+            or "ID:      012" in msg
+            or "ID:      011" in msg
+        ):
+            result = client.publish(topic, str(msg))
+        # status = result[0]
 
 
 def main():

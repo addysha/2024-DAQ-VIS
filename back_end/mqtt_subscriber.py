@@ -206,6 +206,7 @@ def subscribe(client: mqtt_client, redis_client):
     """
 
     def on_message(client, userdata, msg):
+        global is_timed_out
         reset_timeout()
         if is_timed_out:
             on_timeout(False)

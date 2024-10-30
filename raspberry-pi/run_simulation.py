@@ -71,6 +71,7 @@ def publish(client):
                 else:
                     print(line.strip())
                 time.sleep(0.25)
+        time.sleep(60)
 
 
 def main():
