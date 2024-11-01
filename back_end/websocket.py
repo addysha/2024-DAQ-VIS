@@ -84,7 +84,7 @@ def delete_timer():
 
     if on_track:
         on_track = False
-    if track_timer:
+    if track_timer is not None:
         track_timer.reset_timer()
         track_timer = None
         export_and_clear_database(cursor, conn)
