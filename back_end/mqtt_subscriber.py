@@ -14,6 +14,7 @@ import threading
 import random
 import redis
 import pickle
+import datetime
 from paho.mqtt import client as mqtt_client
 from MCTranslatorClass import MCTranslator
 from BMSTranslatorClass import BMSTranslator
@@ -83,9 +84,9 @@ def query_all_latest_data():
                     }
                 )
             except pickle.PickleError as e:
-                print(f" -! # Error deserializing data for key {key}: {e}")
+                print(f"{datetime.datetime.now()} -! # Error deserializing data for key {key}: {e}")
         else:
-            print(f" -! #  No data found for key {key}")
+            print(f"{datetime.datetime.now()} -! #  No data found for key {key}")
     return all_data
 
 
@@ -103,9 +104,9 @@ def query_latest(data_name):
             }
             return latest_data
         except pickle.PickleError as e:
-            print(f" -! # Error deserializing data for {data_name}: {e}")
+            print(f"{datetime.datetime.now()} -! # Error deserializing data for {data_name}: {e}")
     else:
-        print(f" -! # No data found for {data_name}")
+        print(f"{datetime.datetime.now()} -! # No data found for {data_name}")
         return None
 
 
@@ -124,7 +125,7 @@ def cache_data(time, value):
             pickle.dumps(redis_value),
         )
     except Exception as e:
-        print(f" -! # Error with {redis_key}: {e}")
+        print(f"{datetime.datetime.now()} -! # Error with {redis_key}: {e}")
 
 
 def query_data(data_name, cursor, conn):
@@ -152,7 +153,7 @@ def query_data(data_name, cursor, conn):
         ):
             query = f"SELECT time, value from BATTERY_MANAGEMENT_SYSTEM where name = '{data_name}' ORDER BY time DESC LIMIT 50;"
         else:
-            print(f" -! #  ERROR: Data '{data_name}' does not exist in database.")
+            print(f"{datetime.datetime.now()} -! #  ERROR: Data '{data_name}' does not exist in database.")
 
         cursor.execute(query)
         data = cursor.fetchall()
@@ -170,7 +171,7 @@ def query_data(data_name, cursor, conn):
                 converted_data.append({"timestamp": timestamp, "value": value})
         return converted_data
     except Exception as e:
-        print(f" -! # Error collecting data from: {e}")
+        print(f"{datetime.datetime.now()} -! # Error collecting data from: {e}")
 
 
 """
@@ -260,7 +261,6 @@ def reset_timeout():
 
 def on_timeout(timeout):
     global is_timed_out
-    print("Timeout setting")
     url = "http://localhost:5001/timeout"
     is_timed_out = not is_timed_out
 
@@ -269,9 +269,9 @@ def on_timeout(timeout):
             url, json={"timeout": timeout}, headers={"Content-Type": "application/json"}
         )
         if response.status_code != 200:
-            print(f"Failed: {response.status_code} - {response.json()}")
+            print(f"{datetime.datetime.now()} -! # Failed: {response.status_code} - {response.json()}")
     except requests.exceptions.RequestException as e:
-        print(f"Error making request: {e}")
+        print(f"{datetime.datetime.now()} -! # Error making request: {e}")
 
 
 def start_mqtt_subscriber():

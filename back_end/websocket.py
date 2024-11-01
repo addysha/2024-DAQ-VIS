@@ -9,6 +9,7 @@ This code is part of the WESMO Data Acquisition and Visualisation Project.
 """
 
 import logging
+import datetime
 from flask import Flask, request, jsonify
 from flask_socketio import SocketIO
 from flask_cors import CORS
@@ -54,14 +55,14 @@ def create_timer():
     global track_timer, on_track
     data = request.get_json()
 
-    if not track_timer:
+    if track_timer is None:
         track_timer = TrackTimer()
-        print(f"Creating timer - on_track: {on_track}, track_timer: {track_timer}")
+        print(f"{datetime.datetime.now()} - # Creating timer - on_track: {on_track}, track_timer: {track_timer}")
 
     if not on_track and track_timer:
         on_track = True
         track_timer.start_timer()
-        print(f"Starting timer - on_track: {on_track}, track_timer: {track_timer}")
+        print(f"{datetime.datetime.now()} - # Starting timer - on_track: {on_track}, track_timer: {track_timer}")
 
     if on_track and track_timer:
         time = track_timer.check_timer(data)
@@ -88,7 +89,7 @@ def delete_timer():
         track_timer = None
         export_and_clear_database(cursor, conn)
 
-    print(f"Deleteing timer - on_track: {on_track}, track_timer: {track_timer}")
+    print(f"{datetime.datetime.now()} - # Deleteing timer - on_track: {on_track}, track_timer: {track_timer}")
 
     return (
         jsonify(
@@ -125,18 +126,19 @@ def handle_timer():
 
 @socketio.on("connect")
 def handle_connect():
-    print(f" - * User connected!")
+    print(f"{datetime.datetime.now()} - # User connected")
     client_list.append(request.sid)
 
 
 @socketio.on("disconnect")
 def handle_disconnect():
-    print(f" # - User disconnected!")
+    print(f"{datetime.datetime.now()} - # User disconnected")
 
 
 def start_webserver():
     global cursor, conn
     cursor, conn = connect_to_db()
+    print(f"{datetime.datetime.now()} - # Webserver starting")
     socketio.run(app, port=5001, allow_unsafe_werkzeug=True)
 
 
