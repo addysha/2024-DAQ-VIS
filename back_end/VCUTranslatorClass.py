@@ -63,7 +63,7 @@ class VCUTranslator:
                     print(f"Failed: {response.status_code} - {response.json()}")
             except requests.exceptions.RequestException as e:
                 print(f"Error making request: {e}")
-        if messages["RTD_Switch_State"] == 0:
+        elif messages["RTD_Switch_State"] == 0:
             try:
                 response = requests.delete(
                     url,

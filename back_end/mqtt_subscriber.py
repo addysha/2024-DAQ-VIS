@@ -260,10 +260,10 @@ def reset_timeout():
 
 
 def on_timeout(timeout):
-    global is_timed_out
+    global is_timed_out, redis_client
     url = "http://localhost:5001/timeout"
     is_timed_out = not is_timed_out
-
+    redis_client.flushdb()
     try:
         response = requests.post(
             url, json={"timeout": timeout}, headers={"Content-Type": "application/json"}

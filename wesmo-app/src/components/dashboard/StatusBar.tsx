@@ -77,10 +77,13 @@ const StatusBar: React.FC<Props> = ({ data }) => {
     const dataItem = dataMap.get(dataName);
     let color = "";
     if (dataName === "Battery Temperature") {
-      if ((batteryTemp && +batteryTemp.value > 40) || batteryTemp) {
+      if ((batteryTemp && +batteryTemp.value > 40)) {
         color = "#af1317";
-      } else {
+      } 
+      else if (batteryTemp) {
         color = "#4da14b";
+      }else {
+        color = "#af1317";
       }
     } else if (dataName === "RTD Switch State") {
       if (rtd_switch_state && rtd_switch_state.value === 0) {

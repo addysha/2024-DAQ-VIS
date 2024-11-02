@@ -23,7 +23,6 @@ class TrackTimer:
             self.start_time = time.time()
 
     def reset_timer(self):
-        print("resetting timer")
         self.timer_started = False
         self.start_time = None
 
