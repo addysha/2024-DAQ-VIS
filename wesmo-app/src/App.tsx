@@ -27,11 +27,13 @@ import History from "./pages/history.tsx";
 import Data from "./pages/data.tsx";
 import Fsae from "./pages/fsae.tsx";
 import Explore from "./pages/explore.tsx";
+import Dashboard from "./pages/Dashboard.tsx"
 
 const App: React.FC = () => {
   return (
     <Router>
       <Routes>
+        <Route path="/dashboard" element={<Dashboard />} /> 
         <Route path="/" element={<Home />} />
         <Route path="/contact-us" element={<Contact />} />
         <Route path="/about-wesmo" element={<About />} />
