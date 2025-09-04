@@ -10,7 +10,7 @@
  */
 
 import React from "react";
-import BurgerMenu from "../components/BurgerMenu.tsx";
+
 import Logo from "../components/Logo.tsx";
 import TeamMember from "../components/TeamMember.tsx";
 import TitleCard from "../components/TitleCard.tsx";
@@ -49,7 +49,7 @@ const Engineering: React.FC = () => {
             <Logo />
           </div>
           <div className="nav-right">
-            <BurgerMenu />
+            
             <div className="nav-right"></div>
           </div>
         </div>

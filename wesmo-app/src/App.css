@@ -20,6 +20,11 @@ a:visited {
   font-family: Roboto, sans-serif;
 }
 
+/* Remove legacy page-level navbar so Pill Nav can receive hover/click */
+.navbar, .nav-left, .nav-right, .BurgerMenu, .BurgerMenuIcon {
+  display: none !important;
+}
+
 h1 {
   font-size: 60px;
   max-width: 700px;

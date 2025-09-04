@@ -10,7 +10,7 @@
  */
 
 import React from "react";
-import BurgerMenu from "../components/BurgerMenu.tsx";
+
 import TitleCard from "../components/TitleCard.tsx";
 import Logo from "../components/Logo.tsx";
 import StudentDetails from "../components/StudentDetails.tsx";
@@ -34,7 +34,7 @@ const History_2023: React.FC = () => {
             <Logo />
           </div>
           <div className="nav-right">
-            <BurgerMenu />
+       
             <div className="nav-right"></div>
           </div>
         </div>

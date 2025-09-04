@@ -11,7 +11,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import BurgerMenu from "../components/BurgerMenu.tsx";
+
 import Logo from "../components/Logo.tsx";
 import TitleCard from "../components/TitleCard.tsx";
 import SponsorRow from "../components/Sponsors.tsx";
@@ -36,7 +36,7 @@ const Sponsors: React.FC = () => {
             <Logo />
           </div>
           <div className="nav-right">
-            <BurgerMenu />
+            
             <div className="nav-right"></div>
           </div>
         </div>

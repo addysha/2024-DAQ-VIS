@@ -9,7 +9,7 @@
  *
  */
 import React from "react";
-import BurgerMenu from "../components/BurgerMenu.tsx";
+
 import Logo from "../components/Logo.tsx";
 import TitleCard from "../components/TitleCard.tsx";
 import Button from "@mui/material/Button";
@@ -30,7 +30,7 @@ const About: React.FC = () => {
             <Logo />
           </div>
           <div className="nav-right">
-            <BurgerMenu />
+      
             <div className="nav-right"></div>
           </div>
         </div>

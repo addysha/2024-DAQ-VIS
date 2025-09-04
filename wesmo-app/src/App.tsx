@@ -13,6 +13,9 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
+
+import TopNav from "./components/TopNav.tsx";        // ← NEW
+
 import Home from "./pages/index.tsx";
 import Contact from "./pages/contact.tsx";
 import About from "./pages/about.tsx";
@@ -27,13 +30,14 @@ import History from "./pages/history.tsx";
 import Data from "./pages/data.tsx";
 import Fsae from "./pages/fsae.tsx";
 import Explore from "./pages/explore.tsx";
-import Dashboard from "./pages/Dashboard.tsx"
+import Dashboard from "./pages/Dashboard.tsx";
 
 const App: React.FC = () => {
   return (
     <Router>
+      <TopNav />  {/* ← appears on every route */}
       <Routes>
-        <Route path="/dashboard" element={<Dashboard />} /> 
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/" element={<Home />} />
         <Route path="/contact-us" element={<Contact />} />
         <Route path="/about-wesmo" element={<About />} />
@@ -45,10 +49,8 @@ const App: React.FC = () => {
         <Route path="/history-2023" element={<History2023 />} />
         <Route path="/history-2018" element={<History2018 />} />
         <Route path="/history-2017" element={<History2017 />} />
-        {/* <Route path="/history-2016" element={<History2023 />} /> */}
         <Route path="/history-2015" element={<History2015 />} />
         <Route path="/history-2014" element={<History2014 />} />
-
         <Route path="/about-wesmo/explore" element={<Explore />} />
       </Routes>
     </Router>
